@@ -1,0 +1,1229 @@
+format-version: 1.0
+date: 30:03:2007 12:46
+saved-by: minna
+auto-generated-by: OBO-Edit 1.100-beta16
+default-namespace: eVOC_Pathology
+namespace-id-rule: * EV:$sequence(7,0400180,9999999)$
+remark: Pathology [EV:0400000] ouput by Evoc2star.
+
+[Term]
+id: EV:0400000
+name: Pathology
+
+[Term]
+id: EV:0400001
+name: congenital anomalies
+is_a: EV:0400000 ! Pathology
+
+[Term]
+id: EV:0400002
+name: genetic disorders
+is_a: EV:0400000 ! Pathology
+
+[Term]
+id: EV:0400003
+name: Charcot-Marie-Tooth disease
+def: "A muscular atrophy of variable inheritance characterized by loss of muscle tissue and touch sensation. Begins in the muscles supplied by the peroneal nerves. Progresses slowly to involve the muscles of the hands and arms in the advanced stages of the disease." [ISBN:0-7216-0146-4, SANBI:mhl]
+exact_synonym: "Charcot-Marie atrophy" []
+exact_synonym: "hereditary motor and sensory neuropathy" []
+exact_synonym: "HMSN" []
+exact_synonym: "Marie-Tooth disease" []
+exact_synonym: "peroneal muscular atrophy" []
+exact_synonym: "Tooth's disease" []
+is_a: EV:0400002 ! genetic disorders
+
+[Term]
+id: EV:0400004
+name: Denys-Drash syndrome
+exact_synonym: "Drash syndrome" []
+is_a: EV:0400002 ! genetic disorders
+
+[Term]
+id: EV:0400005
+name: Down's syndrome
+is_a: EV:0400002 ! genetic disorders
+exact_synonymexact_synonym: "Down syndrome" []
+
+[Term]
+id: EV:0400006
+name: Huntington's disease
+is_a: EV:0400002 ! genetic disorders
+
+[Term]
+id: EV:0400007
+name: Wiskott-Aldrich syndrome
+is_a: EV:0400002 ! genetic disorders
+
+[Term]
+id: EV:0400008
+name: fragile X syndrome
+is_a: EV:0400002 ! genetic disorders
+
+[Term]
+id: EV:0400009
+name: Patau syndrome
+is_a: EV:0400002 ! genetic disorders
+
+[Term]
+id: EV:0400010
+name: infectious disorders
+is_a: EV:0400000 ! Pathology
+
+[Term]
+id: EV:0400011
+name: viral
+is_a: EV:0400010 ! infectious disorders
+
+[Term]
+id: EV:0400012
+name: AIDS
+is_a: EV:0400011 ! viral
+
+[Term]
+id: EV:0400013
+name: cytomegalovirus
+exact_synonym: "CMV" []
+is_a: EV:0400011 ! viral
+
+[Term]
+id: EV:0400014
+name: Epstein-Barr virus
+exact_synonym: "EBV" []
+is_a: EV:0400011 ! viral
+
+[Term]
+id: EV:0400015
+name: hepatitis
+is_a: EV:0400011 ! viral
+
+[Term]
+id: EV:0400016
+name: hepatitis A virus
+exact_synonym: "HAV" []
+is_a: EV:0400015 ! hepatitis
+
+[Term]
+id: EV:0400017
+name: hepatitis B virus
+exact_synonym: "HBV" []
+is_a: EV:0400015 ! hepatitis
+
+[Term]
+id: EV:0400018
+name: hepatitis C virus
+exact_synonym: "HCV" []
+is_a: EV:0400015 ! hepatitis
+
+[Term]
+id: EV:0400019
+name: poliomyelitis
+is_a: EV:0400011 ! viral
+
+[Term]
+id: EV:0400020
+name: human papilloma virus
+exact_synonym: "HPV" []
+is_a: EV:0400011 ! viral
+
+[Term]
+id: EV:0400021
+name: bacterial
+is_a: EV:0400010 ! infectious disorders
+
+[Term]
+id: EV:0400022
+name: botulism
+is_a: EV:0400021 ! bacterial
+
+[Term]
+id: EV:0400023
+name: staphylococcus
+is_a: EV:0400021 ! bacterial
+
+[Term]
+id: EV:0400024
+name: streptococcus
+is_a: EV:0400021 ! bacterial
+
+[Term]
+id: EV:0400025
+name: syphilis
+is_a: EV:0400021 ! bacterial
+
+[Term]
+id: EV:0400026
+name: tuberculosis
+is_a: EV:0400021 ! bacterial
+
+[Term]
+id: EV:0400027
+name: leprosy
+is_a: EV:0400021 ! bacterial
+
+[Term]
+id: EV:0400028
+name: lepromatous
+is_a: EV:0400027 ! leprosy
+
+[Term]
+id: EV:0400029
+name: fungal
+is_a: EV:0400010 ! infectious disorders
+
+[Term]
+id: EV:0400030
+name: candidiasis
+is_a: EV:0400029 ! fungal
+
+[Term]
+id: EV:0400031
+name: parasitic
+is_a: EV:0400010 ! infectious disorders
+
+[Term]
+id: EV:0400032
+name: helminthiasis
+is_a: EV:0400031 ! parasitic
+
+[Term]
+id: EV:0400033
+name: pediculosis
+is_a: EV:0400031 ! parasitic
+
+[Term]
+id: EV:0400034
+name: inflammatory disorders
+is_a: EV:0400000 ! Pathology
+
+[Term]
+id: EV:0400035
+name: arteritis
+is_a: EV:0400034 ! inflammatory disorders
+
+[Term]
+id: EV:0400036
+name: arthritis
+is_a: EV:0400034 ! inflammatory disorders
+
+[Term]
+id: EV:0400037
+name: autoimmune disorders
+exact_synonym: "autoimmune" []
+is_a: EV:0400034 ! inflammatory disorders
+
+[Term]
+id: EV:0400038
+name: Crohn's disease
+is_a: EV:0400037 ! autoimmune disorders
+
+[Term]
+id: EV:0400039
+name: ulcerative colitis
+is_a: EV:0400037 ! autoimmune disorders
+
+[Term]
+id: EV:0400040
+name: alopecia areata
+exact_synonym: "patchy baldness" []
+is_a: EV:0400037 ! autoimmune disorders
+
+[Term]
+id: EV:0400041
+name: lupus
+is_a: EV:0400037 ! autoimmune disorders
+
+[Term]
+id: EV:0400042
+name: discoid lupus
+is_a: EV:0400041 ! lupus
+
+[Term]
+id: EV:0400043
+name: systemic lupus erythematosus
+exact_synonym: "systemic lupus" []
+is_a: EV:0400041 ! lupus
+
+[Term]
+id: EV:0400044
+name: multiple sclerosis
+exact_synonym: "MS" []
+is_a: EV:0400037 ! autoimmune disorders
+
+[Term]
+id: EV:0400045
+xref_analog: SWP:TS-0874
+name: rheumatoid arthritis
+is_a: EV:0400037 ! autoimmune disorders
+
+[Term]
+id: EV:0400046
+name: idiopathic thrombocytopenic purpura
+exact_synonym: "ITP" []
+is_a: EV:0400037 ! autoimmune disorders
+
+[Term]
+id: EV:0400047
+name: encephalitis
+is_a: EV:0400034 ! inflammatory disorders
+
+[Term]
+id: EV:0400048
+name: asthma
+is_a: EV:0400034 ! inflammatory disorders
+
+[Term]
+id: EV:0400049
+name: nephritis
+is_a: EV:0400034 ! inflammatory disorders
+
+[Term]
+id: EV:0400050
+name: neoplasia
+exact_synonym: "leukoplakia" []
+is_a: EV:0400000 ! Pathology
+
+[Term]
+id: EV:0400051
+xref_analog: SWP:TS-0019
+xref_analog: SWP:TS-0059
+xref_analog: SWP:TS-0064
+xref_analog: SWP:TS-0086
+xref_analog: SWP:TS-0094
+xref_analog: SWP:TS-0166
+xref_analog: SWP:TS-0275
+xref_analog: SWP:TS-0416
+xref_analog: SWP:TS-0563
+xref_analog: SWP:TS-0577
+xref_analog: SWP:TS-0597
+xref_analog: SWP:TS-0619
+xref_analog: SWP:TS-1153
+xref_analog: SWP:TS-0731
+xref_analog: SWP:TS-0742
+xref_analog: SWP:TS-0793
+xref_analog: SWP:TS-0797
+xref_analog: SWP:TS-0853
+xref_analog: SWP:TS-1046
+name: tumor
+exact_synonym: "neoplasm" []
+exact_synonym: "tumour" []
+is_a: EV:0400050 ! neoplasia
+
+[Term]
+id: EV:0400052
+name: benign tumor
+exact_synonym: "benign tumour" []
+is_a: EV:0400051 ! tumor
+
+[Term]
+id: EV:0400053
+xref_analog: SWP:TS-0746
+xref_analog: SWP:TS-0792
+name: adenoma
+def: "A benign growth of glandular origin." [Sanbi:mhl]
+is_a: EV:0400052 ! benign tumor
+
+[Term]
+id: EV:0400054
+name: angioma
+def: "A benign tumor that consists of small blood vessels." [Sanbi:mhl]
+is_a: EV:0400052 ! benign tumor
+
+[Term]
+id: EV:0400055
+name: carcinoid
+is_a: EV:0400052 ! benign tumor
+
+[Term]
+id: EV:0400056
+xref_analog: SWP:TS-0363
+name: fibroma
+exact_synonym: "fibroid" []
+exact_synonym: "fibroid tumor" []
+exact_synonym: "fibroid tumour" []
+is_a: EV:0400052 ! benign tumor
+
+[Term]
+id: EV:0400057
+name: fibrothecoma
+is_a: EV:0400052 ! benign tumor
+
+[Term]
+id: EV:0400058
+name: glioma
+is_a: EV:0400052 ! benign tumor
+
+[Term]
+id: EV:0400059
+name: hemangioma
+def: "A common benign tumor, occurring most often in infants and children, that is made up of an abnormal build up of blood vessels in the skin on internal organs." [SANBI:mhl]
+exact_synonym: "haemangioma" []
+is_a: EV:0400052 ! benign tumor
+
+[Term]
+id: EV:0400060
+xref_analog: SWP:TS-0480
+name: insulinoma
+is_a: EV:0400052 ! benign tumor
+
+[Term]
+id: EV:0400061
+xref_analog: SWP:TS-1101
+name: leiomyoma
+exact_synonym: "fibroid" []
+is_a: EV:0400052 ! benign tumor
+
+[Term]
+id: EV:0400062
+name: lipoma
+def: "A benign tumor of fatty tissue." [Sanbi:mhl]
+is_a: EV:0400052 ! benign tumor
+
+[Term]
+id: EV:0400063
+name: lymphangioma
+is_a: EV:0400052 ! benign tumor
+
+[Term]
+id: EV:0400064
+xref_analog: SWP:TS-0615
+name: meningioma
+is_a: EV:0400052 ! benign tumor
+
+[Term]
+id: EV:0400065
+xref_analog: SWP:TS-0786
+name: phaeochromocytoma
+exact_synonym: "pheochromocytoma" []
+is_a: EV:0400052 ! benign tumor
+
+[Term]
+id: EV:0400066
+name: Schwannoma
+exact_synonym: "neurilemmoma" []
+exact_synonym: "neurilemoma" []
+is_a: EV:0400052 ! benign tumor
+
+[Term]
+id: EV:0400067
+name: teratoma
+is_a: EV:0400052 ! benign tumor
+
+[Term]
+id: EV:0400068
+name: enchondroma
+is_a: EV:0400052 ! benign tumor
+
+[Term]
+id: EV:0400069
+xref_analog: SWP:TS-0659
+name: polyp
+is_a: EV:0400052 ! benign tumor
+
+[Term]
+id: EV:0400070
+xref_analog: SWP:TS-0160
+xref_analog: SWP:TS-0559
+xref_analog: SWP:TS-0571
+xref_analog: SWP:TS-0591
+xref_analog: SWP:TS-0714
+xref_analog: SWP:TS-0739
+xref_analog: SWP:TS-0978
+name: malignant tumor
+exact_synonym: "cancer" []
+exact_synonym: "malignant tumour" []
+is_a: EV:0400051 ! tumor
+
+[Term]
+id: EV:0400071
+xref_analog: SWP:TS-0061
+name: astrocytoma
+is_a: EV:0400051 ! tumor
+
+[Term]
+id: EV:0400072
+xref_analog: SWP:TS-0114
+xref_analog: SWP:TS-0136
+xref_analog: SWP:TS-0161
+xref_analog: SWP:TS-0234
+xref_analog: SWP:TS-0267
+xref_analog: SWP:TS-0282
+xref_analog: SWP:TS-0400
+xref_analog: SWP:TS-0529
+xref_analog: SWP:TS-0572
+xref_analog: SWP:TS-0592
+xref_analog: SWP:TS-0661
+xref_analog: SWP:TS-0697
+xref_analog: SWP:TS-0725
+xref_analog: SWP:TS-0740
+xref_analog: SWP:TS-1133
+xref_analog: SWP:TS-0830
+xref_analog: SWP:TS-0964
+xref_analog: SWP:TS-1029
+xref_analog: SWP:TS-1044
+xref_analog: SWP:TS-1054
+xref_analog: SWP:TS-1086
+xref_analog: SWP:TS-1169
+name: carcinoma
+def: "A cancer of that originates in the skin or in tissues that line or cover internal organs." [SANBI:mhl]
+is_a: EV:0400070 ! malignant tumor
+
+[Term]
+id: EV:0400073
+name: carcinoma in situ
+def: "A pre-malignant condition. Cytological signs of malignancy are present, but there is no histological evidence of the cancer having spread outside the tissue where it began." [SANBI:mhl]
+exact_synonym: "CIS" []
+is_a: EV:0400072 ! carcinoma
+
+[Term]
+id: EV:0400074
+xref_analog: SWP:TS-0135
+xref_analog: SWP:TS-0159
+xref_analog: SWP:TS-0212
+xref_analog: SWP:TS-0274
+xref_analog: SWP:TS-0398
+xref_analog: SWP:TS-0502
+xref_analog: SWP:TS-0569
+xref_analog: SWP:TS-0724
+xref_analog: SWP:TS-0738
+xref_analog: SWP:TS-0829
+xref_analog: SWP:TS-1097
+name: adenocarcinoma
+is_a: EV:0400072 ! carcinoma
+
+[Term]
+id: EV:0400075
+xref_analog: SWP:TS-0142
+name: choriocarcinoma
+is_a: EV:0400072 ! carcinoma
+
+[Term]
+id: EV:0400076
+name: papillary serous carcinoma
+is_a: EV:0400072 ! carcinoma
+
+[Term]
+id: EV:0400077
+xref_analog: SWP:TS-1025
+name: teratocarcinoma
+is_a: EV:0400072 ! carcinoma
+
+[Term]
+id: EV:0400078
+name: anaplastic carcinoma
+is_a: EV:0400072 ! carcinoma
+
+[Term]
+id: EV:0400079
+name: cholangiocarcinoma
+is_a: EV:0400072 ! carcinoma
+
+[Term]
+id: EV:0400080
+name: chorioepithelioma
+is_a: EV:0400070 ! malignant tumor
+
+[Term]
+id: EV:0400081
+name: erythremia
+is_a: EV:0400070 ! malignant tumor
+
+[Term]
+id: EV:0400082
+xref_analog: SWP:TS-0417
+name: glioblastoma multiforme
+comment: A high grade astrocytoma that infiltrates surrounding brain tissue. The highest grade of brain tumors that are derived from astrocytes.
+exact_synonym: "glioblastoma" []
+exact_synonym: "grade IV astrocytoma" []
+is_a: EV:0400071 ! astrocytoma
+
+[Term]
+id: EV:0400083
+name: histiocytoma
+is_a: EV:0400070 ! malignant tumor
+
+[Term]
+id: EV:0400084
+name: fibrous histiocytoma
+is_a: EV:0400083 ! histiocytoma
+
+[Term]
+id: EV:0400085
+name: hypernephroma
+is_a: EV:0400070 ! malignant tumor
+
+[Term]
+id: EV:0400086
+xref_analog: SWP:TS-0547
+xref_analog: SWP:TS-0639
+xref_analog: SWP:TS-0648
+xref_analog: SWP:TS-0820
+xref_analog: SWP:TS-0826
+name: leukemia
+exact_synonym: "leukaemia" []
+is_a: EV:0400070 ! malignant tumor
+
+[Term]
+id: EV:0400087
+name: lymphoblastic leukemia
+is_a: EV:0400086 ! leukemia
+
+[Term]
+id: EV:0400088
+name: lymphocytic
+is_a: EV:0400086 ! leukemia
+
+[Term]
+id: EV:0400091
+name: promyelocytic leukemia
+is_a: EV:0400086 ! leukemia
+
+[Term]
+id: EV:0400092
+xref_analog: SWP:TS-0292
+name: erythroleukemia
+exact_synonym: "erythroleukaemia" []
+exact_synonym: "polycythemia rubra" []
+exact_synonym: "Vasquez disease" []
+is_a: EV:0400086 ! leukemia
+
+[Term]
+id: EV:0400093
+name: lymphosarcoma cell
+is_a: EV:0400086 ! leukemia
+
+[Term]
+id: EV:0400094
+name: megakaryocytic
+is_a: EV:0400086 ! leukemia
+
+[Term]
+id: EV:0400095
+xref_analog: SWP:TS-0147
+name: myeloid leukemia
+exact_synonym: "myelogenous leukemia" []
+exact_synonym: "nonlymphocytic leukemia" []
+is_a: EV:0400086 ! leukemia
+
+[Term]
+id: EV:0400096
+name: monocytic leukemia
+is_a: EV:0400086 ! leukemia
+
+[Term]
+id: EV:0400097
+xref_analog: SWP:TS-0461
+xref_analog: SWP:TS-0585
+xref_analog: SWP:TS-0821
+xref_analog: SWP:TS-1000
+xref_analog: SWP:TS-1041
+name: lymphoma
+is_a: EV:0400070 ! malignant tumor
+
+[Term]
+id: EV:0400098
+name: Hodgkin's lymphoma
+is_a: EV:0400097 ! lymphoma
+
+[Term]
+id: EV:0400099
+name: non-Hodgkin's lymphoma
+is_a: EV:0400097 ! lymphoma
+
+[Term]
+id: EV:0400100
+name: Burkitt's lymphoma
+is_a: EV:0400190 ! B-cell lymphoma
+
+[Term]
+id: EV:0400101
+xref_analog: SWP:TS-0608
+name: medulloblastoma
+is_a: EV:0400070 ! malignant tumor
+
+[Term]
+id: EV:0400102
+xref_analog: SWP:TS-0614
+name: melanoma
+is_a: EV:0400070 ! malignant tumor
+
+[Term]
+id: EV:0400103
+xref_analog: SWP:TS-0649
+name: myeloma
+is_a: EV:0400070 ! malignant tumor
+
+[Term]
+id: EV:0400104
+xref_analog: SWP:TS-0681
+name: neuroblastoma
+is_a: EV:0400070 ! malignant tumor
+
+[Term]
+id: EV:0400105
+name: oligodendroglioma
+is_a: EV:0400070 ! malignant tumor
+
+[Term]
+id: EV:0400106
+xref_analog: SWP:TS-0871
+name: retinoblastoma
+def: "A malignant tumor of the retina that develops from retinoblasts in children under the age of 5." [ISBN:0-7216-0146-4]
+is_a: EV:0400070 ! malignant tumor
+
+[Term]
+id: EV:0400107
+xref_analog: SWP:TS-0997
+name: sarcoma
+def: "Cancer that originates in supportive and connective tissues such as bones, tendons, cartilage, muscle, and fat." [SANBI:mhl]
+is_a: EV:0400070 ! malignant tumor
+
+[Term]
+id: EV:0400108
+xref_analog: SWP:TS-1142
+name: liposarcoma
+is_a: EV:0400107 ! sarcoma
+
+[Term]
+id: EV:0400109
+xref_analog: SWP:TS-0364
+name: fibrosarcoma
+is_a: EV:0400107 ! sarcoma
+
+[Term]
+id: EV:0400110
+name: gliosarcoma
+is_a: EV:0400107 ! sarcoma
+
+[Term]
+id: EV:0400111
+xref_analog: SWP:TS-0723
+name: osteosarcoma
+is_a: EV:0400107 ! sarcoma
+
+[Term]
+id: EV:0400112
+xref_analog: SWP:TS-0302
+name: Ewing's sarcoma
+exact_synonym: "peripheral neuroectodermal tumor" []
+exact_synonym: "PNET" []
+is_a: EV:0400107 ! sarcoma
+
+[Term]
+id: EV:0400113
+name: Kaposi's sarcoma
+is_a: EV:0400107 ! sarcoma
+
+[Term]
+id: EV:0400114
+xref_analog: SWP:TS-0541
+name: leiomyosarcoma
+is_a: EV:0400107 ! sarcoma
+
+[Term]
+id: EV:0400115
+xref_analog: SWP:TS-0586
+name: lymphosarcoma
+is_a: EV:0400107 ! sarcoma
+
+[Term]
+id: EV:0400116
+name: reticulosarcoma
+is_a: EV:0400107 ! sarcoma
+
+[Term]
+id: EV:0400117
+xref_analog: SWP:TS-1139
+xref_analog: SWP:TS-0873
+name: rhabdomyosarcoma
+is_a: EV:0400107 ! sarcoma
+
+[Term]
+id: EV:0400118
+xref_analog: SWP:TS-0139
+name: chondrosarcoma
+is_a: EV:0400107 ! sarcoma
+
+[Term]
+id: EV:0400119
+name: seminoma
+is_a: EV:0400070 ! malignant tumor
+
+[Term]
+id: EV:0400120
+name: Wilms tumor
+is_a: EV:0400070 ! malignant tumor
+
+[Term]
+id: EV:0400121
+name: metabolic disorders
+is_a: EV:0400000 ! Pathology
+
+[Term]
+id: EV:0400122
+name: Cushing's disease
+is_a: EV:0400121 ! metabolic disorders
+
+[Term]
+id: EV:0400123
+name: diabetes insipidus
+is_a: EV:0400121 ! metabolic disorders
+
+[Term]
+id: EV:0400124
+name: diabetes mellitus
+is_a: EV:0400121 ! metabolic disorders
+
+[Term]
+id: EV:0400125
+name: type I diabetes
+exact_synonym: "insulin-dependent diabetes" []
+exact_synonym: "juvenile diabetes" []
+exact_synonym: "type 1 diabetes" []
+is_a: EV:0400124 ! diabetes mellitus
+
+[Term]
+id: EV:0400126
+name: type II diabetes
+exact_synonym: "adult-onset diabetes" []
+exact_synonym: "NIDDM" []
+exact_synonym: "noninsulin-dependent diabetes" []
+exact_synonym: "type 2 diabetes" []
+is_a: EV:0400124 ! diabetes mellitus
+
+[Term]
+id: EV:0400127
+name: Grave's disease
+is_a: EV:0400121 ! metabolic disorders
+
+[Term]
+id: EV:0400128
+name: cystic fibrosis
+is_a: EV:0400121 ! metabolic disorders
+
+[Term]
+id: EV:0400129
+name: Gaucher disease
+is_a: EV:0400121 ! metabolic disorders
+
+[Term]
+id: EV:0400130
+name: degenerative disorders
+is_a: EV:0400000 ! Pathology
+
+[Term]
+id: EV:0400131
+name: atherosclerosis
+is_a: EV:0400130 ! degenerative disorders
+
+[Term]
+id: EV:0400132
+xref_analog: SWP:TS-0719
+name: osteoarthritis
+is_a: EV:0400130 ! degenerative disorders
+
+[Term]
+id: EV:0400133
+name: encephalopathy
+is_a: EV:0400130 ! degenerative disorders
+
+[Term]
+id: EV:0400134
+name: Alzheimer's disease
+is_a: EV:0400133 ! encephalopathy
+
+[Term]
+id: EV:0400135
+name: Creutzfeldt-Jakob disease
+is_a: EV:0400133 ! encephalopathy
+
+[Term]
+id: EV:0400136
+name: other disorders
+is_a: EV:0400000 ! Pathology
+
+[Term]
+id: EV:0400137
+name: aneurysm
+is_a: EV:0400136 ! other disorders
+
+[Term]
+id: EV:0400138
+name: systemic sclerosis
+is_a: EV:0400136 ! other disorders
+
+[Term]
+id: EV:0400139
+name: cirrhosis
+is_a: EV:0400136 ! other disorders
+
+[Term]
+id: EV:0400140
+name: dystrophies
+is_a: EV:0400136 ! other disorders
+
+[Term]
+id: EV:0400141
+name: facioscapulohumeral
+exact_synonym: "FSHD" []
+is_a: EV:0400140 ! dystrophies
+
+[Term]
+id: EV:0400142
+name: growth disorders
+is_a: EV:0400136 ! other disorders
+
+[Term]
+id: EV:0400143
+name: atrophy
+is_a: EV:0400142 ! growth disorders
+
+[Term]
+id: EV:0400144
+name: hypertrophy
+is_a: EV:0400142 ! growth disorders
+
+[Term]
+id: EV:0400145
+name: hyperplasia
+is_a: EV:0400142 ! growth disorders
+
+[Term]
+id: EV:0400146
+xref_analog: SWP:TS-0838
+name: psoriasis
+is_a: EV:0400145 ! hyperplasia
+
+[Term]
+id: EV:0400147
+name: goitre
+exact_synonym: "bocio tumor" []
+is_a: EV:0400145 ! hyperplasia
+
+[Term]
+id: EV:0400148
+name: dysplasia
+is_a: EV:0400142 ! growth disorders
+
+[Term]
+id: EV:0400149
+name: malignant hyperthermia
+is_a: EV:0400136 ! other disorders
+
+[Term]
+id: EV:0400150
+name: mental disorders
+is_a: EV:0400136 ! other disorders
+
+[Term]
+id: EV:0400151
+name: schizophrenia
+is_a: EV:0400150 ! mental disorders
+
+[Term]
+id: EV:0400152
+name: affective disorders
+is_a: EV:0400150 ! mental disorders
+
+[Term]
+id: EV:0400153
+name: bipolar disease
+is_a: EV:0400152 ! affective disorders
+
+[Term]
+id: EV:0400154
+name: depression
+is_a: EV:0400152 ! affective disorders
+
+[Term]
+id: EV:0400155
+name: endometriosis
+is_a: EV:0400136 ! other disorders
+
+[Term]
+id: EV:0400156
+name: chronic obstructive pulmonary disease
+exact_synonym: "COPD" []
+is_a: EV:0400136 ! other disorders
+
+[Term]
+id: EV:0400157
+name: emphysema
+is_a: EV:0400156 ! chronic obstructive pulmonary disease
+
+[Term]
+id: EV:0400158
+name: bronchitis
+is_a: EV:0400156 ! chronic obstructive pulmonary disease
+
+[Term]
+id: EV:0400159
+xref_analog: SWP:TS-0058
+xref_analog: SWP:TS-0059
+name: ascites
+is_a: EV:0400136 ! other disorders
+
+[Term]
+id: EV:0400160
+name: Amyotrophic lateral sclerosis
+exact_synonym: "ALS" []
+is_a: EV:0400136 ! other disorders
+
+[Term]
+id: EV:0400161
+name: dermoid cyst
+is_a: EV:0400136 ! other disorders
+
+[Term]
+id: EV:0400162
+name: normal
+is_a: EV:0400000 ! Pathology
+
+[Term]
+id: EV:0400163
+name: unclassifiable
+is_a: EV:0400000 ! Pathology
+
+[Term]
+id: EV:0400164
+name: severe combined immunodeficiency disease
+exact_synonym: "SCID" []
+is_a: EV:0400001 ! congenital anomalies
+
+[Term]
+id: EV:0400165
+name: clear cell carcinoma
+is_a: EV:0400072 ! carcinoma
+
+[Term]
+id: EV:0400166
+name: B-cell leukemia
+exact_synonym: "B-cell leukaemia" []
+is_a: EV:0400086 ! leukemia
+
+[Term]
+id: EV:0400167
+xref_analog: SWP:TS-0548
+name: T-cell leukemia
+exact_synonym: "T-cell leukaemia" []
+is_a: EV:0400086 ! leukemia
+
+[Term]
+id: EV:0400168
+name: heart failure
+is_a: EV:0400136 ! other disorders
+
+[Term]
+id: EV:0400169
+name: congestive heart failure
+is_a: EV:0400168 ! heart failure
+
+[Term]
+id: EV:0400170
+name: juvenile dermatomyositis
+exact_synonym: "JDM" []
+is_a: EV:0400034 ! inflammatory disorders
+
+[Term]
+id: EV:0400171
+name: cardiomyopathy
+is_a: EV:0400136 ! other disorders
+
+[Term]
+id: EV:0400172
+name: hypertrophic cardiomyopathy
+is_a: EV:0400171 ! cardiomyopathy
+
+[Term]
+id: EV:0400173
+xref_analog: SWP:TS-1166
+name: signet-ring cell carcinoma
+is_a: EV:0400074 ! adenocarcinoma
+
+[Term]
+id: EV:0400174
+name: Barrett's adenocarcinoma
+is_a: EV:0400074 ! adenocarcinoma
+
+[Term]
+id: EV:0400175
+name: chronic myelogenous leukemia
+exact_synonym: "chronic granulocytic leukemia" []
+exact_synonym: "chronic myeloid leukemia" []
+exact_synonym: "CML" []
+is_a: EV:0400095 ! myeloid leukemia
+
+[Term]
+id: EV:0400176
+name: acute myelogenous leukemia
+exact_synonym: "acute myeloid leukemia" []
+exact_synonym: "AML" []
+is_a: EV:0400095 ! myeloid leukemia
+
+[Term]
+id: EV:0400177
+name: keratoconus
+is_a: EV:0400136 ! other disorders
+
+[Term]
+id: EV:0400178
+name: hyperthyroidism
+is_a: EV:0400121 ! metabolic disorders
+
+[Term]
+id: EV:0400180
+xref_analog: SWP:TS-0604
+name: mastocytoma
+def: "A growth that consists of an abnormal, dense collection of mast cells in the skin." [Sanbi:mhl]
+exact_synonym: "mast cell tumor" []
+is_a: EV:0400051 ! tumor
+
+[Term]
+id: EV:0400181
+xref_analog: SWP:TS-1045
+name: papillary adenocarcinoma
+def: "An adenocarcinoma with a papillary morphology." [Sanbi:mhl]
+is_a: EV:0400074 ! adenocarcinoma
+
+[Term]
+id: EV:0400182
+xref_analog: SWP:TS-1131
+name: yolk sac tumor
+def: "A tumor of germ-cell origin where the cancerous cells resemble the yolk sac of an early embryo." [Sanbi:mhl]
+exact_synonym: "endodermal sinus tumor" []
+exact_synonym: "yolk sac carcinoma" []
+is_a: EV:0400072 ! carcinoma
+
+[Term]
+id: EV:0400183
+xref_analog: SWP:TS-0802
+name: plasmacytoma
+def: "A localized tumor of malignant white blood cells in either bone marrow or soft tissue." [Sanbi:mhl]
+is_a: EV:0400070 ! malignant tumor
+
+[Term]
+id: EV:0400184
+xref_analog: SWP:TS-1089
+xref_analog: SWP:TS-1118
+name: wart
+def: "A small growth that appears in the top layer of the skin or in the mucous membrane. Warts are caused by a viral infection and can be either benign or malignant." [Sanbi:mhl]
+is_a: EV:0400051 ! tumor
+
+[Term]
+id: EV:0400185
+xref_analog: SWP:TS-0582
+name: lymphoblastoma
+def: "A malignant lymphoma composed of mature or immature lymphocytes. The cells are cytologically similar to the lymphoblasts seen in acute lymphocytic leukemia." [Sanbi:mhl]
+is_a: EV:0400099 ! non-Hodgkin's lymphoma
+
+[Term]
+id: EV:0400186
+xref_analog: SWP:TS-0197
+name: dermoid cancer
+is_a: EV:0400070 ! malignant tumor
+
+[Term]
+id: EV:0400187
+xref_analog: SWP:TS-0453
+name: hepatoblastoma
+def: "A rare tumor that occurs most often in infants. The growths are primarily located in the liver. The tumors are either of epithelial type, or contain both epithelial and mesenchymal components." [Sanbi:mhl]
+is_a: EV:0400107 ! sarcoma
+
+[Term]
+id: EV:0400188
+xref_analog: SWP:TS-0418
+name: glucagonoma
+def: "A rare type of endocrine, glucagon-secreting tumor, with a nearly exclusive pancreatic localization. Can be either benign or malignant." [Sanbi:mhl]
+is_a: EV:0400051 ! tumor
+
+[Term]
+id: EV:0400189
+xref_analog: SWP:TS-0447
+name: hemangioendothelioma
+def: "A vascular tumor composed of endothelial cells. The tumor can be either benign or malignant." [Sanbi:mhl]
+exact_synonym: "HE" []
+is_a: EV:0400051 ! tumor
+
+[Term]
+id: EV:0400190
+xref_analog: SWP:TS-0067
+name: B-cell lymphoma
+def: "A heterogeneous group of lymphoid tumors." [Sanbi:mhl]
+is_a: EV:0400099 ! non-Hodgkin's lymphoma
+
+[Term]
+id: EV:0400191
+xref_analog: SWP:TS-0365
+name: fibrosis
+def: "A pathological condition where fibrous connective tissue invades an organ. Usually occurs as a consequence of inflammation or other type of injury." [Sanbi:mhl]
+is_a: EV:0400136 ! other disorders
+
+[Term]
+id: EV:0400192
+xref_analog: SWP:TS-0455
+name: hepatoma
+exact_synonym: "hepatocarcinoma" []
+exact_synonym: "hepatocellular carcinoma" []
+is_a: EV:0400072 ! carcinoma
+
+[Term]
+id: EV:0400193
+xref_analog: SWP:TS-0722
+name: osteoclastoma
+exact_synonym: "giant cell tumor of bone" []
+exact_synonym: "malignant giant cell tumor" []
+is_a: EV:0400051 ! tumor
+
+[Term]
+id: EV:0400194
+xref_analog: SWP:TS-0859
+name: renal cell carcinoma
+exact_synonym: "Grawitz Tumor" []
+exact_synonym: "hypernephroma" []
+exact_synonym: "nephroblastoma" []
+exact_synonym: "RCC" []
+exact_synonym: "renal adenocarcinoma" []
+is_a: EV:0400074 ! adenocarcinoma
+
+[Term]
+id: EV:0400195
+name: cystadenoma
+is_a: EV:0400053 ! adenoma
+
+[Term]
+id: EV:0400196
+name: anaplastic astrocytoma
+comment: A high grade astrocytoma that infiltrates surrounding brain tissue. The second highest grade of brain tumors that are derived from astrocytes.
+exact_synonym: "grade III astrocytoma" []
+is_a: EV:0400071 ! astrocytoma
+
+[Term]
+id: EV:0400197
+name: low-grade astrocytoma
+comment: A slow growing astocytoma that occurs most commonly in both men and women in their 20s to 50s.
+exact_synonym: "grade II astrocytoma" []
+is_a: EV:0400071 ! astrocytoma
+
+[Term]
+id: EV:0400198
+name: ependymoma
+is_a: EV:0400051 ! tumor
+
+[Term]
+id: EV:0400199
+name: pilocytic astrocytoma
+comment: A low-grade astrocytoma that occurs predominantly in children and is generally considered a benign tumor of childhood.
+exact_synonym: "grade I astrocytoma" []
+is_a: EV:0400071 ! astrocytoma
+
+[Term]
+id: EV:0400200
+name: mesothelioma
+comment: A form of cancer that is almost invariably a result of previous exposure to asbestos.
+is_a: EV:0400070 ! malignant tumor
+
+[Term]
+id: EV:0400201
+name: pterygium
+def: "An abnormal triangular membrane growth merged or attached to the cornea, the sclera and the conjunctiva." [SNANBI:mhl]
+is_a: EV:0400136 ! other disorders
+

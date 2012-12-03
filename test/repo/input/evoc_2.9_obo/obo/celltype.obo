@@ -1,0 +1,1411 @@
+format-version: 1.0
+date: 04:03:2007 13:11
+saved-by: minna
+auto-generated-by: OBO-Edit 1.100-beta16
+default-namespace: eVOC_CellType
+namespace-id-rule: * EV:$sequence(7,0200170,9999999)$
+remark: Cell Type [EV:0200000] ouput by Evoc2star.
+
+[Term]
+id: EV:0200000
+name: Cell Type
+
+[Term]
+id: EV:0200001
+name: alpha cell
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200002
+name: acidophil cell
+xref_analog: CL:0000638
+is_a: EV:0200190 ! endocrine cell
+
+[Term]
+id: EV:0200003
+xref_analog: SWP:TS-0737
+name: acinar cell
+xref_analog: CL:0000622
+is_a: EV:0200194 ! protein secreting cell
+
+[Term]
+id: EV:0200004
+name: adipoblast
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200005
+xref_analog: SWP:TS-0012
+name: adipocyte
+def: "A fat-storing cell found mostly in the abdominal cavity and subcutaneous tissue of mammals. Fat is usually stored in the form of tryglycerides." [MESH:A.11.329.114]
+exact_synonym: "fat cell" []
+exact_synonym: "lipocyte" []
+xref_analog: CL:0000136
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200006
+xref_analog: SWP:TS-0099
+name: brown adipocyte
+def: "A cell from the thermogenic form of adipose tissue found in newborns of many species, including humans, and in hibernating mammals. Brown fat is capable of rapid liberation of energy and seems to be important in the maintenance of body temperature immediately after birth and upon waking from hibernation." [MESH:A.10.165.114.322]
+exact_synonym: "brown fat cell" []
+xref_analog: CL:0000449
+is_a: EV:0200005 ! adipocyte
+
+[Term]
+id: EV:0200007
+xref_analog: SWP:TS-1119
+name: white adipocyte
+exact_synonym: "white fat cell" []
+xref_analog: CL:0000448
+is_a: EV:0200005 ! adipocyte
+
+[Term]
+id: EV:0200008
+name: amacrine cell
+def: "Interneuron of the vertebrate retina. They integrate, modulate, and interpose a temporal domain in the visual message presented to the retinal ganglion cells, with which they synapse in the inner plexiform layer." [MESH:A.08.663.358.050]
+exact_synonym: "amacrine neuron" []
+xref_analog: CL:0000561
+xref_analog: FBbt:00005127
+is_a: EV:0200122 ! neuron
+
+[Term]
+id: EV:0200009
+name: beta cell
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200010
+name: capsular cell
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200011
+name: cementocyte
+xref_analog: CL:0000141
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200012
+name: chief cell
+alt_id: EV:0200131
+alt_id: EV:0200155
+exact_synonym: "pepsinogen secreting cell" []
+exact_synonym: "peptic cell" []
+exact_synonym: "zymogenic cell" []
+xref_analog: CL:0000155
+is_a: EV:0200194 ! protein secreting cell
+
+[Term]
+id: EV:0200013
+name: chondroblast
+xref_analog: CL:0000058
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200014
+xref_analog: SWP:TS-0056
+xref_analog: SWP:TS-0119
+xref_analog: SWP:TS-0138
+xref_analog: SWP:TS-0235
+xref_analog: SWP:TS-0530
+name: chondrocyte
+xref_analog: CL:0000138
+is_a: EV:0200193 ! secretory cell
+
+[Term]
+id: EV:0200015
+xref_analog: SWP:TS-0014
+xref_analog: SWP:TS-0146
+name: chromaffin cell
+xref_analog: CL:0000166
+is_a: EV:0200190 ! endocrine cell
+
+[Term]
+id: EV:0200016
+name: chromophobic cell
+exact_synonym: "chromophobe cell" []
+xref_analog: CL:0000641
+is_a: EV:0200190 ! endocrine cell
+
+[Term]
+id: EV:0200017
+name: Claudius' cell
+related_synonym: "Claudius cell" []
+xref_analog: CL:0000634
+is_a: EV:0200166 ! epithelial cell
+
+[Term]
+id: EV:0200018
+name: corticotroph
+exact_synonym: "adrenocorticotropic hormone secreting cell" []
+xref_analog: CL:0000467
+is_a: EV:0200192 ! peptide hormone secreting cell
+
+[Term]
+id: EV:0200019
+name: delta cell
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200020
+xref_analog: SWP:TS-0194
+name: dendritic cell
+xref_analog: CL:0000451
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200021
+name: follicular dendritic cell
+xref_analog: CL:0000442
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200022
+name: Langerhans cell
+xref_analog: CL:0000453
+is_a: EV:0200020 ! dendritic cell
+
+[Term]
+id: EV:0200023
+name: enterochromaffin cell
+related_synonym: "argentaffin cell" []
+related_synonym: "enteroendocrine cell" []
+related_synonym: "Kulchitsky cell" []
+xref_analog: CL:0000504
+is_a: EV:0200192 ! peptide hormone secreting cell
+
+[Term]
+id: EV:0200024
+xref_analog: SWP:TS-0280
+name: ependymocyte
+related_synonym: "ependymal cell" []
+xref_analog: CL:0000065
+is_a: EV:0200166 ! epithelial cell
+
+[Term]
+id: EV:0200026
+name: basal cell
+xref_analog: CL:0000646
+is_a: EV:0200152 ! stem cell
+
+[Term]
+id: EV:0200028
+xref_analog: SWP:TS-0047
+xref_analog: SWP:TS-0092
+xref_analog: SWP:TS-0112
+xref_analog: SWP:TS-0162
+xref_analog: SWP:TS-0172
+xref_analog: SWP:TS-0175
+xref_analog: SWP:TS-0278
+xref_analog: SWP:TS-0498
+xref_analog: SWP:TS-0573
+xref_analog: SWP:TS-1081
+xref_analog: SWP:TS-1099
+xref_analog: SWP:TS-1106
+name: endothelial cell
+xref_analog: CL:0000115
+is_a: EV:0200179 ! lining cell
+
+[Term]
+id: EV:0200030
+xref_analog: SWP:TS-0289
+name: erythroblast
+related_synonym: "normoblast" []
+xref_analog: CL:0000765
+is_a: EV:0200186 ! erythroid lineage cell
+
+[Term]
+id: EV:0200031
+xref_analog: SWP:TS-0290
+name: erythrocyte
+related_synonym: "red blood cell" []
+xref_analog: CL:0000232
+is_a: EV:0200186 ! erythroid lineage cell
+
+[Term]
+id: EV:0200032
+xref_analog: SWP:TS-1159
+xref_analog: SWP:TS-0239
+xref_analog: SWP:TS-0254
+xref_analog: SWP:TS-0335
+xref_analog: SWP:TS-0346
+xref_analog: SWP:TS-0362
+xref_analog: SWP:TS-0384
+xref_analog: SWP:TS-0575
+xref_analog: SWP:TS-0594
+xref_analog: SWP:TS-0643
+xref_analog: SWP:TS-0699
+xref_analog: SWP:TS-0764
+xref_analog: SWP:TS-0935
+xref_analog: SWP:TS-1104
+name: fibroblast
+xref_analog: CL:0000057
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200033
+name: fibrocyte
+xref_analog: CL:0000135
+is_a: EV:0200189 ! stromal cell
+
+[Term]
+id: EV:0200034
+xref_analog: SWP:TS-0376
+name: follicular cell
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200035
+xref_analog: SWP:TS-0243
+xref_analog: SWP:TS-0411
+name: germ cell
+xref_analog: CL:0000586
+is_a: EV:0200201 ! germ line cell
+
+[Term]
+id: EV:0200036
+xref_analog: SWP:TS-0711
+name: oocyte
+xref_analog: CL:0000023
+is_a: EV:0200035 ! germ cell
+
+[Term]
+id: EV:0200037
+name: primary oocyte
+xref_analog: CL:0000654
+is_a: EV:0200036 ! oocyte
+
+[Term]
+id: EV:0200038
+name: secondary oocyte
+xref_analog: CL:0000655
+is_a: EV:0200036 ! oocyte
+
+[Term]
+id: EV:0200039
+xref_analog: SWP:TS-0950
+name: spermatid
+xref_analog: CL:0000018
+is_a: EV:0200035 ! germ cell
+
+[Term]
+id: EV:0200040
+xref_analog: SWP:TS-0951
+name: spermatocyte
+xref_analog: CL:0000017
+is_a: EV:0200035 ! germ cell
+
+[Term]
+id: EV:0200041
+name: primary spermatocyte
+xref_analog: CL:0000656
+is_a: EV:0200040 ! spermatocyte
+
+[Term]
+id: EV:0200042
+name: secondary spermatocyte
+xref_analog: CL:0000657
+is_a: EV:0200040 ! spermatocyte
+
+[Term]
+id: EV:0200043
+name: gamete
+xref_analog: CL:0000300
+is_a: EV:0200201 ! germ line cell
+
+[Term]
+id: EV:0200044
+xref_analog: SWP:TS-0221
+name: ovum
+exact_synonym: "egg" []
+xref_analog: CL:0000025
+is_a: EV:0200043 ! gamete
+
+[Term]
+id: EV:0200045
+xref_analog: SWP:TS-0949
+name: spermatozoon
+related_synonym: "sperm cell" []
+related_synonym: "spermatozoa" []
+related_synonym: "spermatozoid" []
+xref_analog: CL:0000019
+is_a: EV:0200043 ! gamete
+
+[Term]
+id: EV:0200046
+name: germinal epithelium
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200047
+name: giant cell
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200048
+xref_analog: SWP:TS-0415
+xref_analog: SWP:TS-0416
+name: glial cell
+related_synonym: "neuroglia" []
+xref_analog: CL:0000125
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200049
+name: astroblast
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200050
+xref_analog: SWP:TS-0060
+xref_analog: SWP:TS-0061
+xref_analog: SWP:TS-0325
+name: astrocyte
+xref_analog: CL:0000127
+is_a: EV:0200094 ! macroglial cell
+
+[Term]
+id: EV:0200051
+name: oligodendroblast
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200052
+xref_analog: SWP:TS-0709
+xref_analog: SWP:TS-1153
+name: oligodendrocyte
+xref_analog: CL:0000128
+is_a: EV:0200094 ! macroglial cell
+
+[Term]
+id: EV:0200053
+name: glioblast
+xref_analog: CL:0000339
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200054
+name: goblet cell
+xref_analog: CL:0000160
+is_a: EV:0200193 ! secretory cell
+
+[Term]
+id: EV:0200055
+name: gonadotroph
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200056
+xref_analog: SWP:TS-0729
+name: granulosa cell
+xref_analog: CL:0000501
+is_a: EV:0200191 ! steroid hormone secreting cell
+
+[Term]
+id: EV:0200057
+name: haemocytoblast
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200058
+name: hair cell
+exact_synonym: "acoustic hair cell" []
+exact_synonym: "auditory cell" []
+xref_analog: CL:0000202
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200059
+name: Hensen cell
+xref_analog: CL:0000633
+is_a: EV:0200166 ! epithelial cell
+
+[Term]
+id: EV:0200060
+name: hepatoblast
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200061
+xref_analog: SWP:TS-0454
+name: hepatocyte
+xref_analog: CL:0000182
+is_a: EV:0200166 ! epithelial cell
+
+[Term]
+id: EV:0200062
+name: hyalocyte
+xref_analog: CL:0000142
+is_a: EV:0200189 ! stromal cell
+
+[Term]
+id: EV:0200063
+xref_analog: SWP:TS-1150
+name: interstitial cell
+related_synonym: "Leydig cell" []
+xref_analog: CL:0000178
+is_a: EV:0200191 ! steroid hormone secreting cell
+
+[Term]
+id: EV:0200064
+name: juxtaglomerular cell
+xref_analog: CL:0000648
+is_a: EV:0200160 ! smooth muscle cell
+
+[Term]
+id: EV:0200065
+xref_analog: SWP:TS-0341
+xref_analog: SWP:TS-0385
+xref_analog: SWP:TS-0500
+name: keratinocyte
+xref_analog: CL:0000312
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200066
+name: keratocyte
+def: "OBSOLETE." [SANBI:mhl]
+comment: This term was made obsolete because it refers to two distinct cell types. To update annotations, consider the cell type term 'keratocyte ; EV:0200197', 'prickle cell ; EV:0200198'.
+related_synonym: "prickle cell" []
+is_obsolete: true
+
+[Term]
+id: EV:0200067
+name: lemmal cell
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200068
+xref_analog: SWP:TS-0549
+xref_analog: SWP:TS-0766
+name: leukocyte
+related_synonym: "leucocyte" []
+related_synonym: "white blood cell" []
+xref_analog: CL:0000738
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200069
+xref_analog: SWP:TS-0422
+xref_analog: SWP:TS-0765
+name: granulocyte
+related_synonym: "polymorphonuclear leucocyte" []
+related_synonym: "polymorphonuclear leukocyte" []
+xref_analog: CL:0000094
+is_a: EV:0200068 ! leukocyte
+
+[Term]
+id: EV:0200070
+xref_analog: SWP:TS-0073
+name: basophil
+xref_analog: CL:0000767
+is_a: EV:0200069 ! granulocyte
+
+[Term]
+id: EV:0200071
+xref_analog: SWP:TS-0279
+name: eosinophil
+xref_analog: CL:0000771
+is_a: EV:0200069 ! granulocyte
+
+[Term]
+id: EV:0200072
+xref_analog: SWP:TS-0688
+xref_analog: SWP:TS-0769
+xref_analog: SWP:TS-0777
+name: neutrophil
+xref_analog: CL:0000775
+is_a: EV:0200069 ! granulocyte
+
+[Term]
+id: EV:0200073
+name: lymphoblast
+def: "OBSOLETE." [SANBI:mhl]
+comment: Refers to an activated mature lymphocyte phenotype rather than a distinct cell type; consider using 'lymphocyte ; EV:0200076' or one of its children instead.
+is_obsolete: true
+
+[Term]
+id: EV:0200074
+name: B-lymphoblast
+def: "OBSOLETE." [SANBI:mhl]
+comment: This term was made oboslete because it refers to an activated mature B lymphocyte phenotype rather than a distinct cell type; consider using 'B cell ; EV:0200077' or one of its children instead.
+is_obsolete: true
+
+[Term]
+id: EV:0200075
+name: T-lymphoblast
+def: "OBSOLETE." [SANBI:mhl]
+comment: This term was made oboslete because it refers to an activated mature T lymphocyte phenotype rather than a distinct cell type; consider using 'T cell ; EV:0200078' or one of its children instead.
+related_synonym: "T lymphoblast" []
+is_obsolete: true
+
+[Term]
+id: EV:0200076
+xref_analog: SWP:TS-0581
+xref_analog: SWP:TS-0583
+xref_analog: SWP:TS-0767
+name: lymphocyte
+xref_analog: CL:0000542
+is_a: EV:0200068 ! leukocyte
+
+[Term]
+id: EV:0200077
+xref_analog: SWP:TS-0068
+xref_analog: SWP:TS-0326
+name: B cell
+exact_synonym: "B lymphocyte" []
+exact_synonym: "B-cell" []
+exact_synonym: "B-lymphocyte" []
+xref_analog: CL:0000236
+is_a: EV:0200076 ! lymphocyte
+
+[Term]
+id: EV:0200078
+xref_analog: SWP:TS-0770
+xref_analog: SWP:TS-0999
+xref_analog: SWP:TS-1000
+xref_analog: SWP:TS-1001
+name: T cell
+related_synonym: "T lymphocyte" []
+related_synonym: "T-lymphocyte" []
+exact_synonym: "T-cell" []
+xref_analog: CL:0000084
+is_a: EV:0200076 ! lymphocyte
+
+[Term]
+id: EV:0200079
+xref_analog: SWP:TS-1146
+name: T-helper cell
+exact_synonym: "helper induced T-lymphocyte" []
+xref_analog: CL:0000492
+is_a: EV:0200162 ! CD4-positive, alpha-beta T cell
+
+[Term]
+id: EV:0200080
+name: T-helper 1 cell
+alt_id: EV:0200082
+exact_synonym: "helper induced T-lymphocyte:Th1" []
+exact_synonym: "helper T cell type 1" []
+exact_synonym: "helper T lymphocyte type 1" []
+exact_synonym: "helper T-cell type 1" []
+exact_synonym: "helper T-lymphocyte type 1" []
+exact_synonym: "Th1" []
+exact_synonym: "TH1 cell" []
+xref_analog: CL:0000545
+is_a: EV:0200079 ! T-helper cell
+
+[Term]
+id: EV:0200081
+name: T-helper 2 cell
+alt_id: EV:0200083
+exact_synonym: "helper induced T-lymphocyte:Th2" []
+exact_synonym: "helper T cell type 2" []
+exact_synonym: "helper T lymphocyte type 2" []
+exact_synonym: "helper T-cell type 2" []
+exact_synonym: "helper T-lymphocyte type 2" []
+exact_synonym: "Th2" []
+exact_synonym: "TH2 cell" []
+xref_analog: CL:0000546
+is_a: EV:0200079 ! T-helper cell
+
+[Term]
+id: EV:0200084
+xref_analog: SWP:TS-0664
+name: natural killer cell
+related_synonym: "NK cell" []
+xref_analog: CL:0000623
+is_a: EV:0200076 ! lymphocyte
+
+[Term]
+id: EV:0200085
+xref_analog: SWP:TS-0084
+xref_analog: SWP:TS-0576
+xref_analog: SWP:TS-0587
+xref_analog: SWP:TS-0670
+xref_analog: SWP:TS-0775
+name: macrophage
+xref_analog: CL:0000235
+is_a: EV:0200068 ! leukocyte
+
+[Term]
+id: EV:0200086
+xref_analog: SWP:TS-0030
+name: alveolar macrophage
+xref_analog: CL:0000583
+is_a: EV:0200085 ! macrophage
+
+[Term]
+id: EV:0200087
+name: foam cell
+xref_analog: CL:0000517
+is_a: EV:0200085 ! macrophage
+
+[Term]
+id: EV:0200088
+xref_analog: SWP:TS-0461
+name: histiocyte
+related_synonym: "tissue macrophage" []
+is_a: EV:0200085 ! macrophage
+
+[Term]
+id: EV:0200089
+name: Kupffer cell
+xref_analog: CL:0000091
+is_a: EV:0200085 ! macrophage
+
+[Term]
+id: EV:0200090
+name: luteal cell
+exact_synonym: "lutein cell" []
+xref_analog: CL:0000175
+is_a: EV:0200191 ! steroid hormone secreting cell
+
+[Term]
+id: EV:0200091
+name: lymphocytic stem cell
+is_a: EV:0200152 ! stem cell
+
+[Term]
+id: EV:0200092
+name: lymphoid cell
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200093
+name: lymphoid stem cell
+is_a: EV:0200152 ! stem cell
+
+[Term]
+id: EV:0200094
+name: macroglial cell
+xref_analog: CL:0000126
+is_a: EV:0200048 ! glial cell
+
+[Term]
+id: EV:0200095
+name: mammotroph
+xref_analog: CL:0000439
+is_a: EV:0200192 ! peptide hormone secreting cell
+
+[Term]
+id: EV:0200096
+xref_analog: SWP:TS-0603
+xref_analog: SWP:TS-0776
+name: mast cell
+xref_analog: CL:0000097
+is_a: EV:0200068 ! leukocyte
+
+[Term]
+id: EV:0200097
+name: medulloblast
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200098
+xref_analog: SWP:TS-0610
+name: megakaryoblast
+exact_synonym: "megakaryocyte progenitor cell" []
+xref_analog: CL:0000553
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200099
+xref_analog: SWP:TS-0611
+name: megakaryocyte
+xref_analog: CL:0000556
+is_a: EV:0200115 ! myeloid cell
+
+[Term]
+id: EV:0200100
+name: melanoblast
+xref_analog: CL:0000541
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200101
+xref_analog: SWP:TS-0613
+name: melanocyte
+xref_analog: CL:0000148
+is_a: EV:0200202 ! pigment cell
+
+[Term]
+id: EV:0200102
+name: Merkel cell
+xref_analog: CL:0000242
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200103
+xref_analog: SWP:TS-0617
+name: mesangial cell
+xref_analog: CL:0000650
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200105
+name: metamyelocyte
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200106
+name: monoblast
+xref_analog: CL:0000040
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200107
+xref_analog: SWP:TS-0638
+xref_analog: SWP:TS-0639
+xref_analog: SWP:TS-0768
+name: monocyte
+xref_analog: CL:0000576
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200108
+name: mucous neck cell
+exact_synonym: "neck sell" []
+xref_analog: CL:0000651
+is_a: EV:0200193 ! secretory cell
+
+[Term]
+id: EV:0200109
+name: Muller cell
+xref_analog: CL:0000636
+is_a: EV:0200050 ! astrocyte
+
+[Term]
+id: EV:0200110
+name: muscle cell
+related_synonym: "myocyte" []
+xref_analog: CL:0000187
+is_a: EV:0200195 ! contractile cell
+
+[Term]
+id: EV:0200114
+name: myelocyte
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200115
+xref_analog: SWP:TS-0647
+xref_analog: SWP:TS-0648
+name: myeloid cell
+xref_analog: CL:0000763
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200116
+name: myeloid stem cell
+is_a: EV:0200152 ! stem cell
+
+[Term]
+id: EV:0200117
+xref_analog: SWP:TS-0650
+name: myoblast
+xref_analog: CL:0000056
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200118
+name: myoepithelial cell
+xref_analog: CL:0000185
+is_a: EV:0200166 ! epithelial cell
+
+[Term]
+id: EV:0200119
+name: myofibroblast
+xref_analog: CL:0000186
+is_a: EV:0200195 ! contractile cell
+
+[Term]
+id: EV:0200120
+name: neuroblast
+xref_analog: CL:0000031
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200122
+xref_analog: SWP:TS-0683
+xref_analog: SWP:TS-0705
+name: neuron
+xref_analog: CL:0000540
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200123
+xref_analog: SWP:TS-0696
+name: odontoblast
+xref_analog: CL:0000060
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200124
+xref_analog: SWP:TS-0720
+name: osteoblast
+xref_analog: CL:0000062
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200125
+xref_analog: SWP:TS-0721
+name: osteoclast
+xref_analog: CL:0000092
+is_a: EV:0200203 ! phagocyte
+
+[Term]
+id: EV:0200126
+xref_analog: SWP:TS-1167
+name: osteocyte
+xref_analog: CL:0000137
+is_a: EV:0200193 ! secretory cell
+
+[Term]
+id: EV:0200127
+xref_analog: SWP:TS-0405
+name: oxyntic cell
+related_synonym: "parietal cell" []
+xref_analog: CL:0000162
+is_a: EV:0200193 ! secretory cell
+
+[Term]
+id: EV:0200128
+name: Paneth cell
+xref_analog: CL:0000510
+is_a: EV:0200194 ! protein secreting cell
+
+[Term]
+id: EV:0200129
+name: parafollicular cell
+xref_analog: CL:0000570
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200130
+name: paraluteal cell
+exact_synonym: "theca cell" []
+exact_synonym: "theca lutein cell" []
+xref_analog: CL:0000503
+is_a: EV:0200191 ! steroid hormone secreting cell
+
+[Term]
+id: EV:0200132
+name: pericyte
+xref_analog: CL:0000184
+is_a: EV:0200195 ! contractile cell
+
+[Term]
+id: EV:0200133
+name: phaeochromocyte
+xref_analog: CL:0000166
+is_a: EV:0200190 ! endocrine cell
+
+[Term]
+id: EV:0200134
+name: phalangeal cell
+related_synonym: "Deiters' cell" []
+xref_analog: CL:0000635
+is_a: EV:0200166 ! epithelial cell
+
+[Term]
+id: EV:0200135
+name: pinealocyte
+is_a: EV:0200190 ! endocrine cell
+
+[Term]
+id: EV:0200136
+name: pituicyte
+xref_analog: CL:0000645
+is_a: EV:0200050 ! astrocyte
+
+[Term]
+id: EV:0200137
+name: plasma cell
+exact_synonym: "plasmacyte" []
+xref_analog: CL:0000786
+is_a: EV:0200076 ! lymphocyte
+
+[Term]
+id: EV:0200138
+xref_analog: SWP:TS-0803
+name: platelet
+xref_analog: CL:0000233
+is_a: EV:0200115 ! myeloid cell
+
+[Term]
+id: EV:0200139
+name: podocyte
+xref_analog: CL:0000653
+is_a: EV:0200166 ! epithelial cell
+
+[Term]
+id: EV:0200140
+name: proerythroblast
+xref_analog: CL:0000547
+is_a: EV:0200186 ! erythroid lineage cell
+
+[Term]
+id: EV:0200141
+xref_analog: SWP:TS-0820
+xref_analog: SWP:TS-0821
+name: promonocyte
+xref_analog: CL:0000559
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200142
+name: promyeloblast
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200143
+xref_analog: SWP:TS-0825
+xref_analog: SWP:TS-0826
+name: promyelocyte
+xref_analog: CL:0000836
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200144
+name: pronormoblast
+is_a: EV:0200186 ! erythroid lineage cell
+
+[Term]
+id: EV:0200145
+xref_analog: SWP:TS-0845
+name: Purkinje cell
+xref_analog: CL:0000121
+is_a: EV:0200122 ! neuron
+
+[Term]
+id: EV:0200146
+xref_analog: SWP:TS-0864
+name: reticulocyte
+xref_analog: CL:0000558
+is_a: EV:0200186 ! erythroid lineage cell
+
+[Term]
+id: EV:0200148
+name: retinoblast
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200149
+xref_analog: SWP:TS-0898
+name: Schwann cell
+xref_analog: CL:0000218
+is_a: EV:0200048 ! glial cell
+
+[Term]
+id: EV:0200150
+xref_analog: SWP:TS-0922
+name: Sertoli cell
+xref_analog: CL:0000216
+is_a: EV:0200194 ! protein secreting cell
+
+[Term]
+id: EV:0200151
+name: somatotroph
+exact_synonym: "somatotropin secreting cell" []
+xref_analog: CL:0000295
+is_a: EV:0200192 ! peptide hormone secreting cell
+
+[Term]
+id: EV:0200152
+xref_analog: SWP:TS-0263
+xref_analog: SWP:TS-0618
+xref_analog: SWP:TS-0679
+xref_analog: SWP:TS-1069
+name: stem cell
+xref_analog: CL:0000034
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200153
+name: sustentacular cell
+xref_analog: CL:0000703
+is_a: EV:0200199 ! supportive cell
+
+[Term]
+id: EV:0200154
+name: teloglial cell
+is_a: EV:0200048 ! glial cell
+
+[Term]
+id: EV:0200156
+name: unclassifiable
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200157
+name: small cell
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200158
+xref_analog: SWP:TS-0358
+xref_analog: SWP:TS-1042
+name: thymocyte
+is_a: EV:0200076 ! lymphocyte
+
+[Term]
+id: EV:0200159
+xref_analog: SWP:TS-0115
+name: cardiac muscle cell
+xref_analog: CL:0000746
+is_a: EV:0200110 ! muscle cell
+
+[Term]
+id: EV:0200160
+name: smooth muscle cell
+xref_analog: CL:0000192
+is_a: EV:0200110 ! muscle cell
+
+[Term]
+id: EV:0200161
+name: skeletal muscle cell
+related_synonym: "striated muscle cell" []
+xref_analog: CL:0000188
+is_a: EV:0200110 ! muscle cell
+
+[Term]
+id: EV:0200162
+name: CD4-positive, alpha-beta T cell
+xref_analog: CL:0000624
+is_a: EV:0200078 ! T cell
+
+[Term]
+id: EV:0200163
+name: CD34+
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200164
+name: peripheral blood mononuclear cell
+related_synonym: "PBMC" []
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200165
+xref_analog: SWP:TS-0964
+name: squamous cell
+exact_synonym: "squamous epithelial cell" []
+xref_analog: CL:0000076
+is_a: EV:0200166 ! epithelial cell
+
+[Term]
+id: EV:0200166
+xref_analog: SWP:TS-0023
+xref_analog: SWP:TS-0137
+xref_analog: SWP:TS-0163
+xref_analog: SWP:TS-0173
+xref_analog: SWP:TS-0203
+xref_analog: SWP:TS-0270
+xref_analog: SWP:TS-0288
+xref_analog: SWP:TS-0386
+xref_analog: SWP:TS-0408
+xref_analog: SWP:TS-0487
+xref_analog: SWP:TS-0494
+xref_analog: SWP:TS-0505
+xref_analog: SWP:TS-0543
+xref_analog: SWP:TS-0555
+xref_analog: SWP:TS-0556
+xref_analog: SWP:TS-0561
+xref_analog: SWP:TS-0574
+xref_analog: SWP:TS-1136
+xref_analog: SWP:TS-0593
+xref_analog: SWP:TS-0644
+xref_analog: SWP:TS-0656
+xref_analog: SWP:TS-0662
+xref_analog: SWP:TS-0695
+xref_analog: SWP:TS-0698
+xref_analog: SWP:TS-0703
+xref_analog: SWP:TS-0715
+xref_analog: SWP:TS-0889
+xref_analog: SWP:TS-0920
+xref_analog: SWP:TS-1040
+xref_analog: SWP:TS-1051
+xref_analog: SWP:TS-1061
+xref_analog: SWP:TS-1063
+xref_analog: SWP:TS-1100
+name: epithelial cell
+xref_analog: CL:0000066
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200167
+name: transitional cell
+exact_synonym: "urothelial cell" []
+xref_analog: CL:0000731
+is_a: EV:0200166 ! epithelial cell
+
+[Term]
+id: EV:0200168
+name: mesothelial cell
+xref_analog: CL:0000077
+is_a: EV:0200165 ! squamous cell
+
+[Term]
+id: EV:0200169
+xref_analog: SWP:TS-0682
+name: neuroepithelial cell
+xref_analog: CL:0000710
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200170
+xref_analog: SWP:TS-0869
+name: retinal pigment epithelial cell
+related_synonym: "pigmented retinal epithelial cell" []
+is_a: EV:0200202 ! pigment cell
+
+[Term]
+id: EV:0200171
+xref_analog: SWP:TS-0554
+xref_analog: SWP:TS-0620
+xref_analog: SWP:TS-0618
+xref_analog: SWP:TS-0619
+name: mesenchymal cell
+xref_analog: CL:0000134
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200172
+xref_analog: SWP:TS-0448
+name: hematopoietic stem cell
+def: "A stem cell from which all cells of the lymphoid and myeloid lineages develop, including blood cells and cells of the immune system." [Sanbi:mhl]
+exact_synonym: "colony forming unit hematopoietic" []
+exact_synonym: "hematopoietic progenitor cell" []
+exact_synonym: "hemopoietic progenitor cell" []
+exact_synonym: "hemopoietic stem cell" []
+exact_synonym: "HSC" []
+xref_analog: CL:0000037
+is_a: EV:0200152 ! stem cell
+
+[Term]
+id: EV:0200173
+xref_analog: SWP:TS-0801
+name: plasmacytoid dendritic cell
+def: "A dendritic cell type of distinct morphology, localization, and surface marker expression from other dendritic cell types and associated with early stage immune responses, particularly the release of physiologically abundant amounts of interferon-gamma in response to infection." [PMID:15549123, PMID:15596797]
+exact_synonym: "DC2 " []
+exact_synonym: "interferon-producing cell" []
+exact_synonym: "IPC" []
+exact_synonym: "lymphoid dendritic cell" []
+exact_synonym: "pDC" []
+exact_synonym: "plasmacytoid monocyte" []
+exact_synonym: "plasmacytoid T cell" []
+exact_synonym: "T-associated plasma cells" []
+xref_analog: CL:0000784
+is_a: EV:0200020 ! dendritic cell
+
+[Term]
+id: EV:0200174
+xref_analog: SWP:TS-0866
+name: retinal cone cell
+xref_analog: CL:0000573
+is_a: EV:0200200 ! photoreceptor cell
+
+[Term]
+id: EV:0200175
+xref_analog: SWP:TS-0870
+name: retinal rod cell
+xref_analog: CL:0000604
+is_a: EV:0200200 ! photoreceptor cell
+
+[Term]
+id: EV:0200176
+xref_analog: SWP:TS-0032
+name: ameloblast
+exact_synonym: "enamel cell" []
+xref_analog: CL:0000059
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Term]
+id: EV:0200177
+xref_analog: SWP:TS-0627
+name: microglial cell
+exact_synonym: "microglia" []
+xref_analog: CL:0000129
+is_a: EV:0200085 ! macrophage
+
+[Term]
+id: EV:0200178
+name: barrier cell
+comment: A cell whose primary function is to prevent the transport of stuff across compartments.
+xref_analog: CL:0000215
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200179
+name: lining cell
+comment: A cell within an epithelial cell sheet whose main function is to act as an internal or external covering for a tissue or an organism.
+exact_synonym: "boundary cell" []
+xref_analog: CL:0000213
+is_a: EV:0200178 ! barrier cell
+
+[Term]
+id: EV:0200180
+xref_analog: SWP:TS-0995
+name: synovial cell
+xref_analog: CL:0000214
+is_a: EV:0200179 ! lining cell
+
+[Term]
+id: EV:0200181
+xref_analog: SWP:TS-0957
+name: splenocyte
+is_a: EV:0200107 ! monocyte
+
+[Term]
+id: EV:0200182
+name: immature B cell
+xref_analog: CL:0000816
+is_a: EV:0200077 ! B cell
+
+[Term]
+id: EV:0200183
+xref_analog: SWP:TS-0819
+name: pre-B cell
+exact_synonym: "pre-B lymphocyte" []
+xref_analog: CL:0000817
+is_a: EV:0200182 ! immature B cell
+
+[Term]
+id: EV:0200184
+xref_analog: SWP:TS-0708
+name: sensory neuron
+xref_analog: CL:0000101
+is_a: EV:0200122 ! neuron
+
+[Term]
+id: EV:0200185
+xref_analog: SWP:TS-0452
+name: hepatic stellate cell
+exact_synonym: "Ito cell" []
+xref_analog: CL:0000632
+is_a: EV:0200132 ! pericyte
+
+[Term]
+id: EV:0200186
+xref_analog: SWP:TS-0291
+name: erythroid lineage cell
+xref_analog: CL:0000764
+is_a: EV:0200115 ! myeloid cell
+
+[Term]
+id: EV:0200187
+xref_analog: SWP:TS-0190
+name: cytotoxic T-Lymphocyte
+exact_synonym: "cytotoxic t-cell" []
+is_a: EV:0200078 ! T cell
+
+[Term]
+id: EV:0200188
+name: somatic stem cell
+xref_analog: CL:0000723
+is_a: EV:0200152 ! stem cell
+
+[Term]
+id: EV:0200189
+xref_analog: SWP:TS-0984
+name: stromal cell
+xref_analog: CL:0000499
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200190
+name: endocrine cell
+xref_analog: CL:0000163
+is_a: EV:0200193 ! secretory cell
+
+[Term]
+id: EV:0200191
+name: steroid hormone secreting cell
+xref_analog: CL:0000174
+is_a: EV:0200190 ! endocrine cell
+
+[Term]
+id: EV:0200192
+name: peptide hormone secreting cell
+xref_analog: CL:0000167
+is_a: EV:0200190 ! endocrine cell
+
+[Term]
+id: EV:0200193
+name: secretory cell
+xref_analog: CL:0000151
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200194
+name: protein secreting cell
+xref_analog: CL:0000154
+is_a: EV:0200193 ! secretory cell
+
+[Term]
+id: EV:0200195
+name: contractile cell
+xref_analog: CL:0000183
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200196
+name: non-terminally differentiated cell
+exact_synonym: "blast cell" []
+xref_analog: CL:0000055
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200197
+name: keratocyte
+is_a: EV:0200189 ! stromal cell
+
+[Term]
+id: EV:0200198
+name: prickle cell
+xref_analog: CL:0000649
+is_a: EV:0200065 ! keratinocyte
+
+[Term]
+id: EV:0200199
+name: supportive cell
+xref_analog: CL:0000630
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200200
+name: photoreceptor cell
+xref_analog: CL:0000210
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200201
+name: germ line cell
+xref_analog: CL:0000144
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200202
+name: pigment cell
+xref_analog: CL:0000147
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200203
+name: phagocyte
+xref_analog: CL:0000234
+is_a: EV:0200000 ! Cell Type
+
+[Term]
+id: EV:0200204
+xref_analog: SWP:TS-1164
+name: cementoblast
+def: "A non-terminally differentiated cell that is active in cementogenesis, the formation of cementum, the hard tissue that covers the root of the tooth." [SANBI:mhl]
+is_a: EV:0200196 ! non-terminally differentiated cell
+
+[Typedef]
+id: develops_from
+name: develops_from
+is_transitive: true
+

@@ -1,0 +1,842 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY obo "http://purl.obolibrary.org/obo/" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY ocre "http://purl.org/net/OCRe/OCRe.owl#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY statistics "http://purl.org/net/OCRe/statistics.owl#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
+    <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/net/OCRe/OCRe_ext.owl#"
+     xml:base="http://purl.org/net/OCRe/OCRe_ext.owl"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+     xmlns:statistics="http://purl.org/net/OCRe/statistics.owl#"
+     xmlns:ocre="http://purl.org/net/OCRe/OCRe.owl#"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl">
+        <owl:imports rdf:resource="http://purl.org/net/OCRe/OCRe.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&obo;IAO_0000115"/>
+    <owl:AnnotationProperty rdf:about="&rdfs;label"/>
+    <owl:AnnotationProperty rdf:about="&rdfs;comment"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE500006 -->
+
+    <owl:ObjectProperty rdf:about="&ocre;OCRE500006"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE518308 -->
+
+    <owl:ObjectProperty rdf:about="&ocre;OCRE518308"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE528412 -->
+
+    <owl:ObjectProperty rdf:about="&ocre;OCRE528412"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE529106 -->
+
+    <owl:ObjectProperty rdf:about="&ocre;OCRE529106"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE533511 -->
+
+    <owl:ObjectProperty rdf:about="&ocre;OCRE533511"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE535519 -->
+
+    <owl:ObjectProperty rdf:about="&ocre;OCRE535519"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE547004 -->
+
+    <owl:ObjectProperty rdf:about="&ocre;OCRE547004"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE549929 -->
+
+    <owl:ObjectProperty rdf:about="&ocre;OCRE549929"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE551318 -->
+
+    <owl:ObjectProperty rdf:about="&ocre;OCRE551318">
+        <rdfs:range rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE560892"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE557377 -->
+
+    <owl:ObjectProperty rdf:about="&ocre;OCRE557377"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE562807 -->
+
+    <owl:ObjectProperty rdf:about="&ocre;OCRE562807"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE564154 -->
+
+    <owl:ObjectProperty rdf:about="&ocre;OCRE564154"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE576287 -->
+
+    <owl:ObjectProperty rdf:about="&ocre;OCRE576287"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE583480 -->
+
+    <owl:ObjectProperty rdf:about="&ocre;OCRE583480"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE585289 -->
+
+    <owl:ObjectProperty rdf:about="&ocre;OCRE585289"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE901011 -->
+
+    <owl:ObjectProperty rdf:about="&ocre;OCRE901011"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE250000 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE250000">
+        <rdfs:label rdf:datatype="&xsd;string">is sponsor of</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&ocre;OCRE500006"/>
+        <owl:inverseOf rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE900317"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ocre;OCRE585289"/>
+            <rdf:Description rdf:about="&ocre;OCRE547004"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE5000002 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE5000002">
+        <rdfs:label rdf:datatype="&xsd;string">has laboratory site</rdfs:label>
+        <rdfs:domain rdf:resource="&ocre;OCRE400029"/>
+        <rdfs:subPropertyOf rdf:resource="&ocre;OCRE500006"/>
+        <owl:inverseOf rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE5000003"/>
+        <rdfs:range rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE598434"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ocre;OCRE585289"/>
+            <rdf:Description rdf:about="&ocre;OCRE528412"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE5000003 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE5000003">
+        <rdfs:label rdf:datatype="&xsd;string">is laboratory site of</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&ocre;OCRE500006"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE551759 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE551759">
+        <rdfs:label rdf:datatype="&xsd;string">has study</rdfs:label>
+        <rdfs:range rdf:resource="&ocre;OCRE400029"/>
+        <rdfs:subPropertyOf rdf:resource="&ocre;OCRE500006"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE556349 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE556349">
+        <rdfs:label rdf:datatype="&xsd;string">is recruitment site of</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&ocre;OCRE500006"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ocre;OCRE585289"/>
+            <rdf:Description rdf:about="&ocre;OCRE549929"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE733000 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE733000">
+        <rdfs:label rdf:datatype="&xsd;string">is funder of</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&ocre;OCRE500006"/>
+        <owl:inverseOf rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE900318"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ocre;OCRE585289"/>
+            <rdf:Description rdf:about="&ocre;OCRE576287"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE874184 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE874184">
+        <rdfs:label rdf:datatype="&xsd;string">has performance site</rdfs:label>
+        <rdfs:domain rdf:resource="&ocre;OCRE400029"/>
+        <rdfs:subPropertyOf rdf:resource="&ocre;OCRE500006"/>
+        <rdfs:range rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE598730"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE900314 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE900314">
+        <rdfs:label rdf:datatype="&xsd;string">has IRB</rdfs:label>
+        <rdfs:domain rdf:resource="&ocre;OCRE400029"/>
+        <rdfs:subPropertyOf rdf:resource="&ocre;OCRE500006"/>
+        <rdfs:range rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE500000"/>
+        <owl:inverseOf rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE900320"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ocre;OCRE564154"/>
+            <rdf:Description rdf:about="&ocre;OCRE551318"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE900317 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE900317">
+        <rdfs:label rdf:datatype="&xsd;string">has sponsor</rdfs:label>
+        <rdfs:domain rdf:resource="&ocre;OCRE400029"/>
+        <rdfs:subPropertyOf rdf:resource="&ocre;OCRE500006"/>
+        <rdfs:range rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE571000"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ocre;OCRE535519"/>
+            <rdf:Description rdf:about="&ocre;OCRE551318"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE900318 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE900318">
+        <rdfs:label rdf:datatype="&xsd;string">has funder</rdfs:label>
+        <rdfs:domain rdf:resource="&ocre;OCRE400029"/>
+        <rdfs:subPropertyOf rdf:resource="&ocre;OCRE500006"/>
+        <rdfs:range rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE534000"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ocre;OCRE529106"/>
+            <rdf:Description rdf:about="&ocre;OCRE551318"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE900319 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE900319">
+        <rdfs:label rdf:datatype="&xsd;string">has recruitment site</rdfs:label>
+        <rdfs:domain rdf:resource="&ocre;OCRE400029"/>
+        <rdfs:subPropertyOf rdf:resource="&ocre;OCRE500006"/>
+        <rdfs:range rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE511747"/>
+        <owl:inverseOf rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE556349"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ocre;OCRE562807"/>
+            <rdf:Description rdf:about="&ocre;OCRE551318"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE900320 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE900320">
+        <rdfs:label rdf:datatype="&xsd;string">is IRB of</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&ocre;OCRE500006"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ocre;OCRE585289"/>
+            <rdf:Description rdf:about="&ocre;OCRE533511"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE400029 -->
+
+    <owl:Class rdf:about="&ocre;OCRE400029"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE400032 -->
+
+    <owl:Class rdf:about="&ocre;OCRE400032"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE400076 -->
+
+    <owl:Class rdf:about="&ocre;OCRE400076">
+        <rdfs:subClassOf rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE546280"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE400079 -->
+
+    <owl:Class rdf:about="&ocre;OCRE400079">
+        <rdfs:subClassOf rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE546280"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE50034 -->
+
+    <owl:Class rdf:about="&ocre;OCRE50034">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ocre;OCRE551318"/>
+                <owl:allValuesFrom rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE546280"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE513134 -->
+
+    <owl:Class rdf:about="&ocre;OCRE513134"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE535847 -->
+
+    <owl:Class rdf:about="&ocre;OCRE535847">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ocre;OCRE551318"/>
+                <owl:allValuesFrom rdf:resource="&ocre;OCRE400079"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE541581 -->
+
+    <owl:Class rdf:about="&ocre;OCRE541581">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ocre;OCRE400079"/>
+                    <rdf:Description rdf:about="&ocre;OCRE557116"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE560892"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE568687 -->
+
+    <owl:Class rdf:about="&ocre;OCRE568687">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ocre;OCRE551318"/>
+                <owl:allValuesFrom rdf:resource="&ocre;OCRE400079"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE581634 -->
+
+    <owl:Class rdf:about="&ocre;OCRE581634">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ocre;OCRE551318"/>
+                <owl:allValuesFrom rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE546280"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE590011 -->
+
+    <owl:Class rdf:about="&ocre;OCRE590011"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE591890 -->
+
+    <owl:Class rdf:about="&ocre;OCRE591890">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ocre;OCRE551318"/>
+                <owl:allValuesFrom rdf:resource="&ocre;OCRE400079"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE595405 -->
+
+    <owl:Class rdf:about="&ocre;OCRE595405"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE400043 -->
+
+    <owl:Class rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE400043">
+        <rdfs:label rdf:datatype="&xsd;string">Study site</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE598730"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ocre;OCRE585289"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&ocre;OCRE590011"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="&ocre;OCRE518308"/>
+                                        <owl:someValuesFrom rdf:resource="&ocre;OCRE400029"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A study site is a participating site in which study subject assessments or interventions are conducted. </obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE441000 -->
+
+    <owl:Class rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE441000">
+        <rdfs:label rdf:datatype="&xsd;string">Recruitment not active</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ocre;OCRE400003"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&ocre;OCRE400016"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&ocre;OCRE400003"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE500000 -->
+
+    <owl:Class rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE500000">
+        <rdfs:label rdf:datatype="&xsd;string">IRB</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ocre;OCRE400079"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ocre;OCRE585289"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&ocre;OCRE568687"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="&ocre;OCRE533511"/>
+                                        <owl:someValuesFrom rdf:resource="&ocre;OCRE400029"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">An IRB [Institutiona Review Board] is a specially constituted independent review body comprised of medical, scientific and non-scientific members established and designated by an entity to ensure the protection of the rights, safety and well-being of human subjects recruited to participate in biomedical or behavioral research according to the requirements outlined in Title 38, part 16 (same as Title 45, part 46 and Title 21, part 56) of the U.S. Code of Federal Regulations. IRB responsibility include but not limited to the reviewing, approving, and providing continuing review of trial protocol and amendments and of the methods and material(s) to be used in obtaining and documenting informed consent of the trial. Other equivalent committees with the same or similar functions are also considered to be IRBs.</obo:IAO_0000115>
+        <statistics:synonym rdf:datatype="&xsd;string">ERB</statistics:synonym>
+        <statistics:synonym rdf:datatype="&xsd;string">IEC</statistics:synonym>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">NCI Thesaurus entry for Institutional Review Board. Available at http://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI%20Thesaurus&amp;code=C16741</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE511747 -->
+
+    <owl:Class rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE511747">
+        <rdfs:label rdf:datatype="&xsd;string">Recruitment site</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ocre;OCRE400079"/>
+                    <rdf:Description rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE400043"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ocre;OCRE585289"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&ocre;OCRE595405"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="&ocre;OCRE549929"/>
+                                        <owl:someValuesFrom rdf:resource="&ocre;OCRE400029"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A recruitment site is a study site where finding and enrolling appropriate study subjects (those selected on the basis of the protocol&apos;s inclusion/exclusion criteria) into a study occurs.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE534000 -->
+
+    <owl:Class rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE534000">
+        <rdfs:label rdf:datatype="&xsd;string">Funder</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE546280"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ocre;OCRE585289"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&ocre;OCRE50034"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="&ocre;OCRE576287"/>
+                                        <owl:someValuesFrom rdf:resource="&ocre;OCRE400029"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">An organization or a person that underwrites financial support for projects of a particular type. Typically, they process applications and award funds to the chosen qualified applicants.</obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">NCI Thesaurus entry for Funding Agency. Available at http://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI%20Thesaurus&amp;code=C39409</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE534515 -->
+
+    <owl:Class rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE534515">
+        <rdfs:label rdf:datatype="&xsd;string">Oversight committee</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ocre;OCRE400079"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ocre;OCRE585289"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&ocre;OCRE535847"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="&ocre;OCRE557377"/>
+                                        <owl:someValuesFrom rdf:resource="&ocre;OCRE400029"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE598730"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">An organization that approves, monitors and reviews biomedical research to protect the rights, safety and welfare of the study subjects. This committee performs critical oversight functions for research conducted on human study subjects that are scientific, ethical, and regulatory.
+
+EXAMPLE(S):
+Institutional Review Board (IRB), ethics committee, research ethics board, etc.</obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">BRIDG 3.0.3 Available at http://bridgmodel.nci.nih.gov/</obo:IAO_0000119>
+        <obo:IAO_0000116 rdf:datatype="&xsd;string">Data safety monitoring committee, protocol review and monitoring committee (or board)</obo:IAO_0000116>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE546280 -->
+
+    <owl:Class rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE546280">
+        <rdfs:label rdf:datatype="&xsd;string">Person or Organization</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ocre;OCRE400076"/>
+                    <rdf:Description rdf:about="&ocre;OCRE400079"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&ocre;OCRE400032"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE560892"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A human being OR A formalized group of persons or other organizations collected together for a common purpose (such as administrative, legal, political) and the infrastructure to carry out that purpose. </obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE560892 -->
+
+    <owl:Class rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE560892">
+        <rdfs:label rdf:datatype="&xsd;string">Person or Social institution</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ocre;OCRE400076"/>
+                    <rdf:Description rdf:about="&ocre;OCRE541581"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&ocre;OCRE400032"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE571000 -->
+
+    <owl:Class rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE571000">
+        <rdfs:label rdf:datatype="&xsd;string">Sponsor</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE546280"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ocre;OCRE585289"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&ocre;OCRE581634"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="&ocre;OCRE547004"/>
+                                        <owl:someValuesFrom rdf:resource="&ocre;OCRE400029"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Code of Federal Regulations, Title 21, Volume 1, Revised as of April 1, 2010: 21CFR50.3. Available at http://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfcfr/CFRSearch.cfm?fr=50.3</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Sponsor means a person who initiates a clinical investigation, but who does not actually conduct the investigation, i.e., the test article is administered or dispensed to or used involving, a subject under the immediate direction of another individual. A person other than an individual (e.g., corporation or agency) that uses one or more of its own employees to conduct a clinical investigation it has initiated is considered to be a sponsor (not a sponsor-investigator), and the employees are considered to be investigators.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE598434 -->
+
+    <owl:Class rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE598434">
+        <rdfs:label rdf:datatype="&xsd;string">Laboratory site</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ocre;OCRE400079"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ocre;OCRE585289"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&ocre;OCRE591890"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE5000003"/>
+                                        <owl:someValuesFrom rdf:resource="&ocre;OCRE400029"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE598730"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A laboratory site is an organization where some laboratory processing for the study occurs.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE598730 -->
+
+    <owl:Class rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE598730">
+        <rdfs:label rdf:datatype="&xsd;string">Participating site</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ocre;OCRE541581"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ocre;OCRE585289"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&ocre;OCRE513134"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="&ocre;OCRE583480"/>
+                                        <owl:someValuesFrom rdf:resource="&ocre;OCRE400029"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A participating site is a social institution where study activities are conducted</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE820798 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE820798">
+        <rdfs:label rdf:datatype="&xsd;string">Leaf subclass</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE827797 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE827797">
+        <rdfs:label rdf:datatype="&xsd;string">Subclass including root</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE874148 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE874148">
+        <rdfs:label rdf:datatype="&xsd;string">External query</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE877903 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE877903">
+        <rdfs:label rdf:datatype="&xsd;string">Individual</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE893499 -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/net/OCRe/OCRe_ext.owl#OCRE893499">
+        <rdfs:label rdf:datatype="&xsd;string">Subclass excluding root</rdfs:label>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.5.1912) http://owlapi.sourceforge.net -->
+

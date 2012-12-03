@@ -1,0 +1,3387 @@
+format-version: 1.0
+date: 30:03:2007 15:07
+saved-by: minna
+auto-generated-by: OBO-Edit 1.100-beta16
+default-namespace: eVOC_AnatomicalSystem
+namespace-id-rule: * EV:$sequence(7,0100376,9999999)$
+remark: Anatomical System [EV:0100000] ouput by Evoc2star.
+
+[Term]
+id: EV:0100000
+name: Anatomical System
+
+[Term]
+id: EV:0100001
+name: developmental anatomy
+is_a: EV:0100000 ! Anatomical System
+
+[Term]
+id: EV:0100002
+name: notochord
+is_a: EV:0100001 ! developmental anatomy
+
+[Term]
+id: EV:0100003
+name: ectoderm
+def: "The outermost of the three primary germ layers of the embryo: the endoderm, the mesoderm and the ectoderm." [ISBN:0-7216-0146-4]
+is_a: EV:0100001 ! developmental anatomy
+
+[Term]
+id: EV:0100004
+name: neuroectoderm
+is_a: EV:0100003 ! ectoderm
+
+[Term]
+id: EV:0100005
+xref_analog: SWP:TS-0273
+name: endoderm
+def: "The innermost of the three primary germ layers of the embryo: the endoderm, the mesoderm and the ectoderm." [ISBN:0-7216-0146-4]
+is_a: EV:0100001 ! developmental anatomy
+
+[Term]
+id: EV:0100006
+name: mesoderm
+def: "The middle layer of the three primary germ layers of the embryo: the endoderm, the mesoderm and the ectoderm." [ISBN:0-7216-0146-4]
+is_a: EV:0100001 ! developmental anatomy
+
+[Term]
+id: EV:0100007
+name: mesenchyma
+is_a: EV:0100006 ! mesoderm
+
+[Term]
+id: EV:0100008
+name: anatomical site
+is_a: EV:0100000 ! Anatomical System
+
+[Term]
+id: EV:0100009
+name: head and neck
+comment: This term was obsoleted because it represents two anatomical parts. To update annotations, consider the anatomical system term ' head ; EV:0100475', 'neck ; EV:0100476'.
+is_obsolete: true
+
+[Term]
+id: EV:0100010
+xref_analog: SWP:TS-1035
+name: thorax
+def: "The upper part of the trunk, encased by the ribs." [ISBN:0-7216-0146-4]
+exact_synonym: "chest" []
+is_a: EV:0100008 ! anatomical site
+
+[Term]
+id: EV:0100011
+xref_analog: SWP:TS-0002
+name: abdomen
+is_a: EV:0100008 ! anatomical site
+
+[Term]
+id: EV:0100012
+xref_analog: SWP:TS-0757
+name: pelvis
+def: "The lower part of the trunk, outlined by the hip bones and the vertebral column." [ISBN:0-7216-0146-4]
+is_a: EV:0100008 ! anatomical site
+
+[Term]
+id: EV:0100013
+name: perineum
+is_a: EV:0100008 ! anatomical site
+
+[Term]
+id: EV:0100014
+name: upper limb
+is_a: EV:0100483 ! limb
+
+[Term]
+id: EV:0100015
+name: lower limb
+is_a: EV:0100483 ! limb
+
+[Term]
+id: EV:0100016
+name: whole body
+is_a: EV:0100008 ! anatomical site
+
+[Term]
+id: EV:0100017
+xref_analog: SWP:TS-1106
+name: cardiovascular system
+def: "The heart and blood vessels." [SANBI:mhl]
+related_synonym: "vascular system" []
+is_a: EV:0100000 ! Anatomical System
+
+[Term]
+id: EV:0100018
+xref_analog: SWP:TS-0247
+xref_analog: SWP:TS-0338
+xref_analog: SWP:TS-0440
+xref_analog: SWP:TS-0445
+name: heart
+def: "The muscular, hollow organ that maintains blood circulation throughout the body." [SANBI:mhl]
+is_a: EV:0100017 ! cardiovascular system
+
+[Term]
+id: EV:0100019
+xref_analog: SWP:TS-0064
+xref_analog: SWP:TS-0437
+xref_analog: SWP:TS-0438
+xref_analog: SWP:TS-0669
+name: heart atrium
+is_a: EV:0100018 ! heart
+
+[Term]
+id: EV:0100020
+xref_analog: SWP:TS-0443
+xref_analog: SWP:TS-0444
+name: heart ventricle
+is_a: EV:0100018 ! heart
+
+[Term]
+id: EV:0100021
+name: endocardium
+is_a: EV:0100018 ! heart
+
+[Term]
+id: EV:0100022
+xref_analog: SWP:TS-0651
+name: myocardium
+def: "The middle layer of the heart wall that consists of cardiac muscle." [ISBN:0-471-36692-7]
+is_a: EV:0100018 ! heart
+
+[Term]
+id: EV:0100023
+xref_analog: SWP:TS-0761
+name: pericardium
+def: "A loose-fitting membraneous sac that encloses the heart." [ISBN:0-471-36692-7]
+is_a: EV:0100018 ! heart
+
+[Term]
+id: EV:0100024
+name: cardiac valve
+is_a: EV:0100018 ! heart
+
+[Term]
+id: EV:0100025
+name: cardiac conducting system
+is_a: EV:0100018 ! heart
+
+[Term]
+id: EV:0100026
+xref_analog: SWP:TS-0054
+xref_analog: SWP:TS-0126
+name: artery
+def: "A blood vessel that carries blood away from the heart." [ISBN:0-471-36692-7]
+is_a: EV:0100456 ! blood vessel
+
+[Term]
+id: EV:0100027
+xref_analog: SWP:TS-0046
+xref_analog: SWP:TS-0047
+xref_analog: SWP:TS-0048
+xref_analog: SWP:TS-0324
+xref_analog: SWP:TS-1035
+name: aorta
+is_a: EV:0100026 ! artery
+
+[Term]
+id: EV:0100028
+name: arterial intima
+is_a: EV:0100026 ! artery
+
+[Term]
+id: EV:0100029
+name: arterial media
+is_a: EV:0100026 ! artery
+
+[Term]
+id: EV:0100030
+name: arterial adventitia
+is_a: EV:0100026 ! artery
+
+[Term]
+id: EV:0100031
+xref_analog: SWP:TS-0840
+xref_analog: SWP:TS-1108
+name: vein
+def: "A blood vessel that carries blood back to the heart." [ISBN:0-471-36692-7]
+related_synonym: "venae" []
+is_a: EV:0100456 ! blood vessel
+
+[Term]
+id: EV:0100032
+name: venous intima
+is_a: EV:0100031 ! vein
+
+[Term]
+id: EV:0100033
+name: venous media
+is_a: EV:0100031 ! vein
+
+[Term]
+id: EV:0100034
+name: venous adventitia
+is_a: EV:0100031 ! vein
+
+[Term]
+id: EV:0100035
+xref_analog: SWP:TS-0090
+xref_analog: SWP:TS-0112
+name: capillary
+def: "A microscopic blood vessel that joins the end of a small artery to the beginning of a small vein." [ISBN:0-471-36692-7]
+is_a: EV:0100456 ! blood vessel
+
+[Term]
+id: EV:0100036
+xref_analog: SWP:TS-0023
+xref_analog: SWP:TS-0024
+name: respiratory system
+is_a: EV:0100000 ! Anatomical System
+
+[Term]
+id: EV:0100037
+xref_analog: SWP:TS-0655
+xref_analog: SWP:TS-0656
+xref_analog: SWP:TS-0657
+xref_analog: SWP:TS-0659
+name: nose
+is_a: EV:0100036 ! respiratory system
+
+[Term]
+id: EV:0100038
+name: sinus
+is_a: EV:0100036 ! respiratory system
+
+[Term]
+id: EV:0100039
+xref_analog: SWP:TS-0529
+xref_analog: SWP:TS-0530
+xref_analog: SWP:TS-0531
+xref_analog: SWP:TS-0532
+name: larynx
+def: "This structure, formed by cartilages, ligaments and muscles, is connected to the superior part of the trachea. It protects the entrance into the trachea and has a secondary functions in sound production." [ISBN:0-7216-0146-4]
+exact_synonym: "organ of voice" []
+exact_synonym: "voice box" []
+is_a: EV:0100036 ! respiratory system
+
+[Term]
+id: EV:0100040
+xref_analog: SWP:TS-1059
+xref_analog: SWP:TS-1060
+xref_analog: SWP:TS-1061
+xref_analog: SWP:TS-1062
+xref_analog: SWP:TS-1063
+xref_analog: SWP:TS-1064
+name: trachea
+def: "The trunk of membranous cartilage that descends from the larynx and branches into the right and left main bronchi." [ISBN:0-7216-0146-4]
+exact_synonym: "windpipe" []
+is_a: EV:0100036 ! respiratory system
+
+[Term]
+id: EV:0100041
+xref_analog: SWP:TS-1062
+xref_analog: SWP:TS-1063
+xref_analog: SWP:TS-1064
+name: bronchus
+is_a: EV:0100036 ! respiratory system
+
+[Term]
+id: EV:0100042
+xref_analog: SWP:TS-0253
+xref_analog: SWP:TS-0254
+xref_analog: SWP:TS-0345
+xref_analog: SWP:TS-0346
+xref_analog: SWP:TS-0568
+xref_analog: SWP:TS-0569
+xref_analog: SWP:TS-0571
+xref_analog: SWP:TS-0572
+xref_analog: SWP:TS-0573
+xref_analog: SWP:TS-0574
+xref_analog: SWP:TS-0575
+xref_analog: SWP:TS-0576
+xref_analog: SWP:TS-0577
+xref_analog: SWP:TS-0840
+name: lung
+def: "Either of the pair of respiratory organs situated on the right and the left side of the thorax, respectively." [ISBN:0-7216-0146-4]
+is_a: EV:0100036 ! respiratory system
+
+[Term]
+id: EV:0100043
+xref_analog: SWP:TS-0031
+name: alveolus
+def: "Any one of the air sacks of the lungs." [SANBI:mhl]
+is_a: EV:0100461 ! bronchiole
+
+[Term]
+id: EV:0100044
+name: pleura
+is_a: EV:0100036 ! respiratory system
+
+[Term]
+id: EV:0100045
+xref_analog: SWP:TS-0449
+name: hematological system
+related_synonym: "hematopoietic" []
+is_a: EV:0100000 ! Anatomical System
+
+[Term]
+id: EV:0100046
+xref_analog: SWP:TS-0087
+xref_analog: SWP:TS-0084
+xref_analog: SWP:TS-0085
+xref_analog: SWP:TS-0086
+name: bone marrow
+is_a: EV:0100045 ! hematological system
+
+[Term]
+id: EV:0100047
+xref_analog: SWP:TS-0079
+xref_analog: SWP:TS-0327
+xref_analog: SWP:TS-0771
+xref_analog: SWP:TS-0765
+xref_analog: SWP:TS-0766
+xref_analog: SWP:TS-0767
+xref_analog: SWP:TS-0768
+xref_analog: SWP:TS-0769
+xref_analog: SWP:TS-0770
+xref_analog: SWP:TS-1079
+name: blood
+related_synonym: "peripheral blood" []
+is_a: EV:0100045 ! hematological system
+
+[Term]
+id: EV:0100048
+xref_analog: SWP:TS-0584
+xref_analog: SWP:TS-1136
+name: lymphoreticular system
+related_synonym: "lymphoid tissue" []
+is_a: EV:0100000 ! Anatomical System
+
+[Term]
+id: EV:0100049
+xref_analog: SWP:TS-0580
+name: lymph
+is_a: EV:0100048 ! lymphoreticular system
+
+[Term]
+id: EV:0100050
+xref_analog: SWP:TS-0579
+name: lymph node
+related_synonym: "lymph gland" []
+is_a: EV:0100048 ! lymphoreticular system
+
+[Term]
+id: EV:0100051
+name: germinal center
+related_synonym: "germinal centre" []
+is_a: EV:0100050 ! lymph node
+
+[Term]
+id: EV:0100052
+xref_analog: SWP:TS-1053
+xref_analog: SWP:TS-1054
+name: tonsil
+is_a: EV:0100048 ! lymphoreticular system
+
+[Term]
+id: EV:0100053
+name: lingual tonsil
+is_a: EV:0100052 ! tonsil
+
+[Term]
+id: EV:0100054
+name: pharyngeal tonsil
+is_a: EV:0100052 ! tonsil
+
+[Term]
+id: EV:0100055
+xref_analog: SWP:TS-0355
+xref_analog: SWP:TS-0671
+xref_analog: SWP:TS-0956
+name: spleen
+is_a: EV:0100048 ! lymphoreticular system
+
+[Term]
+id: EV:0100056
+name: alimentary system
+related_synonym: "digestive system" []
+is_a: EV:0100000 ! Anatomical System
+
+[Term]
+id: EV:0100057
+xref_analog: SWP:TS-0714
+xref_analog: SWP:TS-0715
+xref_analog: SWP:TS-0716
+name: oral cavity
+related_synonym: "oral" []
+is_a: EV:0100056 ! alimentary system
+
+[Term]
+id: EV:0100058
+xref_analog: SWP:TS-0556
+xref_analog: SWP:TS-1050
+xref_analog: SWP:TS-1051
+name: tongue
+def: "The movable, muscular accessory digestive organ that, together with associated muscles, forms the floor of the mouth. It is composed of skeletal muscle and is covered with mucous membrane." [ISBN:0-471-36692-7]
+is_a: EV:0100057 ! oral cavity
+
+[Term]
+id: EV:0100059
+xref_analog: SWP:TS-0557
+xref_analog: SWP:TS-0892
+name: salivary gland
+is_a: EV:0100057 ! oral cavity
+
+[Term]
+id: EV:0100060
+xref_analog: SWP:TS-0748
+name: parotid gland
+is_a: EV:0100059 ! salivary gland
+
+[Term]
+id: EV:0100061
+xref_analog: SWP:TS-0988
+name: submandibular gland
+related_synonym: "submaxillary gland" []
+is_a: EV:0100059 ! salivary gland
+
+[Term]
+id: EV:0100062
+xref_analog: SWP:TS-0987
+name: sublingual gland
+is_a: EV:0100059 ! salivary gland
+
+[Term]
+id: EV:0100063
+xref_analog: SWP:TS-0269
+xref_analog: SWP:TS-1055
+name: tooth
+is_a: EV:0100057 ! oral cavity
+
+[Term]
+id: EV:0100064
+name: gum
+related_synonym: "gingiva" []
+is_a: EV:0100057 ! oral cavity
+
+[Term]
+id: EV:0100065
+xref_analog: SWP:TS-0784
+xref_analog: SWP:TS-0785
+xref_analog: SWP:TS-1133
+name: pharynx
+def: "A funnel-shaped musculomembranous tube between the internal nares and the larynx and esophagus, that functions as a passageway for food and air. It provides a resonating chamber for the sounds of speech." [ISBN:0-471-36692-7]
+exact_synonym: "throat" []
+is_a: EV:0100056 ! alimentary system
+
+[Term]
+id: EV:0100066
+xref_analog: SWP:TS-0661
+xref_analog: SWP:TS-0662
+xref_analog: SWP:TS-0663
+name: nasopharynx
+is_a: EV:0100065 ! pharynx
+
+[Term]
+id: EV:0100067
+xref_analog: SWP:TS-0718
+name: oropharynx
+is_a: EV:0100065 ! pharynx
+
+[Term]
+id: EV:0100068
+name: hypopharynx
+is_a: EV:0100065 ! pharynx
+
+[Term]
+id: EV:0100069
+xref_analog: SWP:TS-0697
+xref_analog: SWP:TS-0698
+xref_analog: SWP:TS-0699
+xref_analog: SWP:TS-0700
+name: esophagus
+def: "The musculomembraneous tube through which food passes from the pharynx to the stomach." [ISBN:0-471-36692-7]
+related_synonym: "oesophagus" []
+exact_synonym: "gullet" []
+is_a: EV:0100425 ! gastrointestinal tract
+
+[Term]
+id: EV:0100070
+xref_analog: SWP:TS-1152
+xref_analog: SWP:TS-0386
+xref_analog: SWP:TS-0398
+xref_analog: SWP:TS-0400
+xref_analog: SWP:TS-0401
+xref_analog: SWP:TS-0980
+xref_analog: SWP:TS-0978
+xref_analog: SWP:TS-0979
+name: stomach
+is_a: EV:0100425 ! gastrointestinal tract
+
+[Term]
+id: EV:0100071
+xref_analog: SWP:TS-0248
+xref_analog: SWP:TS-0339
+xref_analog: SWP:TS-0427
+xref_analog: SWP:TS-0487
+xref_analog: SWP:TS-0488
+xref_analog: SWP:TS-0489
+xref_analog: SWP:TS-0490
+name: intestine
+related_synonym: "gut" []
+is_a: EV:0100425 ! gastrointestinal tract
+
+[Term]
+id: EV:0100072
+xref_analog: SWP:TS-0205
+xref_analog: SWP:TS-0836
+xref_analog: SWP:TS-0941
+xref_analog: SWP:TS-0942
+name: small intestine
+is_a: EV:0100071 ! intestine
+
+[Term]
+id: EV:0100073
+xref_analog: SWP:TS-0212
+xref_analog: SWP:TS-0213
+xref_analog: SWP:TS-0214
+name: duodenum
+is_a: EV:0100072 ! small intestine
+
+[Term]
+id: EV:0100074
+xref_analog: SWP:TS-0494
+xref_analog: SWP:TS-0495
+xref_analog: SWP:TS-0496
+name: jejunum
+is_a: EV:0100072 ! small intestine
+
+[Term]
+id: EV:0100075
+xref_analog: SWP:TS-0470
+xref_analog: SWP:TS-0471
+xref_analog: SWP:TS-0472
+name: ileum
+is_a: EV:0100072 ! small intestine
+
+[Term]
+id: EV:0100076
+name: vermiform appendix
+is_a: EV:0100071 ! intestine
+
+[Term]
+id: EV:0100077
+name: large intestine
+is_a: EV:0100071 ! intestine
+
+[Term]
+id: EV:0100078
+name: colorectal
+is_a: EV:0100077 ! large intestine
+
+[Term]
+id: EV:0100079
+xref_analog: SWP:TS-0158
+xref_analog: SWP:TS-0159
+xref_analog: SWP:TS-0160
+xref_analog: SWP:TS-0161
+xref_analog: SWP:TS-0162
+xref_analog: SWP:TS-0163
+xref_analog: SWP:TS-0164
+xref_analog: SWP:TS-0165
+xref_analog: SWP:TS-0166
+xref_analog: SWP:TS-1148
+xref_analog: SWP:TS-0331
+name: colon
+def: "The part of the large intestine that extends from the cecum to the rectum." [ISBN:0-7216-0146-4]
+is_a: EV:0100078 ! colorectal
+
+[Term]
+id: EV:0100080
+name: appendix
+is_a: EV:0100079 ! colon
+
+[Term]
+id: EV:0100081
+xref_analog: SWP:TS-0853
+name: rectum
+is_a: EV:0100078 ! colorectal
+
+[Term]
+id: EV:0100082
+name: anus
+is_a: EV:0100077 ! large intestine
+
+[Term]
+id: EV:0100083
+name: mesentery
+is_a: EV:0100056 ! alimentary system
+
+[Term]
+id: EV:0100084
+name: omentum
+is_a: EV:0100056 ! alimentary system
+
+[Term]
+id: EV:0100085
+name: greater omentum
+is_a: EV:0100084 ! omentum
+
+[Term]
+id: EV:0100086
+name: lesser omentum
+is_a: EV:0100084 ! omentum
+
+[Term]
+id: EV:0100087
+xref_analog: SWP:TS-0775
+xref_analog: SWP:TS-0776
+xref_analog: SWP:TS-0777
+name: peritoneum
+def: "A serous membrane that forms the lining of the abdominal cavity and covers most of the intra-abdominal organs." [SANBI:mhl]
+related_synonym: "peritonaeum" []
+is_a: EV:0100056 ! alimentary system
+
+[Term]
+id: EV:0100088
+name: liver and biliary system
+is_a: EV:0100056 ! alimentary system
+
+[Term]
+id: EV:0100089
+xref_analog: SWP:TS-0252
+xref_analog: SWP:TS-0344
+xref_analog: SWP:TS-0365
+xref_analog: SWP:TS-0452
+xref_analog: SWP:TS-0454
+xref_analog: SWP:TS-0559
+xref_analog: SWP:TS-0561
+xref_analog: SWP:TS-0563
+xref_analog: SWP:TS-0564
+xref_analog: SWP:TS-0858
+name: liver
+def: "A large dark-red colored gland situated in upper abdomen. Its functions include filtering and storing blood, storing glycogen, secreting bile, and excreting bilirubin. It takes part in various metabolic functions, such as converting sugars into glycogen." [ISBN:0-7216-0146-4]
+related_synonym: "hepatocellular" []
+is_a: EV:0100088 ! liver and biliary system
+
+[Term]
+id: EV:0100090
+xref_analog: SWP:TS-0394
+name: gall bladder
+def: "The pear-shaped organ that is located in the posterior surface of liver, and acts as the storage sac for bile (gall)." [ISBN:0-7216-0146-4]
+related_synonym: "gallbladder" []
+is_a: EV:0100088 ! liver and biliary system
+
+[Term]
+id: EV:0100091
+xref_analog: SWP:TS-0075
+name: bile duct
+def: "Any of a number of ducts that carry bile in and away from the liver." [ISBN:0-7216-0146-4]
+is_a: EV:0100088 ! liver and biliary system
+
+[Term]
+id: EV:0100092
+xref_analog: SWP:TS-0348
+xref_analog: SWP:TS-0736
+xref_analog: SWP:TS-0737
+xref_analog: SWP:TS-0738
+xref_analog: SWP:TS-0739
+xref_analog: SWP:TS-0740
+xref_analog: SWP:TS-0742
+name: pancreas
+is_a: EV:0100056 ! alimentary system
+
+[Term]
+id: EV:0100093
+name: exocrine pancreas
+def: "The part of the pancreas that acts as an exocrine gland." [ISBN:0-7216-0146-4]
+is_a: EV:0100092 ! pancreas
+
+[Term]
+id: EV:0100094
+xref_analog: SWP:TS-1093
+name: urogenital system
+def: "The reproductive and urinary systems considered togehter." [SANBI:mhl]
+related_synonym: "genitourinary system" []
+is_a: EV:0100000 ! Anatomical System
+
+[Term]
+id: EV:0100095
+name: urinary system
+def: "The system of organs and passageways that produces, stores and eliminates urine." [ISBN:0-7216-0146-4]
+is_a: EV:0100094 ! urogenital system
+
+[Term]
+id: EV:0100096
+xref_analog: SWP:TS-0249
+xref_analog: SWP:TS-0342
+xref_analog: SWP:TS-0502
+xref_analog: SWP:TS-0505
+xref_analog: SWP:TS-0507
+xref_analog: SWP:TS-0510
+name: kidney
+def: "Either of the two organs located in the posterior part of the abdomen, that filter blood and excrete waste products produced by the body's metabolism. The kidneys release hormones and maintain blood osmolarity. They also regulate blood pressure, pH, glucose level, ionic composition, and volume." [ISBN:0-471-36692-7, ISBN:0-7216-0146-4]
+is_a: EV:0100095 ! urinary system
+
+[Term]
+id: EV:0100097
+xref_analog: SWP:TS-1084
+name: ureter
+is_a: EV:0100095 ! urinary system
+
+[Term]
+id: EV:0100098
+xref_analog: SWP:TS-1086
+xref_analog: SWP:TS-1087
+xref_analog: SWP:TS-1088
+xref_analog: SWP:TS-1089
+xref_analog: SWP:TS-1090
+name: bladder
+def: "A musculomembraneous sac in the pelvic cavity that stores urine." [ISBN:0-7216-0146-4]
+exact_synonym: "urinary bladder" []
+is_a: EV:0100095 ! urinary system
+
+[Term]
+id: EV:0100099
+xref_analog: SWP:TS-1132
+name: urethra
+is_a: EV:0100095 ! urinary system
+
+[Term]
+id: EV:0100100
+name: reproductive system
+is_a: EV:0100094 ! urogenital system
+
+[Term]
+id: EV:0100101
+name: male reproductive system
+is_a: EV:0100100 ! reproductive system
+
+[Term]
+id: EV:0100102
+xref_analog: SWP:TS-0266
+xref_analog: SWP:TS-0267
+xref_analog: SWP:TS-0357
+xref_analog: SWP:TS-1029
+xref_analog: SWP:TS-1030
+name: testis
+is_a: EV:0100101 ! male reproductive system
+
+[Term]
+id: EV:0100103
+xref_analog: SWP:TS-0285
+name: epididymis
+is_a: EV:0100101 ! male reproductive system
+
+[Term]
+id: EV:0100104
+xref_analog: SWP:TS-0828
+xref_analog: SWP:TS-0829
+xref_analog: SWP:TS-0830
+name: prostate
+def: "A single, doughnut shaped gland in the male that lies inferior to the urinary bladder and surrounds the prostatic urethra. Secretes a milky fluid containing acid phosphatase, citric acid, and several proteolytic enzymes, that contributes to the seminal fluid." [ISBN:0-471-36692-7, ISBN:0-7216-0146-4]
+exact_synonym: "prostata" []
+exact_synonym: "prostate gland" []
+is_a: EV:0100101 ! male reproductive system
+
+[Term]
+id: EV:0100105
+xref_analog: SWP:TS-1105
+name: vas deferens
+comment: Either of the two excretory ducts of the testis that carry spermatozoa. Form the ejaculatory duct together with the excretory duct of the seminal vesicle.
+exact_synonym: "deferent duct" []
+exact_synonym: "ductus deferens" []
+exact_synonym: "seminal duct" []
+exact_synonym: "spermatic duct" []
+exact_synonym: "testicular duct" []
+is_a: EV:0100101 ! male reproductive system
+
+[Term]
+id: EV:0100106
+xref_analog: SWP:TS-0919
+name: seminal vesicle
+def: "Either of a pair of pouchlike structures posterinferior to the urinary bladder of males. They secrete an alkaline, viscous fluid that constitutes a significant proportion of the fluid that ultimately becomes semen." [ISBN:0-471-36692-7]
+is_a: EV:0100101 ! male reproductive system
+is_a: EV:0100105 ! vas deferens
+
+[Term]
+id: EV:0100107
+xref_analog: SWP:TS-0758
+name: penis
+is_a: EV:0100101 ! male reproductive system
+
+[Term]
+id: EV:0100108
+name: glans
+is_a: EV:0100107 ! penis
+
+[Term]
+id: EV:0100109
+xref_analog: SWP:TS-0383
+xref_analog: SWP:TS-0384
+xref_analog: SWP:TS-0385
+name: foreskin
+is_a: EV:0100107 ! penis
+
+[Term]
+id: EV:0100110
+name: female reproductive system
+is_a: EV:0100100 ! reproductive system
+
+[Term]
+id: EV:0100111
+xref_analog: SWP:TS-0256
+xref_analog: SWP:TS-0724
+xref_analog: SWP:TS-0725
+xref_analog: SWP:TS-0729
+xref_analog: SWP:TS-0730
+xref_analog: SWP:TS-0731
+name: ovary
+is_a: EV:0100110 ! female reproductive system
+
+[Term]
+id: EV:0100112
+xref_analog: SWP:TS-0732
+name: uterine tube
+def: "Either of the two tubes that extend laterally from the uterus. Transport ova from the ovaries to the uterus." [ISBN:0-471-36692-7]
+exact_synonym: "Fallopian tube" []
+exact_synonym: "oviduct" []
+is_a: EV:0100110 ! female reproductive system
+
+[Term]
+id: EV:0100113
+xref_analog: SWP:TS-1097
+xref_analog: SWP:TS-1099
+xref_analog: SWP:TS-1101
+xref_analog: SWP:TS-1102
+name: uterus
+related_synonym: "womb" []
+is_a: EV:0100110 ! female reproductive system
+
+[Term]
+id: EV:0100114
+xref_analog: SWP:TS-0134
+xref_analog: SWP:TS-0135
+xref_analog: SWP:TS-0136
+xref_analog: SWP:TS-0137
+name: uterine cervix
+is_a: EV:0100113 ! uterus
+
+[Term]
+id: EV:0100115
+xref_analog: SWP:TS-0193
+xref_analog: SWP:TS-0274
+xref_analog: SWP:TS-0275
+xref_analog: SWP:TS-0276
+name: endometrium
+def: "The highly vascular inner layer of the uterus." [ISBN:0-471-36692-7]
+exact_synonym: "tunica mucosa uteri" []
+is_a: EV:0100113 ! uterus
+
+[Term]
+id: EV:0100116
+xref_analog: SWP:TS-0652
+xref_analog: SWP:TS-1026
+name: myometrium
+is_a: EV:0100113 ! uterus
+
+[Term]
+id: EV:0100117
+xref_analog: SWP:TS-1103
+xref_analog: SWP:TS-1104
+name: vagina
+is_a: EV:0100110 ! female reproductive system
+
+[Term]
+id: EV:0100118
+xref_analog: SWP:TS-1168
+xref_analog: SWP:TS-1169
+name: vulva
+def: "The external genitals of a female." [ISBN:0-471-36692-7]
+is_a: EV:0100110 ! female reproductive system
+
+[Term]
+id: EV:0100119
+xref_analog: SWP:TS-0799
+xref_analog: SWP:TS-1027
+name: placenta
+is_a: EV:0100110 ! female reproductive system
+
+[Term]
+id: EV:0100120
+xref_analog: SWP:TS-1069
+xref_analog: SWP:TS-1070
+name: trophoblast
+is_a: EV:0100394 ! blastocyst
+
+[Term]
+id: EV:0100121
+xref_analog: SWP:TS-0141
+name: chorioamniotic membrane
+exact_synonym: "chorion" []
+is_a: EV:0100110 ! female reproductive system
+
+[Term]
+id: EV:0100122
+xref_analog: SWP:TS-0033
+name: amnion
+is_a: EV:0100110 ! female reproductive system
+
+[Term]
+id: EV:0100123
+xref_analog: SWP:TS-0034
+name: amniotic fluid
+is_a: EV:0100110 ! female reproductive system
+
+[Term]
+id: EV:0100124
+xref_analog: SWP:TS-0232
+name: breast
+is_a: EV:0100110 ! female reproductive system
+
+[Term]
+id: EV:0100125
+xref_analog: SWP:TS-0513
+xref_analog: SWP:TS-0591
+xref_analog: SWP:TS-0592
+xref_analog: SWP:TS-0593
+xref_analog: SWP:TS-0594
+xref_analog: SWP:TS-0595
+xref_analog: SWP:TS-0597
+name: mammary gland
+is_a: EV:0100124 ! breast
+
+[Term]
+id: EV:0100126
+xref_analog: SWP:TS-0636
+name: milk
+is_a: EV:0100110 ! female reproductive system
+
+[Term]
+id: EV:0100127
+xref_analog: SWP:TS-1078
+xref_analog: SWP:TS-1079
+xref_analog: SWP:TS-1080
+name: umbilical cord
+is_a: EV:0100110 ! female reproductive system
+
+[Term]
+id: EV:0100128
+name: endocrine system
+is_a: EV:0100000 ! Anatomical System
+
+[Term]
+id: EV:0100129
+name: endocrine pancreas
+is_a: EV:0100128 ! endocrine system
+
+[Term]
+id: EV:0100130
+xref_analog: SWP:TS-0741
+name: islet of Langerhans
+exact_synonym: "pancreatic islet" []
+is_a: EV:0100129 ! endocrine pancreas
+
+[Term]
+id: EV:0100131
+xref_analog: SWP:TS-0789
+name: pineal gland
+related_synonym: "pineal" []
+is_a: EV:0100128 ! endocrine system
+
+[Term]
+id: EV:0100132
+xref_analog: SWP:TS-0792
+xref_analog: SWP:TS-0795
+xref_analog: SWP:TS-0797
+xref_analog: SWP:TS-0798
+name: pituitary gland
+related_synonym: "pituitary" []
+exact_synonym: "hypophysis" []
+exact_synonym: "hypophysis cerebri" []
+is_a: EV:0100128 ! endocrine system
+
+[Term]
+id: EV:0100133
+xref_analog: SWP:TS-1044
+xref_analog: SWP:TS-1045
+xref_analog: SWP:TS-1046
+xref_analog: SWP:TS-1047
+name: thyroid
+is_a: EV:0100128 ! endocrine system
+
+[Term]
+id: EV:0100134
+xref_analog: SWP:TS-0745
+xref_analog: SWP:TS-0746
+name: parathyroid
+related_synonym: "parathyroid gland" []
+is_a: EV:0100128 ! endocrine system
+
+[Term]
+id: EV:0100135
+xref_analog: SWP:TS-0014
+xref_analog: SWP:TS-0016
+xref_analog: SWP:TS-0019
+xref_analog: SWP:TS-0323
+name: adrenal gland
+related_synonym: "adrenal" []
+is_a: EV:0100128 ! endocrine system
+
+[Term]
+id: EV:0100136
+xref_analog: SWP:TS-0015
+name: adrenal cortex
+is_a: EV:0100135 ! adrenal gland
+
+[Term]
+id: EV:0100137
+xref_analog: SWP:TS-0018
+name: adrenal medulla
+is_a: EV:0100135 ! adrenal gland
+
+[Term]
+id: EV:0100138
+xref_analog: SWP:TS-0268
+xref_analog: SWP:TS-0359
+xref_analog: SWP:TS-1040
+xref_analog: SWP:TS-1041
+xref_analog: SWP:TS-1043
+name: thymus
+related_synonym: "thymus gland" []
+is_a: EV:0100128 ! endocrine system
+
+[Term]
+id: EV:0100139
+name: musculoskeletal system
+is_a: EV:0100000 ! Anatomical System
+
+[Term]
+id: EV:0100140
+xref_analog: SWP:TS-0088
+xref_analog: SWP:TS-0897
+name: bone
+is_a: EV:0100139 ! musculoskeletal system
+
+[Term]
+id: EV:0100141
+xref_analog: SWP:TS-0118
+xref_analog: SWP:TS-0119
+xref_analog: SWP:TS-0287
+xref_analog: SWP:TS-0329
+xref_analog: SWP:TS-0333
+xref_analog: SWP:TS-0530
+xref_analog: SWP:TS-0655
+xref_analog: SWP:TS-0719
+xref_analog: SWP:TS-0973
+xref_analog: SWP:TS-1127
+name: cartilage
+is_a: EV:0100139 ! musculoskeletal system
+
+[Term]
+id: EV:0100142
+name: joint
+is_a: EV:0100139 ! musculoskeletal system
+
+[Term]
+id: EV:0100143
+xref_analog: SWP:TS-0997
+xref_analog: SWP:TS-0998
+name: synovium
+related_synonym: "synovial membrane" []
+is_a: EV:0100142 ! joint
+
+[Term]
+id: EV:0100144
+xref_analog: SWP:TS-0691
+name: ligament
+is_a: EV:0100142 ! joint
+
+[Term]
+id: EV:0100145
+name: meniscus
+is_a: EV:0100142 ! joint
+
+[Term]
+id: EV:0100146
+xref_analog: SWP:TS-0011
+xref_analog: SWP:TS-0042
+xref_analog: SWP:TS-0255
+xref_analog: SWP:TS-0257
+xref_analog: SWP:TS-0347
+xref_analog: SWP:TS-0440
+xref_analog: SWP:TS-0531
+xref_analog: SWP:TS-0642
+xref_analog: SWP:TS-0643
+xref_analog: SWP:TS-0751
+xref_analog: SWP:TS-0784
+xref_analog: SWP:TS-1034
+name: muscle
+is_a: EV:0100139 ! musculoskeletal system
+
+[Term]
+id: EV:0100149
+xref_analog: SWP:TS-1021
+name: tendon
+is_a: EV:0100139 ! musculoskeletal system
+
+[Term]
+id: EV:0100150
+name: fascia
+is_a: EV:0100139 ! musculoskeletal system
+
+[Term]
+id: EV:0100151
+name: dermal system
+is_a: EV:0100000 ! Anatomical System
+
+[Term]
+id: EV:0100152
+xref_analog: SWP:TS-0208
+xref_analog: SWP:TS-0260
+xref_analog: SWP:TS-0352
+xref_analog: SWP:TS-0838
+xref_analog: SWP:TS-0934
+xref_analog: SWP:TS-0935
+name: skin
+related_synonym: "cuticle" []
+is_a: EV:0100151 ! dermal system
+
+[Term]
+id: EV:0100153
+xref_analog: SWP:TS-0282
+xref_analog: SWP:TS-0283
+xref_analog: SWP:TS-1033
+name: epidermis
+is_a: EV:0100152 ! skin
+
+[Term]
+id: EV:0100154
+name: dermis
+is_a: EV:0100152 ! skin
+
+[Term]
+id: EV:0100155
+name: appendages
+is_a: EV:0100151 ! dermal system
+
+[Term]
+id: EV:0100156
+xref_analog: SWP:TS-0431
+xref_analog: SWP:TS-0432
+name: hair follicle
+is_a: EV:0100155 ! appendages
+
+[Term]
+id: EV:0100157
+xref_analog: SWP:TS-0430
+name: hair
+is_a: EV:0100155 ! appendages
+
+[Term]
+id: EV:0100158
+name: nail bed
+is_a: EV:0100155 ! appendages
+
+[Term]
+id: EV:0100159
+name: nail
+is_a: EV:0100155 ! appendages
+
+[Term]
+id: EV:0100160
+xref_analog: SWP:TS-0993
+name: sweat gland
+is_a: EV:0100155 ! appendages
+
+[Term]
+id: EV:0100161
+name: sebaceous gland
+is_a: EV:0100155 ! appendages
+
+[Term]
+id: EV:0100162
+xref_analog: SWP:TS-0679
+name: nervous system
+is_a: EV:0100000 ! Anatomical System
+
+[Term]
+id: EV:0100163
+xref_analog: SWP:TS-0150
+name: central nervous system
+related_synonym: "CNS" []
+is_a: EV:0100162 ! nervous system
+
+[Term]
+id: EV:0100164
+xref_analog: SWP:TS-0090
+xref_analog: SWP:TS-0095
+xref_analog: SWP:TS-0092
+xref_analog: SWP:TS-0094
+xref_analog: SWP:TS-0126
+xref_analog: SWP:TS-0231
+xref_analog: SWP:TS-0328
+xref_analog: SWP:TS-0667
+name: brain
+exact_synonym: "encephalon" []
+is_a: EV:0100163 ! central nervous system
+
+[Term]
+id: EV:0100165
+name: cerebrum
+related_synonym: "hemisphere" []
+is_a: EV:0100164 ! brain
+
+[Term]
+id: EV:0100166
+name: cerebral cortex
+related_synonym: "grey matter" []
+related_synonym: "white matter" []
+is_a: EV:0100165 ! cerebrum
+
+[Term]
+id: EV:0100167
+xref_analog: SWP:TS-0389
+name: frontal lobe
+related_synonym: "frontal cortex" []
+is_a: EV:0100166 ! cerebral cortex
+
+[Term]
+id: EV:0100168
+xref_analog: SWP:TS-0747
+name: parietal lobe
+related_synonym: "parietal cortex" []
+is_a: EV:0100166 ! cerebral cortex
+
+[Term]
+id: EV:0100169
+xref_analog: SWP:TS-1020
+name: temporal lobe
+related_synonym: "temporal cortex" []
+is_a: EV:0100166 ! cerebral cortex
+
+[Term]
+id: EV:0100170
+xref_analog: SWP:TS-0693
+name: occipital lobe
+related_synonym: "occipital cortex" []
+is_a: EV:0100166 ! cerebral cortex
+
+[Term]
+id: EV:0100171
+name: visual
+is_a: EV:0100166 ! cerebral cortex
+
+[Term]
+id: EV:0100172
+name: insula
+is_a: EV:0100166 ! cerebral cortex
+
+[Term]
+id: EV:0100173
+xref_analog: SWP:TS-0702
+name: olfactory bulb
+is_a: EV:0100166 ! cerebral cortex
+
+[Term]
+id: EV:0100174
+name: anterior olfactory nucleus
+is_a: EV:0100166 ! cerebral cortex
+
+[Term]
+id: EV:0100175
+name: lateral olfactory stria
+is_a: EV:0100166 ! cerebral cortex
+
+[Term]
+id: EV:0100176
+name: medial olfactory stria
+is_a: EV:0100166 ! cerebral cortex
+
+[Term]
+id: EV:0100177
+name: olfactory tubercle
+is_a: EV:0100166 ! cerebral cortex
+
+[Term]
+id: EV:0100178
+name: primary olfactory cortex
+is_a: EV:0100166 ! cerebral cortex
+
+[Term]
+id: EV:0100179
+name: secondary olfactory cortex
+is_a: EV:0100166 ! cerebral cortex
+
+[Term]
+id: EV:0100180
+xref_analog: SWP:TS-0460
+name: hippocampus
+is_a: EV:0100166 ! cerebral cortex
+
+[Term]
+id: EV:0100181
+name: parahippocampal gyrus
+is_a: EV:0100166 ! cerebral cortex
+
+[Term]
+id: EV:0100182
+xref_analog: SWP:TS-1149
+name: basal nuclei
+is_a: EV:0100165 ! cerebrum
+
+[Term]
+id: EV:0100183
+name: claustrum
+is_a: EV:0100182 ! basal nuclei
+
+[Term]
+id: EV:0100184
+xref_analog: SWP:TS-0183
+name: corpus striatum
+is_a: EV:0100182 ! basal nuclei
+
+[Term]
+id: EV:0100185
+xref_analog: SWP:TS-0121
+name: caudate nucleus
+is_a: EV:0100182 ! basal nuclei
+
+[Term]
+id: EV:0100186
+name: lentiform nucleus
+is_a: EV:0100182 ! basal nuclei
+
+[Term]
+id: EV:0100187
+name: putamen
+is_a: EV:0100182 ! basal nuclei
+
+[Term]
+id: EV:0100188
+name: globus pallidus
+is_a: EV:0100182 ! basal nuclei
+
+[Term]
+id: EV:0100189
+xref_analog: SWP:TS-0037
+name: amygdala
+is_a: EV:0100182 ! basal nuclei
+
+[Term]
+id: EV:0100190
+name: amygdaloid nucleus
+is_a: EV:0100189 ! amygdala
+
+[Term]
+id: EV:0100191
+name: central amygdaloid nucleus
+is_a: EV:0100189 ! amygdala
+
+[Term]
+id: EV:0100192
+name: medial amygdaloid nucleus
+is_a: EV:0100189 ! amygdala
+
+[Term]
+id: EV:0100193
+name: cortical amygdaloid nucleus
+is_a: EV:0100189 ! amygdala
+
+[Term]
+id: EV:0100194
+xref_analog: SWP:TS-0199
+name: diencephalon
+is_a: EV:0100164 ! brain
+
+[Term]
+id: EV:0100195
+xref_analog: SWP:TS-1031
+name: thalamus
+is_a: EV:0100194 ! diencephalon
+
+[Term]
+id: EV:0100196
+name: anterior thalamic nuclei
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100197
+name: anterior dorsal thalamic nucleus
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100198
+name: anterior medial thalamic nucleus
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100199
+name: anterior ventral thalamic nucleus
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100200
+name: medial thalamic nuclei
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100201
+name: medial dorsal thalamic nucleus
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100202
+name: parafascicular thalamic nucleus
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100203
+name: submedial thalamic nucleus
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100204
+name: paracentral thalamic nucleus
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100205
+name: central lateral thalamic nucleus
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100206
+name: ventral thalamic nuclei
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100207
+name: ventral anterior thalamic nucleus
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100208
+name: ventral intermediate thalamic nucleus
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100209
+name: ventral posterior thalamic nucleus
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100210
+name: lateral thalamic nuclei
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100211
+name: lateral dorsal thalamic nucleus
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100212
+name: lateral posterior thalamic nucleus
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100213
+name: pulvinar
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100214
+name: reticular thalamic nucleus
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100215
+name: centromedian thalamic nucleus
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100216
+name: limiting thalamic nucleus
+is_a: EV:0100195 ! thalamus
+
+[Term]
+id: EV:0100217
+name: metathalamus
+is_a: EV:0100194 ! diencephalon
+
+[Term]
+id: EV:0100218
+name: medial geniculate nucleus
+is_a: EV:0100217 ! metathalamus
+
+[Term]
+id: EV:0100219
+name: lateral geniculate nucleus
+is_a: EV:0100217 ! metathalamus
+
+[Term]
+id: EV:0100220
+name: epithalamus
+is_a: EV:0100194 ! diencephalon
+
+[Term]
+id: EV:0100221
+name: pineal body
+is_a: EV:0100220 ! epithalamus
+
+[Term]
+id: EV:0100222
+name: habenular nucleus
+is_a: EV:0100220 ! epithalamus
+
+[Term]
+id: EV:0100223
+name: subthalamus
+is_a: EV:0100194 ! diencephalon
+
+[Term]
+id: EV:0100224
+xref_analog: SWP:TS-1154
+name: subthalamic nucleus
+is_a: EV:0100223 ! subthalamus
+
+[Term]
+id: EV:0100225
+xref_analog: SWP:TS-0469
+name: hypothalamus
+is_a: EV:0100194 ! diencephalon
+
+[Term]
+id: EV:0100226
+xref_analog: SWP:TS-0822
+name: preoptic nucleus
+is_a: EV:0100225 ! hypothalamus
+
+[Term]
+id: EV:0100227
+name: supraoptic nucleus
+is_a: EV:0100225 ! hypothalamus
+
+[Term]
+id: EV:0100228
+xref_analog: SWP:TS-0992
+name: suprachiasmatic nucleus
+is_a: EV:0100225 ! hypothalamus
+
+[Term]
+id: EV:0100229
+name: paraventricular nucleus
+is_a: EV:0100225 ! hypothalamus
+
+[Term]
+id: EV:0100230
+name: infundibular nucleus
+is_a: EV:0100225 ! hypothalamus
+
+[Term]
+id: EV:0100231
+name: anterior nucleus
+is_a: EV:0100225 ! hypothalamus
+
+[Term]
+id: EV:0100232
+name: dorsomedial nucleus
+is_a: EV:0100225 ! hypothalamus
+
+[Term]
+id: EV:0100233
+name: ventromedial nucleus
+is_a: EV:0100225 ! hypothalamus
+
+[Term]
+id: EV:0100234
+name: lateral nucleus
+is_a: EV:0100225 ! hypothalamus
+
+[Term]
+id: EV:0100235
+name: posterior nucleus
+is_a: EV:0100225 ! hypothalamus
+
+[Term]
+id: EV:0100236
+name: premamillary nucleus
+is_a: EV:0100225 ! hypothalamus
+
+[Term]
+id: EV:0100237
+name: tuberomamillary nucleus
+is_a: EV:0100225 ! hypothalamus
+
+[Term]
+id: EV:0100238
+name: medial mamillary nucleus
+is_a: EV:0100225 ! hypothalamus
+
+[Term]
+id: EV:0100239
+name: lateral mamillary nucleus
+is_a: EV:0100225 ! hypothalamus
+
+[Term]
+id: EV:0100240
+name: lateral tuberal nucleus
+is_a: EV:0100225 ! hypothalamus
+
+[Term]
+id: EV:0100241
+xref_analog: SWP:TS-0093
+xref_analog: SWP:TS-0668
+name: brain stem
+is_a: EV:0100164 ! brain
+
+[Term]
+id: EV:0100242
+xref_analog: SWP:TS-0630
+name: midbrain
+is_a: EV:0100241 ! brain stem
+
+[Term]
+id: EV:0100243
+name: crus cerebri
+is_a: EV:0100242 ! midbrain
+
+[Term]
+id: EV:0100244
+xref_analog: SWP:TS-0179
+name: colliculi
+exact_synonym: "corpora quadrigemina " []
+is_a: EV:0100242 ! midbrain
+
+[Term]
+id: EV:0100245
+name: superior colliculi
+is_a: EV:0100244 ! colliculi
+
+[Term]
+id: EV:0100246
+name: inferior colliculi
+is_a: EV:0100244 ! colliculi
+
+[Term]
+id: EV:0100247
+xref_analog: SWP:TS-0990
+name: substantia nigra
+is_a: EV:0100242 ! midbrain
+
+[Term]
+id: EV:0100248
+name: red nucleus
+is_a: EV:0100242 ! midbrain
+
+[Term]
+id: EV:0100249
+name: periaqueductal grey matter
+is_a: EV:0100242 ! midbrain
+
+[Term]
+id: EV:0100250
+name: oculomotor nucleus
+is_a: EV:0100242 ! midbrain
+
+[Term]
+id: EV:0100251
+name: trochlear nucleus
+is_a: EV:0100242 ! midbrain
+
+[Term]
+id: EV:0100252
+name: mesencephalic trigeminal nucleus
+is_a: EV:0100242 ! midbrain
+
+[Term]
+id: EV:0100253
+xref_analog: SWP:TS-1144
+xref_analog: SWP:TS-0813
+name: pons
+is_a: EV:0100241 ! brain stem
+
+[Term]
+id: EV:0100254
+name: vestibular nuclei
+is_a: EV:0100253 ! pons
+
+[Term]
+id: EV:0100255
+name: medial
+is_a: EV:0100254 ! vestibular nuclei
+
+[Term]
+id: EV:0100256
+name: lateral
+is_a: EV:0100254 ! vestibular nuclei
+
+[Term]
+id: EV:0100257
+name: superior vestibular nuclei
+is_a: EV:0100254 ! vestibular nuclei
+
+[Term]
+id: EV:0100258
+name: inferior vestibular nuclei
+is_a: EV:0100254 ! vestibular nuclei
+
+[Term]
+id: EV:0100259
+name: interstitial
+is_a: EV:0100254 ! vestibular nuclei
+
+[Term]
+id: EV:0100260
+name: cochlear nuclei
+is_a: EV:0100253 ! pons
+
+[Term]
+id: EV:0100261
+name: dorsal
+is_a: EV:0100260 ! cochlear nuclei
+
+[Term]
+id: EV:0100262
+name: ventral
+is_a: EV:0100260 ! cochlear nuclei
+
+[Term]
+id: EV:0100263
+name: superior olivary nucleus
+is_a: EV:0100253 ! pons
+
+[Term]
+id: EV:0100264
+name: trapezoid nucleus
+is_a: EV:0100253 ! pons
+
+[Term]
+id: EV:0100265
+name: nucleus of the lateral lemniscus
+is_a: EV:0100253 ! pons
+
+[Term]
+id: EV:0100266
+name: abducent nucleus
+is_a: EV:0100253 ! pons
+
+[Term]
+id: EV:0100267
+name: facial nucleus
+is_a: EV:0100253 ! pons
+
+[Term]
+id: EV:0100268
+name: salivatory nuclei
+is_a: EV:0100253 ! pons
+
+[Term]
+id: EV:0100269
+name: superior salivatory nuclei
+is_a: EV:0100268 ! salivatory nuclei
+
+[Term]
+id: EV:0100270
+name: inferior salivatory nuclei
+is_a: EV:0100268 ! salivatory nuclei
+
+[Term]
+id: EV:0100271
+name: trigeminal nucleus
+is_a: EV:0100253 ! pons
+
+[Term]
+id: EV:0100272
+name: nucleus of the spinal tract
+is_a: EV:0100271 ! trigeminal nucleus
+
+[Term]
+id: EV:0100273
+name: motor
+is_a: EV:0100271 ! trigeminal nucleus
+
+[Term]
+id: EV:0100274
+name: principal sensory
+is_a: EV:0100271 ! trigeminal nucleus
+
+[Term]
+id: EV:0100275
+xref_analog: SWP:TS-0607
+name: medulla oblongata
+is_a: EV:0100241 ! brain stem
+
+[Term]
+id: EV:0100276
+name: olivary nuclei
+is_a: EV:0100275 ! medulla oblongata
+
+[Term]
+id: EV:0100277
+name: inferior olivary nuclei
+is_a: EV:0100276 ! olivary nuclei
+
+[Term]
+id: EV:0100278
+name: medial accessory
+is_a: EV:0100276 ! olivary nuclei
+
+[Term]
+id: EV:0100279
+name: dorsal accessory
+is_a: EV:0100276 ! olivary nuclei
+
+[Term]
+id: EV:0100280
+name: nucleus gracilis
+is_a: EV:0100275 ! medulla oblongata
+
+[Term]
+id: EV:0100281
+name: nucleus cuneatus
+is_a: EV:0100275 ! medulla oblongata
+
+[Term]
+id: EV:0100282
+name: supraspinal nucleus
+is_a: EV:0100275 ! medulla oblongata
+
+[Term]
+id: EV:0100283
+name: spinal nucleus of the accessory nerve
+is_a: EV:0100275 ! medulla oblongata
+
+[Term]
+id: EV:0100284
+name: nucleus of the spinal tract of the trigeminal
+is_a: EV:0100275 ! medulla oblongata
+
+[Term]
+id: EV:0100285
+name: accessory cuneate nucleus
+is_a: EV:0100275 ! medulla oblongata
+
+[Term]
+id: EV:0100286
+xref_analog: SWP:TS-0467
+name: nucleus of the hypoglossal nerve
+exact_synonym: "hypoglossal nucleus" []
+is_a: EV:0100275 ! medulla oblongata
+
+[Term]
+id: EV:0100287
+name: dorsal vagal nucleus
+is_a: EV:0100275 ! medulla oblongata
+
+[Term]
+id: EV:0100288
+name: nucleus of the tractus solitarius
+is_a: EV:0100275 ! medulla oblongata
+
+[Term]
+id: EV:0100289
+name: nucleus parasolitarius
+is_a: EV:0100275 ! medulla oblongata
+
+[Term]
+id: EV:0100290
+name: arcuate nuclei
+is_a: EV:0100275 ! medulla oblongata
+
+[Term]
+id: EV:0100291
+name: nucleus intercalatus
+is_a: EV:0100275 ! medulla oblongata
+
+[Term]
+id: EV:0100292
+name: nucleus ambiguus
+is_a: EV:0100275 ! medulla oblongata
+
+[Term]
+id: EV:0100293
+xref_analog: SWP:TS-0125
+xref_analog: SWP:TS-0330
+name: cerebellum
+is_a: EV:0100164 ! brain
+
+[Term]
+id: EV:0100294
+xref_analog: SWP:TS-0091
+name: cerebellar cortex
+is_a: EV:0100293 ! cerebellum
+
+[Term]
+id: EV:0100295
+name: anterior lobe of the cerebellum
+is_a: EV:0100294 ! cerebellar cortex
+
+[Term]
+id: EV:0100296
+name: middle lobe of the cerebellum
+is_a: EV:0100294 ! cerebellar cortex
+
+[Term]
+id: EV:0100297
+name: flocculonodular lobe
+is_a: EV:0100294 ! cerebellar cortex
+
+[Term]
+id: EV:0100298
+name: vermis
+is_a: EV:0100294 ! cerebellar cortex
+
+[Term]
+id: EV:0100299
+name: cerebellum nuclei
+is_a: EV:0100293 ! cerebellum
+
+[Term]
+id: EV:0100300
+name: dentate nucleus
+is_a: EV:0100299 ! cerebellum nuclei
+
+[Term]
+id: EV:0100301
+name: nucleus emboliformis
+is_a: EV:0100299 ! cerebellum nuclei
+
+[Term]
+id: EV:0100302
+name: nucleus globosus
+is_a: EV:0100299 ! cerebellum nuclei
+
+[Term]
+id: EV:0100303
+name: nucleus fastigii
+is_a: EV:0100299 ! cerebellum nuclei
+
+[Term]
+id: EV:0100304
+name: tract
+is_a: EV:0100164 ! brain
+
+[Term]
+id: EV:0100305
+xref_analog: SWP:TS-0180
+name: corpus callosum
+is_a: EV:0100304 ! tract
+
+[Term]
+id: EV:0100306
+name: ventricular system
+is_a: EV:0100164 ! brain
+
+[Term]
+id: EV:0100307
+name: lateral ventricle
+is_a: EV:0100306 ! ventricular system
+
+[Term]
+id: EV:0100308
+name: third ventricle
+is_a: EV:0100306 ! ventricular system
+
+[Term]
+id: EV:0100309
+name: cerebral aqueduct
+is_a: EV:0100306 ! ventricular system
+
+[Term]
+id: EV:0100310
+name: fourth ventricle
+is_a: EV:0100306 ! ventricular system
+
+[Term]
+id: EV:0100311
+xref_analog: SWP:TS-0130
+name: cerebrospinal fluid
+is_a: EV:0100164 ! brain
+
+[Term]
+id: EV:0100312
+name: meninges
+is_a: EV:0100164 ! brain
+
+[Term]
+id: EV:0100313
+name: dura mater
+is_a: EV:0100312 ! meninges
+
+[Term]
+id: EV:0100314
+xref_analog: SWP:TS-0052
+xref_analog: SWP:TS-0546
+name: arachnoid
+is_a: EV:0100312 ! meninges
+
+[Term]
+id: EV:0100315
+xref_analog: SWP:TS-0546
+name: pia mater
+is_a: EV:0100312 ! meninges
+
+[Term]
+id: EV:0100316
+xref_analog: SWP:TS-0261
+xref_analog: SWP:TS-0354
+xref_analog: SWP:TS-0953
+xref_analog: SWP:TS-1114
+name: spinal cord
+exact_synonym: "medulla spinalis" []
+is_a: EV:0100163 ! central nervous system
+
+[Term]
+id: EV:0100317
+name: dorsal column
+is_a: EV:0100316 ! spinal cord
+
+[Term]
+id: EV:0100318
+name: substantia gelatinosa
+is_a: EV:0100316 ! spinal cord
+
+[Term]
+id: EV:0100319
+name: nucleus proprius
+is_a: EV:0100316 ! spinal cord
+
+[Term]
+id: EV:0100320
+name: nucleus thoracicus
+is_a: EV:0100316 ! spinal cord
+
+[Term]
+id: EV:0100321
+name: visceral column
+is_a: EV:0100316 ! spinal cord
+
+[Term]
+id: EV:0100322
+name: lateral column
+is_a: EV:0100316 ! spinal cord
+
+[Term]
+id: EV:0100323
+name: intermediolateral column
+is_a: EV:0100316 ! spinal cord
+
+[Term]
+id: EV:0100324
+name: intermediomedial column
+is_a: EV:0100316 ! spinal cord
+
+[Term]
+id: EV:0100325
+name: sacral parasympathetic nucleus
+is_a: EV:0100316 ! spinal cord
+
+[Term]
+id: EV:0100326
+name: ventral column
+is_a: EV:0100316 ! spinal cord
+
+[Term]
+id: EV:0100327
+name: retrodorsolateral column
+is_a: EV:0100316 ! spinal cord
+
+[Term]
+id: EV:0100328
+name: dorsomedial column
+is_a: EV:0100316 ! spinal cord
+
+[Term]
+id: EV:0100329
+name: dorsolateral column
+is_a: EV:0100316 ! spinal cord
+
+[Term]
+id: EV:0100330
+name: phrenic nucleus
+is_a: EV:0100316 ! spinal cord
+
+[Term]
+id: EV:0100331
+name: ventrolateral column
+is_a: EV:0100316 ! spinal cord
+
+[Term]
+id: EV:0100332
+name: ventromedial column
+is_a: EV:0100316 ! spinal cord
+
+[Term]
+id: EV:0100333
+name: accessory nucleus
+is_a: EV:0100316 ! spinal cord
+
+[Term]
+id: EV:0100334
+name: lumbosacral nucleus
+is_a: EV:0100316 ! spinal cord
+
+[Term]
+id: EV:0100335
+xref_analog: SWP:TS-0808
+name: peripheral nervous system
+related_synonym: "PNS" []
+is_a: EV:0100162 ! nervous system
+
+[Term]
+id: EV:0100336
+xref_analog: SWP:TS-0238
+xref_analog: SWP:TS-0309
+xref_analog: SWP:TS-0334
+name: visual apparatus
+related_synonym: "eye" []
+is_a: EV:0100335 ! peripheral nervous system
+
+[Term]
+id: EV:0100337
+name: globe
+is_a: EV:0100336 ! visual apparatus
+
+[Term]
+id: EV:0100338
+name: eyelid
+is_a: EV:0100336 ! visual apparatus
+
+[Term]
+id: EV:0100339
+xref_analog: SWP:TS-0512
+name: lacrimal gland
+is_a: EV:0100336 ! visual apparatus
+
+[Term]
+id: EV:0100340
+name: conjunctiva
+is_a: EV:0100336 ! visual apparatus
+
+[Term]
+id: EV:0100341
+xref_analog: SWP:TS-0171
+xref_analog: SWP:TS-0172
+xref_analog: SWP:TS-0173
+xref_analog: SWP:TS-1159
+xref_analog: SWP:TS-1138
+name: cornea
+is_a: EV:0100336 ! visual apparatus
+
+[Term]
+id: EV:0100342
+name: sclera
+is_a: EV:0100336 ! visual apparatus
+
+[Term]
+id: EV:0100343
+xref_analog: SWP:TS-0250
+xref_analog: SWP:TS-0543
+xref_analog: SWP:TS-0544
+xref_analog: SWP:TS-0545
+name: lens
+is_a: EV:0100336 ! visual apparatus
+
+[Term]
+id: EV:0100344
+xref_analog: SWP:TS-0308
+name: vitreous humor
+is_a: EV:0100336 ! visual apparatus
+
+[Term]
+id: EV:0100345
+xref_analog: SWP:TS-0491
+name: iris
+is_a: EV:0100336 ! visual apparatus
+
+[Term]
+id: EV:0100346
+xref_analog: SWP:TS-0694
+xref_analog: SWP:TS-0695
+name: ciliary body
+is_a: EV:0100336 ! visual apparatus
+
+[Term]
+id: EV:0100347
+name: choroid
+is_a: EV:0100336 ! visual apparatus
+
+[Term]
+id: EV:0100348
+xref_analog: SWP:TS-0258
+xref_analog: SWP:TS-0349
+xref_analog: SWP:TS-0865
+xref_analog: SWP:TS-0867
+name: retina
+is_a: EV:0100336 ! visual apparatus
+
+[Term]
+id: EV:0100349
+name: macula lutea
+related_synonym: "macula" []
+is_a: EV:0100348 ! retina
+
+[Term]
+id: EV:0100350
+name: fovea centralis
+related_synonym: "fovea" []
+is_a: EV:0100348 ! retina
+
+[Term]
+id: EV:0100351
+xref_analog: SWP:TS-0713
+name: optic nerve
+is_a: EV:0100336 ! visual apparatus
+
+[Term]
+id: EV:0100352
+xref_analog: SWP:TS-1058
+name: trabecular meshwork
+is_a: EV:0100336 ! visual apparatus
+
+[Term]
+id: EV:0100353
+xref_analog: SWP:TS-0065
+xref_analog: SWP:TS-1165
+name: auditory apparatus
+is_a: EV:0100335 ! peripheral nervous system
+
+[Term]
+id: EV:0100354
+name: external ear
+is_a: EV:0100353 ! auditory apparatus
+
+[Term]
+id: EV:0100355
+name: auricle
+related_synonym: "pinna" []
+is_a: EV:0100354 ! external ear
+
+[Term]
+id: EV:0100356
+name: external acoustic meatus
+is_a: EV:0100354 ! external ear
+
+[Term]
+id: EV:0100357
+xref_analog: SWP:TS-0631
+name: middle ear
+is_a: EV:0100353 ! auditory apparatus
+
+[Term]
+id: EV:0100358
+name: tympanum
+is_a: EV:0100353 ! auditory apparatus
+
+[Term]
+id: EV:0100359
+name: auditory tube
+is_a: EV:0100353 ! auditory apparatus
+
+[Term]
+id: EV:0100360
+name: auditory ossicle
+is_a: EV:0100353 ! auditory apparatus
+
+[Term]
+id: EV:0100361
+xref_analog: SWP:TS-0478
+name: internal ear
+related_synonym: "labyrinth" []
+exact_synonym: "inner ear" []
+is_a: EV:0100353 ! auditory apparatus
+
+[Term]
+id: EV:0100362
+name: osseous labyrinth
+is_a: EV:0100361 ! internal ear
+
+[Term]
+id: EV:0100363
+xref_analog: SWP:TS-0151
+name: cochlea
+is_a: EV:0100362 ! osseous labyrinth
+
+[Term]
+id: EV:0100364
+xref_analog: SWP:TS-0717
+name: spiral organ of Corti
+is_a: EV:0100363 ! cochlea
+
+[Term]
+id: EV:0100365
+name: semicircular canal
+is_a: EV:0100362 ! osseous labyrinth
+
+[Term]
+id: EV:0100366
+xref_analog: SWP:TS-0479
+name: vestibule
+is_a: EV:0100362 ! osseous labyrinth
+
+[Term]
+id: EV:0100367
+name: membranous labyrinth
+is_a: EV:0100361 ! internal ear
+
+[Term]
+id: EV:0100368
+name: utricle
+is_a: EV:0100367 ! membranous labyrinth
+
+[Term]
+id: EV:0100369
+name: saccule
+is_a: EV:0100367 ! membranous labyrinth
+
+[Term]
+id: EV:0100370
+xref_analog: SWP:TS-0703
+xref_analog: SWP:TS-0704
+xref_analog: SWP:TS-0705
+xref_analog: SWP:TS-0708
+name: olfactory apparatus
+is_a: EV:0100335 ! peripheral nervous system
+
+[Term]
+id: EV:0100371
+xref_analog: SWP:TS-0772
+name: peripheral nerve
+related_synonym: "nerve" []
+is_a: EV:0100335 ! peripheral nervous system
+
+[Term]
+id: EV:0100372
+xref_analog: SWP:TS-0065
+xref_analog: SWP:TS-0132
+xref_analog: SWP:TS-1135
+xref_analog: SWP:TS-0242
+xref_analog: SWP:TS-0397
+xref_analog: SWP:TS-0867
+name: ganglion
+is_a: EV:0100335 ! peripheral nervous system
+
+[Term]
+id: EV:0100373
+xref_analog: SWP:TS-0262
+xref_analog: SWP:TS-0954
+name: spinal ganglion
+related_synonym: "dorsal root ganglion" []
+is_a: EV:0100372 ! ganglion
+
+[Term]
+id: EV:0100374
+name: sympathetic chain
+is_a: EV:0100335 ! peripheral nervous system
+
+[Term]
+id: EV:0100375
+name: unclassifiable
+is_a: EV:0100000 ! Anatomical System
+
+[Term]
+id: EV:0100376
+xref_analog: SWP:TS-0198
+name: diaphragm
+def: "The dome-shaped musculomembranous partition that separates the abdominal cavity from the thoracic cavity. This major thoracic muscle is critically important for respiration." [ISBN:0-7216-0146-4, SANBI:mhl]
+exact_synonym: "diaphragmatic muscle" []
+exact_synonym: "respiratory diaphragm" []
+exact_synonym: "thoracic diaphragm" []
+is_a: EV:0100036 ! respiratory system
+
+[Term]
+id: EV:0100377
+xref_analog: SWP:TS-0259
+xref_analog: SWP:TS-0351
+xref_analog: SWP:TS-0933
+name: skeletal muscle
+related_synonym: "striated muscle" []
+is_a: EV:0100146 ! muscle
+
+[Term]
+id: EV:0100378
+xref_analog: SWP:TS-0024
+xref_analog: SWP:TS-0048
+xref_analog: SWP:TS-0165
+xref_analog: SWP:TS-0353
+xref_analog: SWP:TS-0489
+xref_analog: SWP:TS-0943
+xref_analog: SWP:TS-0979
+xref_analog: SWP:TS-1059
+xref_analog: SWP:TS-1080
+xref_analog: SWP:TS-1087
+name: smooth muscle
+is_a: EV:0100146 ! muscle
+
+[Term]
+id: EV:0100379
+xref_analog: SWP:TS-0116
+name: carotid artery
+is_a: EV:0100026 ! artery
+
+[Term]
+id: EV:0100380
+xref_analog: SWP:TS-0920
+name: seminiferous tubule
+is_a: EV:0100102 ! testis
+
+[Term]
+id: EV:0100381
+xref_analog: SWP:TS-0002
+xref_analog: SWP:TS-0013
+name: adipose tissue
+is_a: EV:0100008 ! anatomical site
+
+[Term]
+id: EV:0100382
+xref_analog: SWP:TS-0164
+xref_analog: SWP:TS-1160
+xref_analog: SWP:TS-0213
+xref_analog: SWP:TS-0404
+xref_analog: SWP:TS-0470
+xref_analog: SWP:TS-0488
+xref_analog: SWP:TS-0495
+xref_analog: SWP:TS-0631
+xref_analog: SWP:TS-0657
+xref_analog: SWP:TS-0716
+xref_analog: SWP:TS-0941
+xref_analog: SWP:TS-1064
+name: mucosa
+is_a: EV:0100008 ! anatomical site
+
+[Term]
+id: EV:0100383
+xref_analog: SWP:TS-0175
+xref_analog: SWP:TS-0176
+name: coronary artery
+is_a: EV:0100026 ! artery
+
+[Term]
+id: EV:0100384
+xref_analog: SWP:TS-0204
+name: nephron
+is_a: EV:0100096 ! kidney
+
+[Term]
+id: EV:0100385
+name: renal corpuscle
+is_a: EV:0100384 ! nephron
+
+[Term]
+id: EV:0100386
+xref_analog: SWP:TS-0862
+name: glomerus
+is_a: EV:0100385 ! renal corpuscle
+
+[Term]
+id: EV:0100387
+name: renal tubule
+is_a: EV:0100384 ! nephron
+
+[Term]
+id: EV:0100388
+name: renal proximal convoluted tubule
+is_a: EV:0100406 ! renal proximal tubule
+
+[Term]
+id: EV:0100389
+xref_analog: SWP:TS-0504
+name: renal distal convoluted tubule
+is_a: EV:0100387 ! renal tubule
+
+[Term]
+id: EV:0100390
+name: loop of Henle
+exact_synonym: "nephron loop" []
+is_a: EV:0100387 ! renal tubule
+
+[Term]
+id: EV:0100391
+xref_analog: SWP:TS-0860
+name: renal collecting duct
+is_a: EV:0100387 ! renal tubule
+
+[Term]
+id: EV:0100392
+xref_analog: SWP:TS-1081
+xref_analog: SWP:TS-1082
+name: umbilical vein
+is_a: EV:0100127 ! umbilical cord
+
+[Term]
+id: EV:0100393
+name: palatine tonsil
+is_a: EV:0100052 ! tonsil
+
+[Term]
+id: EV:0100394
+xref_analog: SWP:TS-0076
+name: blastocyst
+is_a: EV:0100110 ! female reproductive system
+
+[Term]
+id: EV:0100395
+name: blastocyst inner cell mass
+is_a: EV:0100394 ! blastocyst
+
+[Term]
+id: EV:0100396
+xref_analog: SWP:TS-0356
+xref_analog: SWP:TS-0972
+xref_analog: SWP:TS-0973
+name: sternum
+def: "An elongated, flattened and narrow bone located in the front center of the thorax." [ISBN:0-471-36692-7]
+exact_synonym: "breastbone" []
+is_a: EV:0100010 ! thorax
+
+[Term]
+id: EV:0100397
+xref_analog: SWP:TS-0122
+name: cecum
+def: "The first part of the large intestine. Forms a dilated pouch into which the ileum, colon, and appendix open." [ISBN:0-7216-0146-4]
+related_synonym: "caecum" []
+exact_synonym: "blind intestine" []
+exact_synonym: "blindgut" []
+exact_synonym: "intestinum caecum" []
+is_a: EV:0100077 ! large intestine
+
+[Term]
+id: EV:0100398
+name: cervical sympathetic chain
+is_a: EV:0100374 ! sympathetic chain
+
+[Term]
+id: EV:0100399
+xref_analog: SWP:TS-0991
+name: superior cervical ganglion
+is_a: EV:0100398 ! cervical sympathetic chain
+
+[Term]
+id: EV:0100400
+name: middle cervical ganglion
+is_a: EV:0100398 ! cervical sympathetic chain
+
+[Term]
+id: EV:0100401
+name: inferior cervical ganglion
+is_a: EV:0100398 ! cervical sympathetic chain
+
+[Term]
+id: EV:0100402
+name: corpus cavernosum
+is_a: EV:0100107 ! penis
+
+[Term]
+id: EV:0100403
+xref_analog: SWP:TS-0182
+name: corpus spongiosum
+is_a: EV:0100107 ! penis
+
+[Term]
+id: EV:0100404
+xref_analog: SWP:TS-0660
+name: nasal vestibule
+is_a: EV:0100037 ! nose
+
+[Term]
+id: EV:0100405
+name: nasal cavity
+is_a: EV:0100037 ! nose
+
+[Term]
+id: EV:0100406
+xref_analog: SWP:TS-0509
+name: renal proximal tubule
+is_a: EV:0100387 ! renal tubule
+
+[Term]
+id: EV:0100407
+xref_analog: SWP:TS-1048
+name: tibia
+def: "The inner and larger, weight bearing bone of the leg below the knee. It articulates with the femur and the fibula above and with the talus and fibula below." [ISBN:0-471-36692-7, ISBN:0-7216-0146-4]
+related_synonym: "shin bone" []
+related_synonym: "tibial bone" []
+is_a: EV:0100140 ! bone
+
+[Term]
+id: EV:0100408
+xref_analog: SWP:TS-0152
+name: cochlear duct
+def: "A spiral, membranous tube suspended within the cochlea, occupying the lower portion of the vestibular canal." [SANBI:mhl]
+related_synonym: "membranous cochlea" []
+exact_synonym: "scala media" []
+is_a: EV:0100362 ! osseous labyrinth
+
+[Term]
+id: EV:0100409
+xref_analog: SWP:TS-0735
+name: palate
+def: "The structure that forms the roof of the mouth and separates it from the nasal cavity." [SANBI:mhl]
+is_a: EV:0100057 ! oral cavity
+
+[Term]
+id: EV:0100410
+xref_analog: SWP:TS-0637
+name: molar
+exact_synonym: "dens molaris" []
+exact_synonym: "multicuspid tooth" []
+is_a: EV:0100063 ! tooth
+
+[Term]
+id: EV:0100411
+xref_analog: SWP:TS-0340
+xref_analog: SWP:TS-0493
+name: jaw
+is_a: EV:0100057 ! oral cavity
+
+[Term]
+id: EV:0100412
+xref_analog: SWP:TS-1056
+name: tooth bud
+def: "A mass of epithelial cells that will eventually form a tooth." [SANBI:mhl]
+is_a: EV:0100057 ! oral cavity
+
+[Term]
+id: EV:0100413
+xref_analog: SWP:TS-0270
+xref_analog: SWP:TS-1057
+name: tooth enamel
+def: "A hard, thin, translucent layer that covers and protects the crown of the tooth. It is the hardest and most highly mineralized substance in the body, with its primary mineral being hydroxyapatite." [ISBN:0-7216-0146-4, SANBI:mhl]
+exact_synonym: "adamantine layer" []
+exact_synonym: "dental enamel" []
+exact_synonym: "substantia adamantina dentis" []
+is_a: EV:0100063 ! tooth
+
+[Term]
+id: EV:0100414
+xref_analog: SWP:TS-1098
+name: ectocervix
+exact_synonym: "exocervix" []
+exact_synonym: "portio vaginalis cervicis" []
+exact_synonym: "vaginal portion of cervix" []
+is_a: EV:0100114 ! uterine cervix
+
+[Term]
+id: EV:0100415
+xref_analog: SWP:TS-1100
+name: cornu
+exact_synonym: "uterine cornu" []
+exact_synonym: "uterine horn" []
+is_a: EV:0100113 ! uterus
+
+[Term]
+id: EV:0100416
+xref_analog: SWP:TS-0726
+name: ovarian follicle
+exact_synonym: "Graafian follicle" []
+is_a: EV:0100111 ! ovary
+
+[Term]
+id: EV:0100417
+xref_analog: SWP:TS-0764
+name: periodontium
+is_a: EV:0100057 ! oral cavity
+
+[Term]
+id: EV:0100418
+xref_analog: SWP:TS-0195
+name: dental pulp
+exact_synonym: "pulpa dentis" []
+is_a: EV:0100063 ! tooth
+
+[Term]
+id: EV:0100419
+xref_analog: SWP:TS-0271
+name: enamel organ
+exact_synonym: "dental organ" []
+is_a: EV:0100063 ! tooth
+
+[Term]
+id: EV:0100420
+xref_analog: SWP:TS-0477
+name: incisor
+def: "Either of the two most frontal teeth in each jaw, with a sharp incisal edge for cutting food, and a single, long root." [ISBN:0-7216-0146-4, SANBI:mhl]
+is_a: EV:0100063 ! tooth
+
+[Term]
+id: EV:0100421
+xref_analog: SWP:TS-0558
+name: lip
+def: "Either one of the upper or lower fleshy folds that surround the mouth." [SANBI:mhl]
+is_a: EV:0100057 ! oral cavity
+
+[Term]
+id: EV:0100422
+xref_analog: SWP:TS-0598
+xref_analog: SWP:TS-0599
+name: mandible
+is_a: EV:0100411 ! jaw
+
+[Term]
+id: EV:0100423
+xref_analog: SWP:TS-0599
+name: condyle
+def: "A large, rounded, knuckle shaped protuberance at the end of a bone. Usually for articulation with another bone." [ISBN:0-471-36692-7, ISBN:0-7216-0146-4]
+is_a: EV:0100140 ! bone
+
+[Term]
+id: EV:0100424
+xref_analog: SWP:TS-0375
+name: foliate papilla
+is_a: EV:0100443 ! taste bud
+
+[Term]
+id: EV:0100425
+xref_analog: SWP:TS-0407
+xref_analog: SWP:TS-0408
+name: gastrointestinal tract
+is_a: EV:0100056 ! alimentary system
+
+[Term]
+id: EV:0100426
+name: pyloric antrum
+is_a: EV:0100070 ! stomach
+
+[Term]
+id: EV:0100427
+name: antral mucosa
+exact_synonym: "pyloric mucosa" []
+is_a: EV:0100070 ! stomach
+
+[Term]
+id: EV:0100428
+xref_analog: SWP:TS-0542
+name: lens cortex
+is_a: EV:0100343 ! lens
+
+[Term]
+id: EV:0100429
+xref_analog: SWP:TS-0874
+xref_analog: SWP:TS-0996
+name: synovial fluid
+is_a: EV:0100143 ! synovium
+
+[Term]
+id: EV:0100430
+xref_analog: SWP:TS-0202
+xref_analog: SWP:TS-0203
+xref_analog: SWP:TS-1160
+name: distal colon
+is_a: EV:0100079 ! colon
+
+[Term]
+id: EV:0100431
+xref_analog: SWP:TS-0167
+name: colostrum
+def: "The cloudy fluid secreted by the mammary glands during late pregnancy and first days after birth." [ISBN:0-471-36692-7]
+related_synonym: "colostrum corpuscles" []
+exact_synonym: "first milk" []
+is_a: EV:0100110 ! female reproductive system
+
+[Term]
+id: EV:0100432
+xref_analog: SWP:TS-0406
+name: gastrocnemius
+def: "The chief muscle of the calf of the leg. Gives the calf its bulging form and is responsible for the plantar flexion of the foot." [SANBI:mhl]
+is_a: EV:0100015 ! lower limb
+
+[Term]
+id: EV:0100433
+xref_analog: SWP:TS-0981
+name: stratum corneum
+def: "The horny outer layer of the skin. Consists of layers of dead keratinocytes, and acts as a protective water-repellent barrier." [ISBN:0-471-36692-7]
+exact_synonym: "horny layer" []
+is_a: EV:0100153 ! epidermis
+
+[Term]
+id: EV:0100434
+xref_analog: SWP:TS-0780
+name: Peyer's patch
+def: "A group of lymphatic nodules in the mucous membrane of the ileum wall. The patches are either circular or oval, and approximately 1 cm wide. They may extend for 3 to 5 cm along the intestine." [SANBI:mhl]
+exact_synonym: "agregated lymphatic nodule" []
+exact_synonym: "Peyer's gland" []
+is_a: EV:0100048 ! lymphoreticular system
+
+[Term]
+id: EV:0100435
+xref_analog: SWP:TS-0793
+xref_analog: SWP:TS-0794
+name: anterior pituitary
+def: "The anterior, or front lobe of the pituitary gland. Secretes the hormones corticotropin, beta-endorphin, fibroblast growth hormone, follicle-stimulating hormone, growth hormone, luteinizing hormone, prolactin, and thyrotropin." [ISBN:0-7216-0146-4]
+exact_synonym: "adenohypophysis" []
+exact_synonym: "anterior lobe of hypophysis" []
+is_a: EV:0100132 ! pituitary gland
+
+[Term]
+id: EV:0100436
+xref_analog: SWP:TS-0815
+name: posterior pituitary
+def: "The posterior, or back lobe of the pituitary gland. It is the neural portion of the gland, storing and releasing the neurohormones vasopressin, oxytocin, and the neurophysins." [ISBN:0-7216-0146-4]
+exact_synonym: "neurohypophysis" []
+exact_synonym: "posterior lobe" []
+is_a: EV:0100132 ! pituitary gland
+
+[Term]
+id: EV:0100437
+xref_analog: SWP:TS-0796
+name: pars tuberalis
+is_a: EV:0100435 ! anterior pituitary
+
+[Term]
+id: EV:0100438
+name: proximal colon
+is_a: EV:0100079 ! colon
+
+[Term]
+id: EV:0100439
+xref_analog: SWP:TS-1077
+name: umbilical artery
+is_a: EV:0100127 ! umbilical cord
+
+[Term]
+id: EV:0100440
+xref_analog: SWP:TS-0181
+name: corpus luteum
+is_a: EV:0100111 ! ovary
+
+[Term]
+id: EV:0100441
+xref_analog: SWP:TS-1088
+xref_analog: SWP:TS-1096
+name: urothelium
+def: "A layer of transitional epithelium that lines much of the urinary tract, including the ureter, bladder, renal pelvis, as well as parts of the urethra. Is external to the lamina propria." [ISBN:0-7216-0146-4, SANBI:mhl]
+is_a: EV:0100095 ! urinary system
+
+[Term]
+id: EV:0100442
+xref_analog: SWP:TS-0145
+name: choroid plexus
+is_a: EV:0100306 ! ventricular system
+
+[Term]
+id: EV:0100443
+xref_analog: SWP:TS-1015
+name: taste bud
+exact_synonym: "caliculus gustatorius" []
+exact_synonym: "gemma gustatoria" []
+exact_synonym: "gustatory bud" []
+exact_synonym: "Schwalbe's corpuscle" []
+is_a: EV:0100058 ! tongue
+
+[Term]
+id: EV:0100444
+xref_analog: SWP:TS-1033
+xref_analog: SWP:TS-1034
+name: thigh
+is_a: EV:0100015 ! lower limb
+
+[Term]
+id: EV:0100445
+xref_analog: SWP:TS-1052
+name: Ebner's gland
+exact_synonym: "tongue serous gland" []
+is_a: EV:0100058 ! tongue
+
+[Term]
+id: EV:0100446
+xref_analog: SWP:TS-1127
+name: xiphoid process
+def: "The smallest of the three parts of the sternum. It has a thin and elongated shape, and is cartilaginous in youth, but more or less ossified proximally in the adult. There are no ribs attached to it, but it provides attachment for some abdominal muscles." [ISBN:0-471-36692-7, ISBN:0-8121-0644-X]
+is_a: EV:0100396 ! sternum
+
+[Term]
+id: EV:0100447
+name: stria vascularis
+is_a: EV:0100408 ! cochlear duct
+
+[Term]
+id: EV:0100448
+xref_analog: SWP:TS-0017
+name: zona glomerulosa
+exact_synonym: "adrenal glomerulosa" []
+is_a: EV:0100136 ! adrenal cortex
+
+[Term]
+id: EV:0100449
+xref_analog: SWP:TS-0055
+xref_analog: SWP:TS-0056
+name: articular cartilage
+def: "A thin layer of cartilage, usually of hyaline, that covers the epiphysis where the bone forms a joint with another bone. Absorbs shock and reduces friction." [ISBN:0-471-36692-7, ISBN:0-7216-0146-4]
+is_a: EV:0100142 ! joint
+
+[Term]
+id: EV:0100450
+xref_analog: SWP:TS-0057
+name: ascending colon
+def: "The portion of the colon that falls between the cecum and the right colic flexure." [ISBN:0-7216-0146-4]
+is_a: EV:0100079 ! colon
+
+[Term]
+id: EV:0100451
+xref_analog: SWP:TS-0149
+name: circumvallate papilla
+def: "Any of the largest papillae of the tongue that are arranged in the shape of a V at the back of the tongue, behind the terminal sulcus." [ISBN:0-7216-0146-4]
+exact_synonym: "papilla vallata" []
+exact_synonym: "vallate papilla" []
+is_a: EV:0100058 ! tongue
+
+[Term]
+id: EV:0100452
+xref_analog: SWP:TS-0241
+xref_analog: SWP:TS-0377
+xref_analog: SWP:TS-0379
+name: foot
+is_a: EV:0100015 ! lower limb
+
+[Term]
+id: EV:0100453
+xref_analog: SWP:TS-0322
+name: femur
+def: "The longest, largest, heaviest and strongest bone in the body. Extends from the pelvis to the knee. Its proximal end articulates with the acetabulum of the hip bone. The distal end articulates with tibia and the kneecap, forming the knee joint." [ISBN:0-471-36692-7, ISBN:0-7216-0146-4]
+exact_synonym: "femoral bone" []
+exact_synonym: "thighbone" []
+is_a: EV:0100140 ! bone
+
+[Term]
+id: EV:0100454
+xref_analog: SWP:TS-0433
+name: hair root
+is_a: EV:0100155 ! appendages
+
+[Term]
+id: EV:0100455
+xref_analog: SWP:TS-0497
+xref_analog: SWP:TS-0498
+name: jugular vein
+is_a: EV:0100031 ! vein
+
+[Term]
+id: EV:0100456
+xref_analog: SWP:TS-0080
+name: blood vessel
+def: "Any of the vessels that convey blood. Together, blood vessels form a closed system that carries blood away from the heart, transports it to the tissues, and then returns it back to the heart." [ISBN:0-471-36692-7, ISBN:0-7216-0146-4]
+is_a: EV:0100017 ! cardiovascular system
+
+[Term]
+id: EV:0100457
+xref_analog: SWP:TS-0108
+name: calvaria
+def: "The dome-shaped superior portion of the cranium." [ISBN:0-7216-0146-4]
+exact_synonym: "concha of cranium" []
+exact_synonym: "skull cap" []
+is_a: EV:0100487 ! cranium
+
+[Term]
+id: EV:0100458
+xref_analog: SWP:TS-0439
+name: left ventricle
+is_a: EV:0100020 ! heart ventricle
+
+[Term]
+id: EV:0100459
+xref_analog: SWP:TS-0442
+name: right atrium
+is_a: EV:0100019 ! heart atrium
+
+[Term]
+id: EV:0100460
+xref_analog: SWP:TS-0565
+name: locus coeruleus
+exact_synonym: "locus caeruleus" []
+exact_synonym: "locus ceruleus" []
+is_a: EV:0100241 ! brain stem
+
+[Term]
+id: EV:0100461
+xref_analog: SWP:TS-0570
+name: bronchiole
+def: "A minute branch of the bronchial tree. Unlike the bronchi, has neither cartilage plates nor cuboidal epithelial cells." [ISBN:0-7216-0146-4]
+is_a: EV:0100041 ! bronchus
+
+[Term]
+id: EV:0100462
+xref_analog: SWP:TS-0814
+name: portal vein
+is_a: EV:0100031 ! vein
+
+[Term]
+id: EV:0100463
+xref_analog: SWP:TS-0839
+name: pulmonary artery
+is_a: EV:0100026 ! artery
+
+[Term]
+id: EV:0100464
+xref_analog: SWP:TS-0893
+name: saphenous vein
+is_a: EV:0100031 ! vein
+
+[Term]
+id: EV:0100465
+xref_analog: SWP:TS-1107
+name: vascular smooth muscle
+is_a: EV:0100378 ! smooth muscle
+
+[Term]
+id: EV:0100466
+xref_analog: SWP:TS-0287
+xref_analog: SWP:TS-0333
+name: epiphysis
+is_a: EV:0100140 ! bone
+
+[Term]
+id: EV:0100467
+xref_analog: SWP:TS-0321
+name: femoral artery
+is_a: EV:0100026 ! artery
+
+[Term]
+id: EV:0100468
+xref_analog: SWP:TS-0431
+name: dermal papilla
+related_synonym: "papilla of corium" []
+is_a: EV:0100154 ! dermis
+
+[Term]
+id: EV:0100469
+xref_analog: SWP:TS-1117
+name: visual cortex
+def: "The area of occipital lobe of cerebral cortex that is concerned with vision." [ISBN:0-7216-0146-4]
+is_a: EV:0100170 ! occipital lobe
+
+[Term]
+id: EV:0100470
+xref_analog: SWP:TS-0471
+name: intestinal villus
+is_a: EV:0100072 ! small intestine
+
+[Term]
+id: EV:0100471
+xref_analog: SWP:TS-0486
+name: intestinal crypt
+exact_synonym: "intestinal gland" []
+is_a: EV:0100072 ! small intestine
+
+[Term]
+id: EV:0100472
+xref_analog: SWP:TS-0492
+name: iris sphincter muscle
+exact_synonym: "circular muscle of iris" []
+exact_synonym: "pupillary sphincter" []
+is_a: EV:0100378 ! smooth muscle
+
+[Term]
+id: EV:0100473
+xref_analog: SWP:TS-0567
+name: longissimus muscle
+is_a: EV:0100377 ! skeletal muscle
+
+[Term]
+id: EV:0100474
+xref_analog: SWP:TS-0566
+name: longissimus dorsi muscle
+is_a: EV:0100473 ! longissimus muscle
+
+[Term]
+id: EV:0100475
+xref_analog: SWP:TS-1135
+xref_analog: SWP:TS-0246
+xref_analog: SWP:TS-0337
+xref_analog: SWP:TS-0436
+name: head
+is_a: EV:0100008 ! anatomical site
+
+[Term]
+id: EV:0100476
+xref_analog: SWP:TS-0132
+xref_analog: SWP:TS-0691
+name: neck
+is_a: EV:0100008 ! anatomical site
+
+[Term]
+id: EV:0100477
+xref_analog: SWP:TS-0185
+xref_analog: SWP:TS-0982
+name: face
+is_a: EV:0100475 ! head
+
+[Term]
+id: EV:0100478
+name: skull
+is_a: EV:0100475 ! head
+
+[Term]
+id: EV:0100479
+xref_analog: SWP:TS-0305
+name: extraocular muscle
+is_a: EV:0100336 ! visual apparatus
+
+[Term]
+id: EV:0100480
+xref_analog: SWP:TS-0602
+name: masseter muscle
+is_a: EV:0100477 ! face
+
+[Term]
+id: EV:0100481
+xref_analog: SWP:TS-0896
+name: scalp
+is_a: EV:0100475 ! head
+
+[Term]
+id: EV:0100482
+xref_analog: SWP:TS-0945
+name: soleus muscle
+is_a: EV:0100015 ! lower limb
+
+[Term]
+id: EV:0100483
+xref_analog: SWP:TS-0251
+xref_analog: SWP:TS-0343
+xref_analog: SWP:TS-0552
+xref_analog: SWP:TS-0553
+xref_analog: SWP:TS-0554
+xref_analog: SWP:TS-0555
+name: limb
+is_a: EV:0100008 ! anatomical site
+
+[Term]
+id: EV:0100484
+xref_analog: SWP:TS-0727
+name: ovarian follicle membrane
+is_a: EV:0100416 ! ovarian follicle
+
+[Term]
+id: EV:0100485
+xref_analog: SWP:TS-0728
+name: ovarian follicular fluid
+is_a: EV:0100416 ! ovarian follicle
+
+[Term]
+id: EV:0100486
+xref_analog: SWP:TS-0399
+xref_analog: SWP:TS-0404
+name: gastric antrum
+is_a: EV:0100070 ! stomach
+
+[Term]
+id: EV:0100487
+xref_analog: SWP:TS-0185
+name: cranium
+def: "The round, superior part of the skull that is made up of cranial bones and encloses the brain." [ISBN:0-7216-0146-4]
+is_a: EV:0100478 ! skull
+
+[Term]
+id: EV:0100488
+xref_analog: SWP:TS-0800
+name: blood plasma
+def: "Cell-free portion of blood, including the clotting factors. It is mainly composed of water, proteins, and inorganic electrolytes." [ISBN:0-7216-0146-4, SANBI:mhl]
+is_a: EV:0100047 ! blood
+
+[Term]
+id: EV:0100489
+xref_analog: SWP:TS-0350
+xref_analog: SWP:TS-0923
+name: blood serum
+def: "Cell-free portion of blood, from which the clotting factors have been removed." [ISBN:0-7216-0146-4]
+is_a: EV:0100488 ! blood plasma
+
+[Term]
+id: EV:0100490
+name: cranial sensory ganglion
+is_a: EV:0100372 ! ganglion
+
+[Term]
+id: EV:0100491
+xref_analog: SWP:TS-1066
+name: trigeminal ganglion
+exact_synonym: "semilunar ganglion" []
+is_a: EV:0100490 ! cranial sensory ganglion
+
+[Term]
+id: EV:0100492
+xref_analog: SWP:TS-0986
+name: subcommissural organ
+is_a: EV:0100242 ! midbrain
+
+[Term]
+id: EV:0100493
+xref_analog: SWP:TS-0689
+name: nodose ganglion
+exact_synonym: "caudal ganglion of vagus nerve" []
+exact_synonym: "inferior ganglion of vagus nerve" []
+is_a: EV:0100372 ! ganglion
+
+[Term]
+id: EV:0100494
+xref_analog: SWP:TS-0426
+name: growth plate
+is_a: EV:0100140 ! bone
+
+[Term]
+id: EV:0100495
+xref_analog: SWP:TS-0110
+name: cancellous bone
+exact_synonym: "cancellated bone" []
+exact_synonym: "spongy bone" []
+exact_synonym: "trabecular bone" []
+is_a: EV:0100140 ! bone
+
+[Term]
+id: EV:0100496
+xref_analog: SWP:TS-0994
+name: sympathetic ganglion
+is_a: EV:0100372 ! ganglion
+
+[Term]
+id: EV:0100497
+xref_analog: SWP:TS-0133
+name: cervicothoracic ganglion
+comment: A paravertebral sympathetic ganglion formed by the fusion of the inferior cervical and first thoracic ganglia.
+exact_synonym: "stellate ganglion" []
+is_a: EV:0100496 ! sympathetic ganglion
+
+[Term]
+id: EV:0100498
+xref_analog: SWP:TS-0153
+name: celiac ganglion
+is_a: EV:0100496 ! sympathetic ganglion
+
+[Term]
+id: EV:0100499
+xref_analog: SWP:TS-0899
+name: sciatic nerve
+def: "A large, branching nerve which extends from the lower back down the back part of the thigh and leg to the foot." [SANBI:mhl]
+is_a: EV:0100335 ! peripheral nervous system
+
+[Term]
+id: EV:0100500
+xref_analog: SWP:TS-0917
+name: semen
+def: "The thick, yellowish-white secretion of the reproductive organs in the male that is discharged upon ejaculation." [SANBI:mhl]
+is_a: EV:0100101 ! male reproductive system
+
+[Term]
+id: EV:0100501
+xref_analog: SWP:TS-0918
+name: seminal plasma
+def: "The fluid portion of the semen." [SANBI:mhl]
+is_a: EV:0100500 ! semen
+
+[Term]
+id: EV:0100502
+xref_analog: SWP:TS-0763
+name: periodontal ligament
+is_a: EV:0100417 ! periodontium
+
+[Term]
+id: EV:0100503
+xref_analog: SWP:TS-0403
+name: gastric fundus
+is_a: EV:0100070 ! stomach
+
+[Term]
+id: EV:0100504
+xref_analog: SWP:TS-0402
+name: gastric fundic mucosa
+is_a: EV:0100503 ! gastric fundus
+
+[Term]
+id: EV:0100505
+xref_analog: SWP:TS-0773
+name: peritoneal cavity
+def: "The space between the parietal and visceral layers of the peritoneum. Under normal conditions this cavity is merely a potential one, as the layers are in contact." [ISBN:0-8121-0644-X]
+is_a: EV:0100087 ! peritoneum
+
+[Term]
+id: EV:0100506
+xref_analog: SWP:TS-0939
+xref_analog: SWP:TS-0940
+name: slow-twitch skeletal muscle
+exact_synonym: "slow skeletal muscle" []
+is_a: EV:0100377 ! skeletal muscle
+
+[Term]
+id: EV:0100507
+xref_analog: SWP:TS-0314
+name: fast-twitch skeletal muscle
+exact_synonym: "fast skeletal muscle" []
+is_a: EV:0100377 ! skeletal muscle
+
+[Term]
+id: EV:0100508
+xref_analog: SWP:TS-0506
+name: inner medulla of kidney
+def: "The part of the renal medulla that is farthest from the cortex." [SANBI:mhl]
+exact_synonym: "inner zone of renal medulla" [ISBN:0-7216-0146-4]
+is_a: EV:0100514 ! renal medulla
+
+[Term]
+id: EV:0100509
+xref_analog: SWP:TS-0508
+name: outer medulla of kidney
+def: "The part of the renal medulla that is nearest to the cortex." [ISBN:0-7216-0146-4]
+exact_synonym: "outer zone of renal medulla" []
+is_a: EV:0100514 ! renal medulla
+
+[Term]
+id: EV:0100510
+name: bile
+def: "A golden yellow to greenish yellow colored fluid that is secreted by the liver, via the bile ducts, into the small intestine. Functions especially in the absorption of digested fats." [ISBN:0-7216-0416-4]
+exact_synonym: "gall" []
+is_a: EV:0100089 ! liver
+
+[Term]
+id: EV:0100511
+name: pancreatic juice
+def: "The clear, colorless fluid secreted by the exocrine pancreas into the duodenum. This liquid consists mainly of water, digestive enzymes, salts and sodium bicarbonite." [ISBN:0-471-36692-7]
+is_a: EV:0100512 ! pancreatic acinus
+
+[Term]
+id: EV:0100512
+name: pancreatic acinus
+def: "Any one of the many secretory units of the exocrine pancreas that produce pancreatic juice." [ISBN:0-7216-0146-4]
+is_a: EV:0100093 ! exocrine pancreas
+
+[Term]
+id: EV:0100513
+xref_analog: SWP:TS-0503
+name: renal cortex
+exact_synonym: "kidney cortex" []
+is_a: EV:0100096 ! kidney
+
+[Term]
+id: EV:0100514
+xref_analog: SWP:TS-1157
+name: renal medulla
+exact_synonym: "kidney medulla" []
+is_a: EV:0100096 ! kidney
+
+[Term]
+id: EV:0100515
+xref_analog: SWP:TS-0891
+name: saliva
+is_a: EV:0100056 ! alimentary system
+
+[Term]
+id: EV:0100516
+name: mammary duct
+def: "Any of the collecting ducts of the mammary gland that carry milk toward the nipple in a lactating female." [SANBI:mhl]
+exact_synonym: "lactiferous duct" []
+is_a: EV:0100124 ! breast
+
+[Term]
+id: EV:0100517
+name: esophagogastric junction
+def: "The site at the lower part of the esophagus where stratified squamous epithelium changes to the columnar epithelium of the cardia of the stomach." [SANBI:mhl]
+exact_synonym: "cardioesophageal junction" []
+exact_synonym: "gastroesophageal junction" []
+is_a: EV:0100425 ! gastrointestinal tract
+
+[Term]
+id: EV:0100518
+name: pancreatic duct
+def: "The main excretory duct of the pancreas." [SANBI:mhl]
+exact_synonym: "canal of Wirsung" []
+exact_synonym: "hepaticopancreatic duct" []
+is_a: EV:0100092 ! pancreas

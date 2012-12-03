@@ -1,0 +1,1205 @@
+format-version: 1.0
+date: 30:11:2006 09:04
+saved-by: minna
+auto-generated-by: OBO-Edit 1.001
+default-namespace: eVOC_DevelopmentStage
+remark: Development Stage [EV:0300000] ouput by Evoc2star.
+
+[Term]
+id: EV:0300000
+name: Development Stage
+
+[Term]
+id: EV:0300001
+xref_analog: SWP:TS-0229
+xref_analog: SWP:TS-0231
+xref_analog: SWP:TS-0232
+xref_analog: SWP:TS-0234
+xref_analog: SWP:TS-0235
+xref_analog: SWP:TS-0238
+xref_analog: SWP:TS-0239
+xref_analog: SWP:TS-0240
+xref_analog: SWP:TS-0241
+xref_analog: SWP:TS-0242
+xref_analog: SWP:TS-0243
+xref_analog: SWP:TS-0246
+xref_analog: SWP:TS-0247
+xref_analog: SWP:TS-0248
+xref_analog: SWP:TS-0249
+xref_analog: SWP:TS-0250
+xref_analog: SWP:TS-0251
+xref_analog: SWP:TS-0252
+xref_analog: SWP:TS-0253
+xref_analog: SWP:TS-0254
+xref_analog: SWP:TS-0255
+xref_analog: SWP:TS-0256
+xref_analog: SWP:TS-0257
+xref_analog: SWP:TS-0258
+xref_analog: SWP:TS-1139
+xref_analog: SWP:TS-0259
+xref_analog: SWP:TS-0260
+xref_analog: SWP:TS-0261
+xref_analog: SWP:TS-0262
+xref_analog: SWP:TS-0263
+xref_analog: SWP:TS-1152
+xref_analog: SWP:TS-0266
+xref_analog: SWP:TS-0267
+xref_analog: SWP:TS-0268
+xref_analog: SWP:TS-0269
+name: embryo
+is_a: EV:0300000 ! Development Stage
+
+[Term]
+id: EV:0300002
+name: 4 cells
+is_a: EV:0300001 ! embryo
+
+[Term]
+id: EV:0300003
+name: 8 cells
+is_a: EV:0300001 ! embryo
+
+[Term]
+id: EV:0300004
+name: 16 cells
+is_a: EV:0300001 ! embryo
+
+[Term]
+id: EV:0300005
+name: 3 weeks
+related_synonym: "3 wk" []
+is_a: EV:0300001 ! embryo
+
+[Term]
+id: EV:0300006
+name: 4 weeks
+related_synonym: "4 wk" []
+is_a: EV:0300001 ! embryo
+
+[Term]
+id: EV:0300007
+name: 6 weeks
+related_synonym: "6 wk" []
+is_a: EV:0300001 ! embryo
+
+[Term]
+id: EV:0300008
+name: 7 weeks
+related_synonym: "7 wk" []
+is_a: EV:0300001 ! embryo
+
+[Term]
+id: EV:0300009
+name: 8 weeks
+related_synonym: "8 wk" []
+is_a: EV:0300001 ! embryo
+
+[Term]
+id: EV:0300010
+name: 5 weeks
+related_synonym: "5 wk" []
+is_a: EV:0300001 ! embryo
+
+[Term]
+id: EV:0300011
+xref_analog: SWP:TS-0323
+xref_analog: SWP:TS-0324
+xref_analog: SWP:TS-1148
+xref_analog: SWP:TS-0325
+xref_analog: SWP:TS-0326
+xref_analog: SWP:TS-0327
+xref_analog: SWP:TS-0328
+xref_analog: SWP:TS-0329
+xref_analog: SWP:TS-0330
+xref_analog: SWP:TS-0331
+xref_analog: SWP:TS-0332
+xref_analog: SWP:TS-0333
+xref_analog: SWP:TS-0334
+xref_analog: SWP:TS-0335
+xref_analog: SWP:TS-0337
+xref_analog: SWP:TS-0338
+xref_analog: SWP:TS-0339
+xref_analog: SWP:TS-0340
+xref_analog: SWP:TS-0341
+xref_analog: SWP:TS-0342
+xref_analog: SWP:TS-0343
+xref_analog: SWP:TS-0344
+xref_analog: SWP:TS-0345
+xref_analog: SWP:TS-0346
+xref_analog: SWP:TS-1156
+xref_analog: SWP:TS-0347
+xref_analog: SWP:TS-0348
+xref_analog: SWP:TS-1144
+xref_analog: SWP:TS-0349
+xref_analog: SWP:TS-0350
+xref_analog: SWP:TS-0351
+xref_analog: SWP:TS-0352
+xref_analog: SWP:TS-0353
+xref_analog: SWP:TS-0354
+xref_analog: SWP:TS-0355
+xref_analog: SWP:TS-0356
+xref_analog: SWP:TS-0357
+xref_analog: SWP:TS-0358
+xref_analog: SWP:TS-0359
+xref_analog: SWP:TS-0360
+name: fetus
+related_synonym: "foetus" []
+is_a: EV:0300000 ! Development Stage
+
+[Term]
+id: EV:0300012
+name: 9 weeks
+related_synonym: "9 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300013
+name: 10 weeks
+related_synonym: "10 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300014
+name: 12 weeks
+related_synonym: "12 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300015
+name: 13 weeks
+related_synonym: "13 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300016
+name: 14 weeks
+related_synonym: "14 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300017
+name: 16 weeks
+related_synonym: "16 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300018
+name: 17 weeks
+related_synonym: "17 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300019
+name: 18 weeks
+related_synonym: "18 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300020
+name: 19 weeks
+related_synonym: "19 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300021
+name: 20 weeks
+related_synonym: "20 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300022
+name: 22 weeks
+related_synonym: "22 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300023
+name: 23 weeks
+related_synonym: "23 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300024
+name: 24 weeks
+related_synonym: "24 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300025
+name: 26 weeks
+related_synonym: "26 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300026
+name: 28 weeks
+related_synonym: "28 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300027
+name: 32 weeks
+related_synonym: "32 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300028
+name: 42 weeks
+related_synonym: "42 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300029
+name: 21 weeks
+related_synonym: "21 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300030
+name: 11 weeks
+related_synonym: "11 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300031
+name: 15 weeks
+related_synonym: "15 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300032
+name: 25 weeks
+related_synonym: "25 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300033
+name: 27 weeks
+related_synonym: "27 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300034
+name: 29 weeks
+related_synonym: "29 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300035
+name: 30 weeks
+related_synonym: "30 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300036
+name: 31 weeks
+related_synonym: "31 wk" []
+is_a: EV:0300011 ! fetus
+
+[Term]
+id: EV:0300037
+xref_analog: SWP:TS-0667
+xref_analog: SWP:TS-0668
+xref_analog: SWP:TS-0669
+xref_analog: SWP:TS-0670
+xref_analog: SWP:TS-0671
+name: infant
+related_synonym: "neonate" []
+related_synonym: "newborn" []
+is_a: EV:0300000 ! Development Stage
+
+[Term]
+id: EV:0300038
+name: 0 year
+is_a: EV:0300037 ! infant
+
+[Term]
+id: EV:0300039
+name: 1 month
+is_a: EV:0300038 ! 0 year
+
+[Term]
+id: EV:0300040
+name: 2 months
+is_a: EV:0300038 ! 0 year
+
+[Term]
+id: EV:0300041
+name: 3 months
+is_a: EV:0300038 ! 0 year
+
+[Term]
+id: EV:0300042
+name: 4 months
+is_a: EV:0300038 ! 0 year
+
+[Term]
+id: EV:0300043
+name: 5 months
+is_a: EV:0300038 ! 0 year
+
+[Term]
+id: EV:0300044
+name: 6 months
+is_a: EV:0300038 ! 0 year
+
+[Term]
+id: EV:0300045
+name: 7 months
+is_a: EV:0300038 ! 0 year
+
+[Term]
+id: EV:0300046
+name: 8 months
+is_a: EV:0300038 ! 0 year
+
+[Term]
+id: EV:0300047
+name: 9 months
+is_a: EV:0300038 ! 0 year
+
+[Term]
+id: EV:0300048
+name: 10 months
+is_a: EV:0300038 ! 0 year
+
+[Term]
+id: EV:0300049
+name: 11 months
+is_a: EV:0300038 ! 0 year
+
+[Term]
+id: EV:0300050
+name: 1 year
+related_synonym: "1 yr" []
+related_synonym: "12 months" []
+related_synonym: "age 1" []
+is_a: EV:0300037 ! infant
+
+[Term]
+id: EV:0300051
+name: child
+is_a: EV:0300000 ! Development Stage
+
+[Term]
+id: EV:0300052
+name: toddler
+is_a: EV:0300051 ! child
+
+[Term]
+id: EV:0300053
+name: 2 years
+related_synonym: "2 year" []
+related_synonym: "2 yr" []
+related_synonym: "age 2" []
+is_a: EV:0300052 ! toddler
+
+[Term]
+id: EV:0300054
+name: 3 years
+related_synonym: "3 year" []
+related_synonym: "3 yr" []
+related_synonym: "age 3" []
+is_a: EV:0300052 ! toddler
+
+[Term]
+id: EV:0300055
+name: 4 years
+related_synonym: "4 year" []
+related_synonym: "4 yr" []
+related_synonym: "age 4" []
+is_a: EV:0300051 ! child
+
+[Term]
+id: EV:0300056
+name: 5 years
+related_synonym: "5 year" []
+related_synonym: "5 yr" []
+related_synonym: "age 5" []
+is_a: EV:0300051 ! child
+
+[Term]
+id: EV:0300057
+name: 6 years
+related_synonym: "6 year" []
+related_synonym: "6 yr" []
+related_synonym: "age 6" []
+is_a: EV:0300051 ! child
+
+[Term]
+id: EV:0300058
+name: 7 years
+related_synonym: "7 year" []
+related_synonym: "7 yr" []
+related_synonym: "age 7" []
+is_a: EV:0300051 ! child
+
+[Term]
+id: EV:0300059
+name: 8 years
+related_synonym: "8 year" []
+related_synonym: "8 yr" []
+related_synonym: "age 8" []
+is_a: EV:0300051 ! child
+
+[Term]
+id: EV:0300060
+name: 9 years
+related_synonym: "9 year" []
+related_synonym: "9 yr" []
+related_synonym: "age 9" []
+is_a: EV:0300051 ! child
+
+[Term]
+id: EV:0300061
+name: 10 years
+related_synonym: "10 year" []
+related_synonym: "10 yr" []
+related_synonym: "age 10" []
+is_a: EV:0300051 ! child
+
+[Term]
+id: EV:0300062
+name: 11 years
+related_synonym: "11 year" []
+related_synonym: "11 yr" []
+related_synonym: "age 11" []
+is_a: EV:0300051 ! child
+
+[Term]
+id: EV:0300063
+name: 12 years
+related_synonym: "12 year" []
+related_synonym: "12 yr" []
+related_synonym: "age 12" []
+is_a: EV:0300051 ! child
+
+[Term]
+id: EV:0300064
+name: adolescent
+related_synonym: "teenager" []
+related_synonym: "teens" []
+is_a: EV:0300000 ! Development Stage
+
+[Term]
+id: EV:0300065
+name: 13 years
+related_synonym: "13 year" []
+related_synonym: "13 yr" []
+related_synonym: "age 13" []
+is_a: EV:0300064 ! adolescent
+
+[Term]
+id: EV:0300066
+name: 14 years
+related_synonym: "14 year" []
+related_synonym: "14 yr" []
+related_synonym: "age 14" []
+is_a: EV:0300064 ! adolescent
+
+[Term]
+id: EV:0300067
+name: 15 years
+related_synonym: "15 year" []
+related_synonym: "15 yr" []
+related_synonym: "age 15" []
+is_a: EV:0300064 ! adolescent
+
+[Term]
+id: EV:0300068
+name: 16 years
+related_synonym: "16 year" []
+related_synonym: "16 yr" []
+related_synonym: "age 16" []
+is_a: EV:0300064 ! adolescent
+
+[Term]
+id: EV:0300069
+name: 17 years
+related_synonym: "17 year" []
+related_synonym: "17 yr" []
+related_synonym: "age 17" []
+is_a: EV:0300064 ! adolescent
+
+[Term]
+id: EV:0300070
+name: adult
+is_a: EV:0300000 ! Development Stage
+
+[Term]
+id: EV:0300071
+name: 18 years
+related_synonym: "18 year" []
+related_synonym: "18 yr" []
+related_synonym: "age 18" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300072
+name: 19 years
+related_synonym: "19 year" []
+related_synonym: "19 yr" []
+related_synonym: "age 19" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300073
+name: 20 years
+related_synonym: "20 year" []
+related_synonym: "20 yr" []
+related_synonym: "age 20" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300074
+name: 21 years
+related_synonym: "21 year" []
+related_synonym: "21 yr" []
+related_synonym: "age 21" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300075
+name: 22 years
+related_synonym: "22 year" []
+related_synonym: "22 yr" []
+related_synonym: "age 22" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300076
+name: 23 years
+related_synonym: "23 year" []
+related_synonym: "23 yr" []
+related_synonym: "age 23" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300077
+name: 24 years
+related_synonym: "24 year" []
+related_synonym: "24 yr" []
+related_synonym: "age 24" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300078
+name: 25 years
+related_synonym: "25 year" []
+related_synonym: "25 yr" []
+related_synonym: "age 25" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300079
+name: 26 years
+related_synonym: "26 year" []
+related_synonym: "26 yr" []
+related_synonym: "age 26" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300080
+name: 27 years
+related_synonym: "27 year" []
+related_synonym: "27 yr" []
+related_synonym: "age 27" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300081
+name: 28 years
+related_synonym: "28 year" []
+related_synonym: "28 yr" []
+related_synonym: "age 28" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300082
+name: 29 years
+related_synonym: "29 year" []
+related_synonym: "29 yr" []
+related_synonym: "age 29" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300083
+name: 30 years
+related_synonym: "30 year" []
+related_synonym: "30 yr" []
+related_synonym: "age 30" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300084
+name: 31 years
+related_synonym: "31 year" []
+related_synonym: "31 yr" []
+related_synonym: "age 31" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300085
+name: 32 years
+related_synonym: "32 year" []
+related_synonym: "32 yr" []
+related_synonym: "age 32" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300086
+name: 33 years
+related_synonym: "33 year" []
+related_synonym: "33 yr" []
+related_synonym: "age 33" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300087
+name: 34 years
+related_synonym: "34 year" []
+related_synonym: "34 yr" []
+related_synonym: "age 34" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300088
+name: 35 years
+related_synonym: "35 year" []
+related_synonym: "35 yr" []
+related_synonym: "age 35" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300089
+name: 36 years
+related_synonym: "36 year" []
+related_synonym: "36 yr" []
+related_synonym: "age 36" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300090
+name: 37 years
+related_synonym: "37 year" []
+related_synonym: "37 yr" []
+related_synonym: "age 37" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300091
+name: 38 years
+related_synonym: "38 year" []
+related_synonym: "38 yr" []
+related_synonym: "age 38" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300092
+name: 39 years
+related_synonym: "39 year" []
+related_synonym: "39 yr" []
+related_synonym: "age 39" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300093
+name: 40 years
+related_synonym: "40 year" []
+related_synonym: "40 yr" []
+related_synonym: "age 40" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300094
+name: 41 years
+related_synonym: "41 year" []
+related_synonym: "41 yr" []
+related_synonym: "age 41" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300095
+name: 42 years
+related_synonym: "42 year" []
+related_synonym: "42 yr" []
+related_synonym: "age 42" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300096
+name: 43 years
+related_synonym: "43 year" []
+related_synonym: "43 yr" []
+related_synonym: "age 43" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300097
+name: 44 years
+related_synonym: "44 year" []
+related_synonym: "44 yr" []
+related_synonym: "age 44" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300098
+name: 45 years
+related_synonym: "45 year" []
+related_synonym: "45 yr" []
+related_synonym: "age 45" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300099
+name: 46 years
+related_synonym: "46 year" []
+related_synonym: "46 yr" []
+related_synonym: "age 46" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300100
+name: 47 years
+related_synonym: "47 year" []
+related_synonym: "47 yr" []
+related_synonym: "age 47" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300101
+name: 48 years
+related_synonym: "48 year" []
+related_synonym: "48 yr" []
+related_synonym: "age 48" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300102
+name: 49 years
+related_synonym: "49 year" []
+related_synonym: "49 yr" []
+related_synonym: "age 49" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300103
+name: 50 years
+related_synonym: "50 year" []
+related_synonym: "50 yr" []
+related_synonym: "age 50" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300104
+name: 51 years
+related_synonym: "51 year" []
+related_synonym: "51 yr" []
+related_synonym: "age 51" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300105
+name: 52 years
+related_synonym: "52 year" []
+related_synonym: "52 yr" []
+related_synonym: "age 52" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300106
+name: 53 years
+related_synonym: "53 year" []
+related_synonym: "53 yr" []
+related_synonym: "age 53" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300107
+name: 54 years
+related_synonym: "54 year" []
+related_synonym: "54 yr" []
+related_synonym: "age 54" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300108
+name: 55 years
+related_synonym: "55 year" []
+related_synonym: "55 yr" []
+related_synonym: "age 55" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300109
+name: 56 years
+related_synonym: "56 year" []
+related_synonym: "56 yr" []
+related_synonym: "age 56" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300110
+name: 57 years
+related_synonym: "57 year" []
+related_synonym: "57 yr" []
+related_synonym: "age 57" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300111
+name: 58 years
+related_synonym: "58 year" []
+related_synonym: "58 yr" []
+related_synonym: "age 58" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300112
+name: 59 years
+related_synonym: "59 year" []
+related_synonym: "59 yr" []
+related_synonym: "age 59" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300113
+name: 60 years
+related_synonym: "60 year" []
+related_synonym: "60 yr" []
+related_synonym: "age 60" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300114
+name: 61 years
+related_synonym: "61 year" []
+related_synonym: "61 yr" []
+related_synonym: "age 61" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300115
+name: 62 years
+related_synonym: "62 year" []
+related_synonym: "62 yr" []
+related_synonym: "age 62" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300116
+name: 63 years
+related_synonym: "63 year" []
+related_synonym: "63 yr" []
+related_synonym: "age 63" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300117
+name: 64 years
+related_synonym: "64 year" []
+related_synonym: "64 yr" []
+related_synonym: "age 64" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300118
+name: 65 years
+related_synonym: "65 year" []
+related_synonym: "65 yr" []
+related_synonym: "age 65" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300119
+name: 66 years
+related_synonym: "66 year" []
+related_synonym: "66 yr" []
+related_synonym: "age 66" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300120
+name: 67 years
+related_synonym: "67 year" []
+related_synonym: "67 yr" []
+related_synonym: "age 67" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300121
+name: 68 years
+related_synonym: "68 year" []
+related_synonym: "68 yr" []
+related_synonym: "age 68" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300122
+name: 69 years
+related_synonym: "69 year" []
+related_synonym: "69 yr" []
+related_synonym: "age 69" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300123
+name: elderly
+related_synonym: "geriatric" []
+is_a: EV:0300070 ! adult
+
+[Term]
+id: EV:0300124
+name: 70 years
+related_synonym: "70 year" []
+related_synonym: "70 yr" []
+related_synonym: "age 70" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300125
+name: 71 years
+related_synonym: "71 year" []
+related_synonym: "71 yr" []
+related_synonym: "age 71" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300126
+name: 72 years
+related_synonym: "72 year" []
+related_synonym: "72 yr" []
+related_synonym: "age 72" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300127
+name: 73 years
+related_synonym: "73 year" []
+related_synonym: "73 yr" []
+related_synonym: "age 73" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300128
+name: 74 years
+related_synonym: "74 year" []
+related_synonym: "74 yr" []
+related_synonym: "age 74" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300129
+name: 75 years
+related_synonym: "75 year" []
+related_synonym: "75 yr" []
+related_synonym: "age 75" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300130
+name: 76 years
+related_synonym: "76 year" []
+related_synonym: "76 yr" []
+related_synonym: "age 76" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300131
+name: 77 years
+related_synonym: "77 year" []
+related_synonym: "77 yr" []
+related_synonym: "age 77" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300132
+name: 78 years
+related_synonym: "78 year" []
+related_synonym: "78 yr" []
+related_synonym: "age 78" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300133
+name: 79 years
+related_synonym: "79 year" []
+related_synonym: "79 yr" []
+related_synonym: "age 79" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300134
+name: 80 years
+related_synonym: "80 year" []
+related_synonym: "80 yr" []
+related_synonym: "age 80" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300135
+name: 81 years
+related_synonym: "81 year" []
+related_synonym: "81 yr" []
+related_synonym: "age 81" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300136
+name: 82 years
+related_synonym: "82 year" []
+related_synonym: "82 yr" []
+related_synonym: "age 82" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300137
+name: 83 years
+related_synonym: "83 year" []
+related_synonym: "83 yr" []
+related_synonym: "age 83" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300138
+name: 84 years
+related_synonym: "84 year" []
+related_synonym: "84 yr" []
+related_synonym: "age 84" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300139
+name: 85 years
+related_synonym: "85 year" []
+related_synonym: "85 yr" []
+related_synonym: "age 85" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300140
+name: 86 years
+related_synonym: "86 year" []
+related_synonym: "86 yr" []
+related_synonym: "age 86" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300141
+name: 87 years
+related_synonym: "87 year" []
+related_synonym: "87 yr" []
+related_synonym: "age 87" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300142
+name: 88 years
+related_synonym: "88 year" []
+related_synonym: "88 yr" []
+related_synonym: "age 88" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300143
+name: 89 years
+related_synonym: "89 year" []
+related_synonym: "89 yr" []
+related_synonym: "age 89" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300144
+name: 90 years
+related_synonym: "90 year" []
+related_synonym: "90 yr" []
+related_synonym: "age 90" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300145
+name: 91 years
+related_synonym: "91 year" []
+related_synonym: "91 yr" []
+related_synonym: "age 91" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300146
+name: 92 years
+related_synonym: "92 year" []
+related_synonym: "92 yr" []
+related_synonym: "age 92" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300147
+name: 93 years
+related_synonym: "93 year" []
+related_synonym: "93 yr" []
+related_synonym: "age 93" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300148
+name: 94 years
+related_synonym: "94 year" []
+related_synonym: "94 yr" []
+related_synonym: "age 94" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300149
+name: 95 years
+related_synonym: "95 year" []
+related_synonym: "95 yr" []
+related_synonym: "age 95" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300150
+name: 96 years
+related_synonym: "96 year" []
+related_synonym: "96 yr" []
+related_synonym: "age 96" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300151
+name: 97 years
+related_synonym: "97 year" []
+related_synonym: "97 yr" []
+related_synonym: "age 97" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300152
+name: 98 years
+related_synonym: "98 year" []
+related_synonym: "98 yr" []
+related_synonym: "age 98" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300153
+name: 99 years
+related_synonym: "99 year" []
+related_synonym: "99 yr" []
+related_synonym: "age 99" []
+is_a: EV:0300123 ! elderly
+
+[Term]
+id: EV:0300154
+name: unclassifiable
+is_a: EV:0300000 ! Development Stage
+
+[Term]
+id: EV:0300155 
+name: male
+is_a: EV:0300000 ! Development Stage
+
+[Term]
+id: EV:0300156 
+name: female
+is_a: EV:0300000 ! Development Stage
+

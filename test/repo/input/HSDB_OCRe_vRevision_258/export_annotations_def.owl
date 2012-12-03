@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY obo "http://purl.obolibrary.org/obo/" >
+    <!ENTITY OCR "http://purl.org/net/OCRe/OCR.owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY OCRe "http://purl.org/net/OCRe/OCRe.owl#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY OCRe_ext "http://purl.org/net/OCRe/OCRe_ext.owl#" >
+    <!ENTITY HSDB_OCRe "http://purl.org/net/OCRe/HSDB_OCRe.owl#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/net/OCRe/export_annotations_def.owl#"
+     xml:base="http://purl.org/net/OCRe/export_annotations_def.owl"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:OCR="http://purl.org/net/OCRe/OCR.owl#"
+     xmlns:OCRe_ext="http://purl.org/net/OCRe/OCRe_ext.owl#"
+     xmlns:OCRe="http://purl.org/net/OCRe/OCRe.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:HSDB_OCRe="http://purl.org/net/OCRe/HSDB_OCRe.owl#">
+    <owl:Ontology rdf:about="http://purl.org/net/OCRe/export_annotations_def.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&obo;IAO_0000115"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/net/OCRe/export_annotations_def.owl#OCRE585583">
+        <rdfs:label rdf:datatype="&xsd;string">select group</rdfs:label>
+        <obo:IAO_0000115>For classes that are defined as unions of other classes, the XML Schema export should generates a complex type chooses one of the groups that correspond to the children classes specified using this annotation. Thus, for example, if C = A union B. The xsd should contain group A, B each of which has the same component tags as the complex types A, B. The complex type C should be a selection from group A or B.</obo:IAO_0000115>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.org/net/OCRe/export_annotations_def.owl#OCRE511666">
+        <rdfs:label rdf:datatype="&xsd;string">has subclass type</rdfs:label>
+        <obo:IAO_0000115>The class annotation that denotes the type of subclass derivation (restriction or extension) that the complex type corresponding to the class uses.</obo:IAO_0000115>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.org/net/OCRe/export_annotations_def.owl#OCRE529769">
+        <rdfs:label>xsd root</rdfs:label>
+        <obo:IAO_0000115>An ontology annotation that denotes the class that should become the root element in a XSD schema export. </obo:IAO_0000115>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.org/net/OCRe/export_annotations_def.owl#OCRE566765">
+        <rdfs:label rdf:datatype="&xsd;string">has single parent</rdfs:label>
+        <obo:IAO_0000115>The class anootation that denotes the parent from which the complex type corresponding to the class is derived.</obo:IAO_0000115>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.org/net/OCRe/export_annotations_def.owl#OCRE520413">
+        <rdfs:label>data element</rdfs:label>
+        <obo:IAO_0000115>The class annotation that specifies a property that should be represented as an element tag in the complex type or group corresponding to the class. </obo:IAO_0000115>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.org/net/OCRe/export_annotations_def.owl#OCRE863610">
+        <rdfs:label>element order</rdfs:label>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.org/net/OCRe/export_annotations_def.owl#OCRE580987">
+        <rdfs:label rdf:datatype="&xsd;string">xsd label</rdfs:label>
+        <obo:IAO_0000115>A annotation on a property that specifies the string that should be used as the element tag (corresponding to the property) in an XML Schema export. </obo:IAO_0000115>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="http://purl.org/net/OCRe/export_annotations_def.owl#OCRE826078">
+        <rdfs:label>has value set type</rdfs:label>
+        <rdfs:range rdf:resource="&OCRe_ext;OCRE867266"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/net/OCRe/HSDB_OCRe.owl#OCRE536811 -->
+
+    <owl:Class rdf:about="&HSDB_OCRe;OCRE536811">
+        <rdfs:label rdf:datatype="&xsd;string">Subclass type</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&HSDB_OCRe;OCRE517890"/>
+                    <rdf:Description rdf:about="&HSDB_OCRe;OCRE521226"/>
+                </owl:oneOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&OCRe;OCRE400010"/>
+        <obo:IAO_0000115>An enumeration of the types of subclassing that are possible in XML Schema (extension and restriction)</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE400010 -->
+
+    <owl:Class rdf:about="&OCRe;OCRE400010"/>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE867266 -->
+
+    <owl:Class rdf:about="&OCRe_ext;OCRE867266">
+        <rdfs:label>Value set type</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&OCRe;OCRE400010"/>
+        <obo:IAO_0000115>An enumeration of different representations of value sets in the ontology.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/net/OCRe/HSDB_OCRe.owl#OCRE517890 -->
+
+    <owl:NamedIndividual rdf:about="&HSDB_OCRe;OCRE517890">
+        <rdf:type rdf:resource="&HSDB_OCRe;OCRE536811"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/net/OCRe/HSDB_OCRe.owl#OCRE521226 -->
+
+    <owl:NamedIndividual rdf:about="&HSDB_OCRe;OCRE521226">
+        <rdf:type rdf:resource="&HSDB_OCRe;OCRE536811"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE820798 -->
+
+    <owl:NamedIndividual rdf:about="&OCRe_ext;OCRE820798">
+        <rdf:type rdf:resource="&OCRe_ext;OCRE867266"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE827797 -->
+
+    <owl:NamedIndividual rdf:about="&OCRe_ext;OCRE827797">
+        <rdf:type rdf:resource="&OCRe_ext;OCRE867266"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE874148 -->
+
+    <owl:NamedIndividual rdf:about="&OCRe_ext;OCRE874148">
+        <rdf:type rdf:resource="&OCRe_ext;OCRE867266"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE877903 -->
+
+    <owl:NamedIndividual rdf:about="&OCRe_ext;OCRE877903">
+        <rdf:type rdf:resource="&OCRe_ext;OCRE867266"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe_ext.owl#OCRE893499 -->
+
+    <owl:NamedIndividual rdf:about="&OCRe_ext;OCRE893499">
+        <rdf:type rdf:resource="&OCRe_ext;OCRE867266"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+

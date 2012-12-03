@@ -1,0 +1,484 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:sta="http://www.co-ode.org/ontologies/basic-bio/additional-top-self-standing.owl#"
+    xmlns:vt="http://www.co-ode.org/ontologies/basic-bio/very-top.owl#"
+    xmlns:rfp="http://www.co-ode.org/ontologies/basic-bio/refining-entities-and-properties.owl#"
+    xmlns:st="http://www.co-ode.org/ontologies/basic-bio/top-self-standing.owl#"
+    xmlns:rlp="http://www.co-ode.org/ontologies/basic-bio/advanced-relational-properties.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:tbio="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#"
+  xml:base="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl">
+  <owl:Ontology rdf:about="">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Basic vertebrate anatomy.  The major gross pieces largely derived from FMA. 
+
+Imports summary - not full tree
+Top-Bio
+  advanced-relational-properties
+  refinining-entities-and-properties
+    Additiona-self-standing
+      self-standing
+        very-top</rdfs:comment>
+    <owl:imports rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Caranium">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Half_heart"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Trachea"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Cardiac_valve"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Cardiac_chamber"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ_component"/>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Bronchus"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Brain">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Lung"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Stomach"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Pericardium"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ"/>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Liver"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Heart"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Stomach">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Liver"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Heart"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Lung"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Brain"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Pericardium"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Tricuspid_valve">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Pulmonary_valve"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Aortic_valve"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Cardiac_valve"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Mitral_valve"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Mirror_imaged_value">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Paired_value"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Body_proper">
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body_part"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="is_subdivision_of_directly"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Neck">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Head"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Limb"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#is_subdivision_of_directly"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#Body_proper"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Trunk"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body_part"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Laterality_selector_value">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:ID="Left_laterality_value"/>
+          <owl:Class rdf:ID="Right_laterality_value"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://www.co-ode.org/ontologies/basic-bio/refining-entities-and-properties.owl#Selector">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Selectors are those things like right and left, first second, third etc. which imply existence of some several variants of some abstraction type.</rdfs:comment>
+      </rdf:Description>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Right_laterality_value">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Left_laterality_value"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Laterality_selector_value"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Cardiac_chamber">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Trachea"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ_component"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Half_heart"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Cardiac_valve"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Caranium"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Bronchus"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Lobe_of_lung">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:ID="Lobe"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:ID="is_subdivision_of"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#Lung"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#Liver">
+    <owl:disjointWith rdf:resource="#Brain"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Heart"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Pericardium"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Stomach"/>
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Lung"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Cardiac_atrium">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Cardiac_ventricle"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Cardiac_chamber"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Lower_limb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Limb"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Upper_limb"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Mitral_valve">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Cardiac_valve"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Aortic_valve"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Tricuspid_valve"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Pulmonary_valve"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Aortic_valve">
+    <owl:disjointWith rdf:resource="#Mitral_valve"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Cardiac_valve"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Pulmonary_valve"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Tricuspid_valve"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Trunk">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Limb"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Neck"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Head"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#is_subdivision_of_directly"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#Body_proper"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body_part"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Left_laterality_value">
+    <rdfs:subClassOf rdf:resource="#Laterality_selector_value"/>
+    <owl:disjointWith rdf:resource="#Right_laterality_value"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Pericardium">
+    <owl:disjointWith rdf:resource="#Liver"/>
+    <owl:disjointWith rdf:resource="#Brain"/>
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ"/>
+    <owl:disjointWith rdf:resource="#Stomach"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Lung"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Heart"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Paired_value">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Paired_or_unpaired"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Unpaired_value"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Half_heart">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Cardiac_valve"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Caranium"/>
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ_component"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Trachea"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Bronchus"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Cardiac_chamber"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Unpaired_value">
+    <owl:disjointWith rdf:resource="#Paired_value"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Paired_or_unpaired"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Paired_or_unpaired">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Paired_value"/>
+          <owl:Class rdf:about="#Unpaired_value"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Controls whether there are right and left variants.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/refining-entities-and-properties.owl#Intrinsic_characteristic"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Upper_limb">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Limb"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Lower_limb"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Cardiac_valve">
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ_component"/>
+    <owl:disjointWith rdf:resource="#Half_heart"/>
+    <owl:disjointWith rdf:resource="#Cardiac_chamber"/>
+    <owl:disjointWith rdf:resource="#Caranium"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Trachea"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Bronchus"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Limb">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#is_subdivision_of_directly"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Head"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body_part"/>
+    <owl:disjointWith rdf:resource="#Neck"/>
+    <owl:disjointWith rdf:resource="#Trunk"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Trachea">
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ_component"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Bronchus"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Cardiac_chamber"/>
+    <owl:disjointWith rdf:resource="#Half_heart"/>
+    <owl:disjointWith rdf:resource="#Caranium"/>
+    <owl:disjointWith rdf:resource="#Cardiac_valve"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Head">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#is_subdivision_of_directly"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Trunk"/>
+    <owl:disjointWith rdf:resource="#Limb"/>
+    <owl:disjointWith rdf:resource="#Neck"/>
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body_part"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Pulmonary_valve">
+    <owl:disjointWith rdf:resource="#Tricuspid_valve"/>
+    <rdfs:subClassOf rdf:resource="#Cardiac_valve"/>
+    <owl:disjointWith rdf:resource="#Aortic_valve"/>
+    <owl:disjointWith rdf:resource="#Mitral_valve"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Cardiac_ventricle">
+    <rdfs:subClassOf rdf:resource="#Cardiac_chamber"/>
+    <owl:disjointWith rdf:resource="#Cardiac_atrium"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Bronchus">
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ_component"/>
+    <owl:disjointWith rdf:resource="#Cardiac_valve"/>
+    <owl:disjointWith rdf:resource="#Half_heart"/>
+    <owl:disjointWith rdf:resource="#Trachea"/>
+    <owl:disjointWith rdf:resource="#Cardiac_chamber"/>
+    <owl:disjointWith rdf:resource="#Caranium"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Lobe">
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ_division"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Blood">
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Amount_of_Biological_substance"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Blood -
+
+The "Amount_of_" prefix is is pedantic adherence to DOLCE conventions and technically clearly correct.  One cannot have an instance of 'Blood' without some amount.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Lung">
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ"/>
+    <owl:disjointWith rdf:resource="#Pericardium"/>
+    <owl:disjointWith rdf:resource="#Stomach"/>
+    <owl:disjointWith rdf:resource="#Liver"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Heart"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Brain"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Heart">
+    <owl:disjointWith rdf:resource="#Brain"/>
+    <owl:disjointWith rdf:resource="#Pericardium"/>
+    <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ"/>
+    <owl:disjointWith rdf:resource="#Liver"/>
+    <owl:disjointWith rdf:resource="#Stomach"/>
+    <owl:disjointWith rdf:resource="#Lung"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="has_subdivision_directly">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#is_subdivision_of_directly"/>
+    </owl:inverseOf>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="has_subdivision"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="is_component_of">
+    <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/advanced-relational-properties.owl#is_determinate_part_of"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="has_component"/>
+    </owl:inverseOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#has_subdivision">
+    <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/advanced-relational-properties.owl#has_determinate_part"/>
+    <owl:inverseOf>
+      <owl:TransitiveProperty rdf:about="#is_subdivision_of"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#is_subdivision_of_directly">
+    <rdfs:subPropertyOf>
+      <owl:TransitiveProperty rdf:about="#is_subdivision_of"/>
+    </rdfs:subPropertyOf>
+    <owl:inverseOf rdf:resource="#has_subdivision_directly"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has_component_directly">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#has_component"/>
+    </rdfs:subPropertyOf>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="is_component_of_directly"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#is_component_of_directly">
+    <rdfs:subPropertyOf rdf:resource="#is_component_of"/>
+    <owl:inverseOf rdf:resource="#has_component_directly"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#has_component">
+    <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/advanced-relational-properties.owl#defines"/>
+    <owl:inverseOf rdf:resource="#is_component_of"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has_laterality">
+    <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/refining-entities-and-properties.owl#selector_property"/>
+    <rdfs:domain rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body_part"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:TransitiveProperty rdf:about="#is_subdivision_of">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Subdivisions are things which are of essentially the same structure as the whole.  Examples, lobes and lungs, hand and extremity.
+
+The important inference is that the subdivision has the same layers and portions as the whole.  For example, the hand is a subdivision of the upper extremity.  Therefore the skin of the hand is a subdivision of the skin of the upper extremity.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#has_subdivision"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/advanced-relational-properties.owl#is_determinate_part_of"/>
+  </owl:TransitiveProperty>
+  <owl:FunctionalProperty rdf:ID="has_pairedness">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/refining-entities-and-properties.owl#selector_property"/>
+    <rdfs:domain rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body_part"/>
+  </owl:FunctionalProperty>
+  <rdf:Description rdf:about="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#gross_anat_structure">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Slightly narrower than the FMA's in that it excludes cells and macromolecules.  Still aconvenient mechanism.  
+
+Useful as a domain for laterality, pairedness, etc.</rdfs:comment>
+  </rdf:Description>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 2.2, Build 304)  http://protege.stanford.edu -->
