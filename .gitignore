@@ -2,3 +2,5 @@
 **.DS_Store
 **.class
 **.swp
+
+target/owlapi_wrapper-0.0.1-SNAPSHOT.jar
