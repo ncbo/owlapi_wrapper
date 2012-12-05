@@ -1,0 +1,1526 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY dcterms "http://purl.org/dc/terms/" >
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY obo "http://purl.obolibrary.org/obo/" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY dctype "http://purl.org/dc/dcmitype/Image" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY OCRe "http://purl.org/net/OCRe/OCRe.owl#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY statistics "http://purl.org/net/OCRe/statistics.owl#" >
+    <!ENTITY study_design "http://purl.org/net/OCRe/study_design.owl#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY study_protocol "http://purl.org/net/OCRe/study_protocol.owl#" >
+    <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
+    <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/net/OCRe/study_design.owl#"
+     xml:base="http://purl.org/net/OCRe/study_design.owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+     xmlns:OCRe="http://purl.org/net/OCRe/OCRe.owl#"
+     xmlns:statistics="http://purl.org/net/OCRe/statistics.owl#"
+     xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:study_design="http://purl.org/net/OCRe/study_design.owl#"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:dctype="http://purl.org/dc/dcmitype/Image"
+     xmlns:study_protocol="http://purl.org/net/OCRe/study_protocol.owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://purl.org/net/OCRe/study_design.owl">
+        <rdfs:comment rdf:datatype="&xsd;string">An ontology of study design descriptors and categorization of study design types in terms of their design descriptors.</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&obo;IAO_0000115"/>
+    <owl:AnnotationProperty rdf:about="&obo;IAO_0000116"/>
+    <owl:AnnotationProperty rdf:about="&statistics;definition"/>
+    <owl:AnnotationProperty rdf:about="&obo;IAO_0000119"/>
+    <owl:AnnotationProperty rdf:about="&obo;IAO_0000232"/>
+    <owl:AnnotationProperty rdf:about="&obo;IAO_0000117"/>
+    <owl:AnnotationProperty rdf:about="&rdfs;label"/>
+    <owl:AnnotationProperty rdf:about="&statistics;curator"/>
+    <owl:AnnotationProperty rdf:about="&rdfs;comment"/>
+    <owl:AnnotationProperty rdf:about="&study_protocol;develop_comment"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE900001 -->
+
+    <owl:ObjectProperty rdf:about="&OCRe;OCRE900001">
+        <rdfs:label rdf:datatype="&xsd;string">has design characteristic</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/net/OCRe/OCRe.owl#OCRE900002 -->
+
+    <owl:DatatypeProperty rdf:about="&OCRe;OCRE900002">
+        <rdfs:label rdf:datatype="&xsd;string">study design data property</rdfs:label>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE900003 -->
+
+    <owl:DatatypeProperty rdf:about="&study_design;OCRE900003">
+        <rdfs:label rdf:datatype="&xsd;string">has allocation concealment method</rdfs:label>
+        <statistics:definition rdf:datatype="&xsd;string">Allocation concealment method describes the process used to ensure that the person deciding to enter a participant into a randomised controlled trial does not know the comparison group into which that individual will be allocated. This is distinct from blinding, and is aimed at preventing selection bias. Some attempts at concealing allocation are more prone to manipulation than others, and the method of allocation concealment is used as an assessment of the quality of a trial. [Glossary of Terms in The Cochrane Collaboration]
+
+Examples:
+- Centralized (e.g., allocation by a central office unaware of subject characteristics) or pharmacy-controlled.
+- On-site computer system holding a locked unreadable computer file that can be accessed only after the characteristics of an enrolled participant have been entered.
+- Sequentially numbered, opaque, sealed envelopes.</statistics:definition>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Glossary in The Cochrane Collaboration. Available at http://www.cochrane.org/glossary</obo:IAO_0000119>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Randomization is the process of randomly allocating participants into one of the arms of a controlled trial. There are two components to randomisation: the generation of a random sequence [allocation scheme], and its implementation [allocation concealment method], ideally in a way so that those entering participants into a study are not aware of the sequence (concealment of allocation).
+
+Examples:
+- Centralized (e.g., allocation by a central office unaware of subject characteristics) or pharmacy-controlled.
+- On-site computer system holding a locked unreadable computer file that can be accessed only after the characteristics of an enrolled participant have been entered.
+- Sequentially numbered, opaque, sealed envelopes.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <rdfs:subPropertyOf rdf:resource="&OCRe;OCRE900002"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE900004 -->
+
+    <owl:DatatypeProperty rdf:about="&study_design;OCRE900004">
+        <rdfs:label rdf:datatype="&xsd;string">has analysis of cost</rdfs:label>
+        <study_protocol:develop_comment rdf:datatype="&xsd;string">Simona: used ot be a class</study_protocol:develop_comment>
+        <statistics:definition rdf:datatype="&xsd;string">Study includes an analysis of cost.</statistics:definition>
+        <rdfs:subPropertyOf rdf:resource="&OCRe;OCRE900002"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE900005 -->
+
+    <owl:DatatypeProperty rdf:about="&study_design;OCRE900005">
+        <rdfs:label rdf:datatype="&xsd;string">has matching</rdfs:label>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Glossary in The Cochrane Collaboration. Available at http://www.cochrane.org/glossary</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">[In a case-control study:] Choosing one or more controls with particular matching attributes for each case. Researchers match cases and controls according to particular variables that are thought to be important, such as age and sex.
+
+In cohort and cross-sectional studies, matching is done for analysis.</obo:IAO_0000115>
+        <rdfs:subPropertyOf rdf:resource="&OCRe;OCRE900002"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE900006 -->
+
+    <owl:DatatypeProperty rdf:about="&study_design;OCRE900006">
+        <rdfs:label rdf:datatype="&xsd;string">has pooled data</rdfs:label>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">In a pooled data study, the analysis is performed on subject-level results collected in two or more studies, with their own protocol(s). A study can include both original (de novo) data collection and the use of data pooled from one or more other studies. This is different from meta-analysis, where summary results from different studies are combined.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <study_protocol:develop_comment rdf:datatype="&xsd;string">Simona: used to be a class.</study_protocol:develop_comment>
+        <rdfs:subPropertyOf rdf:resource="&OCRe;OCRE900002"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100001 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100001">
+        <rdfs:label rdf:datatype="&xsd;string">Case and control in same experimental unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100059"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100088"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Each case serves as its own control</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100002 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100002">
+        <rdfs:label rdf:datatype="&xsd;string">Allocation group cardinality</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100048"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">In the context of a study where the main comparison is within experimental units, investigator assigns regimen of interventions to an allocation group made up of one (single) or of more than one (multiple) experimental unit.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100003 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100003">
+        <rdfs:label rdf:datatype="&xsd;string">Intervention assignment scheme</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100048"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The scheme used to assign regimens of interventions: single factor or factorial.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100004 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100004">
+        <rdfs:label rdf:datatype="&xsd;string">Nested</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100022"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100062"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Cases and controls (or exposed and unexposed) are drawn from the same study cohort/sample.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100005 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100005">
+        <rdfs:label rdf:datatype="&xsd;string">Study design characteristic</rdfs:label>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A meta-level characterization of the design of a study</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100006 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100006">
+        <rdfs:label rdf:datatype="&xsd;string">Probability sampling</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100049"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100019"/>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">ClinicalTrials.gov Protocol Data Element Definitions (DRAFT). Available at  http://prsinfo.clinicaltrials.gov/definitions.html</obo:IAO_0000119>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Probability sampling is an exclusively random process to guarantee that each participant or population has specified chance of selection, such as simple random sampling, systematic sampling, stratified random sampling, cluster sampling, and consecutive patient sampling</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100007 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100007">
+        <rdfs:label rdf:datatype="&xsd;string">Interventional study design</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100044"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100026"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100055"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">An interventional study is a quantitative study that prospectively assigns experimental units (human participants or groups of humans or part of human participants) to one or more health-related interventions to evaluate the effects on health outcomes. Interventions include but are not restricted to drugs, cells and other biological products, surgical procedures, radiologic procedures, devices, behavioural treatments, process-of-care changes, preventive care, etc. </obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000232 rdf:datatype="&xsd;string">Simona: to be reviewed</obo:IAO_0000232>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">WHO Available at: http://www.who.int/ictrp/en/</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100008 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100008">
+        <rdfs:label rdf:datatype="&xsd;string">Open label</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100045"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&study_design;OCRE100064"/>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&study_design;OCRE100084"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100014"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100036"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100053"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100064"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100080"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100084"/>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Glossary in The Cochrane Collaboration. Available at http://www.cochrane.org/glossary</obo:IAO_0000119>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Open label indicates that no blinding is in effect: the investigator and participant are aware which intervention is being used for which participant (i.e. not blinded)</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100009 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100009">
+        <rdfs:label rdf:datatype="&xsd;string">Investigator assigns no intervention</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100058"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&study_design;OCRE100026"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100026"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The investigator does not actively assign study experimental units to regimens of interventions.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100011 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100011">
+        <rdfs:label rdf:datatype="&xsd;string">Superiority</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100072"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100012"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100076"/>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Bull NYU Hosp Jt Dis. 2008;66(2):150-4.</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Superiority is a type of comparative intent. 
+When the aim of the study is to show that an experimental (E) treatment is superior to a control (C) treatment, the RCT is called a superiority trial and the associated statistical test is a superiority test. With a significant result, one concludes in a superiority trial that E is different in effect from C, and when the observed result is in favor of E, we conclude that E is statistically, significantly better performing than C.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100012 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100012">
+        <rdfs:label rdf:datatype="&xsd;string">Equivalence</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100072"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100076"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Equivalence is a type of comparative intent. 
+An equivalence trial is designed to determine whether the response to two or more treatments differs by an amount that is clinically unimportant. This is usually demonstrated by showing that the true treatment difference is likely to lie between a lower and an upper equivalence level of clinically acceptable differences. </obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Glossary in The Cochrane Collaboration. Available at http://www.cochrane.org/glossary</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100013 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100013">
+        <rdfs:label rdf:datatype="&xsd;string">Experimental unit selection based on predictor variable</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE942000"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100079"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE498000"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">In an observational study, the main variable on which the selection of experimental units is based is a predictor variable. 
+In this study, prospective inference occurs, i.e., from exposure to outcome.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100014 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100014">
+        <rdfs:label rdf:datatype="&xsd;string">Outcome assessor blinded</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100045"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The outcome assessor does not know to which treatment group a particular participant belongs </obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100015 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100015">
+        <rdfs:label rdf:datatype="&xsd;string">Case-crossover study design</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100055"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100001"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100079"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100018"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100039"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100078"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A case-crossover study is an observational study that aims to answer the question, &quot;Was this event triggered by something unusual that happened just before?&quot; The key feature of the design is that each case serves as its own control. The method is analogous to a crossover experiment viewed retrospectively, except that the investigator does not control when an experimental unit starts and stops being exposed to the potential trigger. Also, the exposure frequency is typically measured in only a sample of the total time when the experimental unit  was at risk of the injury or disease onset. Thus it usually resembles a case-control study more than a retrospective cohort study. 
+The simplest case-crossover design is closely analogous to a traditional matched-pair case-control design. In both designs, each case has a matched control. In a traditional matched-pair case-control study, the control is a different experimental unit  at a similar time. In the matched-pair case-crossover design, the control is the same experimental unit at a different time.</obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Annu Rev Public Health. 2000;21:193-221.</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100016 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100016">
+        <rdfs:label rdf:datatype="&xsd;string">Phase not applicable</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100038"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100066"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100067"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100068"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100069"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100070"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The concept of phase is not applicable to trials studying certain interventions (e.g., device, procedure, behavioral)</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100018 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100018">
+        <rdfs:label rdf:datatype="&xsd;string">Case-control study design</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100055"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100079"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100088"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100039"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100078"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A case control study is an observational study that compares people with a specific disease or outcome of interest (cases) to people from the same population without that disease or outcome (controls), and which seeks to find associations between the outcome and prior exposure to particular risk factors. [Glossary of Terms in The Cochrane Collaboration]</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100019 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100019">
+        <rdfs:label rdf:datatype="&xsd;string">Non-probability sampling</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100049"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&study_design;OCRE100006"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">ClinicalTrials.gov Protocol Data Element Definitions (DRAFT). Available at  http://prsinfo.clinicaltrials.gov/definitions.html</obo:IAO_0000119>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Non-probability sampling is any one of a variety of non random sampling processes, such as convenience sampling or invitation to volunteer</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100020 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100020">
+        <rdfs:label rdf:datatype="&xsd;string">Crossover study design</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100007"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100029"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100035"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100063"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100081"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100024"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100027"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100052"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A crossover study is an interventional study where the population is a more than a single experimental unit, in which at least two regimens of interventions are given alternatingly. Upon completion of one regimen, experimental units are switched to the other. For example, for a comparison of regimens A and B, the experimental units are randomly allocated to receive them in either the order A, B or the order B, A. 
+Regimens are assigned to and data are analyzed within more than one experimental unit at a time.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100021 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100021">
+        <rdfs:label rdf:datatype="&xsd;string">Allocation scheme</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100005"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Allocation scheme describes the way in which each experimental unit in an interventional trial is allocated to a treatment group.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100022 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100022">
+        <rdfs:label rdf:datatype="&xsd;string">Control group type</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100005"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Whether cases and controls (or exposed and unexposed) are drawn from the same study cohort/sample.
+Not applicable to case-crossover studies.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100023 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100023">
+        <rdfs:label rdf:datatype="&xsd;string">Prospective</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100060"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100087"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A cohort study in which outcomes occurred after the start of the study.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100024 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100024">
+        <rdfs:label rdf:datatype="&xsd;string">N-of-1 crossover study design</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100007"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100035"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100075"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100081"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100085"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100027"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100052"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">An N-of-1 crossover study is an interventional study where the population is a single human subject and in which at least two regimens of interventions are given alternatingly. Regimens are assigned to and data are analyzed within one participant at a time.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000232 rdf:datatype="&xsd;string">Simona: to be reviewed</obo:IAO_0000232>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100025 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100025">
+        <rdfs:label rdf:datatype="&xsd;string">Stratified randomization</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100030"/>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Glossary in The Cochrane Collaboration. Available at http://www.cochrane.org/glossary</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Stratified randomization is restricted randomization used to ensure that equal numbers of participants with a characteristic thought to affect prognosis or response to the intervention will be allocated to each comparison group. For example, in a trial of women with breast cancer, it may be important to have similar numbers of pre-menopausal and postmenopausal women in each comparison group. Stratified randomisation could be used to allocate equal numbers of pre- and post-menopausal women to each treatment group. Stratified randomisation is performed by performing separate randomisation (often using random permuted blocks) for each strata.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100026 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100026">
+        <rdfs:label rdf:datatype="&xsd;string">Investigator assigns intervention</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100058"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The investigator actively assigns the study experimental units to one or more regimens of interventions (each including one or more interventions, or no intervention).</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100027 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100027">
+        <rdfs:label rdf:datatype="&xsd;string">Parallel group study design</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100007"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100035"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100061"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100052"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A parallel group study is an interventional study that compares across at least two allocation groups concurrently, each receiving a regimen of interventions (which can be &quot;no intervention&quot;).</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000232 rdf:datatype="&xsd;string">Simona: to be reviewed.</obo:IAO_0000232>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100028 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100028">
+        <rdfs:label rdf:datatype="&xsd;string">Mode of inquiry</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100005"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Mode of inquiry refers to the research method used in a study</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100029 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100029">
+        <rdfs:label rdf:datatype="&xsd;string">Multiple experimental unit allocation group</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100002"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100075"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">In the context of a study where the main comparison is within experimental units, investigator assigns regimen of interventions to an allocation group made up of more than one experimental unit.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100030 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100030">
+        <rdfs:label rdf:datatype="&xsd;string">Restricted randomization</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100033"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100083"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Restricted randomization is a random allocation scheme used to control the randomization to achieve balance between groups in size (or other characteristics). 
+Different types of restricted randomization are as follows:
+- Blocking: Blocking is used to ensure close balance of the numbers in each group at any time during the study. After every block the number of participants in each group would be equal. Of course blocking tends to reduce the unpredictability of randomization. Therefore it is recommended to use random block sizes when using block randomization.
+- Stratification: Stratification ensures that the numbers of participants receiving each intervention are closely balanced within each stratum. Stratified randomization is achieved by performing a separate randomization procedure within each of two or more subsets of participants
+- Minimization: Minimization is not a method of randomization. Indeed it is the only non-random method which is an acceptable alternative to randomization. Minimization ensures balance between intervention groups for several patient factors. Randomization lists are not set up in advance. The first patient is truly randomly allocated; for each subsequent patient, the treatment allocation is identified, which minimizes the imbalance between groups at that time. </obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000232 rdf:datatype="&xsd;string">Simona: should we put the 3 schemes elsewhere?</obo:IAO_0000232>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">http://mahmoodsaghaei.tripod.com/Softwares/randalloc.html</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100031 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100031">
+        <rdfs:label rdf:datatype="&xsd;string">Quantitative inquiry mode</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100028"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100057"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A quantitative research method is a deductive research process that uses statistical techniques to test a specific claim or statement about a phenomenon (a hypothesis) by collecting and analyzing data to decide whether the claim is true (i.e., accept or reject the null or alternative hypothesis).</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">http://www.utexas.edu/academic/ctl/assessment/iar/research/plan/types.php</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100032 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100032">
+        <rdfs:label rdf:datatype="&xsd;string">Quasi-random allocation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100021"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100033"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100077"/>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Glossary in The Cochrane Collaboration. Available at http://www.cochrane.org/glossary</obo:IAO_0000119>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Quasi-random allocation is an allocation scheme that is not random, but is intended to produce similar groups when used to allocate experimental units. Quasi-random methods include: allocation by the person&#39;s date of birth, by the day of the week or month of the year, by a person&#39;s medical record number, or just allocating every alternate person. In practice, these methods of allocation are relatively easy to manipulate, introducing selection bias.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100033 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100033">
+        <rdfs:label rdf:datatype="&xsd;string">Random allocation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100021"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100077"/>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Glossary in The Cochrane Collaboration. Available at http://www.cochrane.org/glossary</obo:IAO_0000119>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Random allocation is an allocation scheme that uses the play of chance to assign participants to comparison groups in a trial, e.g. by using a random numbers table or a computer-generated random sequence. Random allocation implies that each individual or unit being entered into a trial has the same chance of receiving each of the possible interventions. It also implies that the probability that an individual will receive a particular intervention is independent of the probability that any other individual will receive the same intervention. </obo:IAO_0000115>
+        <obo:IAO_0000116 rdf:datatype="&xsd;string">Randomization is the process of randomly allocating experimental units into one of the arms of a controlled trial. There are two components to randomisation: the generation of a random sequence [allocation scheme], and its implementation [allocation concealment method], ideally in a way so that those entering participants into a study are not aware of the sequence (concealment of allocation). </obo:IAO_0000116>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100034 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100034">
+        <rdfs:label rdf:datatype="&xsd;string">Genetically related non-cases</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100082"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100086"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Non-cases were selected based on genetic relation</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100035 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100035">
+        <rdfs:label rdf:datatype="&xsd;string">Multiple regimen</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100042"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100037"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Multiple regimens of intervention, each including one or more individual interventions (treatments) or no treatment, each assigned to one allocation group. This means the study has at least one contemporaneous comparison group.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100036 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100036">
+        <rdfs:label rdf:datatype="&xsd;string">Caregiver blinded</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100045"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The caregiver does not know to which treatment group a particular participant belongs </obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100037 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100037">
+        <rdfs:label rdf:datatype="&xsd;string">Single regimen</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100042"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A single regimen of intervention, which includes one or more individual interventions (treatments), is assigned to one allocation group. This means the study has no contemporaneous comparison group.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100038 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100038">
+        <rdfs:label rdf:datatype="&xsd;string">Phase</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100005"/>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Glossary in The Cochrane Collaboration. Available at http://www.cochrane.org/glossary</obo:IAO_0000119>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Phase describes the level of a trial required of drugs before (and after) they are routinely used in clinical practice: 
+- Phase 1 trials assess toxic effects on humans (not many people participate in them, and usually without controls); 
+- Phase 2 trials assess therapeutic benefit (usually involving a few hundred people, usually with controls, but not always); 
+- Phase 3 trials compare the new treatment against standard (or placebo) treatment (usually a full randomised controlled trial). At this point, a drug can be approved for community use. 
+- Phase 4 monitors a new treatment in the community, often to evaluate longterm safety and effectiveness. [Glossary of Terms in The Cochrane Collaboration]
+
+A trial can be of a combination phase (e.g., 1/2).
+The concept of phase is not applicable to trials studying certain interventions (e.g., device, procedure, behavioral)</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100039 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100039">
+        <rdfs:label rdf:datatype="&xsd;string">Cross-sectional study design</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100055"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE498000"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100078"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A cross-sectional study is an observational study measuring the distribution of some characteristic(s) in a population at a particular point in time. (Also called survey.)</obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Glossary in The Cochrane Collaboration. Available at: http://www.cochrane.org/glossary</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100040 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100040">
+        <rdfs:label rdf:datatype="&xsd;string">Block randomization</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100030"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Block randomization (or Random permuted blocks) is a restricted randomisation that ensures that, at any point in a trial, roughly equal numbers of participants have been allocated to all the comparison groups. Permuted blocks should be used in trials using stratified randomisation.</obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Glossary in The Cochrane Collaboration. Available at http://www.cochrane.org/glossary</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100041 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100041">
+        <rdfs:label rdf:datatype="&xsd;string">Unit of allocation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100005"/>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Glossary in The Cochrane Collaboration. Available at http://www.cochrane.org/glossary</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The unit that is assigned to the alternative regimens of interventions being investigated in a trial. Most commonly, the unit will be an individual person, but in a cluster randomised trial, groups of people will be assigned together to one or the other of the regimens of interventions. In some other trials, different parts of a person (such as the left or right eye) might be assigned to receive different regimens of interventions. </obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100042 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100042">
+        <rdfs:label rdf:datatype="&xsd;string">Regimen cardinality</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100048"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000232 rdf:datatype="&xsd;string">Simona: to be reviewed</obo:IAO_0000232>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The number of regimens of interventions in a study. Each regimen includes one or more individual interventions (treatments) or no intervention.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100043 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100043">
+        <rdfs:label rdf:datatype="&xsd;string">Cluster as unit of allocation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100041"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100071"/>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Glossary in The Cochrane Collaboration. Available at http://www.cochrane.org/glossary</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The unit that is assigned to the alternative regimens of interventions being investigated in a trial. In a cluster randomised trial, groups of experimental units will be assigned together to one or the other of the regimens of interventions.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100044 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100044">
+        <rdfs:label rdf:datatype="&xsd;string">Quantitative study design</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100056"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100031"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100047"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A quantitative study is an individual-human study whose primary mode of inquiry is quantitative.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100045 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100045">
+        <rdfs:label rdf:datatype="&xsd;string">Blinding type</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100005"/>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Glossary in The Cochrane Collaboration. Available at http://www.cochrane.org/glossary</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">[In a controlled trial:] Blinding is the process of preventing those involved in a trial from knowing to which comparison group a particular participant belongs. The risk of bias is minimised when as few people as possible know who is receiving the experimental intervention and who the control intervention. Participants, caregivers, outcome assessors, and analysts are all candidates for being blinded. Blinding of certain groups is not always possible, for example surgeons in surgical trials. The terms single blind, double blind and triple blind are in common use, but are not used consistently and so are ambiguous unless the specific people who are blinded are listed. (Also called masking)</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100046 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100046">
+        <rdfs:label rdf:datatype="&xsd;string">Data analysis within experimental units</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100005"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">In the context of a study where the main comparison is within experimental units, whether data is analyzed within a single study experimental unit or within multiple experimental units.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100047 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100047">
+        <rdfs:label rdf:datatype="&xsd;string">Qualitative study design</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100056"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100057"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A qualitative study is an individual-human study whose primary mode of inquiry is qualitative.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100048 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100048">
+        <rdfs:label rdf:datatype="&xsd;string">Assignment characteristics</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100005"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Characteristics of the assignment experimental units (e.g., participant, eye) to a regimen of interventions</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100049 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100049">
+        <rdfs:label rdf:datatype="&xsd;string">Sampling method</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100005"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Method of sampling in observational studies.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100052 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100052">
+        <rdfs:label rdf:datatype="&xsd;string">Single group study design</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100007"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100037"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A single group study is an interventional study that has only a single allocation group and no contemporaneuos comparison group.
+
+A study in which an individual acts has his/her own comparison does not fall into this category, since an individual is not a group.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000232 rdf:datatype="&xsd;string">Simona: to be reviewed</obo:IAO_0000232>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100053 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100053">
+        <rdfs:label rdf:datatype="&xsd;string">Care provider blinded</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100045"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The care provider does not know to which treatment group a particular participant belongs</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100055 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100055">
+        <rdfs:label rdf:datatype="&xsd;string">Observational study design</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100044"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100009"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">An observational study is a quantitative study in which the investigators do not seek to intervene, and simply observe the course of events.</obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Glossary in The Cochrane Collaboration. Available at http://www.cochrane.org/glossary</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100056 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100056">
+        <rdfs:label rdf:datatype="&xsd;string">Study design</rdfs:label>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A study design is a common pattern of relationships  (in time and causation) among various study elements (e.g., time of intervention to outcomes assessment in which participants).</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100057 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100057">
+        <rdfs:label rdf:datatype="&xsd;string">Qualitative inquiry mode</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100028"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A qualitative research method is an inductive research process that involves the collection and analysis of qualitative (i.e., non-numerical) data to search for patterns, themes, and holistic features. </obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">http://www.utexas.edu/academic/ctl/assessment/iar/research/plan/types.php
+For other definitions, see http://www.google.com/search?hl=en&amp;client=safari&amp;rls=en&amp;defl=en&amp;q=define:Qualitative+research </obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100058 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100058">
+        <rdfs:label rdf:datatype="&xsd;string">Investigator assignment role</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100048"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The role the investigator plays in the assignment of study experimental units to one or more regimens of interventions (each including one or more interventions, or no intervention).</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100059 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100059">
+        <rdfs:label rdf:datatype="&xsd;string">Comparison of experimental units with the main outcome</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100005"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">In a retrospective observational study (i.e., an observational study where the main variable on which experimental units selection is based is an outcome variable), experimental units with the same outcome (cases) can be compared to themselves or to other experimental units (controls). </obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100060 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100060">
+        <rdfs:label rdf:datatype="&xsd;string">Outcomes occurred before or after study start</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100005"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Have outcomes occurred before the study start? If yes, the cohort study is historical; if no, the cohort study is prospective.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100061 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100061">
+        <rdfs:label rdf:datatype="&xsd;string">Main comparison across experimental units</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100073"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100081"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The main comparison is across study experimental units.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100062 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100062">
+        <rdfs:label rdf:datatype="&xsd;string">Non-nested</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100022"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&study_design;OCRE100004"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Cases and controls (or exposed and unexposed) are not drawn from the same cohort/sample.
+ [aka double cohort for cohort studies]</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100063 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100063">
+        <rdfs:label rdf:datatype="&xsd;string">Data analyzed within multiple experimental units</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100046"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100085"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Data is analyzed within multiple study experimental units.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100064 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100064">
+        <rdfs:label rdf:datatype="&xsd;string">Subject blinded</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100045"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The subject or individual participant does not know to which treatment group he or she or each experimental unit on him/her belongs.</obo:IAO_0000115>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">or Individual participant blinded</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100065 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100065">
+        <rdfs:label rdf:datatype="&xsd;string">Single-factor</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100003"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&study_design;OCRE100089"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="&study_design;OCRE100089"/>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Glossary in The Cochrane Collaboration. Available at http://www.cochrane.org/glossary</obo:IAO_0000119>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">In a single-factor design, an intervention is compared with one or more alternatives, or a placebo.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100066 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100066">
+        <rdfs:label rdf:datatype="&xsd;string">Phase 4</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100038"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A Phase 4 study monitors FDA-approved drug to delineate additional information including the drug&#39;s risks, benefits, and optimal use. </obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">ClinicalTrials.gov Protocol Data Element Definitions (DRAFT). Available at  http://prsinfo.clinicaltrials.gov/definitions.html</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100067 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100067">
+        <rdfs:label rdf:datatype="&xsd;string">Phase 1</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100038"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A Phase 1 trial includes initial studies to determine the metabolism and pharmacologic actions of drugs in humans, the side effects associated with increasing doses, and to gain early evidence of effectiveness; may include healthy participants and/or patients.</obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">ClinicalTrials.gov Protocol Data Element Definitions (DRAFT). Available at  http://prsinfo.clinicaltrials.gov/definitions.html</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100068 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100068">
+        <rdfs:label rdf:datatype="&xsd;string">Phase 0</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100038"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A Phase 0 trial is an exploratory trial involving very limited human exposure, with no therapeutic or diagnostic intent (e.g., screening study, microdose study).</obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">ClinicalTrials.gov Protocol Data Element Definitions (DRAFT). Available at  http://prsinfo.clinicaltrials.gov/definitions.html</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100069 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100069">
+        <rdfs:label rdf:datatype="&xsd;string">Phase 3</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100038"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A Phase 3 trial includes expanded controlled and uncontrolled trials after preliminary evidence suggesting effectiveness of the drug has been obtained, and are intended to gather additional information to evaluate the overall benefit-risk relationship of the drug and provide an adequate basis for physician labeling.</obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">ClinicalTrials.gov Protocol Data Element Definitions (DRAFT). Available at  http://prsinfo.clinicaltrials.gov/definitions.html</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100070 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100070">
+        <rdfs:label rdf:datatype="&xsd;string">Phase 2</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100038"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A Phase 2 trial includes controlled clinical studies conducted to evaluate the effectiveness of the drug for a particular indication or indications in patients with the disease or condition under study and to determine the common short-term side effects and risks.</obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">ClinicalTrials.gov Protocol Data Element Definitions (DRAFT). Available at  http://prsinfo.clinicaltrials.gov/definitions.html</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100071 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100071">
+        <rdfs:label rdf:datatype="&xsd;string">Individual as unit of allocation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100041"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The unit that is assigned to the alternative regimens of interventions being investigated in a trial. Most commonly, the unit will be an individual person. In some other trials, different parts of a person (such as the left or right eye) might be assigned to receive different regimens of interventions.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100072 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100072">
+        <rdfs:label rdf:datatype="&xsd;string">Comparative intent</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100005"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Comparative intent is an additional descriptor: Intent of comparison made in a study with two or more arms.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100073 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100073">
+        <rdfs:label rdf:datatype="&xsd;string">Main comparison and experimental units</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100005"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Whether the main comparison is across or within study experimental units</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100074 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100074">
+        <rdfs:label rdf:datatype="&xsd;string">Minimization</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100030"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A method of allocation used to provide comparison groups that are closely similar for several variables. The next participant is assessed with regard to several characteristics, and assigned to the treatment group that has so far had fewer such people assigned to it. It can be done with a component of randomisation, where the chance of allocation to the group with fewer similar participants is less than one. Minimisation is best performed centrally with the aid of a computer program to ensure concealment of allocation.</obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Glossary in The Cochrane Collaboration. Available at http://www.cochrane.org/glossary</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100075 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100075">
+        <rdfs:label rdf:datatype="&xsd;string">Single experimental unit allocation group</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100002"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">In the context of a study where the main comparison is within experimental units, investigator assigns regimen of interventions to an allocation group made up of a single experimental unit.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100076 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100076">
+        <rdfs:label rdf:datatype="&xsd;string">Non-inferiority</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100072"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A non-inferiority trial is designed to determine whether the effect of a new treatment is not worse than a standard treatment by more than a pre-specified amount. A one-sided version of an equivalence trial. [Glossary of Terms in The Cochrane Collaboration]</obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Glossary in The Cochrane Collaboration. Available at http://www.cochrane.org/glossary</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100077 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100077">
+        <rdfs:label rdf:datatype="&xsd;string">Non-random allocation</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100021"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&study_design;OCRE100032"/>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&study_design;OCRE100033"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Non-random (or Deterministic) allocation is an allocation scheme that follows a non-random rule (e.g., sequential allocation).</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100078 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100078">
+        <rdfs:label rdf:datatype="&xsd;string">Cohort study design</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100055"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&OCRe;OCRE900001"/>
+                        <owl:someValuesFrom rdf:resource="&study_design;OCRE100013"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A cohort study is an observational study in which a defined group of people (the cohort) is followed over time. The outcomes of people in subsets of this cohort are compared, to examine people who were exposed or not exposed (or exposed at different levels) to a particular intervention or other factor of interest. A prospective cohort study assembles participants and follows them into the future. A retrospective (or historical) cohort study identifies subjects from past records and follows them from the time of those records to the present. </obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Glossary in The Cochrane Collaboration. Available at: http://www.cochrane.org/glossary</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <rdfs:comment>The DL definiition of cohort study design says that a cohort study design has the characteristics &quot;Main control group defined by exposure status&quot; and &quot;outcome measured after measurement of predictors.&quot;
+
+A study design involves identification of factor variables and outcome variables. Factor variables are measured before the measurement of outcome variables. 
+
+Let C be a member of the control groups of a study S
+Let SA be the set of statistical analysis of S
+Let F(sa) be the independent variables of a statistical analysis sa in SA
+Let O(sa) be the set of dependent variables of sa
+S has &#39;cohort study design&quot; if and only if
+
+For all sa in SA, 
+There exists times t1 &lt; t2 such that
+there exists f in F(sa) such that for all c in C, f is measured at time t1 and f(c) = constant AND for all o in O(sa), o is measured at t2</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100079 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100079">
+        <rdfs:label rdf:datatype="&xsd;string">Experimental unit selection based on outcome variable</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE942000"/>
+        <owl:disjointWith rdf:resource="&study_design;OCRE498000"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">In an observational study, the main variable on which the selection of experimental units is based is an outcome variable. 
+In this study, retrospectie inference occurs, i.e., from outcome to exposure.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100080 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100080">
+        <rdfs:label rdf:datatype="&xsd;string">Statistician blinded</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100045"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The statistician does not know to which treatment group a particular participant belongs </obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100081 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100081">
+        <rdfs:label rdf:datatype="&xsd;string">Main comparison within experimental units</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100073"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The main comparison is within study experimental units.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100082 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100082">
+        <rdfs:label rdf:datatype="&xsd;string">Relation between cases and non-cases</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100005"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Relation between cases and non-cases</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100083 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100083">
+        <rdfs:label rdf:datatype="&xsd;string">Simple randomization</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100033"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Simple randomization is a random allocation scheme that has no restriction, i.e. a single sequence of random assignment. When the sample size is relatively large, simple randomization is expected to produce equal sized treatment groups.</obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">http://mahmoodsaghaei.tripod.com/Softwares/randalloc.html</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100084 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100084">
+        <rdfs:label rdf:datatype="&xsd;string">Investigator blinded</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100045"/>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">The investigator does not know to which treatment group a particular participant belongs </obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100085 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100085">
+        <rdfs:label rdf:datatype="&xsd;string">Data analyzed within single experimental unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100046"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Data is analyzed within a single study experimental unit.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100086 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100086">
+        <rdfs:label rdf:datatype="&xsd;string">Genetically unrelated non-cases</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100082"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&study_design;OCRE100034"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Non-cases were not selected based on genetic relation</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100087 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100087">
+        <rdfs:label rdf:datatype="&xsd;string">Historical</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100060"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A cohort study in which outcomes occurred before the start of the study.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100088 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100088">
+        <rdfs:label rdf:datatype="&xsd;string">Case and control not in same experimental unit</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE100059"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&study_design;OCRE100001"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">A case does not serve as its own control</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE100089 -->
+
+    <owl:Class rdf:about="&study_design;OCRE100089">
+        <rdfs:label rdf:datatype="&xsd;string">Factorial</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100003"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">Factorial design is a trial design used to assess the individual contribution of treatments given in combination, as well as any interactive effect they may have... In a trial using a 2x2 factorial design, participants are allocated to one of four possible combinations... This type of study is usually carried out in circumstances where no interaction is likely. 
+
+Example: in a factorial-design study where regimens of interventions A and B are tested, the 4 possible combinations are: A, B, A and B, neither  A nor B (placebo).</obo:IAO_0000115>
+        <obo:IAO_0000119 rdf:datatype="&xsd;string">Glossary in The Cochrane Collaboration. Available at http://www.cochrane.org/glossary</obo:IAO_0000119>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE498000 -->
+
+    <owl:Class rdf:about="&study_design;OCRE498000">
+        <rdfs:label rdf:datatype="&xsd;string">Experimental unit selection based on neither outcome nor predictor variable</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&study_design;OCRE942000"/>
+                    <owl:Class>
+                        <owl:complementOf>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&study_design;OCRE100013"/>
+                                    <rdf:Description rdf:about="&study_design;OCRE100079"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:complementOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">In an observational study, the main varibale on which the selection of experimental units is based is neither an outcome nor an exposure variable. </obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/net/OCRe/study_design.owl#OCRE942000 -->
+
+    <owl:Class rdf:about="&study_design;OCRE942000">
+        <rdfs:label rdf:datatype="&xsd;string">Main variable on which experimental unit selection is based</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&study_design;OCRE100005"/>
+        <obo:IAO_0000115 rdf:datatype="&xsd;string">In an observational study, the main variable on which the selection of experimental units is based can be an outcome variable, a predictor variable, or a variable that is neither an outcome nor a predictor one.</obo:IAO_0000115>
+        <obo:IAO_0000117 rdf:datatype="&xsd;string">Simona</obo:IAO_0000117>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing">
+        <rdfs:label rdf:datatype="&xsd;string">Thing</rdfs:label>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+
