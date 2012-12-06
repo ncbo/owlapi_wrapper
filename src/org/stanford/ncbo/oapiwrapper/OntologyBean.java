@@ -1,9 +1,24 @@
 package org.stanford.ncbo.oapiwrapper;
 
+import java.io.File;
+
 public class OntologyBean {
-	private String filePath = null;
+	private File file = null;
 	
-	public OntologyBean(String filePath) {
-		this.filePath = filePath;
+	@Override
+	public String toString() {
+		return "OntologyBean [file=" + file.getAbsolutePath() + "]";
+	}
+
+	public File getFile() {
+		return file;
+	}
+
+	public void setFile(File file) {
+		this.file = file;
+	}
+
+	public OntologyBean(File file) {
+		this.file = file;
 	}
 }

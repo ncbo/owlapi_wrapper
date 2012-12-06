@@ -17,10 +17,8 @@ public class OntologyParserCommand {
 		final Options gnuOptions = new Options(); 
 		gnuOptions.addOption("i", "input-repository", true, 
 				"Path to folder where input data repository is located")
-				.addOption("m", "master", true, 
-						"Master file. First file to be parsed.")
-				.addOption("u", "unique-file",false,
-							"Only one file is provided")
+				.addOption("m","master-filename", true,
+						"Name of the ontology file to load first")
 				.addOption("o","output-repository", true,
 						"Path to folder where input data repository is located");
 		
@@ -28,12 +26,11 @@ public class OntologyParserCommand {
 		try {
 			CommandLine call = clp.parse(gnuOptions,args);
 			String inputRepoPath = call.getOptionValue("i");
-			String masterFilePath = call.getOptionValue("m");
-			boolean uniqueFile = call.hasOption("u");
-
 			String outputRepoPath = call.getOptionValue("o");
+			String masterFileName = call.getOptionValue("m");
+
 			ParserInvocation pi = new ParserInvocation(inputRepoPath,
-					outputRepoPath, masterFilePath, uniqueFile);
+					outputRepoPath, masterFileName);
 			log.info("Parsing invocation with values " +pi.toString());
 			
 		} catch (ParseException e) {
