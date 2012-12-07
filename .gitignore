@@ -7,3 +7,6 @@ target
 target/owlapi_wrapper-0.0.1-SNAPSHOT.jar
 
 *.txt
+Logging.*
+*.xrdf
+*.ttl

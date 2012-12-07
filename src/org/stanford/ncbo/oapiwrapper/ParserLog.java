@@ -1,5 +1,8 @@
 package org.stanford.ncbo.oapiwrapper;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +59,19 @@ public class ParserLog {
 
 	public void flush() {
 		logErrors = new ArrayList<ParserLog.Error>();
+	}
+
+	public void writeTo(File file) throws Exception {
+		FileWriter fstream = new FileWriter(file);
+		BufferedWriter out = new BufferedWriter(fstream);
+
+		for (Error e : logErrors) {
+			out.write("++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+			out.write("Error: " + e.getParserError().toString() + "\n");
+			out.write("Message: " + e.getMessage().toString() + "\n");
+			out.write("++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+		}
+		out.close();
 	}
 
 }

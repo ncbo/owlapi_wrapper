@@ -25,6 +25,7 @@ public class ParserInvocation {
 		super();
 		this.inputRepositoryFolder = inputRepositoryFolder;
 		this.outputRepositoryFolder = outputRepositoryFolder;
+		this.masterFileName = masterFileName;
 	}
 
 	private String inputRepositoryFolder = null;
@@ -85,5 +86,8 @@ public class ParserInvocation {
 	
 	public ParserLog getParserLog() {
 		return this.parserLog;
+	}
+	public void saveErrors() throws Exception {
+		this.parserLog.writeTo(new File(outputRepositoryFolder + File.separator + "errors.log"));
 	}
 }

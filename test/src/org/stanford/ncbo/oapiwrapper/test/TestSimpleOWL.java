@@ -17,21 +17,21 @@ import org.stanford.ncbo.oapiwrapper.ParserInvocation;
 public class TestSimpleOWL extends TestCase {
 	private static final String inputRepositoryFolder = "./test/repo/input/bvga";
 	private static final String outputRepositoryFolder = "./test/repo/output/bvga";
-
+	private static final String masterFileName = "basic-vertebrate-gross-anatomy_v1.1.owl";
+	
 	private final static Logger log = Logger.getLogger(TestSimpleOWL.class .getName()); 
-
 
 	@Override
     protected void setUp() throws Exception  {
         super.setUp();
-
     }
 	 
 	@Test
 	public void testInputBasicVertebrateGrossAnatomyOK() {
 		ParserInvocation pi = new ParserInvocation(
 				inputRepositoryFolder, 
-				outputRepositoryFolder);
+				outputRepositoryFolder,
+				masterFileName);
 		assertEquals(true, pi.valid());
 	}
 	
@@ -50,7 +50,8 @@ public class TestSimpleOWL extends TestCase {
         
 		ParserInvocation pi = new ParserInvocation(
 				inputRepositoryFolder, 
-				outputRepositoryFolder);
+				outputRepositoryFolder,
+				masterFileName);
 		boolean valid = pi.valid();
 		if (!valid) {
 			log.log(Level.SEVERE,pi.getParserLog().toString());
@@ -73,7 +74,8 @@ public class TestSimpleOWL extends TestCase {
 	public void testInputBasicVertebrateGrossAnatomyKOOutputFolder() {
 		ParserInvocation pi = new ParserInvocation(
 				inputRepositoryFolder, 
-				"/var/zyxx1234xx9");
+				"/var/zyxx1234xx9",
+				masterFileName);
 		assertEquals(false, pi.valid());
 		assertEquals(1, pi.getParserLog().getErrors().size());
 		assertEquals(ParserError.OUPUT_REPO_CANNOT_BE_CREATED,pi.getParserLog().getErrors().get(0).getParserError());
@@ -83,7 +85,8 @@ public class TestSimpleOWL extends TestCase {
 	public void testLocalFiles() {
 		ParserInvocation pi = new ParserInvocation(
 				inputRepositoryFolder, 
-				outputRepositoryFolder);
+				outputRepositoryFolder,
+				masterFileName);
 		OntologyParser parser = null;
 		try {
 			parser = new OntologyParser(pi);
@@ -91,10 +94,19 @@ public class TestSimpleOWL extends TestCase {
 			System.out.println("Errors " + e.parserLog.toString());
 			assert(false);
 		}
-		parser.parse();
+		boolean parseResult = false;
+		try {
+			parseResult = parser.parse();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		assertEquals(true, parseResult);
 		assertEquals(1, parser.getLocalOntologies().size());
 		log.info("Only ontology " + parser.getLocalOntologies().get(0).toString());
-		
+		File f = new File(outputRepositoryFolder + File.separator + "owlapi.xrdf");
+		log.info("Output triples in " + f.getAbsolutePath());		
+		assertEquals(true, f.exists());
 	}
 
 }
