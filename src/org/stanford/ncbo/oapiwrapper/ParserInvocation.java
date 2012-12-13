@@ -61,13 +61,24 @@ public class ParserInvocation {
 	
 	public boolean valid() {
 		parserLog.flush();
-		File inputFolder = new File(this.inputRepositoryFolder);
-		if (!inputFolder.exists()) {
-			parserLog.addError(ParserError.INPUT_REPO_MISSING);
-			return false;
-		} else if (!inputFolder.isDirectory()) {
-			parserLog.addError(ParserError.INPUT_REPO_NOT_A_FOLDER);
-			return false;
+		if (inputRepositoryFolder != null) {
+			File inputFolder = new File(this.inputRepositoryFolder);
+			if (!inputFolder.exists()) {
+				parserLog.addError(ParserError.INPUT_REPO_MISSING);
+				return false;
+			} else if (!inputFolder.isDirectory()) {
+				parserLog.addError(ParserError.INPUT_REPO_NOT_A_FOLDER);
+				return false;
+			}
+		} else {
+			File masterFile = new File(this.masterFileName);
+			if (!masterFile.exists()) {
+				parserLog.addError(ParserError.MASTER_FILE_MISSING);
+				return false;
+			} else if (masterFile.isDirectory()) {
+				parserLog.addError(ParserError.MASTER_FILE_IS_FOLDER);
+				return false;
+			}
 		}
 		
 		File outputFolder = new File(this.outputRepositoryFolder);

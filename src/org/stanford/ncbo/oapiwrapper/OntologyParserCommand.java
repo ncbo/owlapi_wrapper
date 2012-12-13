@@ -11,8 +11,6 @@ import org.apache.commons.cli.ParseException;
 
 public class OntologyParserCommand {
 	private final static Logger log = Logger.getLogger(OntologyParserCommand.class .getName()); 
-
-	
 	public static void main(String[] args) {
 		final Options gnuOptions = new Options(); 
 		gnuOptions.addOption("i", "input-repository", true, 
@@ -32,7 +30,6 @@ public class OntologyParserCommand {
 			ParserInvocation pi = new ParserInvocation(inputRepoPath,
 					outputRepoPath, masterFileName);
 			log.info("Parsing invocation with values " +pi.toString());
-			
 		} catch (ParseException e) {
 			log.log(Level.SEVERE, e.getMessage());
 			e.printStackTrace();

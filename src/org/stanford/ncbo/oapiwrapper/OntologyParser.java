@@ -27,7 +27,7 @@ import org.semanticweb.owlapi.util.AutoIRIMapper;
 
 public class OntologyParser {
 	protected ParserInvocation parserInvocation = null;
-	private List<OntologyBean> ontologies = null;
+	private List<OntologyBean> ontologies = new ArrayList<OntologyBean>();
 	private OWLOntologyManager sourceOwlManager = null;
 	private OWLOntologyManager targetOwlManager = null;
 	private OWLOntology targetOwlOntology = null;
@@ -48,31 +48,36 @@ public class OntologyParser {
 
 		this.parserInvocation = parserInvocation;
 		this.sourceOwlManager = OWLManager.createOWLOntologyManager();
-		File rooDirectory = new File(this.parserInvocation.getInputRepositoryFolder());
-		this.sourceOwlManager.addIRIMapper(new AutoIRIMapper(rooDirectory, true));
+		if (this.parserInvocation.getInputRepositoryFolder() != null) {
+			File rooDirectory = new File(this.parserInvocation.getInputRepositoryFolder());
+			this.sourceOwlManager.addIRIMapper(new AutoIRIMapper(rooDirectory, true));
+		}
 		this.targetOwlManager = OWLManager.createOWLOntologyManager();
 		log.info("executor created");
 	}
 	
 	private void findLocalOntologies() {
-		log.info("["+parserInvocation.getInvocationId()+"] findLocalOntologies in " + parserInvocation.getInputRepositoryFolder());
-		File repo = new File(parserInvocation.getInputRepositoryFolder());
-		if (repo.isDirectory()) {
-		  List<String> suffixes = new ArrayList<String>();
-		  suffixes.add("owl");
-		  suffixes.add("obo");
-		  @SuppressWarnings("unchecked")
-		  Iterator<File> files = FileUtils.iterateFiles(repo, new OntologySuffixFileFilter(), new DirectoryFilter());
-		  ontologies = new ArrayList<OntologyBean>();
-		  while (files.hasNext()) {
-			  File f = files.next();
-			  ontologies.add(new OntologyBean(f));
-			  log.info("["+parserInvocation.getInvocationId()+"] findLocalOntologies in " + f.getName());
-		  }
+		if (parserInvocation.getInputRepositoryFolder() != null) {
+			log.info("["+parserInvocation.getInvocationId()+"] findLocalOntologies in " + parserInvocation.getInputRepositoryFolder());
+			File repo = new File(parserInvocation.getInputRepositoryFolder());
+			if (repo.isDirectory()) {
+			  List<String> suffixes = new ArrayList<String>();
+			  suffixes.add("owl");
+			  suffixes.add("obo");
+			  @SuppressWarnings("unchecked")
+			  Iterator<File> files = FileUtils.iterateFiles(repo, new OntologySuffixFileFilter(), new DirectoryFilter());
+			  ontologies = new ArrayList<OntologyBean>();
+			  while (files.hasNext()) {
+				  File f = files.next();
+				  ontologies.add(new OntologyBean(f));
+				  log.info("["+parserInvocation.getInvocationId()+"] findLocalOntologies in " + f.getName());
+			  }
+			}
+		} else {
+			this.ontologies.add(new OntologyBean(new File(this.parserInvocation.getMasterFileName())));
+			log.info("getInputRepositoryFolder is not provided. Unique file being parse.");
 		}
 	}
-	
-
 	
 	private boolean buildOWLOntology() {
 		Set<OWLAxiom> allAxioms = new HashSet<OWLAxiom>();
@@ -161,10 +166,27 @@ public class OntologyParser {
 	}
 
 	private OWLOntology findMasterFile() {
+		if (this.parserInvocation.getInputRepositoryFolder() == null) {
+	       try {
+	    	   return this.sourceOwlManager.loadOntologyFromOntologyDocument(
+	    			   new File(this.parserInvocation.getMasterFileName()));
+			} catch (OWLOntologyCreationException e) {
+				log.log(Level.SEVERE, e.getMessage(),e);
+				StringWriter trace = new StringWriter();
+				e.printStackTrace(new PrintWriter(trace));
+				parserInvocation.getParserLog().addError(ParserError.OWL_PARSE_EXCEPTION, 
+						"Error parsing" + this.parserInvocation.getMasterFileName() +
+						"\n" + e.getMessage() +
+						"\n" + trace.toString());
+				log.info(e.getMessage());
+				return null;
+			}
+		}
+		
+		//repo input for zip files
 		for (OntologyBean b : this.ontologies) {
 			log.info("---> " + b.getFile().getName());
 			if (b.getFile().getName().equals(this.parserInvocation.getMasterFileName())) {
-				log.info("2 ---> " + b.getFile().getName());
 		       try {
 		    	   return this.sourceOwlManager.loadOntologyFromOntologyDocument(
 		    			   b.getFile());
