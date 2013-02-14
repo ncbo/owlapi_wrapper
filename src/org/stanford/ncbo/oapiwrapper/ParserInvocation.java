@@ -71,6 +71,10 @@ public class ParserInvocation {
 				return false;
 			}
 		} else {
+			if (this.masterFileName == null) {
+				parserLog.addError(ParserError.MASTER_FILE_MISSING);
+				return false;
+			}
 			File masterFile = new File(this.masterFileName);
 			if (!masterFile.exists()) {
 				parserLog.addError(ParserError.MASTER_FILE_MISSING);

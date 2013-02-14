@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.semanticweb.owlapi.model.IRI;
+
 public class ParserLog {
 	public class Error {
 		public ParserError getParserError() {
@@ -62,16 +64,17 @@ public class ParserLog {
 	}
 
 	public void writeTo(File file) throws Exception {
-		FileWriter fstream = new FileWriter(file);
-		BufferedWriter out = new BufferedWriter(fstream);
-
-		for (Error e : logErrors) {
-			out.write("++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-			out.write("Error: " + e.getParserError().toString() + "\n");
-			out.write("Message: " + e.getMessage().toString() + "\n");
-			out.write("++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+		if (logErrors.size() > 0) {
+			FileWriter fstream = new FileWriter(file);
+			BufferedWriter out = new BufferedWriter(fstream);
+	
+			for (Error e : logErrors) {
+				out.write("++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+				out.write("Error: " + e.getParserError().toString() + "\n");
+				out.write("Message: " + e.getMessage().toString() + "\n");
+				out.write("++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+			}
+			out.close();
 		}
-		out.close();
 	}
-
 }

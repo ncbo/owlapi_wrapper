@@ -14,13 +14,16 @@ import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
 import org.coode.owlapi.turtle.TurtleOntologyFormat;
 import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.io.FileDocumentSource;
 import org.semanticweb.owlapi.io.RDFXMLOntologyFormat;
 import org.semanticweb.owlapi.model.AddOntologyAnnotation;
 import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.MissingImportHandlingStrategy;
 import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.OWLOntologyLoaderConfiguration;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
@@ -48,11 +51,13 @@ public class OntologyParser {
 
 		this.parserInvocation = parserInvocation;
 		this.sourceOwlManager = OWLManager.createOWLOntologyManager();
+		//this.sourceOwlManager.setSilentMissingImportsHandling(true);
 		if (this.parserInvocation.getInputRepositoryFolder() != null) {
 			File rooDirectory = new File(this.parserInvocation.getInputRepositoryFolder());
 			this.sourceOwlManager.addIRIMapper(new AutoIRIMapper(rooDirectory, true));
 		}
 		this.targetOwlManager = OWLManager.createOWLOntologyManager();
+		//this.targetOwlManager.setSilentMissingImportsHandling(true);
 		log.info("executor created");
 	}
 	
@@ -107,6 +112,7 @@ public class OntologyParser {
 	public boolean parse() throws Exception {
 		try {
 			if (internalParse()) {
+				parserInvocation.saveErrors();
 				return true;
 			}
 			parserInvocation.saveErrors();
@@ -161,15 +167,21 @@ public class OntologyParser {
 					"\n" + trace.toString());
 			return false;
 		}
-		log.info("Serializazion done!");
+		log.info("Serialization done!");
 		return true;
 	}
 
 	private OWLOntology findMasterFile() {
+
+ 	  OWLOntologyLoaderConfiguration conf = new OWLOntologyLoaderConfiguration();
+ 	  conf = conf.setMissingImportHandlingStrategy(MissingImportHandlingStrategy.SILENT);
+ 	 LogMissingImports missingHandler = new LogMissingImports(parserInvocation.getParserLog());
+ 	 this.sourceOwlManager.addMissingImportListener(missingHandler);
+
 		if (this.parserInvocation.getInputRepositoryFolder() == null) {
 	       try {
 	    	   return this.sourceOwlManager.loadOntologyFromOntologyDocument(
-	    			   new File(this.parserInvocation.getMasterFileName()));
+	    			   new FileDocumentSource( new File(this.parserInvocation.getMasterFileName())), conf);
 			} catch (OWLOntologyCreationException e) {
 				log.log(Level.SEVERE, e.getMessage(),e);
 				StringWriter trace = new StringWriter();
@@ -189,7 +201,7 @@ public class OntologyParser {
 			if (b.getFile().getName().equals(this.parserInvocation.getMasterFileName())) {
 		       try {
 		    	   return this.sourceOwlManager.loadOntologyFromOntologyDocument(
-		    			   b.getFile());
+		    			   new FileDocumentSource(b.getFile()), conf);
 				} catch (OWLOntologyCreationException e) {
 					log.log(Level.SEVERE, e.getMessage(),e);
 					StringWriter trace = new StringWriter();

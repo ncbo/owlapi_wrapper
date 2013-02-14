@@ -1,5 +1,6 @@
 package org.stanford.ncbo.oapiwrapper;
 
+import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,7 +30,32 @@ public class OntologyParserCommand {
 
 			ParserInvocation pi = new ParserInvocation(inputRepoPath,
 					outputRepoPath, masterFileName);
+			if (!pi.valid()) {
+				log.info("Parsing invocation with values " +pi.toString());
+				log.log(Level.SEVERE, "invocation is not valid");
+				log.log(Level.SEVERE,pi.getParserLog().toString());
+				System.exit(-1);
+			}
 			log.info("Parsing invocation with values " +pi.toString());
+			
+			OntologyParser parser = null;
+			try {
+				parser = new OntologyParser(pi);
+			} catch (OntologyParserException e) {
+				log.log(Level.SEVERE, "Error creating parser", e);
+				log.log(Level.SEVERE,pi.getParserLog().toString());
+				System.exit(-1);
+			}
+			boolean parseResult = false;
+			try {
+				parseResult = parser.parse();
+			} catch (Exception e) {
+				log.log(Level.SEVERE, "Error parsing", e);
+				log.log(Level.SEVERE,pi.getParserLog().toString());
+				System.exit(-1);
+			}
+			File f = new File(pi.getOutputRepositoryFolder() + File.separator + "owlapi.xrdf");
+			log.info("Parse result " + parseResult+ ".Output triples in " + f.getAbsolutePath());		
 		} catch (ParseException e) {
 			log.log(Level.SEVERE, e.getMessage());
 			e.printStackTrace();
