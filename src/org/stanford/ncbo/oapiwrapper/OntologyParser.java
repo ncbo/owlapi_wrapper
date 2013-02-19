@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.coode.owlapi.turtle.TurtleOntologyFormat;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.FileDocumentSource;
@@ -196,9 +197,10 @@ public class OntologyParser {
 		}
 		
 		//repo input for zip files
+		File master = new File(new File(parserInvocation.getInputRepositoryFolder()), this.parserInvocation.getMasterFileName());
 		for (OntologyBean b : this.ontologies) {
-			log.info("---> " + b.getFile().getName());
-			if (b.getFile().getName().equals(this.parserInvocation.getMasterFileName())) {
+			log.info("---> " + b.getFile().getName() + " --> " + master.getAbsolutePath().equals(b.getFile().getAbsolutePath()) );
+			if (b.getFile().getAbsolutePath().equals(master.getAbsolutePath())) {
 		       try {
 		    	   return this.sourceOwlManager.loadOntologyFromOntologyDocument(
 		    			   new FileDocumentSource(b.getFile()), conf);
