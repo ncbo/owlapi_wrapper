@@ -46,10 +46,10 @@ public class OntologyParser {
 	public OntologyParser(ParserInvocation parserInvocation) throws OntologyParserException {
 		super();
 		log.info("executor ...");
+		this.parserInvocation = parserInvocation;
 		if (!parserInvocation.valid())
 			throw new OntologyParserException(this.parserInvocation.getParserLog());
 
-		this.parserInvocation = parserInvocation;
 		this.sourceOwlManager = OWLManager.createOWLOntologyManager();
 		//this.sourceOwlManager.setSilentMissingImportsHandling(true);
 		if (this.parserInvocation.getInputRepositoryFolder() != null) {
