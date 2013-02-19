@@ -198,23 +198,40 @@ public class OntologyParser {
 		
 		//repo input for zip files
 		File master = new File(new File(parserInvocation.getInputRepositoryFolder()), this.parserInvocation.getMasterFileName());
+		log.info("---> master.getAbsolutePath(): " + master.getAbsolutePath());
+
+		OntologyBean selectedBean = null;
 		for (OntologyBean b : this.ontologies) {
-			log.info("---> " + b.getFile().getName() + " --> " + master.getAbsolutePath().equals(b.getFile().getAbsolutePath()) );
+			log.info("---> " + b.getFile().getAbsolutePath() + " --> " + master.getAbsolutePath().equals(b.getFile().getAbsolutePath()) );
 			if (b.getFile().getAbsolutePath().equals(master.getAbsolutePath())) {
-		       try {
-		    	   return this.sourceOwlManager.loadOntologyFromOntologyDocument(
-		    			   new FileDocumentSource(b.getFile()), conf);
-				} catch (OWLOntologyCreationException e) {
-					log.log(Level.SEVERE, e.getMessage(),e);
-					StringWriter trace = new StringWriter();
-					e.printStackTrace(new PrintWriter(trace));
-					parserInvocation.getParserLog().addError(ParserError.OWL_PARSE_EXCEPTION, 
-							"Error parsing" + b.getFile().getAbsolutePath() +
-							"\n" + e.getMessage() +
-							"\n" + trace.toString());
-					log.info(e.getMessage());
-					return null;
+				selectedBean = b;
+			}
+		}
+		if (selectedBean == null) {
+			for (OntologyBean b : this.ontologies) {
+				log.info("---> " + b.getFile().getAbsolutePath() + " --> " + master.getAbsolutePath().equals(b.getFile().getAbsolutePath()) );
+				if (b.getFile().getName().equals(this.parserInvocation.getMasterFileName())) {
+					selectedBean = b;
 				}
+			}
+		}
+		
+		log.info("Selected master file " + selectedBean.getFile().getAbsolutePath());
+				
+		if (selectedBean != null) {
+	       try {
+	    	   return this.sourceOwlManager.loadOntologyFromOntologyDocument(
+	    			   new FileDocumentSource(selectedBean.getFile()), conf);
+			} catch (OWLOntologyCreationException e) {
+				log.log(Level.SEVERE, e.getMessage(),e);
+				StringWriter trace = new StringWriter();
+				e.printStackTrace(new PrintWriter(trace));
+				parserInvocation.getParserLog().addError(ParserError.OWL_PARSE_EXCEPTION, 
+						"Error parsing" + selectedBean.getFile().getAbsolutePath() +
+						"\n" + e.getMessage() +
+						"\n" + trace.toString());
+				log.info(e.getMessage());
+				return null;
 			}
 		}
 		return null;
