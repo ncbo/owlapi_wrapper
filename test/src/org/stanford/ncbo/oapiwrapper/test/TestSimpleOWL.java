@@ -18,6 +18,11 @@ public class TestSimpleOWL extends TestCase {
 	private static final String inputRepositoryFolder = "./test/repo/input/bvga";
 	private static final String outputRepositoryFolder = "./test/repo/output/bvga";
 	private static final String masterFileName = "basic-vertebrate-gross-anatomy_v1.1.owl";
+
+	//private static final String inputRepositoryFolder = "./test/repo/input/custom";
+	//private static final String outputRepositoryFolder = "./test/repo/output/custom";
+	//private static final String masterFileName = "custom_properties.owl";
+
 	
 	private final static Logger log = Logger.getLogger(TestSimpleOWL.class .getName()); 
 
