@@ -13,13 +13,12 @@ import java.util.logging.Logger;
 
 import org.apache.commons.io.FileUtils;
 import org.coode.owlapi.turtle.TurtleOntologyFormat;
-import org.semanticweb.HermiT.Configuration;
-import org.semanticweb.HermiT.Reasoner;
+import org.semanticweb.elk.owlapi.ElkReasonerFactory;
+import org.semanticweb.elk.reasoner.config.ReasonerConfiguration;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.FileDocumentSource;
 import org.semanticweb.owlapi.io.RDFXMLOntologyFormat;
 import org.semanticweb.owlapi.model.AddOntologyAnnotation;
-import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.MissingImportHandlingStrategy;
 import org.semanticweb.owlapi.model.OWLAnnotation;
@@ -31,6 +30,7 @@ import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.model.OWLSubClassOfAxiom;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
+import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 import org.semanticweb.owlapi.util.InferredSubClassAxiomGenerator;
 
@@ -113,11 +113,16 @@ public class OntologyParser {
 			AddOntologyAnnotation addAnn = new AddOntologyAnnotation(this.targetOwlOntology, ann);
 			targetOwlManager.applyChange(addAnn);
 		}
-		Configuration confR = new Configuration();
-		confR.ignoreUnsupportedDatatypes = true;
-		Reasoner hermit = new Reasoner(confR,this.targetOwlOntology);
+		//for hermit
+		//Configuration confR = new Configuration();
+		//confR.ignoreUnsupportedDatatypes = true;
+		//Reasoner hermit = new Reasoner(confR,this.targetOwlOntology);
+		OWLReasonerFactory reasonerFactory = new ElkReasonerFactory();
+		OWLReasoner reasoner = reasonerFactory.createReasoner(this.targetOwlOntology);
+
+
 		InferredSubClassAxiomGenerator isc = new InferredSubClassAxiomGenerator();
-		Set<OWLSubClassOfAxiom> subAxs = isc.createAxioms(this.targetOwlOntology.getOWLOntologyManager(), hermit);
+		Set<OWLSubClassOfAxiom> subAxs = isc.createAxioms(this.targetOwlOntology.getOWLOntologyManager(), reasoner);
 		targetOwlManager.addAxioms(this.targetOwlOntology, subAxs);
 		return true;
 	}
