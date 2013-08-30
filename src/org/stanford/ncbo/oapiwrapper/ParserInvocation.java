@@ -21,20 +21,30 @@ public class ParserInvocation {
 	}
 	
 	public ParserInvocation(String inputRepositoryFolder,
-			String outputRepositoryFolder, String masterFileName) {
+			String outputRepositoryFolder, String masterFileName,
+			Boolean useReasoner) {
 		super();
 		this.inputRepositoryFolder = inputRepositoryFolder;
 		this.outputRepositoryFolder = outputRepositoryFolder;
 		this.masterFileName = masterFileName;
+		this.useReasoner = useReasoner;
 	}
 
 	private String inputRepositoryFolder = null;
 	private String outputRepositoryFolder = null;
 	private String masterFileName = null;
+	private boolean useReasoner = true;
 	
+	public boolean isUseReasoner() {
+		return useReasoner;
+	}
+	public void setUseReasoner(boolean useReasoner) {
+		this.useReasoner = useReasoner;
+	}
 	public String getMasterFileName() {
 		return masterFileName;
 	}
+	
 	public void setMasterFileName(String masterFileName) {
 		this.masterFileName = masterFileName;
 	}
@@ -56,6 +66,7 @@ public class ParserInvocation {
 				+ inputRepositoryFolder + ", outputRepositoryFolder="
 				+ outputRepositoryFolder + ", masterFileName=" + masterFileName
 				+ ", invocationId=" + invocationId + ", parserLog=" + parserLog
+				+ ", userReasoner= " + useReasoner
 				+ "]";
 	}
 	

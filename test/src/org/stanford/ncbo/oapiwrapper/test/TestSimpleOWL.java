@@ -36,7 +36,7 @@ public class TestSimpleOWL extends TestCase {
 		ParserInvocation pi = new ParserInvocation(
 				inputRepositoryFolder, 
 				outputRepositoryFolder,
-				masterFileName);
+				masterFileName, true);
 		assertEquals(true, pi.valid());
 	}
 	
@@ -56,7 +56,7 @@ public class TestSimpleOWL extends TestCase {
 		ParserInvocation pi = new ParserInvocation(
 				inputRepositoryFolder, 
 				outputRepositoryFolder,
-				masterFileName);
+				masterFileName, true);
 		boolean valid = pi.valid();
 		if (!valid) {
 			log.log(Level.SEVERE,pi.getParserLog().toString());
@@ -80,7 +80,7 @@ public class TestSimpleOWL extends TestCase {
 		ParserInvocation pi = new ParserInvocation(
 				inputRepositoryFolder, 
 				"/var/zyxx1234xx9",
-				masterFileName);
+				masterFileName,true);
 		assertEquals(false, pi.valid());
 		assertEquals(1, pi.getParserLog().getErrors().size());
 		assertEquals(ParserError.OUPUT_REPO_CANNOT_BE_CREATED,pi.getParserLog().getErrors().get(0).getParserError());
@@ -91,7 +91,7 @@ public class TestSimpleOWL extends TestCase {
 		ParserInvocation pi = new ParserInvocation(
 				inputRepositoryFolder, 
 				outputRepositoryFolder,
-				masterFileName);
+				masterFileName,true);
 		OntologyParser parser = null;
 		try {
 			parser = new OntologyParser(pi);

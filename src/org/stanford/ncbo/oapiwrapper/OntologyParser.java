@@ -117,13 +117,14 @@ public class OntologyParser {
 		//Configuration confR = new Configuration();
 		//confR.ignoreUnsupportedDatatypes = true;
 		//Reasoner hermit = new Reasoner(confR,this.targetOwlOntology);
-		OWLReasonerFactory reasonerFactory = new ElkReasonerFactory();
-		OWLReasoner reasoner = reasonerFactory.createReasoner(this.targetOwlOntology);
+		if (this.parserInvocation.isUseReasoner()) {
+			OWLReasonerFactory reasonerFactory = new ElkReasonerFactory();
+			OWLReasoner reasoner = reasonerFactory.createReasoner(this.targetOwlOntology);
 
-
-		InferredSubClassAxiomGenerator isc = new InferredSubClassAxiomGenerator();
-		Set<OWLSubClassOfAxiom> subAxs = isc.createAxioms(this.targetOwlOntology.getOWLOntologyManager(), reasoner);
-		targetOwlManager.addAxioms(this.targetOwlOntology, subAxs);
+			InferredSubClassAxiomGenerator isc = new InferredSubClassAxiomGenerator();
+			Set<OWLSubClassOfAxiom> subAxs = isc.createAxioms(this.targetOwlOntology.getOWLOntologyManager(), reasoner);
+			targetOwlManager.addAxioms(this.targetOwlOntology, subAxs);
+		}
 		return true;
 	}
 	

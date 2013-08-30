@@ -19,7 +19,9 @@ public class OntologyParserCommand {
 				.addOption("m","master-filename", true,
 						"Name of the ontology file to load first")
 				.addOption("o","output-repository", true,
-						"Path to folder where input data repository is located");
+						"Path to folder where input data repository is located")
+				.addOption("r","reasoner", true,
+						"Option to use the reasoner");
 		
 		CommandLineParser clp = new GnuParser();
 		try {
@@ -27,9 +29,11 @@ public class OntologyParserCommand {
 			String inputRepoPath = call.getOptionValue("i");
 			String outputRepoPath = call.getOptionValue("o");
 			String masterFileName = call.getOptionValue("m");
+			String reasoner = call.getOptionValue("r");
+			Boolean bReasoner = reasoner == null || reasoner.equals("true");
 
 			ParserInvocation pi = new ParserInvocation(inputRepoPath,
-					outputRepoPath, masterFileName);
+					outputRepoPath, masterFileName, bReasoner);
 			if (!pi.valid()) {
 				log.info("Parsing invocation with values " +pi.toString());
 				log.log(Level.SEVERE, "invocation is not valid");

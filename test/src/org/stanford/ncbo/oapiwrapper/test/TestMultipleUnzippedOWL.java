@@ -30,7 +30,7 @@ public class TestMultipleUnzippedOWL extends TestCase {
 		ParserInvocation pi = new ParserInvocation(
 				inputRepositoryFolder, 
 				outputRepositoryFolder,
-				masterFileName); 
+				masterFileName, true); 
 		assertEquals(true, pi.valid());
 	}
 	
@@ -39,7 +39,7 @@ public class TestMultipleUnzippedOWL extends TestCase {
 		ParserInvocation pi = new ParserInvocation(
 				inputRepositoryFolder, 
 				outputRepositoryFolder,
-				masterFileName);
+				masterFileName, true);
 		OntologyParser parser = null;
 		try {
 			parser = new OntologyParser(pi);
