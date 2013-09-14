@@ -17,16 +17,24 @@ import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.FileDocumentSource;
 import org.semanticweb.owlapi.io.RDFXMLOntologyFormat;
 import org.semanticweb.owlapi.model.AddOntologyAnnotation;
+import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.MissingImportHandlingStrategy;
 import org.semanticweb.owlapi.model.OWLAnnotation;
+import org.semanticweb.owlapi.model.OWLAnnotationProperty;
 import org.semanticweb.owlapi.model.OWLAxiom;
+import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLClassExpression;
+import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLEntity;
+import org.semanticweb.owlapi.model.OWLObjectSomeValuesFrom;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyLoaderConfiguration;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.model.OWLSubClassOfAxiom;
+import org.semanticweb.owlapi.model.RemoveAxiom;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
@@ -93,8 +101,34 @@ public class OntologyParser {
 	private boolean buildOWLOntology() {
 		Set<OWLAxiom> allAxioms = new HashSet<OWLAxiom>();
 		for(OWLOntology sourceOnt : this.sourceOwlManager.getOntologies()) {
-			allAxioms.addAll(sourceOnt.getAxioms());
+			//allAxioms.addAll(sourceOnt.getAxioms());
+			for (OWLAxiom axiom : sourceOnt.getAxioms()) {
+				allAxioms.add(axiom);
+				if (axiom instanceof OWLSubClassOfAxiom) {
+					OWLSubClassOfAxiom sc = (OWLSubClassOfAxiom) axiom;
+					OWLClassExpression ce = sc.getSuperClass();
+					if (ce instanceof OWLObjectSomeValuesFrom) {
+						OWLObjectSomeValuesFrom some = (OWLObjectSomeValuesFrom) ce;
+						if (!some.getProperty().isAnonymous()) {
+							if (some.getProperty().asOWLObjectProperty().getIRI().toString().toLowerCase().contains("part_of")) {
+								if (!some.getFiller().isAnonymous()) {
+									OWLDataFactory fact = sourceOwlManager.
+											getOWLDataFactory();
+									OWLSubClassOfAxiom ax = fact.getOWLSubClassOfAxiom(sc.getSubClass(), some.getFiller());
+									allAxioms.add(ax);
+									OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/part_of"));
+									OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, 
+											sc.getSubClass().asOWLClass().getIRI(),
+											some.getFiller().asOWLClass().getIRI());
+									allAxioms.add(annAsse);
+								}
+							}
+						}
+					}
+				}
+			}
 		}
+		
 		try {
 			this.targetOwlOntology = targetOwlManager.createOntology();
 		} catch (OWLOntologyCreationException e) {
