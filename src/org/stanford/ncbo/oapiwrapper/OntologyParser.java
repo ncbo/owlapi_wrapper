@@ -17,13 +17,13 @@ import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.FileDocumentSource;
 import org.semanticweb.owlapi.io.RDFXMLOntologyFormat;
 import org.semanticweb.owlapi.model.AddOntologyAnnotation;
-import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.MissingImportHandlingStrategy;
 import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLAnnotationProperty;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLClassAxiom;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLEntity;
@@ -141,6 +141,7 @@ public class OntologyParser {
 			log.info(e.getMessage());
 			return false;
 		}
+		
 		targetOwlManager.addAxioms(this.targetOwlOntology, allAxioms);
 		for (OWLAnnotation ann: this.targetOwlOntology.getAnnotations()) {
 			AddOntologyAnnotation addAnn = new AddOntologyAnnotation(this.targetOwlOntology, ann);
@@ -154,10 +155,42 @@ public class OntologyParser {
 		InferredSubClassAxiomGenerator isc = new InferredSubClassAxiomGenerator();
 		Set<OWLSubClassOfAxiom> subAxs = isc.createAxioms(this.targetOwlOntology.getOWLOntologyManager(), reasoner);
 		targetOwlManager.addAxioms(this.targetOwlOntology, subAxs);
-
+		Set<OWLEntity> things = targetOwlOntology.getEntitiesInSignature(IRI.create("http://www.w3.org/2002/07/owl#Thing"));
+		OWLClass thing = null;
+		for (OWLEntity t : things) {
+			thing = (OWLClass) t;
+		}
+		Set<OWLSubClassOfAxiom> rootsEdges = targetOwlOntology.getSubClassAxiomsForSuperClass(thing);
+		for (OWLSubClassOfAxiom rootEdge : rootsEdges) {
+			if (!rootEdge.getSubClass().isAnonymous()) {
+				OWLClass subClass = (OWLClass) rootEdge.getSubClass();
+				if (classHasRestrictions(subClass,targetOwlOntology)) {
+					RemoveAxiom remove = new RemoveAxiom(targetOwlOntology,rootEdge);
+					targetOwlManager.applyChange(remove);
+				}
+			}
+		}
 		return true;
 	}
 	
+	private boolean classHasRestrictions(OWLClass subClass,OWLOntology ont) {
+		if (!subClass.toString().toLowerCase().contains("/obo/"))
+			return false;
+		Set<OWLClassAxiom> classAxioms = ont.getAxioms(subClass);
+		for (OWLClassAxiom axiom : classAxioms) {
+			if (axiom instanceof OWLSubClassOfAxiom) {
+				OWLSubClassOfAxiom sc = (OWLSubClassOfAxiom) axiom;
+				OWLClassExpression ce = sc.getSuperClass();
+				if (ce instanceof OWLObjectSomeValuesFrom) {
+					System.out.println("classHasRestrictions IN OBO --> " + subClass.toString());
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
 	public boolean parse() throws Exception {
 		try {
 			if (internalParse()) {
@@ -178,7 +211,7 @@ public class OntologyParser {
 	}
 	private boolean internalParse() {
 		findLocalOntologies();
-		this.localMaster = findMasterFile();
+		this.localMaster = findMasterFile();		
 		if (this.localMaster == null) {
 			String message = "Error cannot find " + this.parserInvocation.getMasterFileName() + " in input folder.";
 			parserInvocation.getParserLog().addError(ParserError.MASTER_FILE_MISSING,message);
