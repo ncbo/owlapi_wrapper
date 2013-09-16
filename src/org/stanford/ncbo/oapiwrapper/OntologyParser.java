@@ -110,13 +110,19 @@ public class OntologyParser {
 					if (ce instanceof OWLObjectSomeValuesFrom) {
 						OWLObjectSomeValuesFrom some = (OWLObjectSomeValuesFrom) ce;
 						if (!some.getProperty().isAnonymous()) {
-							if (some.getProperty().asOWLObjectProperty().getIRI().toString().toLowerCase().contains("part_of")) {
+							if (some.getProperty().asOWLObjectProperty().getIRI().toString().toLowerCase().contains("part_of") ||
+									some.getProperty().asOWLObjectProperty().getIRI().toString().toLowerCase().contains("obolibrary") || 
+									some.getProperty().asOWLObjectProperty().getIRI().toString().toLowerCase().contains("/obo/")) {
 								if (!some.getFiller().isAnonymous()) {
 									OWLDataFactory fact = sourceOwlManager.
 											getOWLDataFactory();
 									OWLSubClassOfAxiom ax = fact.getOWLSubClassOfAxiom(sc.getSubClass(), some.getFiller());
 									allAxioms.add(ax);
-									OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/part_of"));
+									OWLAnnotationProperty prop = null;
+									if (some.getProperty().asOWLObjectProperty().getIRI().toString().toLowerCase().contains("part_of"))
+										prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/part_of"));
+									else
+										prop = fact.getOWLAnnotationProperty(some.getProperty().asOWLObjectProperty().getIRI());
 									OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, 
 											sc.getSubClass().asOWLClass().getIRI(),
 											some.getFiller().asOWLClass().getIRI());
@@ -155,6 +161,7 @@ public class OntologyParser {
 		InferredSubClassAxiomGenerator isc = new InferredSubClassAxiomGenerator();
 		Set<OWLSubClassOfAxiom> subAxs = isc.createAxioms(this.targetOwlOntology.getOWLOntologyManager(), reasoner);
 		targetOwlManager.addAxioms(this.targetOwlOntology, subAxs);
+		/*
 		Set<OWLEntity> things = targetOwlOntology.getEntitiesInSignature(IRI.create("http://www.w3.org/2002/07/owl#Thing"));
 		OWLClass thing = null;
 		for (OWLEntity t : things) {
@@ -169,7 +176,7 @@ public class OntologyParser {
 					targetOwlManager.applyChange(remove);
 				}
 			}
-		}
+		}*/
 		return true;
 	}
 	
