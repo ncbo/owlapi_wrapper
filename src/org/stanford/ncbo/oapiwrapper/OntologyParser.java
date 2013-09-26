@@ -162,7 +162,7 @@ public class OntologyParser {
 		InferredSubClassAxiomGenerator isc = new InferredSubClassAxiomGenerator();
 		Set<OWLSubClassOfAxiom> subAxs = isc.createAxioms(this.targetOwlOntology.getOWLOntologyManager(), reasoner);
 		targetOwlManager.addAxioms(this.targetOwlOntology, subAxs);
-		/*
+		
 		Set<OWLEntity> things = targetOwlOntology.getEntitiesInSignature(IRI.create("http://www.w3.org/2002/07/owl#Thing"));
 		OWLClass thing = null;
 		for (OWLEntity t : things) {
@@ -177,7 +177,7 @@ public class OntologyParser {
 					targetOwlManager.applyChange(remove);
 				}
 			}
-		}*/
+		}
 		return true;
 	}
 	
