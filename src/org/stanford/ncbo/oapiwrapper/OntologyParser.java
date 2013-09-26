@@ -116,11 +116,12 @@ public class OntologyParser {
 								if (!some.getFiller().isAnonymous()) {
 									OWLDataFactory fact = sourceOwlManager.
 											getOWLDataFactory();
-									OWLSubClassOfAxiom ax = fact.getOWLSubClassOfAxiom(sc.getSubClass(), some.getFiller());
-									allAxioms.add(ax);
 									OWLAnnotationProperty prop = null;
-									if (some.getProperty().asOWLObjectProperty().getIRI().toString().toLowerCase().contains("part_of"))
+									if (some.getProperty().asOWLObjectProperty().getIRI().toString().toLowerCase().contains("part_of")) {
+										OWLSubClassOfAxiom ax = fact.getOWLSubClassOfAxiom(sc.getSubClass(), some.getFiller());
+										allAxioms.add(ax);
 										prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/part_of"));
+									}
 									else
 										prop = fact.getOWLAnnotationProperty(some.getProperty().asOWLObjectProperty().getIRI());
 									OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, 
