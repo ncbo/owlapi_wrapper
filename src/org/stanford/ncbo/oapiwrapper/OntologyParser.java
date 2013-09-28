@@ -111,7 +111,7 @@ public class OntologyParser {
 						OWLObjectSomeValuesFrom some = (OWLObjectSomeValuesFrom) ce;
 						if (!some.getProperty().isAnonymous()) {
 							String propSome = some.getProperty().asOWLObjectProperty().getIRI().toString().toLowerCase();
-							if (propSome.endsWith("part_of") || 
+							if (propSome.endsWith("part_of") || propSome.endsWith("bfo_0000050") ||
 									propSome.endsWith("contains") || propSome.endsWith("ro_0001019") || 
 									propSome.endsWith("develops_from") || propSome.endsWith("ro_0002202") ) {
 								if (!some.getFiller().isAnonymous()) {
@@ -129,7 +129,7 @@ public class OntologyParser {
 									} else {
 										OWLSubClassOfAxiom ax = fact.getOWLSubClassOfAxiom(sc.getSubClass(), some.getFiller());
 										allAxioms.add(ax);
-										if (propSome.endsWith("part_of"))
+										if (propSome.endsWith("part_of") || propSome.endsWith("bfo_0000050"))
 											prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/obo/part_of"));
 										else
 											prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/obo/develops_from"));
