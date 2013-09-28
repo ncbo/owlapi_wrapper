@@ -104,19 +104,19 @@ public class OntologyParser {
 			//allAxioms.addAll(sourceOnt.getAxioms());
 			for (OWLAxiom axiom : sourceOnt.getAxioms()) {
 				allAxioms.add(axiom);
+				OWLDataFactory fact = sourceOwlManager.
+						getOWLDataFactory();
 				if (axiom instanceof OWLSubClassOfAxiom) {
 					OWLSubClassOfAxiom sc = (OWLSubClassOfAxiom) axiom;
 					OWLClassExpression ce = sc.getSuperClass();
 					if (ce instanceof OWLObjectSomeValuesFrom) {
 						OWLObjectSomeValuesFrom some = (OWLObjectSomeValuesFrom) ce;
-						if (!some.getProperty().isAnonymous()) {
+						if (!some.getProperty().isAnonymous() && !some.getFiller().isAnonymous()) {
 							String propSome = some.getProperty().asOWLObjectProperty().getIRI().toString().toLowerCase();
-							if (propSome.endsWith("part_of") || propSome.endsWith("bfo_0000050") ||
-									propSome.endsWith("contains") || propSome.endsWith("ro_0001019") || 
-									propSome.endsWith("develops_from") || propSome.endsWith("ro_0002202") ) {
-								if (!some.getFiller().isAnonymous()) {
-									OWLDataFactory fact = sourceOwlManager.
-											getOWLDataFactory();
+							if (propSome.contains("obo")) {
+								if (propSome.endsWith("part_of") || propSome.endsWith("bfo_0000050") ||
+										propSome.endsWith("contains") || propSome.endsWith("ro_0001019") || 
+										propSome.endsWith("develops_from") || propSome.endsWith("ro_0002202") ) {
 									OWLAnnotationProperty prop = null;
 									if (propSome.endsWith("contains") || propSome.endsWith("ro_0001019")) {
 										OWLSubClassOfAxiom ax = fact.getOWLSubClassOfAxiom(some.getFiller(),sc.getSubClass());
@@ -133,6 +133,14 @@ public class OntologyParser {
 											prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/obo/part_of"));
 										else
 											prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/obo/develops_from"));
+										OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, 
+												sc.getSubClass().asOWLClass().getIRI(),
+												some.getFiller().asOWLClass().getIRI());
+										allAxioms.add(annAsse);
+									}
+								}else{
+									if (!some.getFiller().isAnonymous() && !sc.getSubClass().isAnonymous()) {
+										OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(some.getProperty().asOWLObjectProperty().getIRI());
 										OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, 
 												sc.getSubClass().asOWLClass().getIRI(),
 												some.getFiller().asOWLClass().getIRI());
