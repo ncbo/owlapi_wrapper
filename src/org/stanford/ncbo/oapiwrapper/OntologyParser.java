@@ -110,24 +110,34 @@ public class OntologyParser {
 					if (ce instanceof OWLObjectSomeValuesFrom) {
 						OWLObjectSomeValuesFrom some = (OWLObjectSomeValuesFrom) ce;
 						if (!some.getProperty().isAnonymous()) {
-							if (some.getProperty().asOWLObjectProperty().getIRI().toString().toLowerCase().contains("part_of") ||
-									some.getProperty().asOWLObjectProperty().getIRI().toString().toLowerCase().contains("obolibrary") || 
-									some.getProperty().asOWLObjectProperty().getIRI().toString().toLowerCase().contains("/obo/")) {
+							String propSome = some.getProperty().asOWLObjectProperty().getIRI().toString().toLowerCase();
+							if (propSome.endsWith("part_of") || 
+									propSome.endsWith("contains") || propSome.endsWith("ro_0001019") || 
+									propSome.endsWith("develops_from") || propSome.endsWith("ro_0002202") ) {
 								if (!some.getFiller().isAnonymous()) {
 									OWLDataFactory fact = sourceOwlManager.
 											getOWLDataFactory();
 									OWLAnnotationProperty prop = null;
-									if (some.getProperty().asOWLObjectProperty().getIRI().toString().toLowerCase().contains("part_of")) {
+									if (propSome.endsWith("contains") || propSome.endsWith("ro_0001019")) {
+										OWLSubClassOfAxiom ax = fact.getOWLSubClassOfAxiom(some.getFiller(),sc.getSubClass());
+										allAxioms.add(ax);
+										prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/obo/contains"));
+										OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, 
+												some.getFiller().asOWLClass().getIRI(),
+												sc.getSubClass().asOWLClass().getIRI());
+										allAxioms.add(annAsse);
+									} else {
 										OWLSubClassOfAxiom ax = fact.getOWLSubClassOfAxiom(sc.getSubClass(), some.getFiller());
 										allAxioms.add(ax);
-										prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/part_of"));
+										if (propSome.endsWith("part_of"))
+											prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/obo/part_of"));
+										else
+											prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/obo/develops_from"));
+										OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, 
+												sc.getSubClass().asOWLClass().getIRI(),
+												some.getFiller().asOWLClass().getIRI());
+										allAxioms.add(annAsse);
 									}
-									else
-										prop = fact.getOWLAnnotationProperty(some.getProperty().asOWLObjectProperty().getIRI());
-									OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, 
-											sc.getSubClass().asOWLClass().getIRI(),
-											some.getFiller().asOWLClass().getIRI());
-									allAxioms.add(annAsse);
 								}
 							}
 						}
@@ -172,9 +182,18 @@ public class OntologyParser {
 		for (OWLSubClassOfAxiom rootEdge : rootsEdges) {
 			if (!rootEdge.getSubClass().isAnonymous()) {
 				OWLClass subClass = (OWLClass) rootEdge.getSubClass();
-				if (classHasRestrictions(subClass,targetOwlOntology)) {
-					RemoveAxiom remove = new RemoveAxiom(targetOwlOntology,rootEdge);
-					targetOwlManager.applyChange(remove);
+				String rootID = subClass.getIRI().toString();
+				if (rootID.toLowerCase().contains("obo")) {
+					Set<OWLAnnotation> annotationsRoot = subClass.getAnnotations(targetOwlOntology);
+					for (OWLAnnotation annRoot : annotationsRoot) {
+						if (annRoot.isDeprecatedIRIAnnotation()) {
+						System.out.println("Deprecated annotation with value " + annRoot.getValue().toString());
+						if (annRoot.getValue().toString().contains("true")) {
+							System.out.println("Removing edge from owl:Thing for obsolete in OBO " + rootID);
+							RemoveAxiom remove = new RemoveAxiom(targetOwlOntology,rootEdge);
+							targetOwlManager.applyChange(remove);
+						}}
+					}
 				}
 			}
 		}
