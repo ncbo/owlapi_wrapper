@@ -10,9 +10,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
 import org.coode.owlapi.obo.parser.OBOOntologyFormat;
+import org.coode.owlapi.obo.parser.OBOPrefix;
 import org.coode.owlapi.turtle.TurtleOntologyFormat;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.FileDocumentSource;
@@ -28,6 +31,7 @@ import org.semanticweb.owlapi.model.OWLClassAxiom;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLEntity;
+import org.semanticweb.owlapi.model.OWLLiteral;
 import org.semanticweb.owlapi.model.OWLObjectSomeValuesFrom;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
@@ -103,14 +107,15 @@ public class OntologyParser {
 	private boolean buildOWLOntology() {
 		Set<OWLAxiom> allAxioms = new HashSet<OWLAxiom>();
 		boolean isOBO = false;
+		OWLDataFactory fact = sourceOwlManager.
+				getOWLDataFactory();
 		for(OWLOntology sourceOnt : this.sourceOwlManager.getOntologies()) {
 			//allAxioms.addAll(sourceOnt.getAxioms());
 			OWLOntologyFormat format = this.sourceOwlManager.getOntologyFormat(sourceOnt);
 			isOBO = isOBO || (format instanceof OBOOntologyFormat);
 			for (OWLAxiom axiom : sourceOnt.getAxioms()) {
 				allAxioms.add(axiom);
-				OWLDataFactory fact = sourceOwlManager.
-						getOWLDataFactory();
+
 				if (axiom instanceof OWLSubClassOfAxiom) {
 					OWLSubClassOfAxiom sc = (OWLSubClassOfAxiom) axiom;
 					OWLClassExpression ce = sc.getSuperClass();
@@ -157,7 +162,22 @@ public class OntologyParser {
 					}
 				}
 			}
+			if (isOBO) {
+				Set<OWLClass> classes = sourceOnt.getClassesInSignature();
+				for (OWLClass cls : classes) {
+					if (!cls.isAnonymous()) {
+						String oboID = toOBOId(cls.getIRI());
+						OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create("http://www.w3.org/2004/02/skos/core#notation"));
+						OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, 
+								cls.getIRI(),
+								fact.getOWLLiteral(oboID));
+						allAxioms.add(annAsse);
+					}
+				}
+			}
 		}
+		
+
 		
 		try {
 			this.targetOwlOntology = targetOwlManager.createOntology();
@@ -361,4 +381,40 @@ public class OntologyParser {
 	public Set<OWLOntology> getParsedOntologies() {
 		return this.sourceOwlManager.getOntologies();
 	}
+	
+	private static Pattern SEPARATOR_PATTERN = Pattern.compile("([^#_|_]+)(#_|_)(.+)");
+	private String toOBOId(IRI iri) {
+	       String value = iri.toString();
+	       String localPart = "";
+	       if (value.startsWith(OBOPrefix.OBO.getPrefix())) {
+	           localPart = value.substring(OBOPrefix.OBO.getPrefix().length());
+	       }
+	       else if (value.startsWith(OBOPrefix.OBO_IN_OWL.getPrefix())) {
+	           localPart = value.substring(OBOPrefix.OBO_IN_OWL.getPrefix().length());
+
+	       }
+	       else if (value.startsWith(OBOPrefix.IAO.getPrefix())) {
+	           localPart = value.substring(OBOPrefix.IAO.getPrefix().length());
+	       }
+	       else {
+	           String fragment = iri.getFragment();
+	           if (fragment != null) {
+	               localPart = fragment;
+	           }
+	           else {
+	               localPart = value;
+	           }
+	       }
+	       Matcher matcher = SEPARATOR_PATTERN.matcher(localPart);
+	       if (matcher.matches()) {
+	           StringBuilder sb = new StringBuilder();
+	           sb.append(matcher.group(1));
+	           sb.append(":");
+	           sb.append(matcher.group(3));
+	           return sb.toString();
+	       }
+	       else {
+	           return value;
+	       }
+	   }
 }
