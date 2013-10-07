@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.commons.io.FileUtils;
+import org.coode.owlapi.obo.parser.OBOOntologyFormat;
 import org.coode.owlapi.turtle.TurtleOntologyFormat;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.FileDocumentSource;
@@ -30,6 +31,7 @@ import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLObjectSomeValuesFrom;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.OWLOntologyFormat;
 import org.semanticweb.owlapi.model.OWLOntologyLoaderConfiguration;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
@@ -100,8 +102,11 @@ public class OntologyParser {
 	
 	private boolean buildOWLOntology() {
 		Set<OWLAxiom> allAxioms = new HashSet<OWLAxiom>();
+		boolean isOBO = false;
 		for(OWLOntology sourceOnt : this.sourceOwlManager.getOntologies()) {
 			//allAxioms.addAll(sourceOnt.getAxioms());
+			OWLOntologyFormat format = this.sourceOwlManager.getOntologyFormat(sourceOnt);
+			isOBO = isOBO || (format instanceof OBOOntologyFormat);
 			for (OWLAxiom axiom : sourceOnt.getAxioms()) {
 				allAxioms.add(axiom);
 				OWLDataFactory fact = sourceOwlManager.
