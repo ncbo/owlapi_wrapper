@@ -58,7 +58,8 @@ public class ParserInvocation {
 		this.invocationId = invocationId;
 	}
 
-	private ParserLog parserLog = new ParserLog(); 
+	private ParserLog parserLog = new ParserLog();
+	private String oboVersion; 
 
 	@Override
 	public String toString() {
@@ -115,5 +116,11 @@ public class ParserInvocation {
 	}
 	public void saveErrors() throws Exception {
 		this.parserLog.writeTo(new File(outputRepositoryFolder + File.separator + "errors.log"));
+	}
+	public void setOBOVersion(String oboVersion) {
+		this.oboVersion = oboVersion;
+	}
+	public String getOBOVersion() {
+		return oboVersion;
 	}
 }

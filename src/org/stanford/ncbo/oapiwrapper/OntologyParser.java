@@ -26,6 +26,7 @@ import org.semanticweb.owlapi.model.AddOntologyAnnotation;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.MissingImportHandlingStrategy;
 import org.semanticweb.owlapi.model.OWLAnnotation;
+import org.semanticweb.owlapi.model.OWLAnnotationAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLAnnotationProperty;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
@@ -33,7 +34,6 @@ import org.semanticweb.owlapi.model.OWLClassAxiom;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLEntity;
-import org.semanticweb.owlapi.model.OWLLiteral;
 import org.semanticweb.owlapi.model.OWLObjectSomeValuesFrom;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
@@ -86,7 +86,7 @@ public class OntologyParser {
 	
 	public String getOBODataVersion(String file) {
 		System.out.println("@@ Trying to get obo data version from " + file);
-		String result = "unknown";
+		String result = null;
 		String line = null;
 	    try {
 	        BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -106,6 +106,7 @@ public class OntologyParser {
 	}
 	
 	private void findLocalOntologies() {
+		String oboVersion = null;
 		if (parserInvocation.getInputRepositoryFolder() != null) {
 			log.info("["+parserInvocation.getInvocationId()+"] findLocalOntologies in " + parserInvocation.getInputRepositoryFolder());
 			File repo = new File(parserInvocation.getInputRepositoryFolder());
@@ -118,13 +119,22 @@ public class OntologyParser {
 			  ontologies = new ArrayList<OntologyBean>();
 			  while (files.hasNext()) {
 				  File f = files.next();
+				  if (f.getAbsolutePath().toLowerCase().endsWith("obo")) {
+					  oboVersion = getOBODataVersion(f.getAbsolutePath());
+   				  }
 				  ontologies.add(new OntologyBean(f));
 				  log.info("["+parserInvocation.getInvocationId()+"] findLocalOntologies in " + f.getName());
 			  }
 			}
 		} else {
+			if (this.parserInvocation.getMasterFileName().toLowerCase().endsWith("obo")) {
+				oboVersion = getOBODataVersion(this.parserInvocation.getMasterFileName());
+			}
 			this.ontologies.add(new OntologyBean(new File(this.parserInvocation.getMasterFileName())));
 			log.info("getInputRepositoryFolder is not provided. Unique file being parse.");
+		}
+		if (oboVersion != null) {
+			parserInvocation.setOBOVersion(oboVersion);
 		}
 	}
 	
@@ -133,10 +143,23 @@ public class OntologyParser {
 		boolean isOBO = false;
 		OWLDataFactory fact = sourceOwlManager.
 				getOWLDataFactory();
+		
+		OWLAxiom owlAnnVersion = null;
 		for(OWLOntology sourceOnt : this.sourceOwlManager.getOntologies()) {
-			//allAxioms.addAll(sourceOnt.getAxioms());
 			OWLOntologyFormat format = this.sourceOwlManager.getOntologyFormat(sourceOnt);
 			isOBO = isOBO || (format instanceof OBOOntologyFormat);
+			
+			
+			for (OWLAnnotation ann : sourceOnt.getAnnotations()) {
+				System.out.println("@@ adding version for ?? " + ann.getProperty().toString());
+				if (ann.getProperty().toString().contains("versionInfo")) {
+					System.out.println("@@ adding version " + ann.getValue());
+					owlAnnVersion = fact.getOWLAnnotationAssertionAxiom(ann.getProperty(), 
+							IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject"),
+							ann.getValue());
+				}
+			}
+			
 			for (OWLAxiom axiom : sourceOnt.getAxioms()) {
 				allAxioms.add(axiom);
 
@@ -199,6 +222,7 @@ public class OntologyParser {
 					}
 				}
 			}
+			
 		}
 		
 
@@ -216,11 +240,36 @@ public class OntologyParser {
 			return false;
 		}
 		
+
+		
 		targetOwlManager.addAxioms(this.targetOwlOntology, allAxioms);
 		for (OWLAnnotation ann: this.targetOwlOntology.getAnnotations()) {
 			AddOntologyAnnotation addAnn = new AddOntologyAnnotation(this.targetOwlOntology, ann);
 			targetOwlManager.applyChange(addAnn);
 		}
+		
+		if (isOBO) {
+			if (parserInvocation.getOBOVersion() != null) {
+				System.out.println("@@ adding version " + parserInvocation.getOBOVersion());
+				OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
+				OWLAnnotationAssertionAxiom annVersion = fact.getOWLAnnotationAssertionAxiom(prop, 
+						IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject"),
+						fact.getOWLLiteral(parserInvocation.getOBOVersion()));
+				targetOwlManager.addAxiom(targetOwlOntology, annVersion);
+			}
+		} else {
+			if (owlAnnVersion != null) {
+				targetOwlManager.addAxiom(targetOwlOntology, owlAnnVersion);
+			}
+		}
+		
+		for(OWLOntology sourceOnt : this.sourceOwlManager.getOntologies()) {
+			 for (OWLAnnotation ann : sourceOnt.getAnnotations()) {
+				AddOntologyAnnotation addAnn = new AddOntologyAnnotation(this.targetOwlOntology, ann);
+				targetOwlManager.applyChange(addAnn);
+			 }
+		}
+		
 		OWLReasonerFactory reasonerFactory = null;
 		OWLReasoner reasoner = null;
 		reasonerFactory = new StructuralReasonerFactory();
