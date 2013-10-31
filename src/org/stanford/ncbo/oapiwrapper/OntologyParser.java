@@ -1,6 +1,8 @@
 package org.stanford.ncbo.oapiwrapper;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -46,6 +48,7 @@ import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 import org.semanticweb.owlapi.util.InferredSubClassAxiomGenerator;
+import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 
 public class OntologyParser {
 	protected ParserInvocation parserInvocation = null;
@@ -79,6 +82,27 @@ public class OntologyParser {
 				
 		//this.targetOwlManager.setSilentMissingImportsHandling(true);
 		log.info("executor created");
+	}
+	
+	public String getOBODataVersion(String file) {
+		System.out.println("@@ Trying to get obo data version from " + file);
+		String result = "unknown";
+		String line = null;
+	    try {
+	        BufferedReader reader = new BufferedReader(new FileReader(file));
+	        while((line = reader.readLine()) != null){
+	        	if (line.contains("data-version:")) {
+	        		String[] version = line.split(" ");
+	        		if (version.length > 1) {
+	        			System.out.println("@@ Indetified obo data version " + version[1]);
+	        			return version[1];
+	        		}
+	        	}
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+		return result;
 	}
 	
 	private void findLocalOntologies() {
