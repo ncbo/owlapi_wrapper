@@ -156,21 +156,29 @@ public class OntologyParser {
 			return false;
 		}
 		
-		OWLAxiom owlAnnVersion = null;
 		for(OWLOntology sourceOnt : this.sourceOwlManager.getOntologies()) {
 			IRI documentIRI = this.sourceOwlManager.getOntologyDocumentIRI(sourceOnt);
 			System.out.println("@@documentIRI for " + documentIRI.toString());
 			OWLOntologyFormat format = this.sourceOwlManager.getOntologyFormat(sourceOnt);
 			isOBO = isOBO || (format instanceof OBOOntologyFormat);
 			
-			
-			for (OWLAnnotation ann : sourceOnt.getAnnotations()) {
-				System.out.println("@@ adding version for ?? " + ann.getProperty().toString());
-				if (ann.getProperty().toString().contains("versionInfo")) {
-					System.out.println("@@ adding version " + ann.getValue());
-					owlAnnVersion = fact.getOWLAnnotationAssertionAxiom(ann.getProperty(), 
-							IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject"),
+			if (!sourceOnt.getOntologyID().isAnonymous()) {
+				for (OWLAnnotation ann : sourceOnt.getAnnotations()) {
+					System.out.println("@@ adding ground metadata triples " + ann.getValue());
+					OWLAnnotationAssertionAxiom groundAnnotation = fact.getOWLAnnotationAssertionAxiom(ann.getProperty(), 
+							sourceOnt.getOntologyID().getOntologyIRI(),
 							ann.getValue());
+					targetOwlManager.addAxiom(targetOwlOntology, groundAnnotation);
+					if (documentIRI.toString().startsWith("file:/")) {
+						if (ann.getProperty().toString().contains("versionInfo")) {
+							OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
+							OWLAnnotationAssertionAxiom annVersion = fact.getOWLAnnotationAssertionAxiom(prop, 
+									IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject"),
+									ann.getValue());
+							targetOwlManager.addAxiom(targetOwlOntology, annVersion);
+						}
+					}
+
 				}
 			}
 			
@@ -254,10 +262,6 @@ public class OntologyParser {
 						IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject"),
 						fact.getOWLLiteral(parserInvocation.getOBOVersion()));
 				targetOwlManager.addAxiom(targetOwlOntology, annVersion);
-			}
-		} else {
-			if (owlAnnVersion != null) {
-				targetOwlManager.addAxiom(targetOwlOntology, owlAnnVersion);
 			}
 		}
 		
