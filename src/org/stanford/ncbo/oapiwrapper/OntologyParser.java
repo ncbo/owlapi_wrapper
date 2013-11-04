@@ -158,6 +158,8 @@ public class OntologyParser {
 		
 		OWLAxiom owlAnnVersion = null;
 		for(OWLOntology sourceOnt : this.sourceOwlManager.getOntologies()) {
+			IRI documentIRI = this.sourceOwlManager.getOntologyDocumentIRI(sourceOnt);
+			System.out.println("@@documentIRI for " + documentIRI.toString());
 			OWLOntologyFormat format = this.sourceOwlManager.getOntologyFormat(sourceOnt);
 			isOBO = isOBO || (format instanceof OBOOntologyFormat);
 			
