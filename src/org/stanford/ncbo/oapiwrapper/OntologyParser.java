@@ -239,22 +239,6 @@ public class OntologyParser {
 			
 		}
 		
-
-		
-		try {
-			this.targetOwlOntology = targetOwlManager.createOntology();
-		} catch (OWLOntologyCreationException e) {
-			log.log(Level.SEVERE, e.getMessage(), e);
-			StringWriter trace = new StringWriter();
-			e.printStackTrace(new PrintWriter(trace));
-			parserInvocation.getParserLog().addError(ParserError.OWL_CREATE_ONTOLOGY_EXCEPTION, 
-					"Error buildOWLOntology" + e.getMessage() +
-					"\n" + trace.toString());
-			log.info(e.getMessage());
-			return false;
-		}
-		
-
 		
 		targetOwlManager.addAxioms(this.targetOwlOntology, allAxioms);
 		for (OWLAnnotation ann: this.targetOwlOntology.getAnnotations()) {
