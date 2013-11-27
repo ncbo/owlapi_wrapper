@@ -23,6 +23,7 @@ import org.coode.owlapi.turtle.TurtleOntologyFormat;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.FileDocumentSource;
 import org.semanticweb.owlapi.io.RDFXMLOntologyFormat;
+import org.semanticweb.owlapi.io.XMLUtils;
 import org.semanticweb.owlapi.model.AddOntologyAnnotation;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.MissingImportHandlingStrategy;
@@ -50,6 +51,7 @@ import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 import org.semanticweb.owlapi.util.InferredSubClassAxiomGenerator;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
+import org.semanticweb.owlapi.vocab.PrefixOWLOntologyFormat;
 
 public class OntologyParser {
 	protected ParserInvocation parserInvocation = null;
@@ -187,6 +189,21 @@ public class OntologyParser {
 			
 			for (OWLAxiom axiom : sourceOnt.getAxioms()) {
 				allAxioms.add(axiom);
+				
+				PrefixOWLOntologyFormat prefixFormat = (PrefixOWLOntologyFormat) this.sourceOwlManager.getOntologyFormat(sourceOnt);
+				if (isPrefixedOWL == true && !isOBO) {
+					Set<OWLClass> classes = sourceOnt.getClassesInSignature();
+					for (OWLClass cls : classes) {
+						if (!cls.isAnonymous()) {
+							String prefixUpperCase = prefixFormat.getPrefixIRI(cls.getIRI()).toUpperCase();
+							OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/prefixIRI"));
+							OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, 
+									cls.getIRI(),
+									fact.getOWLLiteral(prefixUpperCase));
+							allAxioms.add(annAsse);
+						}
+					}
+				}
 
 				if (axiom instanceof OWLSubClassOfAxiom) {
 					OWLSubClassOfAxiom sc = (OWLSubClassOfAxiom) axiom;
@@ -265,7 +282,6 @@ public class OntologyParser {
 					}
 				}
 			}
-			
 		}
 		
 		
