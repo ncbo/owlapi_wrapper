@@ -162,6 +162,8 @@ public class OntologyParser {
 			System.out.println("@@documentIRI for " + documentIRI.toString());
 			OWLOntologyFormat format = this.sourceOwlManager.getOntologyFormat(sourceOnt);
 			isOBO = isOBO || (format instanceof OBOOntologyFormat);
+			boolean isPrefixedOWL = this.sourceOwlManager.getOntologyFormat(sourceOnt).isPrefixOWLOntologyFormat();
+			System.out.println("isPrefixOWLOntologyFormat " + isPrefixedOWL); 
 			
 			if (!sourceOnt.getOntologyID().isAnonymous()) {
 				for (OWLAnnotation ann : sourceOnt.getAnnotations()) {
