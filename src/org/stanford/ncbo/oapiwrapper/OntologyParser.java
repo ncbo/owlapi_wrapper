@@ -164,8 +164,6 @@ public class OntologyParser {
 			System.out.println("@@documentIRI for " + documentIRI.toString());
 			OWLOntologyFormat format = this.sourceOwlManager.getOntologyFormat(sourceOnt);
 			isOBO = isOBO || (format instanceof OBOOntologyFormat);
-			boolean isPrefixedOWL = this.sourceOwlManager.getOntologyFormat(sourceOnt).isPrefixOWLOntologyFormat();
-			System.out.println("isPrefixOWLOntologyFormat " + isPrefixedOWL); 
 			
 			if (!sourceOnt.getOntologyID().isAnonymous()) {
 				for (OWLAnnotation ann : sourceOnt.getAnnotations()) {
@@ -189,21 +187,6 @@ public class OntologyParser {
 			
 			for (OWLAxiom axiom : sourceOnt.getAxioms()) {
 				allAxioms.add(axiom);
-				
-				PrefixOWLOntologyFormat prefixFormat = (PrefixOWLOntologyFormat) this.sourceOwlManager.getOntologyFormat(sourceOnt);
-				if (isPrefixedOWL == true && !isOBO) {
-					Set<OWLClass> classes = sourceOnt.getClassesInSignature();
-					for (OWLClass cls : classes) {
-						if (!cls.isAnonymous()) {
-							String prefixUpperCase = prefixFormat.getPrefixIRI(cls.getIRI()).toUpperCase();
-							OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/prefixIRI"));
-							OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, 
-									cls.getIRI(),
-									fact.getOWLLiteral(prefixUpperCase));
-							allAxioms.add(annAsse);
-						}
-					}
-				}
 
 				if (axiom instanceof OWLSubClassOfAxiom) {
 					OWLSubClassOfAxiom sc = (OWLSubClassOfAxiom) axiom;
@@ -278,6 +261,22 @@ public class OntologyParser {
 						OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, 
 								cls.getIRI(),
 								fact.getOWLLiteral(oboID));
+						allAxioms.add(annAsse);
+					}
+				}
+			} 
+			boolean isPrefixedOWL = this.sourceOwlManager.getOntologyFormat(sourceOnt).isPrefixOWLOntologyFormat();
+			System.out.println("isPrefixOWLOntologyFormat " + isPrefixedOWL); 
+			if (isPrefixedOWL == true && !isOBO) {
+				PrefixOWLOntologyFormat prefixFormat = (PrefixOWLOntologyFormat) this.sourceOwlManager.getOntologyFormat(sourceOnt);
+				Set<OWLClass> classes = sourceOnt.getClassesInSignature();
+				for (OWLClass cls : classes) {
+					if (!cls.isAnonymous()) {
+						String prefixUpperCase = prefixFormat.getPrefixIRI(cls.getIRI()).toUpperCase();
+						OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/prefixIRI"));
+						OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, 
+								cls.getIRI(),
+								fact.getOWLLiteral(prefixUpperCase));
 						allAxioms.add(annAsse);
 					}
 				}
