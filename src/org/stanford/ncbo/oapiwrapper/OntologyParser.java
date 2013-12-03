@@ -18,7 +18,6 @@ import java.util.regex.Pattern;
 import org.apache.commons.io.FileUtils;
 import org.coode.owlapi.obo.parser.OBOOntologyFormat;
 import org.coode.owlapi.obo.parser.OBOPrefix;
-import org.coode.owlapi.owlxmlparser.OWLSubClassAxiomElementHandler;
 import org.coode.owlapi.turtle.TurtleOntologyFormat;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.FileDocumentSource;
@@ -350,23 +349,6 @@ public class OntologyParser {
 					}
 				}
 			}
-		}
-		if (isOBO) {
-			//replicate treeView as subClassOf
-			Set<OWLAxiom> treeViewAxs = new HashSet<OWLAxiom>();
-			for (OWLAxiom axiom : targetOwlOntology.getAxioms()) {
-				if (axiom instanceof OWLSubClassOfAxiom) {
-					OWLSubClassOfAxiom scAxiom = (OWLSubClassOfAxiom)axiom;
-					OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/treeView"));
-					if (!scAxiom.getSubClass().isAnonymous() && !scAxiom.getSuperClass().isAnonymous()) {
-						OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop,
-							scAxiom.getSubClass().asOWLClass().getIRI(),
-							scAxiom.getSuperClass().asOWLClass().getIRI());
-						treeViewAxs.add(annAsse);
-					}
-				}
-			}
-			targetOwlManager.addAxioms(targetOwlOntology, treeViewAxs);
 		}
 		return true;
 	}
