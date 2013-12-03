@@ -341,6 +341,7 @@ public class OntologyParser {
 					}
 					Set<OWLAnnotationAssertionAxiom> assRoot = subClass.getAnnotationAssertionAxioms(targetOwlOntology);
 					for (OWLAnnotationAssertionAxiom annRoot : assRoot) {
+						System.out.println("annRoot is present " + rootID + " prop " + annRoot.getProperty().toString());
 						if (annRoot.getProperty().toString().contains("treeView")) {
 							System.out.println("Removing edge from owl:Thing when treeView is present " + rootID);
 							RemoveAxiom remove = new RemoveAxiom(targetOwlOntology,rootEdge);
