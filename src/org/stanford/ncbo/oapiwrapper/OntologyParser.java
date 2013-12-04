@@ -253,11 +253,14 @@ public class OntologyParser {
 				Set<OWLClass> classes = sourceOnt.getClassesInSignature();
 				for (OWLClass cls : classes) {
 					if (!cls.isAnonymous()) {
-						String prefixUpperCase = prefixFormat.getPrefixIRI(cls.getIRI()).toUpperCase();
+						String prefixIRI = prefixFormat.getPrefixIRI(cls.getIRI());
+						if (prefixIRI.startsWith(":")) {
+							prefixIRI = prefixIRI.substring(1);
+						}
 						OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/prefixIRI"));
 						OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, 
 								cls.getIRI(),
-								fact.getOWLLiteral(prefixUpperCase));
+								fact.getOWLLiteral(prefixIRI));
 						allAxioms.add(annAsse);
 					}
 				}
