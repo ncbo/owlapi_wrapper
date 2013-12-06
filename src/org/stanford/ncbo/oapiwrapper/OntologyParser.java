@@ -332,7 +332,12 @@ public class OntologyParser {
 				String rootID = subClass.getIRI().toString();
 				if (rootID.toLowerCase().contains("obo")) {
 					Set<OWLAnnotation> annotationsRoot = subClass.getAnnotations(targetOwlOntology);
+					boolean hasLabel = false;
 					for (OWLAnnotation annRoot : annotationsRoot) {
+						System.out.println("@@prop for root:"+rootID + "--" +annRoot.getProperty().toString());
+
+						hasLabel = hasLabel || annRoot.getProperty().toString().equals("http://www.w3.org/2000/01/rdf-schema#label")
+								        || annRoot.getProperty().toString().equals("rdfs:label");
 						if (annRoot.isDeprecatedIRIAnnotation()) {
 						System.out.println("Deprecated annotation with value " + annRoot.getValue().toString());
 							if (annRoot.getValue().toString().contains("true")) {
@@ -349,6 +354,11 @@ public class OntologyParser {
 							RemoveAxiom remove = new RemoveAxiom(targetOwlOntology,rootEdge);
 							targetOwlManager.applyChange(remove);
 						}
+					}
+					if (!hasLabel) {
+						System.out.println("@@deleting root without label "+rootID);
+						RemoveAxiom remove = new RemoveAxiom(targetOwlOntology,rootEdge);
+						targetOwlManager.applyChange(remove);
 					}
 				}
 			}
