@@ -12,17 +12,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
 import org.coode.owlapi.obo.parser.OBOOntologyFormat;
-import org.coode.owlapi.obo.parser.OBOPrefix;
 import org.coode.owlapi.turtle.TurtleOntologyFormat;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.FileDocumentSource;
 import org.semanticweb.owlapi.io.RDFXMLOntologyFormat;
-import org.semanticweb.owlapi.io.XMLUtils;
 import org.semanticweb.owlapi.model.AddOntologyAnnotation;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.MissingImportHandlingStrategy;
@@ -490,38 +487,4 @@ public class OntologyParser {
 	}
 	
 	private static Pattern SEPARATOR_PATTERN = Pattern.compile("([^#_|_]+)(#_|_)(.+)");
-	private String toOBOId(IRI iri) {
-	       String value = iri.toString();
-	       String localPart = "";
-	       if (value.startsWith(OBOPrefix.OBO.getPrefix())) {
-	           localPart = value.substring(OBOPrefix.OBO.getPrefix().length());
-	       }
-	       else if (value.startsWith(OBOPrefix.OBO_IN_OWL.getPrefix())) {
-	           localPart = value.substring(OBOPrefix.OBO_IN_OWL.getPrefix().length());
-
-	       }
-	       else if (value.startsWith(OBOPrefix.IAO.getPrefix())) {
-	           localPart = value.substring(OBOPrefix.IAO.getPrefix().length());
-	       }
-	       else {
-	           String fragment = iri.getFragment();
-	           if (fragment != null) {
-	               localPart = fragment;
-	           }
-	           else {
-	               localPart = value;
-	           }
-	       }
-	       Matcher matcher = SEPARATOR_PATTERN.matcher(localPart);
-	       if (matcher.matches()) {
-	           StringBuilder sb = new StringBuilder();
-	           sb.append(matcher.group(1));
-	           sb.append(":");
-	           sb.append(matcher.group(3));
-	           return sb.toString();
-	       }
-	       else {
-	           return value;
-	       }
-	   }
 }
