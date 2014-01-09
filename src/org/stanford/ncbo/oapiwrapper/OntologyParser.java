@@ -159,6 +159,9 @@ public class OntologyParser {
 			isOBO = isOBO || (format instanceof OBOOntologyFormat);
 			System.out.println("@@Format " + format.getClass().getName());
 		}		
+		for(OWLOntology sourceOnt : this.sourceOwlManager.getOntologies()) {
+			IRI documentIRI = this.sourceOwlManager.getOntologyDocumentIRI(sourceOnt);
+			System.out.println("@@documentIRI for " + documentIRI.toString());
 			
 			if (!sourceOnt.getOntologyID().isAnonymous()) {
 				for (OWLAnnotation ann : sourceOnt.getAnnotations()) {
@@ -233,15 +236,19 @@ public class OntologyParser {
 				Set<OWLClass> classes = sourceOnt.getClassesInSignature();
 				for (OWLClass cls : classes) {
 					if (!cls.isAnonymous()) {
-						String oboID = toOBOId(cls.getIRI());
-						OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create("http://www.w3.org/2004/02/skos/core#notation"));
-						OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, 
-								cls.getIRI(),
-								fact.getOWLLiteral(oboID));
-						allAxioms.add(annAsse);
+						for (OWLAnnotation ann: cls.getAnnotations(sourceOnt)) {
+							if (ann.getProperty().toString().contains("#id")) {
+								System.out.println("@@xnotation " +cls.getIRI().toString() + " " + ann.getValue().toString());
+								OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create("http://www.w3.org/2004/02/skos/core#notation"));
+								OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, 
+										cls.getIRI(),
+										ann.getValue());
+								allAxioms.add(annAsse);
+							}
+						}
 					}
 				}
-			} 
+			}
 			boolean isPrefixedOWL = this.sourceOwlManager.getOntologyFormat(sourceOnt).isPrefixOWLOntologyFormat();
 			System.out.println("isPrefixOWLOntologyFormat " + isPrefixedOWL); 
 			if (isPrefixedOWL == true && !isOBO) {
