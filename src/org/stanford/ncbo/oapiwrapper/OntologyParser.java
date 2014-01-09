@@ -154,12 +154,11 @@ public class OntologyParser {
 			log.info(e.getMessage());
 			return false;
 		}
-		
 		for(OWLOntology sourceOnt : this.sourceOwlManager.getOntologies()) {
-			IRI documentIRI = this.sourceOwlManager.getOntologyDocumentIRI(sourceOnt);
-			System.out.println("@@documentIRI for " + documentIRI.toString());
 			OWLOntologyFormat format = this.sourceOwlManager.getOntologyFormat(sourceOnt);
 			isOBO = isOBO || (format instanceof OBOOntologyFormat);
+			System.out.println("@@Format " + format.getClass().getName());
+		}		
 			
 			if (!sourceOnt.getOntologyID().isAnonymous()) {
 				for (OWLAnnotation ann : sourceOnt.getAnnotations()) {
