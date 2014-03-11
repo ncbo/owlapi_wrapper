@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -46,6 +47,7 @@ import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 import org.semanticweb.owlapi.util.InferredSubClassAxiomGenerator;
+import org.semanticweb.owlapi.util.OWLEntityRemover;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 import org.semanticweb.owlapi.vocab.PrefixOWLOntologyFormat;
 
@@ -253,6 +255,7 @@ public class OntologyParser {
 			if (isOBO) {
 				Set<OWLClass> classes = sourceOnt.getClassesInSignature();
 				for (OWLClass cls : classes) {
+					boolean idFound = false;
 					if (!cls.isAnonymous()) {
 						for (OWLAnnotation ann: cls.getAnnotations(sourceOnt)) {
 							if (ann.getProperty().toString().contains("#id")) {
@@ -262,7 +265,17 @@ public class OntologyParser {
 										cls.getIRI(),
 										ann.getValue());
 								allAxioms.add(annAsse);
+								idFound = true;
 							}
+						}
+						if (!idFound) {
+					        Set<OWLAxiom> axiomsToRemove = new HashSet<OWLAxiom>();
+					        for (OWLAxiom ax : sourceOnt.getAxioms()) {
+					            if (ax.getSignature().contains(cls)) {
+					                axiomsToRemove.add(ax);
+					            }
+					        }
+					        sourceOwlManager.removeAxioms(sourceOnt, axiomsToRemove);
 						}
 					}
 				}
