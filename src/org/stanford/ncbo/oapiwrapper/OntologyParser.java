@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -14,6 +13,8 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
+
+import javax.naming.NoInitialContextException;
 
 import org.apache.commons.io.FileUtils;
 import org.coode.owlapi.obo.parser.OBOOntologyFormat;
@@ -47,7 +48,6 @@ import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 import org.semanticweb.owlapi.util.InferredSubClassAxiomGenerator;
-import org.semanticweb.owlapi.util.OWLEntityRemover;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 import org.semanticweb.owlapi.vocab.PrefixOWLOntologyFormat;
 
@@ -142,6 +142,8 @@ public class OntologyParser {
 	private boolean buildOWLOntology() {
 		Set<OWLAxiom> allAxioms = new HashSet<OWLAxiom>();
 		boolean isOBO = false;
+		Set<OWLClass> notinclude = new HashSet<OWLClass>();
+
 		OWLDataFactory fact = sourceOwlManager.
 				getOWLDataFactory();
 		try {
@@ -259,7 +261,6 @@ public class OntologyParser {
 					if (!cls.isAnonymous()) {
 						for (OWLAnnotation ann: cls.getAnnotations(sourceOnt)) {
 							if (ann.getProperty().toString().contains("#id")) {
-								System.out.println("@@xnotation " +cls.getIRI().toString() + " " + ann.getValue().toString());
 								OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create("http://www.w3.org/2004/02/skos/core#notation"));
 								OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, 
 										cls.getIRI(),
@@ -269,13 +270,17 @@ public class OntologyParser {
 							}
 						}
 						if (!idFound) {
+							notinclude.add(cls);
+							System.out.println("Removing obo term without skos notation " + cls.getIRI().toString());
 					        Set<OWLAxiom> axiomsToRemove = new HashSet<OWLAxiom>();
 					        for (OWLAxiom ax : sourceOnt.getAxioms()) {
 					            if (ax.getSignature().contains(cls)) {
+						        	System.out.println(" >>> " + cls.getIRI().toString() + " " + ax.toString());
 					                axiomsToRemove.add(ax);
 					            }
 					        }
-					        sourceOwlManager.removeAxioms(sourceOnt, axiomsToRemove);
+					        for (OWLOntology source : this.sourceOwlManager.getOntologies()) {
+					        sourceOwlManager.removeAxioms(source, axiomsToRemove); }
 						}
 					}
 				}
@@ -396,6 +401,17 @@ public class OntologyParser {
 				}
 			}
 			targetOwlManager.addAxioms(targetOwlOntology, treeViewAxs);
+		}
+		for (OWLClass removeClass : notinclude) {
+			System.out.println("Removing obo term without skos notation (2) " + removeClass.getIRI().toString());
+	        Set<OWLAxiom> axiomsToRemove = new HashSet<OWLAxiom>();
+	        for (OWLAxiom ax : targetOwlOntology.getAxioms()) {
+	            if (ax.getSignature().contains(removeClass)) {
+		        	System.out.println(" >>> " + removeClass.getIRI().toString() + " " + ax.toString());
+	                axiomsToRemove.add(ax);
+	            }
+	        }
+	        targetOwlManager.removeAxioms(targetOwlOntology, axiomsToRemove);
 		}
 		return true;
 	}
