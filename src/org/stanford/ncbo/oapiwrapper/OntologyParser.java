@@ -41,6 +41,7 @@ import org.semanticweb.owlapi.model.OWLOntologyFormat;
 import org.semanticweb.owlapi.model.OWLOntologyLoaderConfiguration;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
+import org.semanticweb.owlapi.model.OWLRuntimeException;
 import org.semanticweb.owlapi.model.OWLSubClassOfAxiom;
 import org.semanticweb.owlapi.model.RemoveAxiom;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
@@ -193,6 +194,11 @@ public class OntologyParser {
 				if (axiom instanceof OWLSubClassOfAxiom) {
 					OWLSubClassOfAxiom sc = (OWLSubClassOfAxiom) axiom;
 					OWLClassExpression ce = sc.getSuperClass();
+					try {
+						sc.getSubClass().asOWLClass().getIRI();
+					} catch(OWLRuntimeException exc) {
+						continue;
+					}
 					if (ce instanceof OWLObjectSomeValuesFrom) {
 						OWLObjectSomeValuesFrom some = (OWLObjectSomeValuesFrom) ce;
 						if (!some.getProperty().isAnonymous() && !some.getFiller().isAnonymous()) {
