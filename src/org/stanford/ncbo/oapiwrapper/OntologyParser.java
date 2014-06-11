@@ -496,6 +496,9 @@ public class OntologyParser {
 			parserInvocation.getParserLog().addError(ParserError.OWL_STORAGE_EXCEPTION, 
 					"Error buildOWLOntology" + e.getMessage() +
 					"\n" + trace.toString());
+			if (output.exists()) {
+				output.renameTo(new File(parserInvocation.getOutputRepositoryFolder()+File.separator+"owlapi.xrdf.incomplete"));
+			}
 			return false;
 		}
 		log.info("Serialization done!");
