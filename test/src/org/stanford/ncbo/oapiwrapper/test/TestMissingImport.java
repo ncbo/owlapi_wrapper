@@ -5,11 +5,13 @@ import java.util.logging.Logger;
 
 import junit.framework.TestCase;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.stanford.ncbo.oapiwrapper.OntologyParser;
 import org.stanford.ncbo.oapiwrapper.OntologyParserException;
 import org.stanford.ncbo.oapiwrapper.ParserInvocation;
 
+@Ignore
 public class TestMissingImport extends TestCase {
 	private static final String inputRepositoryFolder = "./test/repo/input/cno";
 	private static final String outputRepositoryFolder = "./test/repo/output/cno";
