@@ -298,6 +298,30 @@ public class OntologyParser {
 				Set<OWLClass> classes = sourceOnt.getClassesInSignature();
 				for (OWLClass cls : classes) {
 					if (!cls.isAnonymous()) {
+						boolean notationFound = false;
+						for (OWLAnnotation ann: cls.getAnnotations(sourceOnt)) {
+							if (ann.getProperty().toString().contains("http://www.w3.org/2004/02/skos/core#notation")) {
+								notationFound = true;
+								break;
+							}
+						}
+						if (notationFound) {
+							continue;
+						}
+						for (OWLAnnotation ann: cls.getAnnotations(sourceOnt)) {
+							if (ann.getProperty().toString().contains("http://www.geneontology.org/formats/oboInOwl#id")) {
+								OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create("http://www.w3.org/2004/02/skos/core#notation"));
+								OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, 
+										cls.getIRI(),
+										ann.getValue());
+								allAxioms.add(annAsse);
+								notationFound = true;
+								break;
+							}
+						}
+						if (notationFound) {
+							continue;
+						}
 						String prefixIRI = prefixFormat.getPrefixIRI(cls.getIRI());
 						if (prefixIRI != null) {
 							if (prefixIRI.startsWith(":")) {
