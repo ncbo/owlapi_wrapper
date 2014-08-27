@@ -327,6 +327,14 @@ public class OntologyParser {
 							if (prefixIRI.startsWith(":")) {
 								prefixIRI = prefixIRI.substring(1);
 							}
+							if (prefixIRI.startsWith("obo:") && prefixIRI.contains("_")) {
+								// OBO ontologies transformed into OWL before submitting to BioPortal
+								prefixIRI = prefixIRI.substring(4);
+								StringBuilder b = new StringBuilder(prefixIRI);
+								int ind = prefixIRI.lastIndexOf("_");
+								b.replace(ind, ind + 1, ":" );
+								prefixIRI = b.toString();
+							}
 							OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/prefixIRI"));
 							OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, 
 									cls.getIRI(),
