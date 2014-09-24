@@ -52,6 +52,7 @@ import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 import org.semanticweb.owlapi.util.InferredSubClassAxiomGenerator;
+import org.semanticweb.owlapi.util.SimpleIRIMapper;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 import org.semanticweb.owlapi.vocab.PrefixOWLOntologyFormat;
 
@@ -91,11 +92,16 @@ public class OntologyParser {
 		log.info("B. Parser facts: " + OWLParserFactoryRegistry.getInstance().getParserFactories().size());
 
 		this.sourceOwlManager = OWLManager.createOWLOntologyManager();
+
 		//this.sourceOwlManager.setSilentMissingImportsHandling(true);
 		if (this.parserInvocation.getInputRepositoryFolder() != null) {
 			File rooDirectory = new File(this.parserInvocation.getInputRepositoryFolder());
 			this.sourceOwlManager.addIRIMapper(new AutoIRIMapper(rooDirectory, true));
 		}
+		SimpleIRIMapper bfoCached = new SimpleIRIMapper(IRI.create("http://www.ifomis.org/bfo/1.1"),
+				IRI.create("https://raw.githubusercontent.com/ncbo/bfo/master/bfo-1.1.owl"));
+		this.sourceOwlManager.addIRIMapper(bfoCached);
+
 		this.targetOwlManager = OWLManager.createOWLOntologyManager();
 				
 		//this.targetOwlManager.setSilentMissingImportsHandling(true);
