@@ -14,13 +14,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
-import javax.naming.NoInitialContextException;
-
 import org.apache.commons.io.FileUtils;
 import org.coode.owlapi.obo.parser.OBOOntologyFormat;
+import org.coode.owlapi.obo12.parser.OBO12DocumentFormat;
+import org.coode.owlapi.obo12.parser.OBO12ParserFactory;
+import org.coode.owlapi.oboformat.OBOFormatParserFactory;
 import org.coode.owlapi.turtle.TurtleOntologyFormat;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.io.FileDocumentSource;
+import org.semanticweb.owlapi.io.OWLParserFactory;
+import org.semanticweb.owlapi.io.OWLParserFactoryRegistry;
 import org.semanticweb.owlapi.io.RDFXMLOntologyFormat;
 import org.semanticweb.owlapi.model.AddOntologyAnnotation;
 import org.semanticweb.owlapi.model.IRI;
@@ -73,6 +76,19 @@ public class OntologyParser {
 		this.parserInvocation = parserInvocation;
 		if (!parserInvocation.valid())
 			throw new OntologyParserException(this.parserInvocation.getParserLog());
+
+		this.sourceOwlManager = OWLManager.createOWLOntologyManager();
+		OWLParserFactoryRegistry registry = OWLParserFactoryRegistry.getInstance();
+		log.info("A. Parser facts: " + OWLParserFactoryRegistry.getInstance().getParserFactories().size());
+		OWLParserFactory toRemove = null;
+		for (OWLParserFactory f : registry.getParserFactories()) {
+			if (f.getClass() == OBO12ParserFactory.class) {
+				log.info("Found bad parser");
+				toRemove = f;
+			}
+		}
+		registry.unregisterParserFactory(toRemove);
+		log.info("B. Parser facts: " + OWLParserFactoryRegistry.getInstance().getParserFactories().size());
 
 		this.sourceOwlManager = OWLManager.createOWLOntologyManager();
 		//this.sourceOwlManager.setSilentMissingImportsHandling(true);
@@ -141,6 +157,7 @@ public class OntologyParser {
 	}
 	
 	private boolean buildOWLOntology() {
+
 		Set<OWLAxiom> allAxioms = new HashSet<OWLAxiom>();
 		boolean isOBO = false;
 		Set<OWLClass> notinclude = new HashSet<OWLClass>();
@@ -161,7 +178,7 @@ public class OntologyParser {
 		}
 		for(OWLOntology sourceOnt : this.sourceOwlManager.getOntologies()) {
 			OWLOntologyFormat format = this.sourceOwlManager.getOntologyFormat(sourceOnt);
-			isOBO = isOBO || (format instanceof OBOOntologyFormat);
+			isOBO = isOBO || (format instanceof OBOOntologyFormat) || (format instanceof OBO12DocumentFormat);
 			System.out.println("@@Format " + format.getClass().getName());
 		}		
 		for(OWLOntology sourceOnt : this.sourceOwlManager.getOntologies()) {
