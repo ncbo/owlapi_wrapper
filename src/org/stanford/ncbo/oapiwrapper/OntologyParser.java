@@ -306,8 +306,9 @@ public class OntologyParser {
 		Set<OWLSubClassOfAxiom> subAxs = isc.createAxioms(
 				this.targetOwlOntology.getOWLOntologyManager(), reasoner);
 		targetOwlManager.addAxioms(this.targetOwlOntology, subAxs);
+		deprecateBranch();
+
 		if (isOBO) {
-			deprecateBranchInObo();
 			replicateHierarchyAsTreeview(fact);
 			for (OWLClass removeClass : notinclude) {
 				System.out.println("Removing obo term without skos notation (2) "
@@ -349,7 +350,7 @@ public class OntologyParser {
 		targetOwlManager.addAxioms(targetOwlOntology, treeViewAxs);
 	}
 
-	private void deprecateBranchInObo() {
+	private void deprecateBranch() {
 		Set<OWLEntity> things = targetOwlOntology.getEntitiesInSignature(IRI
 				.create("http://www.w3.org/2002/07/owl#Thing"));
 		OWLClass thing = null;
