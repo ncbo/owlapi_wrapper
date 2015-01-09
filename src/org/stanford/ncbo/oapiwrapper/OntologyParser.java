@@ -310,22 +310,22 @@ public class OntologyParser {
 
 		if (isOBO) {
 			replicateHierarchyAsTreeview(fact);
-			for (OWLClass removeClass : notinclude) {
-				System.out.println("Removing obo term without skos notation (2) "
-						+ removeClass.getIRI().toString());
-				Set<OWLAxiom> axiomsToRemove = new HashSet<OWLAxiom>();
-				for (OWLAxiom ax : targetOwlOntology.getAxioms()) {
-					if (ax.getSignature().contains(removeClass)) {
-						System.out.println(" >>> "
-								+ removeClass.getIRI().toString() + " "
-								+ ax.toString());
-						axiomsToRemove.add(ax);
-					}
-				}
-				targetOwlManager.removeAxioms(targetOwlOntology, axiomsToRemove);
-			}
 		}
-		
+		for (OWLClass removeClass : notinclude) {
+			System.out.println("Removing obo term without skos notation (2) "
+					+ removeClass.getIRI().toString());
+			Set<OWLAxiom> axiomsToRemove = new HashSet<OWLAxiom>();
+			for (OWLAxiom ax : targetOwlOntology.getAxioms()) {
+				if (ax.getSignature().contains(removeClass)) {
+					System.out.println(" >>> "
+							+ removeClass.getIRI().toString() + " "
+							+ ax.toString());
+					axiomsToRemove.add(ax);
+				}
+			}
+			targetOwlManager.removeAxioms(targetOwlOntology, axiomsToRemove);
+		}
+
 		return true;
 	}
 
@@ -340,9 +340,8 @@ public class OntologyParser {
 				if (!scAxiom.getSubClass().isAnonymous()
 						&& !scAxiom.getSuperClass().isAnonymous()) {
 					OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(
-							prop, scAxiom.getSubClass().asOWLClass()
-									.getIRI(), scAxiom.getSuperClass()
-									.asOWLClass().getIRI());
+							prop, scAxiom.getSubClass().asOWLClass().getIRI(),
+							scAxiom.getSuperClass().asOWLClass().getIRI());
 					treeViewAxs.add(annAsse);
 				}
 			}
@@ -363,38 +362,41 @@ public class OntologyParser {
 			if (!rootEdge.getSubClass().isAnonymous()) {
 				OWLClass subClass = (OWLClass) rootEdge.getSubClass();
 				String rootID = subClass.getIRI().toString();
-				Set<OWLAnnotation> annotationsRoot = subClass
-						.getAnnotations(targetOwlOntology);
-				boolean hasLabel = false;
-				for (OWLAnnotation annRoot : annotationsRoot) {
-					hasLabel = hasLabel
-							|| annRoot
-									.getProperty()
-									.toString()
-									.equals("http://www.w3.org/2000/01/rdf-schema#label")
-							|| annRoot.getProperty().toString()
-									.equals("rdfs:label");
-					if (annRoot.isDeprecatedIRIAnnotation()) {
-						if (annRoot.getValue().toString().contains("true")) {
+				if (rootID.toLowerCase().contains("obo")) {
+					Set<OWLAnnotation> annotationsRoot = subClass
+							.getAnnotations(targetOwlOntology);
+					boolean hasLabel = false;
+					for (OWLAnnotation annRoot : annotationsRoot) {
+						hasLabel = hasLabel
+								|| annRoot
+										.getProperty()
+										.toString()
+										.equals("http://www.w3.org/2000/01/rdf-schema#label")
+								|| annRoot.getProperty().toString()
+										.equals("rdfs:label");
+						if (annRoot.isDeprecatedIRIAnnotation()) {
+							if (annRoot.getValue().toString().contains("true")) {
+								RemoveAxiom remove = new RemoveAxiom(
+										targetOwlOntology, rootEdge);
+								targetOwlManager.applyChange(remove);
+							}
+						}
+					}
+					Set<OWLAnnotationAssertionAxiom> assRoot = subClass
+							.getAnnotationAssertionAxioms(targetOwlOntology);
+					for (OWLAnnotationAssertionAxiom annRoot : assRoot) {
+						if (annRoot.getProperty().toString()
+								.contains("treeView")) {
 							RemoveAxiom remove = new RemoveAxiom(
 									targetOwlOntology, rootEdge);
 							targetOwlManager.applyChange(remove);
 						}
 					}
-				}
-				Set<OWLAnnotationAssertionAxiom> assRoot = subClass
-						.getAnnotationAssertionAxioms(targetOwlOntology);
-				for (OWLAnnotationAssertionAxiom annRoot : assRoot) {
-					if (annRoot.getProperty().toString().contains("treeView")) {
+					if (!hasLabel) {
 						RemoveAxiom remove = new RemoveAxiom(targetOwlOntology,
 								rootEdge);
 						targetOwlManager.applyChange(remove);
 					}
-				}
-				if (!hasLabel) {
-					RemoveAxiom remove = new RemoveAxiom(targetOwlOntology,
-							rootEdge);
-					targetOwlManager.applyChange(remove);
 				}
 			}
 		}
