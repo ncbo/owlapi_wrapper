@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -18,8 +19,10 @@ import org.apache.commons.io.FileUtils;
 import org.coode.owlapi.obo.parser.OBOOntologyFormat;
 import org.coode.owlapi.obo12.parser.OBO12DocumentFormat;
 import org.coode.owlapi.obo12.parser.OBO12ParserFactory;
-import org.coode.owlapi.turtle.TurtleOntologyFormat;
 import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.formats.OWLXMLDocumentFormat;
+import org.semanticweb.owlapi.formats.PrefixDocumentFormat;
+import org.semanticweb.owlapi.formats.RDFXMLDocumentFormat;
 import org.semanticweb.owlapi.io.FileDocumentSource;
 import org.semanticweb.owlapi.io.OWLParserFactory;
 import org.semanticweb.owlapi.io.OWLParserFactoryRegistry;
@@ -32,14 +35,13 @@ import org.semanticweb.owlapi.model.OWLAnnotationAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLAnnotationProperty;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLClassAxiom;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLDocumentFormat;
 import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLObjectSomeValuesFrom;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
-import org.semanticweb.owlapi.model.OWLOntologyFormat;
 import org.semanticweb.owlapi.model.OWLOntologyLoaderConfiguration;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
@@ -49,11 +51,14 @@ import org.semanticweb.owlapi.model.RemoveAxiom;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
+import org.semanticweb.owlapi.search.EntitySearcher;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 import org.semanticweb.owlapi.util.InferredSubClassAxiomGenerator;
 import org.semanticweb.owlapi.util.SimpleIRIMapper;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 import org.semanticweb.owlapi.vocab.PrefixOWLOntologyFormat;
+
+import com.google.common.base.Optional;
 
 public class OntologyParser {
 	protected ParserInvocation parserInvocation = null;
@@ -185,7 +190,7 @@ public class OntologyParser {
 	private boolean isOBO() {
 		boolean isOBO = false;
 		for (OWLOntology sourceOnt : this.sourceOwlManager.getOntologies()) {
-			OWLOntologyFormat format = this.sourceOwlManager
+			OWLDocumentFormat format = this.sourceOwlManager
 					.getOntologyFormat(sourceOnt);
 			isOBO = isOBO || (format instanceof OBOOntologyFormat)
 					|| (format instanceof OBO12DocumentFormat);
@@ -198,9 +203,11 @@ public class OntologyParser {
 			OWLOntology sourceOnt) {
 		if (!sourceOnt.getOntologyID().isAnonymous()) {
 			for (OWLAnnotation ann : sourceOnt.getAnnotations()) {
+				Optional<IRI> sub = sourceOnt.getOntologyID().getOntologyIRI();
+				IRI iriSub = sub.get();
 				OWLAnnotationAssertionAxiom groundAnnotation = fact
 						.getOWLAnnotationAssertionAxiom(ann.getProperty(),
-								sourceOnt.getOntologyID().getOntologyIRI(),
+								iriSub,
 								ann.getValue());
 				this.targetOwlManager.addAxiom(targetOwlOntology,
 						groundAnnotation);
@@ -304,7 +311,7 @@ public class OntologyParser {
 
 		InferredSubClassAxiomGenerator isc = new InferredSubClassAxiomGenerator();
 		Set<OWLSubClassOfAxiom> subAxs = isc.createAxioms(
-				this.targetOwlOntology.getOWLOntologyManager(), reasoner);
+				this.targetOwlOntology.getOWLOntologyManager().getOWLDataFactory(), reasoner);
 		targetOwlManager.addAxioms(this.targetOwlOntology, subAxs);
 		deprecateBranch();
 
@@ -363,8 +370,7 @@ public class OntologyParser {
 				OWLClass subClass = (OWLClass) rootEdge.getSubClass();
 				String rootID = subClass.getIRI().toString();
 				if (rootID.toLowerCase().contains("obo")) {
-					Set<OWLAnnotation> annotationsRoot = subClass
-							.getAnnotations(targetOwlOntology);
+					Collection<OWLAnnotation> annotationsRoot = EntitySearcher.getAnnotations(subClass, targetOwlOntology);
 					boolean hasLabel = false;
 					for (OWLAnnotation annRoot : annotationsRoot) {
 						hasLabel = hasLabel
@@ -382,8 +388,7 @@ public class OntologyParser {
 							}
 						}
 					}
-					Set<OWLAnnotationAssertionAxiom> assRoot = subClass
-							.getAnnotationAssertionAxioms(targetOwlOntology);
+					Collection<OWLAnnotationAssertionAxiom> assRoot = EntitySearcher.getAnnotationAssertionAxioms(subClass,targetOwlOntology);
 					for (OWLAnnotationAssertionAxiom annRoot : assRoot) {
 						if (annRoot.getProperty().toString()
 								.contains("treeView")) {
@@ -404,13 +409,14 @@ public class OntologyParser {
 
 	private void generateSKOSInOwl(Set<OWLAxiom> allAxioms,
 			OWLDataFactory fact, OWLOntology sourceOnt) {
-		PrefixOWLOntologyFormat prefixFormat = (PrefixOWLOntologyFormat) this.sourceOwlManager
+		OWLDocumentFormat docFormat = this.sourceOwlManager
 				.getOntologyFormat(sourceOnt);
+		PrefixDocumentFormat prefixFormat = docFormat.asPrefixOWLOntologyFormat();
 		Set<OWLClass> classes = sourceOnt.getClassesInSignature();
 		for (OWLClass cls : classes) {
 			if (!cls.isAnonymous()) {
 				boolean notationFound = false;
-				for (OWLAnnotation ann : cls.getAnnotations(sourceOnt)) {
+				for (OWLAnnotation ann : EntitySearcher.getAnnotations(cls, targetOwlOntology)) {
 					if (ann.getProperty()
 							.toString()
 							.contains(
@@ -422,7 +428,7 @@ public class OntologyParser {
 				if (notationFound) {
 					continue;
 				}
-				for (OWLAnnotation ann : cls.getAnnotations(sourceOnt)) {
+				for (OWLAnnotation ann : EntitySearcher.getAnnotations(cls, sourceOnt)) {
 					if (ann.getProperty()
 							.toString()
 							.contains(
@@ -471,7 +477,7 @@ public class OntologyParser {
 		for (OWLClass cls : classes) {
 			boolean idFound = false;
 			if (!cls.isAnonymous()) {
-				for (OWLAnnotation ann : cls.getAnnotations(sourceOnt)) {
+				for (OWLAnnotation ann : EntitySearcher.getAnnotations(cls, sourceOnt)) {
 					if (ann.getProperty().toString().contains("#id")) {
 						OWLAnnotationProperty prop = fact
 								.getOWLAnnotationProperty(IRI
@@ -663,14 +669,11 @@ public class OntologyParser {
 
 	private boolean serializeOntology() {
 		log.info("Serializing ontology in RDF ...");
-		RDFXMLOntologyFormat rdfxml = new RDFXMLOntologyFormat();
-
 		File output = new File(parserInvocation.getOutputRepositoryFolder()
 				+ File.separator + "owlapi.xrdf");
 		IRI newPath = IRI.create("file:" + output.getAbsolutePath());
 		try {
-			this.targetOwlManager.saveOntology(this.targetOwlOntology, rdfxml,
-					newPath);
+			this.targetOwlManager.saveOntology(this.targetOwlOntology, new RDFXMLDocumentFormat(),newPath);
 		} catch (OWLOntologyStorageException e) {
 			log.log(Level.ALL, e.getMessage(), e);
 			StringWriter trace = new StringWriter();

@@ -45,10 +45,10 @@
     </plugins>
   </build>
   <dependencies>
-  	<dependency>
+  	<dependency> 
   		<groupId>net.sourceforge.owlapi</groupId>
   		<artifactId>owlapi-distribution</artifactId>
-  		<version>3.5.2-SNAPSHOT</version>
+  		<version>4.0.2-SNAPSHOT</version>
   	</dependency>
   	<dependency>
   		<groupId>commons-cli</groupId>
@@ -61,10 +61,5 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
-  	<dependency>
-  		<groupId>org.apache.commons</groupId>
-  		<artifactId>commons-io</artifactId>
-  		<version>1.3.2</version>
-  	</dependency>
   </dependencies>
 </project>
