@@ -16,17 +16,14 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
-import org.coode.owlapi.obo.parser.OBOOntologyFormat;
-import org.coode.owlapi.obo12.parser.OBO12DocumentFormat;
 import org.coode.owlapi.obo12.parser.OBO12ParserFactory;
 import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.formats.OWLXMLDocumentFormat;
+import org.semanticweb.owlapi.formats.OBODocumentFormat;
 import org.semanticweb.owlapi.formats.PrefixDocumentFormat;
 import org.semanticweb.owlapi.formats.RDFXMLDocumentFormat;
 import org.semanticweb.owlapi.io.FileDocumentSource;
 import org.semanticweb.owlapi.io.OWLParserFactory;
 import org.semanticweb.owlapi.io.OWLParserFactoryRegistry;
-import org.semanticweb.owlapi.io.RDFXMLOntologyFormat;
 import org.semanticweb.owlapi.model.AddOntologyAnnotation;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.MissingImportHandlingStrategy;
@@ -56,7 +53,6 @@ import org.semanticweb.owlapi.util.AutoIRIMapper;
 import org.semanticweb.owlapi.util.InferredSubClassAxiomGenerator;
 import org.semanticweb.owlapi.util.SimpleIRIMapper;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
-import org.semanticweb.owlapi.vocab.PrefixOWLOntologyFormat;
 
 import com.google.common.base.Optional;
 
@@ -192,8 +188,7 @@ public class OntologyParser {
 		for (OWLOntology sourceOnt : this.sourceOwlManager.getOntologies()) {
 			OWLDocumentFormat format = this.sourceOwlManager
 					.getOntologyFormat(sourceOnt);
-			isOBO = isOBO || (format instanceof OBOOntologyFormat)
-					|| (format instanceof OBO12DocumentFormat);
+			isOBO = isOBO || (format instanceof OBODocumentFormat);
 			System.out.println("@@Format " + format.getClass().getName());
 		}
 		return isOBO;
@@ -315,6 +310,7 @@ public class OntologyParser {
 		targetOwlManager.addAxioms(this.targetOwlOntology, subAxs);
 		deprecateBranch();
 
+		System.out.println("isOBO " + isOBO);
 		if (isOBO) {
 			replicateHierarchyAsTreeview(fact);
 		}
