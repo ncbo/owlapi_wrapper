@@ -229,6 +229,7 @@ public class OntologyParser {
 
 		Set<OWLAxiom> allAxioms = new HashSet<OWLAxiom>();
 		boolean isOBO = false;
+		Set<OWLClass> notinclude = new HashSet<OWLClass>();
 
 		OWLDataFactory fact = sourceOwlManager.getOWLDataFactory();
 		try {
@@ -248,18 +249,15 @@ public class OntologyParser {
 		isOBO = this.isOBO();
 
 		for (OWLOntology sourceOnt : this.sourceOwlManager.getOntologies()) {
-
 			IRI documentIRI = this.sourceOwlManager
 					.getOntologyDocumentIRI(sourceOnt);
-			System.out.println("ONTINSPECT " + documentIRI.toString());
-			
 
 			addGroundMetadata(documentIRI, fact, sourceOnt);
 
 			generateGroundTriplesForAxioms(allAxioms, fact, sourceOnt);
 
 			if (isOBO) {
-				generateSKOSInObo(allAxioms, fact, sourceOnt);
+				generateSKOSInObo(allAxioms, notinclude, fact, sourceOnt);
 			}
 
 			boolean isPrefixedOWL = this.sourceOwlManager.getOntologyFormat(
@@ -316,6 +314,21 @@ public class OntologyParser {
 		if (isOBO) {
 			replicateHierarchyAsTreeview(fact);
 		}
+		for (OWLClass removeClass : notinclude) {
+			System.out.println("Removing obo term without skos notation (2) "
+					+ removeClass.getIRI().toString());
+			Set<OWLAxiom> axiomsToRemove = new HashSet<OWLAxiom>();
+			for (OWLAxiom ax : targetOwlOntology.getAxioms()) {
+				if (ax.getSignature().contains(removeClass)) {
+					System.out.println(" >>> "
+							+ removeClass.getIRI().toString() + " "
+							+ ax.toString());
+					axiomsToRemove.add(ax);
+				}
+			}
+			targetOwlManager.removeAxioms(targetOwlOntology, axiomsToRemove);
+		}
+
 		return true;
 	}
 
@@ -455,15 +468,12 @@ public class OntologyParser {
 	}
 
 	private void generateSKOSInObo(Set<OWLAxiom> allAxioms,
-			OWLDataFactory fact, OWLOntology sourceOnt) {
+			Set<OWLClass> notinclude, OWLDataFactory fact, OWLOntology sourceOnt) {
 		Set<OWLClass> classes = sourceOnt.getClassesInSignature();
 		for (OWLClass cls : classes) {
+			boolean idFound = false;
 			if (!cls.isAnonymous()) {
-				System.out.println(" INSPECT "
-						+ cls.getIRI().toString());
-
 				for (OWLAnnotation ann : EntitySearcher.getAnnotations(cls, sourceOnt)) {
-					System.out.println(ann.getProperty().toString());
 					if (ann.getProperty().toString().contains("#id")) {
 						OWLAnnotationProperty prop = fact
 								.getOWLAnnotationProperty(IRI
@@ -471,6 +481,23 @@ public class OntologyParser {
 						OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(
 								prop, cls.getIRI(), ann.getValue());
 						allAxioms.add(annAsse);
+						idFound = true;
+					}
+				}
+				if (!idFound) {
+					notinclude.add(cls);
+					Set<OWLAxiom> axiomsToRemove = new HashSet<OWLAxiom>();
+					for (OWLAxiom ax : sourceOnt.getAxioms()) {
+						if (ax.getSignature().contains(cls)) {
+							System.out.println(" >>> "
+									+ cls.getIRI().toString() + " "
+									+ ax.toString());
+							axiomsToRemove.add(ax);
+						}
+					}
+					for (OWLOntology source : this.sourceOwlManager
+							.getOntologies()) {
+						sourceOwlManager.removeAxioms(source, axiomsToRemove);
 					}
 				}
 			}
