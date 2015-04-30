@@ -251,13 +251,14 @@ public class OntologyParser {
 		for (OWLOntology sourceOnt : this.sourceOwlManager.getOntologies()) {
 			IRI documentIRI = this.sourceOwlManager
 					.getOntologyDocumentIRI(sourceOnt);
-
+			System.out.println("ontology inspect " + documentIRI.toString());
 			addGroundMetadata(documentIRI, fact, sourceOnt);
 
 			generateGroundTriplesForAxioms(allAxioms, fact, sourceOnt);
 
 			if (isOBO) {
-				generateSKOSInObo(allAxioms, notinclude, fact, sourceOnt);
+				if (!documentIRI.toString().startsWith("owlapi:ontology"))
+					generateSKOSInObo(allAxioms, notinclude, fact, sourceOnt);
 			}
 
 			boolean isPrefixedOWL = this.sourceOwlManager.getOntologyFormat(
