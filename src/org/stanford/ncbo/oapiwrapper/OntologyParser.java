@@ -16,14 +16,11 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
-import org.coode.owlapi.obo12.parser.OBO12ParserFactory;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.formats.OBODocumentFormat;
 import org.semanticweb.owlapi.formats.PrefixDocumentFormat;
 import org.semanticweb.owlapi.formats.RDFXMLDocumentFormat;
 import org.semanticweb.owlapi.io.FileDocumentSource;
-import org.semanticweb.owlapi.io.OWLParserFactory;
-import org.semanticweb.owlapi.io.OWLParserFactoryRegistry;
 import org.semanticweb.owlapi.model.AddOntologyAnnotation;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.MissingImportHandlingStrategy;
@@ -34,6 +31,7 @@ import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLDatatype;
 import org.semanticweb.owlapi.model.OWLDocumentFormat;
 import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLObjectSomeValuesFrom;
@@ -45,6 +43,7 @@ import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.model.OWLRuntimeException;
 import org.semanticweb.owlapi.model.OWLSubClassOfAxiom;
 import org.semanticweb.owlapi.model.RemoveAxiom;
+import org.semanticweb.owlapi.model.RemoveOntologyAnnotation;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
@@ -86,22 +85,6 @@ public class OntologyParser {
 		}
 	}
 
-	private void removeBogusOBOParser() {
-		/*
-		 * OBO12ParserFactory is the old OBO parser that is still in the OWLAPI
-		 * we do not want to fall back and OBO ontologies parsed with it
-		 */
-		OWLParserFactoryRegistry registry = OWLParserFactoryRegistry
-				.getInstance();
-		OWLParserFactory toRemove = null;
-		for (OWLParserFactory f : registry.getParserFactories()) {
-			if (f.getClass() == OBO12ParserFactory.class) {
-				log.info("Found bad parser");
-				toRemove = f;
-			}
-		}
-		registry.unregisterParserFactory(toRemove);
-	}
 
 	public OntologyParser(ParserInvocation parserInvocation)
 			throws OntologyParserException {
@@ -113,7 +96,6 @@ public class OntologyParser {
 					this.parserInvocation.getParserLog());
 
 		this.sourceOwlManager = OWLManager.createOWLOntologyManager();
-		this.removeBogusOBOParser();
 
 		/* the second manager does not have the bogus obo parser */
 		this.sourceOwlManager = OWLManager.createOWLOntologyManager();
@@ -300,6 +282,8 @@ public class OntologyParser {
 			}
 		}
 
+		escapeXMLLiterals(targetOwlOntology);
+
 		OWLReasonerFactory reasonerFactory = null;
 		OWLReasoner reasoner = null;
 		reasonerFactory = new StructuralReasonerFactory();
@@ -329,6 +313,8 @@ public class OntologyParser {
 			}
 			targetOwlManager.removeAxioms(targetOwlOntology, axiomsToRemove);
 		}
+		
+
 
 		return true;
 	}
@@ -504,6 +490,32 @@ public class OntologyParser {
 			}
 		}
 	}
+	
+	private void escapeXMLLiterals(OWLOntology target) {
+		OWLDataFactory td = targetOwlManager.getOWLDataFactory();
+		Set<OWLClass> classes = target.getClassesInSignature();
+		for (OWLClass cls : classes) {
+			if (!cls.isAnonymous()) {
+				for (OWLAnnotationAssertionAxiom ann : EntitySearcher.getAnnotationAssertionAxioms(cls, target)) {
+					for (OWLDatatype t : ann.getValue().getDatatypesInSignature()) {
+						if (t.toString().contains("XMLLiteral")) {
+							System.out.println("stripping xml " + cls.getIRI().toString() +" "+ ann.getProperty().toString());
+							String noXMLString = ann.getValue().asLiteral().get().getLiteral().replaceAll("\\<.*?\\>", "");
+							System.out.println(ann.getValue().toString());
+							System.out.println(noXMLString);
+							OWLAnnotationAssertionAxiom annAsse = td.getOWLAnnotationAssertionAxiom(
+									ann.getProperty(), cls.getIRI(), td.getOWLLiteral(noXMLString));
+							targetOwlManager.addAxiom(target, annAsse);
+							Set<OWLAnnotationAssertionAxiom> del = new HashSet<OWLAnnotationAssertionAxiom>();
+							del.add(ann);
+							targetOwlManager.removeAxioms(target,del); 
+						}
+					}
+				}
+			}
+		}
+	}
+
 
 	private void generateGroundTriplesForAxioms(Set<OWLAxiom> allAxioms,
 			OWLDataFactory fact, OWLOntology sourceOnt) {
