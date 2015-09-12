@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -22,11 +23,13 @@ import org.semanticweb.owlapi.formats.PrefixDocumentFormat;
 import org.semanticweb.owlapi.formats.RDFXMLDocumentFormat;
 import org.semanticweb.owlapi.io.FileDocumentSource;
 import org.semanticweb.owlapi.model.AddOntologyAnnotation;
+import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.MissingImportHandlingStrategy;
 import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLAnnotationAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLAnnotationProperty;
+import org.semanticweb.owlapi.model.OWLAnnotationSubject;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassExpression;
@@ -50,6 +53,7 @@ import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 import org.semanticweb.owlapi.search.EntitySearcher;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 import org.semanticweb.owlapi.util.InferredSubClassAxiomGenerator;
+import org.semanticweb.owlapi.util.OWLEntityRemover;
 import org.semanticweb.owlapi.util.SimpleIRIMapper;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 
@@ -211,7 +215,6 @@ public class OntologyParser {
 
 		Set<OWLAxiom> allAxioms = new HashSet<OWLAxiom>();
 		boolean isOBO = false;
-		Set<OWLClass> notinclude = new HashSet<OWLClass>();
 
 		OWLDataFactory fact = sourceOwlManager.getOWLDataFactory();
 		try {
@@ -230,6 +233,7 @@ public class OntologyParser {
 
 		isOBO = this.isOBO();
 
+		Set<OWLClass> toDelete = new HashSet<OWLClass>();
 		for (OWLOntology sourceOnt : this.sourceOwlManager.getOntologies()) {
 			IRI documentIRI = this.sourceOwlManager
 					.getOntologyDocumentIRI(sourceOnt);
@@ -240,7 +244,7 @@ public class OntologyParser {
 
 			if (isOBO) {
 				if (!documentIRI.toString().startsWith("owlapi:ontology"))
-					generateSKOSInObo(allAxioms, notinclude, fact, sourceOnt);
+					toDelete.addAll( generateSKOSInObo(allAxioms, fact, sourceOnt) );
 			}
 
 			boolean isPrefixedOWL = this.sourceOwlManager.getOntologyFormat(
@@ -259,6 +263,12 @@ public class OntologyParser {
 		}
 
 		if (isOBO) {
+			OWLEntityRemover rem = new OWLEntityRemover(Collections.singleton(this.targetOwlOntology));
+			for (OWLClass cls : toDelete) {
+					cls.accept(rem);
+			}
+			this.targetOwlOntology.getOWLOntologyManager().applyChanges(rem.getChanges());
+
 			if (parserInvocation.getOBOVersion() != null) {
 				System.out.println("@@ adding version "
 						+ parserInvocation.getOBOVersion());
@@ -288,34 +298,17 @@ public class OntologyParser {
 		OWLReasoner reasoner = null;
 		reasonerFactory = new StructuralReasonerFactory();
 		reasoner = reasonerFactory.createReasoner(this.targetOwlOntology);
-
 		InferredSubClassAxiomGenerator isc = new InferredSubClassAxiomGenerator();
 		Set<OWLSubClassOfAxiom> subAxs = isc.createAxioms(
 				this.targetOwlOntology.getOWLOntologyManager().getOWLDataFactory(), reasoner);
 		targetOwlManager.addAxioms(this.targetOwlOntology, subAxs);
 		deprecateBranch();
 
+
 		System.out.println("isOBO " + isOBO);
 		if (isOBO) {
 			replicateHierarchyAsTreeview(fact);
 		}
-		for (OWLClass removeClass : notinclude) {
-			System.out.println("Removing obo term without skos notation (2) "
-					+ removeClass.getIRI().toString());
-			Set<OWLAxiom> axiomsToRemove = new HashSet<OWLAxiom>();
-			for (OWLAxiom ax : targetOwlOntology.getAxioms()) {
-				if (ax.getSignature().contains(removeClass)) {
-					System.out.println(" >>> "
-							+ removeClass.getIRI().toString() + " "
-							+ ax.toString());
-					axiomsToRemove.add(ax);
-				}
-			}
-			targetOwlManager.removeAxioms(targetOwlOntology, axiomsToRemove);
-		}
-		
-
-
 		return true;
 	}
 
@@ -454,41 +447,36 @@ public class OntologyParser {
 		}
 	}
 
-	private void generateSKOSInObo(Set<OWLAxiom> allAxioms,
-			Set<OWLClass> notinclude, OWLDataFactory fact, OWLOntology sourceOnt) {
-		Set<OWLClass> classes = sourceOnt.getClassesInSignature();
-		for (OWLClass cls : classes) {
-			boolean idFound = false;
-			if (!cls.isAnonymous()) {
-				for (OWLAnnotation ann : EntitySearcher.getAnnotations(cls, sourceOnt)) {
-					if (ann.getProperty().toString().contains("#id")) {
-						OWLAnnotationProperty prop = fact
-								.getOWLAnnotationProperty(IRI
-										.create("http://www.w3.org/2004/02/skos/core#notation"));
-						OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(
-								prop, cls.getIRI(), ann.getValue());
-						allAxioms.add(annAsse);
-						idFound = true;
-					}
-				}
-				if (!idFound) {
-					notinclude.add(cls);
-					Set<OWLAxiom> axiomsToRemove = new HashSet<OWLAxiom>();
-					for (OWLAxiom ax : sourceOnt.getAxioms()) {
-						if (ax.getSignature().contains(cls)) {
-							System.out.println(" >>> "
-									+ cls.getIRI().toString() + " "
-									+ ax.toString());
-							axiomsToRemove.add(ax);
-						}
-					}
-					for (OWLOntology source : this.sourceOwlManager
-							.getOntologies()) {
-						sourceOwlManager.removeAxioms(source, axiomsToRemove);
-					}
-				}
+	private Set<OWLClass> generateSKOSInObo(Set<OWLAxiom> allAxioms,
+			 OWLDataFactory fact, OWLOntology sourceOnt) {
+		Set<OWLClass> classesWithNotation = new HashSet<OWLClass>();
+		OWLAnnotationProperty notation = fact
+				.getOWLAnnotationProperty(IRI
+						.create("http://www.w3.org/2004/02/skos/core#notation"));
+		for (OWLAnnotationAssertionAxiom ann : sourceOnt.getAxioms(AxiomType.ANNOTATION_ASSERTION)) {
+			//set with all and if not there delete
+			OWLAnnotationSubject s = ann.getSubject();
+			OWLAnnotationProperty p = ann.getProperty();
+
+			if (p.toString().contains("#id")) {
+				OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(
+						notation, (IRI)s, ann.getValue());
+				allAxioms.add(annAsse);
+				classesWithNotation.add(fact.getOWLClass((IRI)s));
+				
 			}
 		}
+
+		Set<OWLClass> classesToDelete = new HashSet<OWLClass>();
+		Set<OWLClass> classes = sourceOnt.getClassesInSignature();
+		for (OWLClass cls : classes) {
+			if (!classesWithNotation.contains(cls)) {
+				System.out.println("TO DELETE " + cls.getIRI());
+				classesToDelete.add(cls);
+
+			}
+		}
+		return classesToDelete;
 	}
 	
 	private void escapeXMLLiterals(OWLOntology target) {
