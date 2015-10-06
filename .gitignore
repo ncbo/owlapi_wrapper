@@ -15,3 +15,7 @@ test/repo/input/cno/CNO_05.owl
 test/repo/output/cno/errors.log
 
 *.log
+
+# IDE files (IntelliJ IDEA)
+.idea/
+*.iml
