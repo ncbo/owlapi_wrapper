@@ -211,6 +211,25 @@ public class OntologyParser {
 		}
 	}
 
+	private void addOntologyIRI(OWLDataFactory fact,
+								   OWLOntology sourceOnt) {
+		// Add a triple with the ontology URI to the submission graph
+		// <http://bioportal.bioontology.org/ontologies/versionSubject> <http://omv.ontoware.org/2005/05/ontology#URI> "ONTOLOGY_IRI"
+		if (!sourceOnt.getOntologyID().isAnonymous()) {
+			Optional<IRI> sub = sourceOnt.getOntologyID().getOntologyIRI();
+			IRI ontologyIRI = sub.get();
+			OWLAnnotationProperty prop = fact
+					.getOWLAnnotationProperty(IRI
+							.create("http://omv.ontoware.org/2005/05/ontology#URI"));
+			OWLAnnotationAssertionAxiom annOntoURI = fact
+					.getOWLAnnotationAssertionAxiom(prop,
+							IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject"),
+							fact.getOWLLiteral(ontologyIRI.toString()));
+			this.targetOwlManager.addAxiom(targetOwlOntology,
+					annOntoURI);
+		}
+	}
+
 	private boolean buildOWLOntology() {
 
 		Set<OWLAxiom> allAxioms = new HashSet<OWLAxiom>();
@@ -239,6 +258,7 @@ public class OntologyParser {
 					.getOntologyDocumentIRI(sourceOnt);
 			System.out.println("ontology inspect " + documentIRI.toString());
 			addGroundMetadata(documentIRI, fact, sourceOnt);
+			addOntologyIRI(fact, sourceOnt);
 
 			generateGroundTriplesForAxioms(allAxioms, fact, sourceOnt);
 
