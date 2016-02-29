@@ -1,21 +1,8 @@
-# Mac artifacts
-**.DS_Store
-**.class
-**.swp
-target
+# Maven
+target/
 
-target/owlapi_wrapper-0.0.1-SNAPSHOT.jar
-
-*.txt
-Logging.*
-*.xrdf
-*.ttl
-test/repo/input/cno/CNO_05.owl
-
-test/repo/output/cno/errors.log
-
-*.log
-
-# IntelliJ files
-.idea/*
+# IntelliJ
+.idea/
 *.iml
+
+test/repo/output/
