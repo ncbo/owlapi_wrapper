@@ -78,14 +78,14 @@ public class OntologyParser {
 		SimpleIRIMapper bfoCached = new SimpleIRIMapper(
 				IRI.create("http://www.ifomis.org/bfo/1.1"),
 				IRI.create("https://raw.githubusercontent.com/ncbo/bfo/master/bfo-1.1.owl"));
-		m.addIRIMapper(bfoCached);
+		m.getIRIMappers().add(bfoCached);
 	}
 
 	private void setLocalFileRepositaryMapping(OWLOntologyManager m,
 			String folder) {
 		if (this.parserInvocation.getInputRepositoryFolder() != null) {
 			File rooDirectory = new File(folder);
-			m.addIRIMapper(new AutoIRIMapper(rooDirectory, true));
+			m.getIRIMappers().add(new AutoIRIMapper(rooDirectory, true));
 		}
 	}
 
