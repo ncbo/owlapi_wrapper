@@ -1,35 +1,30 @@
 package org.stanford.ncbo.oapiwrapper.test;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import junit.framework.TestCase;
-
 import org.apache.commons.io.FileUtils;
+import org.junit.Before;
 import org.junit.Test;
 import org.stanford.ncbo.oapiwrapper.OntologyParser;
 import org.stanford.ncbo.oapiwrapper.OntologyParserException;
 import org.stanford.ncbo.oapiwrapper.ParserError;
 import org.stanford.ncbo.oapiwrapper.ParserInvocation;
 
-public class TestSimpleOWL extends TestCase {
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static org.junit.Assert.assertEquals;
+
+public class TestSimpleOWL {
 	private static final String inputRepositoryFolder = "./test/repo/input/bvga";
 	private static final String outputRepositoryFolder = "./test/repo/output/bvga";
 	private static final String masterFileName = "basic-vertebrate-gross-anatomy_v1.1.owl";
 
-	//private static final String inputRepositoryFolder = "./test/repo/input/custom";
-	//private static final String outputRepositoryFolder = "./test/repo/output/custom";
-	//private static final String masterFileName = "custom_properties.owl";
+	private final static Logger log = Logger.getLogger(TestSimpleOWL.class .getName());
 
-	
-	private final static Logger log = Logger.getLogger(TestSimpleOWL.class .getName()); 
-
-	@Override
-    protected void setUp() throws Exception  {
-        super.setUp();
-    }
+	@Before
+	public void setUp() {
+	}
 	 
 	@Test
 	public void testInputBasicVertebrateGrossAnatomyOK() {
