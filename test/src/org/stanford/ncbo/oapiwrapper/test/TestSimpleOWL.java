@@ -29,7 +29,7 @@ public class TestSimpleOWL {
 	}
 	 
 	@Test
-	public void testInputBasicVertebrateGrossAnatomyOK() {
+	public void testBVGAParserInvocationOK() {
 		ParserInvocation pi = new ParserInvocation(
 				inputRepositoryFolder, 
 				outputRepositoryFolder,
@@ -38,7 +38,8 @@ public class TestSimpleOWL {
 	}
 	
 	@Test
-	public void testInputBasicVertebrateGrossAnatomyKO() {
+	public void testBVGAParserInvocationFoldersOK() {
+		// Delete BVGA's output directory
 		File out = new File(outputRepositoryFolder);
         if (out.exists()) {
         	try {
@@ -48,6 +49,7 @@ public class TestSimpleOWL {
 			}
         }
         
+		// Restore BVGA's output folder
 		ParserInvocation pi = new ParserInvocation(
 				inputRepositoryFolder, 
 				outputRepositoryFolder,
@@ -57,11 +59,15 @@ public class TestSimpleOWL {
 			log.log(Level.SEVERE,pi.getParserLog().toString());
 		}
 		assertTrue(valid);
+
+		// Set invalid input folder
 		pi.setInputRepositoryFolder("this/does/not/exit");
 		assertFalse(pi.valid());
 		assertEquals(1, pi.getParserLog().getErrors().size());
 		assertEquals(ParserError.INPUT_REPO_MISSING, pi.getParserLog().getErrors().get(0).getParserError());
 		assertTrue(new File(outputRepositoryFolder).exists());
+
+		// Restore valid input folder
 		pi.setInputRepositoryFolder(inputRepositoryFolder);
 		assertTrue(pi.valid());
 		assertEquals(0, pi.getParserLog().getErrors().size());
@@ -71,7 +77,7 @@ public class TestSimpleOWL {
 	}
 	
 	@Test
-	public void testInputBasicVertebrateGrossAnatomyKOOutputFolder() {
+	public void testBVGAParserInvocationInvalidOutput() {
 		ParserInvocation pi = new ParserInvocation(
 				inputRepositoryFolder, 
 				"/var/zyxx1234xx9",
@@ -108,5 +114,5 @@ public class TestSimpleOWL {
 		log.info("Output triples in " + f.getAbsolutePath());		
 		assertTrue(f.exists());
 	}
-
+	
 }
