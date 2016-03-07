@@ -11,11 +11,10 @@ import org.stanford.ncbo.oapiwrapper.OntologyParser;
 import org.stanford.ncbo.oapiwrapper.OntologyParserException;
 import org.stanford.ncbo.oapiwrapper.ParserInvocation;
 
-@Ignore
 public class TestMissingImport extends TestCase {
 	private static final String inputRepositoryFolder = "./test/repo/input/cno";
 	private static final String outputRepositoryFolder = "./test/repo/output/cno";
-	private static final String masterFileName = "CNO_05.owl";
+	private static final String masterFileName = "cnov0_5.owl";
 	
 	private final static Logger log = Logger.getLogger(TestMissingImport.class .getName()); 
 
