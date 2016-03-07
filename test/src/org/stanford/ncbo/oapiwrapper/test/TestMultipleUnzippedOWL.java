@@ -10,6 +10,8 @@ import java.io.File;
 import java.util.logging.Logger;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class TestMultipleUnzippedOWL {
 	private static final String inputRepositoryFolder = "./test/repo/input/hsdb";
@@ -28,7 +30,7 @@ public class TestMultipleUnzippedOWL {
 				inputRepositoryFolder, 
 				outputRepositoryFolder,
 				masterFileName, true); 
-		assertEquals(true, pi.valid());
+		assertTrue(pi.valid());
 	}
 	
 	@Test
@@ -42,19 +44,18 @@ public class TestMultipleUnzippedOWL {
 			parser = new OntologyParser(pi);
 		} catch (OntologyParserException e) {
 			System.out.println("Errors " + e.parserLog.toString());
-			assert(false);
+			assertFalse("Invalid parser invocation", false);
 		}
-		boolean ok = false;
+		boolean parseResult = false;
 		try {
-			ok = parser.parse();
+			parseResult = parser.parse();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			log.info(e.toString());
 			e.printStackTrace();
 		}
 		log.info("after parse");		
 		assertEquals(8, parser.getLocalOntologies().size());
-		assertEquals(true, ok);
+		assertTrue(parseResult);
 		log.info("Only ontology " + parser.getLocalOntologies().get(0).toString());
 		File f = new File(outputRepositoryFolder + File.separator + "owlapi.xrdf");
 		log.info("Output triples in " + f.getAbsolutePath());		
