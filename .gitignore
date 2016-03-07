@@ -5,4 +5,9 @@ target/
 .idea/
 *.iml
 
+# Eclipse
+.classpath
+.project
+.settings/
+
 test/repo/output/
