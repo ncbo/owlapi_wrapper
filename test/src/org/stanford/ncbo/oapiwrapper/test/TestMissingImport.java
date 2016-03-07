@@ -9,7 +9,7 @@ import org.stanford.ncbo.oapiwrapper.ParserInvocation;
 import java.io.File;
 import java.util.logging.Logger;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class TestMissingImport {
 	private static final String inputRepositoryFolder = "./test/repo/input/cno";
@@ -25,7 +25,7 @@ public class TestMissingImport {
 	@Test
 	public void testCNOParse() {
 		ParserInvocation pi = new ParserInvocation(
-				inputRepositoryFolder, 
+				inputRepositoryFolder,
 				outputRepositoryFolder,
 				masterFileName, true);
 		OntologyParser parser = null;
@@ -33,20 +33,19 @@ public class TestMissingImport {
 			parser = new OntologyParser(pi);
 		} catch (OntologyParserException e) {
 			System.out.println("Errors " + e.parserLog.toString());
-			assert(false);
+			assertFalse("Invalid parser invocation", false);
 		}
 		boolean parseResult = false;
 		try {
 			parseResult = parser.parse();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		assertEquals(true, parseResult);
+		assertTrue(parseResult);
 		assertEquals(1, parser.getLocalOntologies().size());
 		log.info("Only ontology " + parser.getLocalOntologies().get(0).toString());
 		File f = new File(outputRepositoryFolder + File.separator + "owlapi.xrdf");
-		log.info("Output triples in " + f.getAbsolutePath());		
-		assertEquals(true, f.exists());
+		log.info("Output triples in " + f.getAbsolutePath());
+		assertTrue(f.exists());
 	}
 }
