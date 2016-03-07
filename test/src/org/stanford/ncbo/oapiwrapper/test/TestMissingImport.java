@@ -5,23 +5,25 @@ import java.util.logging.Logger;
 
 import junit.framework.TestCase;
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.stanford.ncbo.oapiwrapper.OntologyParser;
 import org.stanford.ncbo.oapiwrapper.OntologyParserException;
 import org.stanford.ncbo.oapiwrapper.ParserInvocation;
 
-public class TestMissingImport extends TestCase {
+import static org.junit.Assert.assertEquals;
+
+public class TestMissingImport {
 	private static final String inputRepositoryFolder = "./test/repo/input/cno";
 	private static final String outputRepositoryFolder = "./test/repo/output/cno";
 	private static final String masterFileName = "cnov0_5.owl";
 	
 	private final static Logger log = Logger.getLogger(TestMissingImport.class .getName()); 
 
-	@Override
-    protected void setUp() throws Exception  {
-        super.setUp();
-    }
+	@Before
+	public void setUp() throws Exception  {
+	}
 	
 
 	@Test
