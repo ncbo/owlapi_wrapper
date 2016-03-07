@@ -1,16 +1,13 @@
 package org.stanford.ncbo.oapiwrapper.test;
 
-import java.io.File;
-import java.util.logging.Logger;
-
-import junit.framework.TestCase;
-
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.stanford.ncbo.oapiwrapper.OntologyParser;
 import org.stanford.ncbo.oapiwrapper.OntologyParserException;
 import org.stanford.ncbo.oapiwrapper.ParserInvocation;
+
+import java.io.File;
+import java.util.logging.Logger;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,7 +21,6 @@ public class TestMissingImport {
 	@Before
 	public void setUp() throws Exception  {
 	}
-	
 
 	@Test
 	public void testCNOParse() {
@@ -53,5 +49,4 @@ public class TestMissingImport {
 		log.info("Output triples in " + f.getAbsolutePath());		
 		assertEquals(true, f.exists());
 	}
-
 }
