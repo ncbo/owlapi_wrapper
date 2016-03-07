@@ -14,6 +14,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class TestSimpleOWL {
 	private static final String inputRepositoryFolder = "./test/repo/input/bvga";
@@ -32,19 +34,17 @@ public class TestSimpleOWL {
 				inputRepositoryFolder, 
 				outputRepositoryFolder,
 				masterFileName, true);
-		assertEquals(true, pi.valid());
+		assertTrue(pi.valid());
 	}
 	
 	@Test
 	public void testInputBasicVertebrateGrossAnatomyKO() {
-        
 		File out = new File(outputRepositoryFolder);
         if (out.exists()) {
         	try {
 				FileUtils.deleteDirectory(out);
 			} catch (IOException e) {
-				assert(false);
-				
+				assertFalse(false);
 			}
         }
         
@@ -56,18 +56,18 @@ public class TestSimpleOWL {
 		if (!valid) {
 			log.log(Level.SEVERE,pi.getParserLog().toString());
 		}
-		assert(valid);
+		assertTrue(valid);
 		pi.setInputRepositoryFolder("this/does/not/exit");
-		assertEquals(false, pi.valid());
+		assertFalse(pi.valid());
 		assertEquals(1, pi.getParserLog().getErrors().size());
-		assertEquals(ParserError.INPUT_REPO_MISSING,pi.getParserLog().getErrors().get(0).getParserError());
-		assert(new File(outputRepositoryFolder).exists());
+		assertEquals(ParserError.INPUT_REPO_MISSING, pi.getParserLog().getErrors().get(0).getParserError());
+		assertTrue(new File(outputRepositoryFolder).exists());
 		pi.setInputRepositoryFolder(inputRepositoryFolder);
-		assert(pi.valid());
+		assertTrue(pi.valid());
 		assertEquals(0, pi.getParserLog().getErrors().size());
 		
 		log.info("Output repo created " + out.getAbsolutePath());
-		assertEquals(true, out.exists());
+		assertTrue(out.exists());
 	}
 	
 	@Test
@@ -76,9 +76,9 @@ public class TestSimpleOWL {
 				inputRepositoryFolder, 
 				"/var/zyxx1234xx9",
 				masterFileName,true);
-		assertEquals(false, pi.valid());
+		assertFalse(pi.valid());
 		assertEquals(1, pi.getParserLog().getErrors().size());
-		assertEquals(ParserError.OUPUT_REPO_CANNOT_BE_CREATED,pi.getParserLog().getErrors().get(0).getParserError());
+		assertEquals(ParserError.OUPUT_REPO_CANNOT_BE_CREATED, pi.getParserLog().getErrors().get(0).getParserError());
 	}
 	
 	@Test
@@ -92,7 +92,7 @@ public class TestSimpleOWL {
 			parser = new OntologyParser(pi);
 		} catch (OntologyParserException e) {
 			System.out.println("Errors " + e.parserLog.toString());
-			assert(false);
+			assertFalse(false);
 		}
 		boolean parseResult = false;
 		try {
@@ -101,12 +101,12 @@ public class TestSimpleOWL {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		assertEquals(true, parseResult);
+		assertTrue(parseResult);
 		assertEquals(1, parser.getLocalOntologies().size());
 		log.info("Only ontology " + parser.getLocalOntologies().get(0).toString());
 		File f = new File(outputRepositoryFolder + File.separator + "owlapi.xrdf");
 		log.info("Output triples in " + f.getAbsolutePath());		
-		assertEquals(true, f.exists());
+		assertTrue(f.exists());
 	}
 
 }
