@@ -5,6 +5,7 @@
   <groupId>org.stanford.ncbo.oapiwrapper</groupId>
   <artifactId>owlapi-wrapper</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
