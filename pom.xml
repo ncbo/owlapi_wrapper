@@ -58,6 +58,10 @@
     <developerConnection>scm:git:git@github.com:ncbo/owlapi_wrapper.git</developerConnection>
     <url>https://github.com/ncbo/owlapi_wrapper</url>
   </scm>
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/ncbo/owlapi_wrapper/issues</url>
+  </issueManagement>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
