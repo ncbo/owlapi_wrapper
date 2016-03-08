@@ -22,9 +22,28 @@
     </license>
   </licenses>
 
+  <developers>
+    <developer>
+      <id>msalvadores</id>
+      <name>Manuel Salvadores</name>
+      <email>msalvadores@gmail.com</email>
+      <url>http://msalvadores.me/</url>
+      <organization>Lexigram</organization>
+      <organizationUrl>http://www.lexigram.io/</organizationUrl>
+    </developer>
+    <developer>
+      <id>jvendetti</id>
+      <name>Jennifer Vendetti</name>
+      <email>vendetti@stanford.edu</email>
+      <organization>Stanford Center for Biomedical Informatics Research</organization>
+      <organizationUrl>http://bmir.stanford.edu/</organizationUrl>
+    </developer>
+  </developers>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+
   <build>
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test/src/</testSourceDirectory>
