@@ -1,4 +1,4 @@
-package org.stanford.ncbo.oapiwrapper.test;
+package org.stanford.ncbo.oapiwrapper;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;

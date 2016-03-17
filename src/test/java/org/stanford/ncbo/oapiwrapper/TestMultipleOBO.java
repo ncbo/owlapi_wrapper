@@ -1,4 +1,4 @@
-package org.stanford.ncbo.oapiwrapper.test;
+package org.stanford.ncbo.oapiwrapper;
 
 public class TestMultipleOBO {
 	private static final String inputRepositoryFolder = "./test/repo/input/evoc";
