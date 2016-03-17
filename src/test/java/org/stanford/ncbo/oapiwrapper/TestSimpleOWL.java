@@ -16,8 +16,8 @@ import java.util.logging.Logger;
 import static org.junit.Assert.*;
 
 public class TestSimpleOWL {
-	private static final String inputRepositoryFolder = "./test/repo/input/bvga";
-	private static final String outputRepositoryFolder = "./test/repo/output/bvga";
+	private static final String inputRepositoryFolder = "./src/test/resources/repo/input/bvga";
+	private static final String outputRepositoryFolder = "./src/test/resources/repo/output/bvga";
 	private static final String masterFileName = "basic-vertebrate-gross-anatomy_v1.1.owl";
 
 	private final static Logger log = Logger.getLogger(TestSimpleOWL.class .getName());

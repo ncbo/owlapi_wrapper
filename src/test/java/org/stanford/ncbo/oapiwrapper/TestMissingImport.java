@@ -12,8 +12,8 @@ import java.util.logging.Logger;
 import static org.junit.Assert.*;
 
 public class TestMissingImport {
-	private static final String inputRepositoryFolder = "./test/repo/input/cno";
-	private static final String outputRepositoryFolder = "./test/repo/output/cno";
+	private static final String inputRepositoryFolder = "./src/test/resources/repo/input/cno";
+	private static final String outputRepositoryFolder = "./src/test/resources/repo/output/cno";
 	private static final String masterFileName = "cnov0_5.owl";
 	
 	private final static Logger log = Logger.getLogger(TestMissingImport.class .getName()); 

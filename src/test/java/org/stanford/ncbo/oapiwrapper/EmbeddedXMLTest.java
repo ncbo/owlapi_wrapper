@@ -12,8 +12,8 @@ import static org.junit.Assert.*;
 
 public class EmbeddedXMLTest {
     private static final Logger log = Logger.getLogger(EmbeddedXMLTest.class.getName());
-   	private static final String inputRepositoryFolder = "./test/repo/input/misc";
-	private static final String outputRepositoryFolder = "./test/repo/output/misc";
+   	private static final String inputRepositoryFolder = "./src/test/resources/repo/input/misc";
+	private static final String outputRepositoryFolder = "./src/test/resources/repo/output/misc";
 	private static final String masterFileName = "testXMLLiteral.owl";
 
     @Test

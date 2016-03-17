@@ -16,8 +16,8 @@ import org.stanford.ncbo.oapiwrapper.ParserInvocation;
 
 public class TestSimpleWithInputRepoEmptyOWL extends TestCase {
 	private static final String inputRepositoryFolder = null;
-	private static final String outputRepositoryFolder = "./test/repo/output/bvga";
-	private static final String masterFileName = "./test/repo/input/bvga/basic-vertebrate-gross-anatomy_v1.1.owl";
+	private static final String outputRepositoryFolder = "./src/test/resources/repo/output/bvga";
+	private static final String masterFileName = "./src/test/resources/repo/input/bvga/basic-vertebrate-gross-anatomy_v1.1.owl";
 	
 	private final static Logger log = Logger.getLogger(TestSimpleWithInputRepoEmptyOWL.class .getName()); 
 

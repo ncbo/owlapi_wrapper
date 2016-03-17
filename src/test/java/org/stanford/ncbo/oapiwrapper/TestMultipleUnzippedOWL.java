@@ -14,8 +14,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class TestMultipleUnzippedOWL {
-	private static final String inputRepositoryFolder = "./test/repo/input/hsdb";
-	private static final String outputRepositoryFolder = "./test/repo/output/hsdb";
+	private static final String inputRepositoryFolder = "./src/test/resources/repo/input/hsdb";
+	private static final String outputRepositoryFolder = "./src/test/resources/repo/output/hsdb";
 	private static final String masterFileName = "HSDB_OCRe.owl";
 	
 	private final static Logger log = Logger.getLogger(TestMultipleUnzippedOWL.class.getName()); 
