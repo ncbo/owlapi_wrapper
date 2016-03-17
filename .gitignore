@@ -10,4 +10,4 @@ target/
 .project
 .settings/
 
-test/repo/output/
+src/test/resources/repo/output/
