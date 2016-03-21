@@ -6,23 +6,24 @@ import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 
 public class ParserInvocation {
-	
-	public String getInputRepositoryFolder() {
-		return inputRepositoryFolder;
-	}
-	public void setInputRepositoryFolder(String inputRepositoryFolder) {
-		this.inputRepositoryFolder = inputRepositoryFolder;
-	}
-	public String getOutputRepositoryFolder() {
-		return outputRepositoryFolder;
-	}
-	public void setOutputRepositoryFolder(String outputRepositoryFolder) {
-		this.outputRepositoryFolder = outputRepositoryFolder;
-	}
-	
+
+	private boolean useReasoner = true;
+
+	private int invocationId = 0;
+
+	private ParserLog parserLog = new ParserLog();
+
+	private String inputRepositoryFolder = null;
+
+	private String outputRepositoryFolder = null;
+
+	private String masterFileName = null;
+
+	private String oboVersion;
+
 	public ParserInvocation(String inputRepositoryFolder,
-			String outputRepositoryFolder, String masterFileName,
-			Boolean useReasoner) {
+							String outputRepositoryFolder, String masterFileName,
+							Boolean useReasoner) {
 		super();
 		this.inputRepositoryFolder = inputRepositoryFolder;
 		this.outputRepositoryFolder = outputRepositoryFolder;
@@ -30,36 +31,57 @@ public class ParserInvocation {
 		this.useReasoner = useReasoner;
 	}
 
-	private String inputRepositoryFolder = null;
-	private String outputRepositoryFolder = null;
-	private String masterFileName = null;
-	private boolean useReasoner = true;
-	
-	public boolean isUseReasoner() {
-		return useReasoner;
+	public String getInputRepositoryFolder() {
+		return inputRepositoryFolder;
 	}
-	public void setUseReasoner(boolean useReasoner) {
-		this.useReasoner = useReasoner;
+
+	public void setInputRepositoryFolder(String inputRepositoryFolder) {
+		this.inputRepositoryFolder = inputRepositoryFolder;
 	}
+
+	public String getOutputRepositoryFolder() {
+		return outputRepositoryFolder;
+	}
+
+	public void setOutputRepositoryFolder(String outputRepositoryFolder) {
+		this.outputRepositoryFolder = outputRepositoryFolder;
+	}
+
 	public String getMasterFileName() {
 		return masterFileName;
 	}
-	
+
 	public void setMasterFileName(String masterFileName) {
 		this.masterFileName = masterFileName;
 	}
 
-	private int invocationId = 0; 
-	
+	public String getOBOVersion() {
+		return oboVersion;
+	}
+
+	public void setOBOVersion(String oboVersion) {
+		this.oboVersion = oboVersion;
+	}
+
 	public int getInvocationId() {
 		return invocationId;
 	}
+
 	public void setInvocationId(int invocationId) {
 		this.invocationId = invocationId;
 	}
 
-	private ParserLog parserLog = new ParserLog();
-	private String oboVersion; 
+	public boolean isUseReasoner() {
+		return useReasoner;
+	}
+
+	public void setUseReasoner(boolean useReasoner) {
+		this.useReasoner = useReasoner;
+	}
+
+	public ParserLog getParserLog() {
+		return this.parserLog;
+	}
 
 	@Override
 	public String toString() {
@@ -111,16 +133,8 @@ public class ParserInvocation {
 		return parserLog.logErrors.size() == 0;
 	}
 	
-	public ParserLog getParserLog() {
-		return this.parserLog;
-	}
 	public void saveErrors() throws Exception {
 		this.parserLog.writeTo(new File(outputRepositoryFolder + File.separator + "errors.log"));
 	}
-	public void setOBOVersion(String oboVersion) {
-		this.oboVersion = oboVersion;
-	}
-	public String getOBOVersion() {
-		return oboVersion;
-	}
+
 }
