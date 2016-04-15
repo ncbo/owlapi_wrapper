@@ -756,8 +756,9 @@ public class OntologyParser {
 
 		if (selectedBean != null) {
 			try {
-				return this.sourceOwlManager.loadOntologyFromOntologyDocument(
-						new FileDocumentSource(selectedBean.getFile()), conf);
+				FileDocumentSource documentSource = new FileDocumentSource(selectedBean.getFile());
+				OWLOntology ontology = sourceOwlManager.loadOntologyFromOntologyDocument(documentSource, conf);
+				return ontology;
 			} catch (OWLOntologyCreationException e) {
 				log.log(Level.SEVERE, e.getMessage(), e);
 				StringWriter trace = new StringWriter();
