@@ -92,6 +92,13 @@ public class ParserInvocationTest {
          */
     }
 
+    @Test
+    public void valid_MultipleUnzippedOntologyFiles_ReturnsTrue() {
+        ParserInvocation pi = new ParserInvocation("./src/test/resources/repo/input/hsdb",
+                "./src/test/resources/repo/output/hsdb", "HSDB_OCRe.owl", true);
+        assertTrue(pi.valid());
+    }
+
     @After
     public void tearDown() throws Exception {
         List<File> files = new ArrayList<File>();
