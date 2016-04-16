@@ -132,17 +132,22 @@ public class OntologyParser {
 		return result;
 	}
 
+	/**
+	 * Determines the list of ontologies to parse, and sets the obo version if applicable.
+	 */
 	private void findLocalOntologies() {
 		String oboVersion = null;
-		if (parserInvocation.getInputRepositoryFolder() != null) {
-			log.info("[" + parserInvocation.getInvocationId()
-					+ "] findLocalOntologies in "
-					+ parserInvocation.getInputRepositoryFolder());
-			File repo = new File(parserInvocation.getInputRepositoryFolder());
+		String inputRepositoryFolder = parserInvocation.getInputRepositoryFolder();
+		String masterFileName = parserInvocation.getMasterFileName();
+		int invocationId = parserInvocation.getInvocationId();
+
+		if (inputRepositoryFolder != null) {
+			log.info(String.format("[%d] findLocalOntologies in %s", invocationId, inputRepositoryFolder));
+
+			File repo = new File(inputRepositoryFolder);
 			if (repo.isDirectory()) {
 				@SuppressWarnings("unchecked")
-				Iterator<File> files = FileUtils.iterateFiles(repo,
-						new OntologySuffixFileFilter(), new DirectoryFilter());
+				Iterator<File> files = FileUtils.iterateFiles(repo, new OntologySuffixFileFilter(), new DirectoryFilter());
 				ontologies = new ArrayList<OntologyBean>();
 				while (files.hasNext()) {
 					File f = files.next();
@@ -150,19 +155,15 @@ public class OntologyParser {
 						oboVersion = getOBODataVersion(f.getAbsolutePath());
 					}
 					ontologies.add(new OntologyBean(f));
-					log.info("[" + parserInvocation.getInvocationId()
-							+ "] findLocalOntologies in " + f.getName());
+					log.info(String.format("[%d] Found ontology: %s", invocationId, f.getName()));
 				}
 			}
 		} else {
-			if (this.parserInvocation.getMasterFileName().toLowerCase()
-					.endsWith("obo")) {
-				oboVersion = getOBODataVersion(this.parserInvocation
-						.getMasterFileName());
+			if (masterFileName.toLowerCase().endsWith("obo")) {
+				oboVersion = getOBODataVersion(masterFileName);
 			}
-			this.ontologies.add(new OntologyBean(new File(this.parserInvocation
-					.getMasterFileName())));
-			log.info("getInputRepositoryFolder is not provided. Unique file being parse.");
+			ontologies.add(new OntologyBean(new File(masterFileName)));
+			log.info("Input repository folder is null. Unique file being parsed.");
 		}
 		if (oboVersion != null) {
 			parserInvocation.setOBOVersion(oboVersion);
