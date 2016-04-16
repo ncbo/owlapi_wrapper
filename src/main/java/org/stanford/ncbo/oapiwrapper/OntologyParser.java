@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.formats.OBODocumentFormat;
 import org.semanticweb.owlapi.formats.PrefixDocumentFormat;
@@ -147,7 +148,7 @@ public class OntologyParser {
 			File repo = new File(inputRepositoryFolder);
 			if (repo.isDirectory()) {
 				@SuppressWarnings("unchecked")
-				Iterator<File> files = FileUtils.iterateFiles(repo, new OntologySuffixFileFilter(), new DirectoryFilter());
+				Iterator<File> files = FileUtils.iterateFiles(repo, new OntologySuffixFileFilter(), TrueFileFilter.INSTANCE);
 				ontologies = new ArrayList<OntologyBean>();
 				while (files.hasNext()) {
 					File f = files.next();
