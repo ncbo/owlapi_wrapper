@@ -90,22 +90,19 @@ public class OntologyParser {
 	}
 
 
-	public OntologyParser(ParserInvocation parserInvocation)
-			throws OntologyParserException {
+	public OntologyParser(ParserInvocation parserInvocation) throws OntologyParserException {
 		super();
 		log.info("executor ...");
+
+		if (!parserInvocation.valid()) {
+			throw new OntologyParserException(parserInvocation.getParserLog());
+		}
 		this.parserInvocation = parserInvocation;
-		if (!parserInvocation.valid())
-			throw new OntologyParserException(
-					this.parserInvocation.getParserLog());
 
 		this.sourceOwlManager = OWLManager.createOWLOntologyManager();
-
-		/* the second manager does not have the bogus obo parser */
+		/* Second manager doesn't have the bogus OBO parser */
 		this.sourceOwlManager = OWLManager.createOWLOntologyManager();
-
-		this.setLocalFileRepositaryMapping(this.sourceOwlManager,
-				this.parserInvocation.getInputRepositoryFolder());
+		this.setLocalFileRepositaryMapping(this.sourceOwlManager, this.parserInvocation.getInputRepositoryFolder());
 		this.addBFOLocationMapping(this.sourceOwlManager);
 
 		this.targetOwlManager = OWLManager.createOWLOntologyManager();
