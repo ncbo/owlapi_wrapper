@@ -19,7 +19,7 @@ public class OntologyParserCommand {
 				.addOption("m","master-filename", true,
 						"Name of the ontology file to load first")
 				.addOption("o","output-repository", true,
-						"Path to folder where input data repository is located")
+						"Path to folder where output data repository is located")
 				.addOption("r","reasoner", true,
 						"Option to use the reasoner");
 		
