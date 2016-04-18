@@ -580,21 +580,26 @@ public class OntologyParser {
 		}
 	}
 
+	/*
+	 * Parses one or more ontology files.
+	 */
 	public boolean parse() throws Exception {
+		boolean result = false;
+
 		try {
-			if (internalParse()) {
-				parserInvocation.saveErrors();
-				return true;
-			}
-			parserInvocation.saveErrors();
+			result = internalParse();
 		} catch (Exception e) {
 			log.log(Level.SEVERE, e.getMessage(), e);
 			StringWriter trace = new StringWriter();
 			e.printStackTrace(new PrintWriter(trace));
 			parserLog.addError(ParserError.UNKNOWN, "Error " + e.getMessage() + "\nTrace:\n" + trace.toString());
 		}
-		parserInvocation.saveErrors();
-		return false;
+
+		if (parserLog.getErrors().size() > 0) {
+			parserInvocation.saveErrors();
+		}
+
+		return result;
 	}
 
 	private boolean internalParse() {
