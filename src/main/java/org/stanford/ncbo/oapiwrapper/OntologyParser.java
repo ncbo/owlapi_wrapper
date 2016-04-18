@@ -66,7 +66,6 @@ public class OntologyParser {
 	private OWLOntologyManager sourceOwlManager = null;
 	private OWLOntologyManager targetOwlManager = null;
 	private OWLOntology targetOwlOntology = null;
-	private OWLOntology localMaster = null;
 
 	public List<OntologyBean> getLocalOntologies() {
 		return ontologies;
@@ -644,8 +643,8 @@ public class OntologyParser {
 
 	private boolean internalParse() {
 		findLocalOntologies();
-		this.localMaster = findMasterFile();
-		if (this.localMaster == null) {
+		OWLOntology localMaster = findMasterFile();
+		if (localMaster == null) {
 			String message = "Error cannot find "
 					+ this.parserInvocation.getMasterFileName()
 					+ " in input folder.";
