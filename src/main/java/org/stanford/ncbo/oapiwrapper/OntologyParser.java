@@ -52,10 +52,7 @@ import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 import org.semanticweb.owlapi.search.EntitySearcher;
-import org.semanticweb.owlapi.util.AutoIRIMapper;
-import org.semanticweb.owlapi.util.InferredSubClassAxiomGenerator;
-import org.semanticweb.owlapi.util.OWLEntityRemover;
-import org.semanticweb.owlapi.util.SimpleIRIMapper;
+import org.semanticweb.owlapi.util.*;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 
 import com.google.common.base.Optional;
@@ -99,8 +96,6 @@ public class OntologyParser {
 		}
 		this.parserInvocation = parserInvocation;
 
-		this.sourceOwlManager = OWLManager.createOWLOntologyManager();
-		/* Second manager doesn't have the bogus OBO parser */
 		this.sourceOwlManager = OWLManager.createOWLOntologyManager();
 		this.setLocalFileRepositaryMapping(this.sourceOwlManager, this.parserInvocation.getInputRepositoryFolder());
 		this.addBFOLocationMapping(this.sourceOwlManager);

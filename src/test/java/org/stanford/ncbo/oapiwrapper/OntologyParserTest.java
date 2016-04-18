@@ -89,6 +89,14 @@ public class OntologyParserTest {
     }
 
     @Test
+    public void parse_OntologyENVO_ReturnsTrue() throws Exception {
+        ParserInvocation pi = new ParserInvocation("./src/test/resources/repo/input/envo",
+                "./src/test/resources/repo/output/envo", "envo-basic.obo", true);
+        OntologyParser parser = new OntologyParser(pi);
+        assertTrue(parser.parse());
+    }
+
+    @Test
     public void parse_OntologyIDODEN_ReturnsTrue() throws Exception {
         ParserInvocation pi = new ParserInvocation("./src/test/resources/repo/input/idon",
                 "./src/test/resources/repo/output/idon", "idoden110712_alpha0.001_v0.001.owl", true);
