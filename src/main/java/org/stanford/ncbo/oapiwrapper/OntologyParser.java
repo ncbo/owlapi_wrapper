@@ -27,6 +27,7 @@ import java.util.regex.Pattern;
 
 public class OntologyParser {
 	protected ParserInvocation parserInvocation = null;
+	private ParserLog parserLog = null;
 	private List<OntologyBean> ontologies = new ArrayList<OntologyBean>();
 	private OWLOntologyManager sourceOwlManager = null;
 	private OWLOntologyManager targetOwlManager = null;
@@ -40,10 +41,11 @@ public class OntologyParser {
 			throw new OntologyParserException(parserInvocation.getParserLog());
 		}
 		this.parserInvocation = parserInvocation;
+		this.parserLog = this.parserInvocation.getParserLog();
 
 		this.sourceOwlManager = OWLManager.createOWLOntologyManager();
-		this.setLocalFileRepositaryMapping(this.sourceOwlManager, this.parserInvocation.getInputRepositoryFolder());
-		this.addBFOLocationMapping(this.sourceOwlManager);
+		setLocalFileRepositaryMapping(this.sourceOwlManager, this.parserInvocation.getInputRepositoryFolder());
+		addBFOLocationMapping(this.sourceOwlManager);
 
 		this.targetOwlManager = OWLManager.createOWLOntologyManager();
 	}
@@ -184,10 +186,8 @@ public class OntologyParser {
 			log.log(Level.SEVERE, e.getMessage(), e);
 			StringWriter trace = new StringWriter();
 			e.printStackTrace(new PrintWriter(trace));
-			parserInvocation.getParserLog().addError(
-					ParserError.OWL_CREATE_ONTOLOGY_EXCEPTION,
-					"Error buildOWLOntology" + e.getMessage() + "\n"
-							+ trace.toString());
+			parserLog.addError(ParserError.OWL_CREATE_ONTOLOGY_EXCEPTION,
+					"Error buildOWLOntology" + e.getMessage() + "\n" + trace.toString());
 			log.info(e.getMessage());
 			return false;
 		}
@@ -591,11 +591,7 @@ public class OntologyParser {
 			log.log(Level.SEVERE, e.getMessage(), e);
 			StringWriter trace = new StringWriter();
 			e.printStackTrace(new PrintWriter(trace));
-			parserInvocation.getParserLog()
-					.addError(
-							ParserError.UNKNOWN,
-							"Error " + e.getMessage() + "\nTrace:\n"
-									+ trace.toString());
+			parserLog.addError(ParserError.UNKNOWN, "Error " + e.getMessage() + "\nTrace:\n" + trace.toString());
 		}
 		parserInvocation.saveErrors();
 		return false;
@@ -606,7 +602,7 @@ public class OntologyParser {
 
 		if (findMasterFile() == null) {
 			String msg = String.format("Can't find %s in input folder!", parserInvocation.getMasterFileName());
-			parserInvocation.getParserLog().addError(ParserError.MASTER_FILE_MISSING, msg);
+			parserLog.addError(ParserError.MASTER_FILE_MISSING, msg);
 			log.info(msg);
 			return false;
 		}
@@ -629,10 +625,8 @@ public class OntologyParser {
 			log.log(Level.ALL, e.getMessage(), e);
 			StringWriter trace = new StringWriter();
 			e.printStackTrace(new PrintWriter(trace));
-			parserInvocation.getParserLog().addError(
-					ParserError.OWL_STORAGE_EXCEPTION,
-					"Error buildOWLOntology" + e.getMessage() + "\n"
-							+ trace.toString());
+			parserLog.addError(ParserError.OWL_STORAGE_EXCEPTION,
+					"Error buildOWLOntology" + e.getMessage() + "\n" + trace.toString());
 			if (output.exists()) {
 				output.renameTo(new File(parserInvocation
 						.getOutputRepositoryFolder()
@@ -648,10 +642,8 @@ public class OntologyParser {
 	private OWLOntology findMasterFile() {
 
 		OWLOntologyLoaderConfiguration conf = new OWLOntologyLoaderConfiguration();
-		conf = conf
-				.setMissingImportHandlingStrategy(MissingImportHandlingStrategy.SILENT);
-		LogMissingImports missingHandler = new LogMissingImports(
-				parserInvocation.getParserLog());
+		conf = conf.setMissingImportHandlingStrategy(MissingImportHandlingStrategy.SILENT);
+		LogMissingImports missingHandler = new LogMissingImports(parserLog);
 		this.sourceOwlManager.addMissingImportListener(missingHandler);
 
 		if (this.parserInvocation.getInputRepositoryFolder() == null) {
@@ -663,12 +655,8 @@ public class OntologyParser {
 				log.log(Level.SEVERE, e.getMessage(), e);
 				StringWriter trace = new StringWriter();
 				e.printStackTrace(new PrintWriter(trace));
-				parserInvocation.getParserLog().addError(
-						ParserError.OWL_PARSE_EXCEPTION,
-						"Error parsing"
-								+ this.parserInvocation.getMasterFileName()
-								+ "\n" + e.getMessage() + "\n"
-								+ trace.toString());
+				parserLog.addError(ParserError.OWL_PARSE_EXCEPTION, "Error parsing" +
+						this.parserInvocation.getMasterFileName() + "\n" + e.getMessage() + "\n" + trace.toString());
 				log.info(e.getMessage());
 				return null;
 			}
@@ -717,12 +705,8 @@ public class OntologyParser {
 				log.log(Level.SEVERE, e.getMessage(), e);
 				StringWriter trace = new StringWriter();
 				e.printStackTrace(new PrintWriter(trace));
-				parserInvocation.getParserLog().addError(
-						ParserError.OWL_PARSE_EXCEPTION,
-						"Error parsing"
-								+ selectedBean.getFile().getAbsolutePath()
-								+ "\n" + e.getMessage() + "\n"
-								+ trace.toString());
+				parserLog.addError(ParserError.OWL_PARSE_EXCEPTION, "Error parsing" +
+						selectedBean.getFile().getAbsolutePath() + "\n" + e.getMessage() + "\n" + trace.toString());
 				log.info(e.getMessage());
 				return null;
 			}
