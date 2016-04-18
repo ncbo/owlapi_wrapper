@@ -643,26 +643,19 @@ public class OntologyParser {
 
 	private boolean internalParse() {
 		findLocalOntologies();
-		OWLOntology localMaster = findMasterFile();
-		if (localMaster == null) {
-			String message = "Error cannot find "
-					+ this.parserInvocation.getMasterFileName()
-					+ " in input folder.";
-			parserInvocation.getParserLog().addError(
-					ParserError.MASTER_FILE_MISSING, message);
-			log.info(message);
+
+		if (findMasterFile() == null) {
+			String msg = String.format("Can't find %s in input folder!", parserInvocation.getMasterFileName());
+			parserInvocation.getParserLog().addError(ParserError.MASTER_FILE_MISSING, msg);
+			log.info(msg);
 			return false;
 		}
-		if (buildOWLOntology()) {
-			if (serializeOntology()) {
-				return true;
-			} else {
-				return false;
-			}
-		} else {
-			// abort error in parsing
-			return false;
-		}
+
+		if (!buildOWLOntology()) return false;
+
+		if (!serializeOntology()) return false;
+
+		return true;
 	}
 
 	private boolean serializeOntology() {
