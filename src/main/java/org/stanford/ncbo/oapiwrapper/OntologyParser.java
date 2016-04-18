@@ -32,6 +32,22 @@ public class OntologyParser {
 	private OWLOntologyManager targetOwlManager = null;
 	private OWLOntology targetOwlOntology = null;
 
+	public OntologyParser(ParserInvocation parserInvocation) throws OntologyParserException {
+		super();
+		log.info("executor ...");
+
+		if (!parserInvocation.valid()) {
+			throw new OntologyParserException(parserInvocation.getParserLog());
+		}
+		this.parserInvocation = parserInvocation;
+
+		this.sourceOwlManager = OWLManager.createOWLOntologyManager();
+		this.setLocalFileRepositaryMapping(this.sourceOwlManager, this.parserInvocation.getInputRepositoryFolder());
+		this.addBFOLocationMapping(this.sourceOwlManager);
+
+		this.targetOwlManager = OWLManager.createOWLOntologyManager();
+	}
+
 	public List<OntologyBean> getLocalOntologies() {
 		return ontologies;
 	}
@@ -54,22 +70,6 @@ public class OntologyParser {
 		}
 	}
 
-
-	public OntologyParser(ParserInvocation parserInvocation) throws OntologyParserException {
-		super();
-		log.info("executor ...");
-
-		if (!parserInvocation.valid()) {
-			throw new OntologyParserException(parserInvocation.getParserLog());
-		}
-		this.parserInvocation = parserInvocation;
-
-		this.sourceOwlManager = OWLManager.createOWLOntologyManager();
-		this.setLocalFileRepositaryMapping(this.sourceOwlManager, this.parserInvocation.getInputRepositoryFolder());
-		this.addBFOLocationMapping(this.sourceOwlManager);
-
-		this.targetOwlManager = OWLManager.createOWLOntologyManager();
-	}
 
 	public String getOBODataVersion(String file) {
 		String result = null;
