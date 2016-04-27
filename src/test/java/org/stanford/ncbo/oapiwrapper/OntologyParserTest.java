@@ -63,11 +63,16 @@ public class OntologyParserTest {
     public void parse_OntologyBVGA_Serialized() throws Exception {
         String inputFolder = "./src/test/resources/repo/input/bvga";
         String outputFolder = "./src/test/resources/repo/output/bvga";
+
+        File f = new File(outputFolder + File.separator + "owlapi.xrdf");
+        if (f.exists()) f.delete();
+
         ParserInvocation pi = new ParserInvocation(inputFolder, outputFolder,
                 "basic-vertebrate-gross-anatomy_v1.1.owl", true);
         OntologyParser parser = new OntologyParser(pi);
         parser.parse();
-        File f = new File(outputFolder + File.separator + "owlapi.xrdf");
+
+        f = new File(outputFolder + File.separator + "owlapi.xrdf");
         assertTrue(f.exists());
         assertNotEquals(0, f.length());
     }
