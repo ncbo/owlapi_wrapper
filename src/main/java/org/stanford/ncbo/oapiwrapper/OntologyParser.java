@@ -605,12 +605,16 @@ public class OntologyParser {
 	private boolean internalParse() {
 		findLocalOntologies();
 
-		if (findMasterFile() == null) {
+		OWLOntology ontology = findMasterFile();
+		if (ontology == null) {
 			String msg = String.format("Can't find %s in input folder!", parserInvocation.getMasterFileName());
 			parserLog.addError(ParserError.MASTER_FILE_MISSING, msg);
 			log.info(msg);
 			return false;
 		}
+
+		OntologyMetrics metrics = new OntologyMetrics(ontology, parserInvocation);
+		metrics.generate();
 
 		if (!buildOWLOntology()) return false;
 
