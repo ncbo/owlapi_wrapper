@@ -37,11 +37,6 @@ public class OntologyMetrics {
     }
 
     public void generate() {
-        calculate();
-        write();
-    }
-
-    private void calculate() {
         String ontologyFileName = parserInvocation.getMasterFileName();
 
         logger.info(String.format("Calculating metrics for %s", ontologyFileName));
@@ -63,6 +58,8 @@ public class OntologyMetrics {
 
         long estimatedTime = (System.nanoTime() - startTime) / 1000000;
         logger.info(String.format("Finished metrics calculation for %s in %d milliseconds", ontologyFileName, estimatedTime));
+
+        write();
     }
 
     private void write() {
