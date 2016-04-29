@@ -14,17 +14,17 @@ import org.stanford.ncbo.oapiwrapper.OntologyParserException;
 import org.stanford.ncbo.oapiwrapper.ParserError;
 import org.stanford.ncbo.oapiwrapper.ParserInvocation;
 
-public class TestSimpleOWLWithImports extends TestCase {
+public class TestSimpleSKOSWithImports extends TestCase {
 	private static final String inputRepositoryFolder = "./test/repo/input/sifr";
 	private static final String outputRepositoryFolder = "./test/repo/output/sifr";
-	private static final String masterFileName = "basic-vertebrate-gross-anatomy_v1.1.owl";
+	private static final String masterFileName = "testDefavecImportSkos2.rdf";
 
 	//private static final String inputRepositoryFolder = "./test/repo/input/custom";
 	//private static final String outputRepositoryFolder = "./test/repo/output/custom";
 	//private static final String masterFileName = "custom_properties.owl";
 
 	
-	private final static Logger log = Logger.getLogger(TestSimpleOWLWithImports.class .getName()); 
+	private final static Logger log = Logger.getLogger(TestSimpleSKOSWithImports.class .getName()); 
 
 	@Override
     protected void setUp() throws Exception  {
