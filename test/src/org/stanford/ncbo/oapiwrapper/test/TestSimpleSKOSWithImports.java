@@ -17,7 +17,7 @@ import org.stanford.ncbo.oapiwrapper.ParserInvocation;
 public class TestSimpleSKOSWithImports extends TestCase {
 	private static final String inputRepositoryFolder = "./test/repo/input/sifr";
 	private static final String outputRepositoryFolder = "./test/repo/output/sifr";
-	private static final String masterFileName = "testDefavecImportSkos2.rdf";
+	private static final String masterFileName = "testDefavecImportSkos2.owl";
 
 	//private static final String inputRepositoryFolder = "./test/repo/input/custom";
 	//private static final String outputRepositoryFolder = "./test/repo/output/custom";
