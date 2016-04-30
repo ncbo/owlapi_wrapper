@@ -211,8 +211,7 @@ public class OntologyParser {
 		}
 	}
 
-	private void addOntologyIRI(OWLDataFactory fact,
-								   OWLOntology sourceOnt) {
+	private void addOntologyIRI(OWLDataFactory fact, OWLOntology sourceOnt) {
 		// Add a triple with the ontology URI to the submission graph
 		// <http://bioportal.bioontology.org/ontologies/versionSubject> <http://omv.ontoware.org/2005/05/ontology#URI> "ONTOLOGY_IRI"
 		if (!sourceOnt.getOntologyID().isAnonymous()) {
@@ -238,6 +237,7 @@ public class OntologyParser {
 		OWLDataFactory fact = sourceOwlManager.getOWLDataFactory();
 		try {
 			this.targetOwlOntology = targetOwlManager.createOntology();
+                        addOntologyIRI(sourceOwlManager.getOWLDataFactory(), this.localMaster);
 		} catch (OWLOntologyCreationException e) {
 			log.log(Level.SEVERE, e.getMessage(), e);
 			StringWriter trace = new StringWriter();
@@ -258,7 +258,6 @@ public class OntologyParser {
 					.getOntologyDocumentIRI(sourceOnt);
 			System.out.println("ontology inspect " + documentIRI.toString());
 			addGroundMetadata(documentIRI, fact, sourceOnt);
-			addOntologyIRI(fact, sourceOnt);
 
 			generateGroundTriplesForAxioms(allAxioms, fact, sourceOnt);
 
@@ -639,6 +638,11 @@ public class OntologyParser {
 		}
 	}
 
+        /**
+         * Call internal parse to parse the ontology
+         * @return
+         * @throws Exception 
+         */
 	public boolean parse() throws Exception {
 		try {
 			if (internalParse()) {
@@ -660,6 +664,10 @@ public class OntologyParser {
 		return false;
 	}
 
+        /**
+         * Main function that is doing the ontology parsing
+         * @return boolean
+         */
 	private boolean internalParse() {
 		findLocalOntologies();
 		this.localMaster = findMasterFile();
@@ -711,6 +719,10 @@ public class OntologyParser {
 		return true;
 	}
 
+        /**
+         * Find the main file defining the ontology (mainly useful when a zip file is uploaded)
+         * @return the main OWLOntology file
+         */
 	private OWLOntology findMasterFile() {
 
 		OWLOntologyLoaderConfiguration conf = new OWLOntologyLoaderConfiguration();
