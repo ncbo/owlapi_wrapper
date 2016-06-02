@@ -219,10 +219,10 @@ public class OntologyParser {
 			IRI ontologyIRI = sub.get();
 			OWLAnnotationProperty prop = fact
 					.getOWLAnnotationProperty(IRI
-							.create("http://omv.ontoware.org/2005/05/ontology#URI"));
+							.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
 			OWLAnnotationAssertionAxiom annOntoURI = fact
 					.getOWLAnnotationAssertionAxiom(prop,
-							IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject"),
+							IRI.create("http://bioportal.bioontology.org/ontologies/URI"),
 							fact.getOWLLiteral(ontologyIRI.toString()));
 			this.targetOwlManager.addAxiom(targetOwlOntology,
 					annOntoURI);
