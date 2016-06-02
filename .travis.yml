@@ -1,0 +1,18 @@
+language: java
+
+jdk:
+  - oraclejdk7
+  - oraclejdk8
+
+branches:
+  only:
+    - master
+
+notifications:
+  email:
+    recipients:
+      - vendetti@stanford.edu
+    on_success: never
+    on_failure: always
+
+
