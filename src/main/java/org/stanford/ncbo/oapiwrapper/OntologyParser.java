@@ -132,11 +132,10 @@ public class OntologyParser {
 
 	private boolean isOBO() {
 		boolean isOBO = false;
-		for (OWLOntology sourceOnt : this.sourceOwlManager.getOntologies()) {
-			OWLDocumentFormat format = this.sourceOwlManager
-					.getOntologyFormat(sourceOnt);
+		for (OWLOntology sourceOnt : sourceOwlManager.getOntologies()) {
+			OWLDocumentFormat format = sourceOwlManager.getOntologyFormat(sourceOnt);
 			isOBO = isOBO || (format instanceof OBODocumentFormat);
-			System.out.println("@@Format " + format.getClass().getName());
+			log.info("Ontology document format: {}", format.getClass().getName());
 		}
 		return isOBO;
 	}
@@ -182,21 +181,17 @@ public class OntologyParser {
 			this.targetOwlOntology = targetOwlManager.createOntology();
 		} catch (OWLOntologyCreationException e) {
 			log.error(e.getMessage());
-			StringWriter trace = new StringWriter();
-			e.printStackTrace(new PrintWriter(trace));
-			parserLog.addError(ParserError.OWL_CREATE_ONTOLOGY_EXCEPTION, "Error buildOWLOntology" + e.getMessage() + "\n" + trace.toString());
+			parserLog.addError(ParserError.OWL_CREATE_ONTOLOGY_EXCEPTION, "Error buildOWLOntology" + e.getMessage());
 			return false;
 		}
 
 		isOBO = this.isOBO();
 
 		Set<OWLClass> toDelete = new HashSet<OWLClass>();
-		for (OWLOntology sourceOnt : this.sourceOwlManager.getOntologies()) {
-			IRI documentIRI = this.sourceOwlManager
-					.getOntologyDocumentIRI(sourceOnt);
-			System.out.println("ontology inspect " + documentIRI.toString());
-			addGroundMetadata(documentIRI, fact, sourceOnt);
+		for (OWLOntology sourceOnt : sourceOwlManager.getOntologies()) {
+			IRI documentIRI = sourceOwlManager.getOntologyDocumentIRI(sourceOnt);
 
+			addGroundMetadata(documentIRI, fact, sourceOnt);
 			generateGroundTriplesForAxioms(allAxioms, fact, sourceOnt);
 
 			if (isOBO) {
@@ -204,9 +199,8 @@ public class OntologyParser {
 					toDelete.addAll( generateSKOSInObo(allAxioms, fact, sourceOnt) );
 			}
 
-			boolean isPrefixedOWL = this.sourceOwlManager.getOntologyFormat(
-					sourceOnt).isPrefixOWLOntologyFormat();
-			System.out.println("isPrefixOWLOntologyFormat " + isPrefixedOWL);
+			boolean isPrefixedOWL = sourceOwlManager.getOntologyFormat(sourceOnt).isPrefixOWLOntologyFormat();
+			log.info("isPrefixOWLOntologyFormat: {}", isPrefixedOWL);
 			if (isPrefixedOWL == true && !isOBO) {
 				generateSKOSInOwl(allAxioms, fact, sourceOnt);
 			}
@@ -227,10 +221,8 @@ public class OntologyParser {
 			this.targetOwlOntology.getOWLOntologyManager().applyChanges(rem.getChanges());
 
 			if (parserInvocation.getOBOVersion() != null) {
-				System.out.println("@@ adding version "
-						+ parserInvocation.getOBOVersion());
-				OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI
-						.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
+				log.info("Adding version: {}", parserInvocation.getOBOVersion());
+				OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
 				OWLAnnotationAssertionAxiom annVersion = fact
 						.getOWLAnnotationAssertionAxiom(
 								prop,
@@ -262,7 +254,7 @@ public class OntologyParser {
 		deprecateBranch();
 
 
-		System.out.println("isOBO " + isOBO);
+		log.info("isOBO: {}", isOBO);
 		if (isOBO) {
 			replicateHierarchyAsTreeview(fact);
 		}
@@ -428,9 +420,7 @@ public class OntologyParser {
 		Set<OWLClass> classes = sourceOnt.getClassesInSignature();
 		for (OWLClass cls : classes) {
 			if (!classesWithNotation.contains(cls)) {
-				System.out.println("TO DELETE " + cls.getIRI());
 				classesToDelete.add(cls);
-
 			}
 		}
 		return classesToDelete;
@@ -586,9 +576,7 @@ public class OntologyParser {
 			result = internalParse();
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			StringWriter trace = new StringWriter();
-			e.printStackTrace(new PrintWriter(trace));
-			parserLog.addError(ParserError.UNKNOWN, "Error " + e.getMessage() + "\nTrace:\n" + trace.toString());
+			parserLog.addError(ParserError.UNKNOWN, "Error " + e.getMessage());
 		}
 
 		if (parserLog.getErrors().size() > 0) {
@@ -628,9 +616,7 @@ public class OntologyParser {
 			this.targetOwlManager.saveOntology(this.targetOwlOntology, new RDFXMLDocumentFormat(),newPath);
 		} catch (OWLOntologyStorageException e) {
 			log.error(e.getMessage());
-			StringWriter trace = new StringWriter();
-			e.printStackTrace(new PrintWriter(trace));
-			parserLog.addError(ParserError.OWL_STORAGE_EXCEPTION, "Error buildOWLOntology" + e.getMessage() + "\n" + trace.toString());
+			parserLog.addError(ParserError.OWL_STORAGE_EXCEPTION, "Error buildOWLOntology" + e.getMessage());
 			if (output.exists()) {
 				output.renameTo(new File(parserInvocation.getOutputRepositoryFolder() + File.separator + "owlapi.xrdf.incomplete"));
 			}
@@ -654,46 +640,30 @@ public class OntologyParser {
 								.getMasterFileName())), conf);
 			} catch (OWLOntologyCreationException e) {
 				log.error(e.getMessage());
-				StringWriter trace = new StringWriter();
-				e.printStackTrace(new PrintWriter(trace));
-				parserLog.addError(ParserError.OWL_PARSE_EXCEPTION, "Error parsing" + this.parserInvocation.getMasterFileName() + "\n" + e.getMessage() + "\n" + trace.toString());
+				parserLog.addError(ParserError.OWL_PARSE_EXCEPTION, e.getMessage());
 				return null;
 			}
 		}
 
 		// repo input for zip files
-		File master = new File(new File(
-				parserInvocation.getInputRepositoryFolder()),
-				this.parserInvocation.getMasterFileName());
-		log.info("---> master.getAbsolutePath(): " + master.getAbsolutePath());
+		File master = new File(new File(parserInvocation.getInputRepositoryFolder()), parserInvocation.getMasterFileName());
+		log.info("master.getAbsolutePath(): {}", master.getAbsolutePath());
 
 		OntologyBean selectedBean = null;
 		for (OntologyBean b : this.ontologies) {
-			log.info("---> "
-					+ b.getFile().getAbsolutePath()
-					+ " --> "
-					+ master.getAbsolutePath().equals(
-							b.getFile().getAbsolutePath()));
 			if (b.getFile().getAbsolutePath().equals(master.getAbsolutePath())) {
 				selectedBean = b;
 			}
 		}
 		if (selectedBean == null) {
 			for (OntologyBean b : this.ontologies) {
-				log.info("---> "
-						+ b.getFile().getAbsolutePath()
-						+ " --> "
-						+ master.getAbsolutePath().equals(
-								b.getFile().getAbsolutePath()));
-				if (b.getFile().getName()
-						.equals(this.parserInvocation.getMasterFileName())) {
+				if (b.getFile().getName().equals(parserInvocation.getMasterFileName())) {
 					selectedBean = b;
 				}
 			}
 		}
 
-		log.info("Selected master file "
-				+ selectedBean.getFile().getAbsolutePath());
+		log.info("Selected master file: {}", selectedBean.getFile().getAbsolutePath());
 
 		if (selectedBean != null) {
 			try {
@@ -702,9 +672,7 @@ public class OntologyParser {
 				return ontology;
 			} catch (OWLOntologyCreationException e) {
 				log.error(e.getMessage());
-				StringWriter trace = new StringWriter();
-				e.printStackTrace(new PrintWriter(trace));
-				parserLog.addError(ParserError.OWL_PARSE_EXCEPTION, "Error parsing" + selectedBean.getFile().getAbsolutePath() + "\n" + e.getMessage() + "\n" + trace.toString());
+				parserLog.addError(ParserError.OWL_PARSE_EXCEPTION, e.getMessage());
 				return null;
 			}
 		}
