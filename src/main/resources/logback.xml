@@ -6,11 +6,34 @@
     </encoder>
   </appender>
 
-  <logger name="org.obolibrary" level="ERROR" />
-  <logger name="org.openrdf.rio" level="ERROR" />
-  <logger name="org.semanticweb.owlapi" level="ERROR" />
-  <logger name="org.xml.sax" level="ERROR" />
-  <logger name="uk.ac.manchester" level="ERROR" />
+  <logger name="org.stanford.ncbo" level="TRACE" additivity="false">
+    <appender-ref ref="STDOUT" />
+  </logger>
+
+  <!-- OWL API libraries -->
+
+  <logger name="org.obolibrary" level="ERROR" additivity="false">
+    <appender-ref ref="STDOUT" />
+  </logger>
+
+  <logger name="org.openrdf.rio" level="ERROR" additivity="false">
+    <appender-ref ref="STDOUT" />
+  </logger>
+
+  <logger name="org.semanticweb.owlapi" level="ERROR" additivity="false">
+    <appender-ref ref="STDOUT" />
+  </logger>
+
+  <logger name="org.xml.sax" level="ERROR" additivity="false">
+    <appender-ref ref="STDOUT" />
+  </logger>
+
+  <logger name="uk.ac.manchester" level="ERROR" additivity="false">
+    <appender-ref ref="STDOUT" />
+  </logger>
+
+
+  <!-- Root logger -->
 
   <root level="debug">
     <appender-ref ref="STDOUT" />
