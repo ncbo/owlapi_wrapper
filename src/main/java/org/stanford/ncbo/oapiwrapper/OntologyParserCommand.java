@@ -10,8 +10,8 @@ public class OntologyParserCommand {
 	private final static Logger log = LoggerFactory.getLogger(OntologyParserCommand.class .getName());
 
 	public static void main(String[] args) {
-		final Options gnuOptions = new Options(); 
-		gnuOptions.addOption("i", "input-repository", true, 
+		final Options options = new Options();
+		options.addOption("i", "input-repository", true,
 				"Path to folder where input data repository is located")
 				.addOption("m","master-filename", true,
 						"Name of the ontology file to load first")
@@ -20,9 +20,9 @@ public class OntologyParserCommand {
 				.addOption("r","reasoner", true,
 						"Option to use the reasoner");
 		
-		CommandLineParser clp = new GnuParser();
+		CommandLineParser clp = new DefaultParser();
 		try {
-			CommandLine call = clp.parse(gnuOptions,args);
+			CommandLine call = clp.parse(options,args);
 			String inputRepoPath = call.getOptionValue("i");
 			String outputRepoPath = call.getOptionValue("o");
 			String masterFileName = call.getOptionValue("m");
