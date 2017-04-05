@@ -142,11 +142,13 @@ public class OntologyParser {
   }
 
   /**
-   * Add <http://bioportal.bioontology.org/ontologies/versionSubject> owl:versionInfo "what was in versionInfo"
-   * 
+   * Add ontology metadatas to <ONTOLOGY_URI> <metadata_property>
+   * <metadata_value>. Used to retrieve them with Ruby (using the ontology URI
+   * get using addOntologyIRI)
+   *
    * @param documentIRI
    * @param fact
-   * @param sourceOnt 
+   * @param sourceOnt
    */
   private void addGroundMetadata(IRI documentIRI, OWLDataFactory fact,
           OWLOntology sourceOnt) {
@@ -160,6 +162,7 @@ public class OntologyParser {
                         ann.getValue());
         this.targetOwlManager.addAxiom(targetOwlOntology,
                 groundAnnotation);
+        /* Not used anymore, adds <http://bioportal.bioontology.org/ontologies/versionSubject> owl:versionInfo "what was in versionInfo"
         if (documentIRI.toString().startsWith("file:/")) {
           if (ann.getProperty().toString().contains("versionInfo")) {
             OWLAnnotationProperty prop = fact
@@ -174,20 +177,19 @@ public class OntologyParser {
             this.targetOwlManager.addAxiom(targetOwlOntology,
                     annVersion);
           }
-        }
+        }*/
       }
     }
   }
 
   /**
-   * Add <http://bioportal.bioontology.org/ontologies/URI> owl:versionInfo "what was in versionInfo"
-   * 
+   * Add <http://bioportal.bioontology.org/ontologies/URI> owl:versionInfo
+   * "ONTOLOGY_IRI" to the submission graph
+   *
    * @param fact
-   * @param sourceOnt 
+   * @param sourceOnt
    */
   private void addOntologyIRI(OWLDataFactory fact, OWLOntology sourceOnt) {
-    // Add a triple with the ontology URI to the submission graph
-    // <http://bioportal.bioontology.org/ontologies/versionSubject> <http://omv.ontoware.org/2005/05/ontology#URI> "ONTOLOGY_IRI"
     if (!sourceOnt.getOntologyID().isAnonymous()) {
       Optional<IRI> sub = sourceOnt.getOntologyID().getOntologyIRI();
       IRI ontologyIRI = sub.get();
