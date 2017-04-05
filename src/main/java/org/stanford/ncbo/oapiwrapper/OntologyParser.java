@@ -141,6 +141,13 @@ public class OntologyParser {
     return isOBO;
   }
 
+  /**
+   * Add <http://bioportal.bioontology.org/ontologies/versionSubject> owl:versionInfo "what was in versionInfo"
+   * 
+   * @param documentIRI
+   * @param fact
+   * @param sourceOnt 
+   */
   private void addGroundMetadata(IRI documentIRI, OWLDataFactory fact,
           OWLOntology sourceOnt) {
     if (!sourceOnt.getOntologyID().isAnonymous()) {
@@ -172,6 +179,12 @@ public class OntologyParser {
     }
   }
 
+  /**
+   * Add <http://bioportal.bioontology.org/ontologies/URI> owl:versionInfo "what was in versionInfo"
+   * 
+   * @param fact
+   * @param sourceOnt 
+   */
   private void addOntologyIRI(OWLDataFactory fact, OWLOntology sourceOnt) {
     // Add a triple with the ontology URI to the submission graph
     // <http://bioportal.bioontology.org/ontologies/versionSubject> <http://omv.ontoware.org/2005/05/ontology#URI> "ONTOLOGY_IRI"
