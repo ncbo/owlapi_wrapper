@@ -14,6 +14,19 @@ public class OntologyParserTest {
     public void setUp() throws Exception {
 
     }
+    
+    // Run this test: mvn -Dtest=OntologyParserTest#sifrTestParse test
+    // parse_OntologyENVO_ReturnsTrue fonctionne pour comparer
+    @Test
+    public void sifrTestParse() throws Exception {
+        ParserInvocation pi = new ParserInvocation("./src/test/resources/repo/input/sifr",
+                "./src/test/resources/repo/output/sifr", "foodon.owl", true);
+        // SKOS: anaee-france-thesaurus.rdf
+        // OWL: AnimalDiseasesOntology.owl.xml
+        OntologyParser parser = new OntologyParser(pi);
+        parser.parse();
+        //assertFalse(parser.parse());
+    }
 
     @Test
     public void getLocalOntologies_MultipleOntologies_Found() throws Exception {
