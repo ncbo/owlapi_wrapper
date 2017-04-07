@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class ParserInvocationTest {
     @Test
     public void valid_InputFolderIsAFile_ReturnsFalse() throws IOException {
         File f = new File("./src/test/resources/repo/input/bvga/test.txt");
-        FileUtils.writeStringToFile(f, "some data");
+        FileUtils.writeStringToFile(f, "some data", Charset.defaultCharset());
         ParserInvocation pi = new ParserInvocation(f.getAbsolutePath(), outputRepositoryFolder, masterFileName, true);
         assertFalse(pi.valid());
     }
@@ -55,7 +56,7 @@ public class ParserInvocationTest {
     @Test
     public void valid_OutputFolderIsAFile_ReturnsFalse() throws IOException {
         File f = new File("./src/test/resources/repo/output/bvga/test.txt");
-        FileUtils.writeStringToFile(f, "some data");
+        FileUtils.writeStringToFile(f, "some data", Charset.defaultCharset());
         ParserInvocation pi = new ParserInvocation(inputRepositoryFolder, f.getAbsolutePath(), masterFileName, true);
         assertFalse(pi.valid());
     }
