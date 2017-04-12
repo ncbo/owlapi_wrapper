@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.nio.charset.Charset;
 
 import static org.junit.Assert.*;
 
@@ -46,7 +47,7 @@ public class OntologyMetricsTest {
     @Test
     public void generate_MetricsForPizza_2RecordsCreated() throws Exception {
         String path = "./src/test/resources/repo/output/pizza" + File.separator + OntologyParserConstants.METRICS_FILE;
-        String data = FileUtils.readFileToString(new File(path));
+        String data = FileUtils.readFileToString(new File(path), Charset.defaultCharset());
         CSVFormat format = CSVFormat.DEFAULT.withHeader(OntologyParserConstants.METRICS_FILE_HEADERS);
         CSVParser parser = CSVParser.parse(data, format);
 
@@ -57,7 +58,7 @@ public class OntologyMetricsTest {
     @Test
     public void generate_MetricsForOntologyWithoutImports_Calculated() throws Exception {
         String path = "./src/test/resources/repo/output/pizza" + File.separator + OntologyParserConstants.METRICS_FILE;
-        String data = FileUtils.readFileToString(new File(path));
+        String data = FileUtils.readFileToString(new File(path), Charset.defaultCharset());
         CSVFormat format = CSVFormat.DEFAULT.withHeader(OntologyParserConstants.METRICS_FILE_HEADERS);
         CSVParser parser = CSVParser.parse(data, format);
 
@@ -75,7 +76,7 @@ public class OntologyMetricsTest {
     @Test
     public void generate_MetricsForOntologyWithImports_Calculated() throws Exception {
         String path = "./src/test/resources/repo/output/hsdb" + File.separator + OntologyParserConstants.METRICS_FILE;
-        String data = FileUtils.readFileToString(new File(path));
+        String data = FileUtils.readFileToString(new File(path), Charset.defaultCharset());
         CSVFormat format = CSVFormat.DEFAULT.withHeader(OntologyParserConstants.METRICS_FILE_HEADERS);
         CSVParser parser = CSVParser.parse(data, format);
 

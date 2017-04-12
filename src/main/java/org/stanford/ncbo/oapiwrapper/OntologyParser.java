@@ -3,6 +3,7 @@ package org.stanford.ncbo.oapiwrapper;
 import com.google.common.base.Optional;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.TrueFileFilter;
+import org.coode.owlapi.obo12.parser.OBO12DocumentFormat;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.formats.OBODocumentFormat;
 import org.semanticweb.owlapi.formats.PrefixDocumentFormat;
@@ -135,7 +136,7 @@ public class OntologyParser {
     boolean isOBO = false;
     for (OWLOntology sourceOnt : sourceOwlManager.getOntologies()) {
       OWLDocumentFormat format = sourceOwlManager.getOntologyFormat(sourceOnt);
-      isOBO = isOBO || (format instanceof OBODocumentFormat);
+      isOBO = (format instanceof OBODocumentFormat) || (format instanceof OBO12DocumentFormat);
       log.info("Ontology document format: {}", format.getClass().getName());
     }
     return isOBO;

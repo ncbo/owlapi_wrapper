@@ -99,11 +99,11 @@ public class OntologyParserTest {
     }
 
     @Test
-    public void parse_OntologyEDAM_ReturnsFalse() throws Exception {
+    public void parse_OntologyEDAM_ReturnsTrue() throws Exception {
         ParserInvocation pi = new ParserInvocation("./src/test/resources/repo/input/edam",
-                "./src/test/resources/repo/output/edam", "EDAM_1.1_v1.1.obo", true);
+                "./src/test/resources/repo/output/edam", "EDAM_1.16.owl", true);
         OntologyParser parser = new OntologyParser(pi);
-        assertFalse(parser.parse());
+        assertTrue(parser.parse());
     }
 
     @Test

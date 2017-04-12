@@ -12,23 +12,23 @@
 
   <!-- OWL API libraries -->
 
-  <logger name="org.obolibrary" level="ERROR" additivity="false">
+  <logger name="org.obolibrary" level="DEBUG" additivity="false">
     <appender-ref ref="STDOUT" />
   </logger>
 
-  <logger name="org.openrdf.rio" level="ERROR" additivity="false">
+  <logger name="org.openrdf.rio" level="DEBUG" additivity="false">
     <appender-ref ref="STDOUT" />
   </logger>
 
-  <logger name="org.semanticweb.owlapi" level="ERROR" additivity="false">
+  <logger name="org.semanticweb.owlapi" level="DEBUG" additivity="false">
     <appender-ref ref="STDOUT" />
   </logger>
 
-  <logger name="org.xml.sax" level="ERROR" additivity="false">
+  <logger name="org.xml.sax" level="DEBUG" additivity="false">
     <appender-ref ref="STDOUT" />
   </logger>
 
-  <logger name="uk.ac.manchester" level="ERROR" additivity="false">
+  <logger name="uk.ac.manchester" level="DEBUG" additivity="false">
     <appender-ref ref="STDOUT" />
   </logger>
 
