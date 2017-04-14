@@ -397,23 +397,20 @@ public class OntologyParser {
 		}
 	}
 
-	private Set<OWLClass> generateSKOSInObo(Set<OWLAxiom> allAxioms,
-			 OWLDataFactory fact, OWLOntology sourceOnt) {
+	private Set<OWLClass> generateSKOSInObo(Set<OWLAxiom> allAxioms, OWLDataFactory fact, OWLOntology sourceOnt) {
 		Set<OWLClass> classesWithNotation = new HashSet<OWLClass>();
-		OWLAnnotationProperty notation = fact
-				.getOWLAnnotationProperty(IRI
-						.create("http://www.w3.org/2004/02/skos/core#notation"));
+		IRI iri = IRI.create("http://www.w3.org/2004/02/skos/core#notation");
+		OWLAnnotationProperty notation = fact.getOWLAnnotationProperty(iri);
+
 		for (OWLAnnotationAssertionAxiom ann : sourceOnt.getAxioms(AxiomType.ANNOTATION_ASSERTION)) {
-			//set with all and if not there delete
+			// Set with all and if not there delete
 			OWLAnnotationSubject s = ann.getSubject();
 			OWLAnnotationProperty p = ann.getProperty();
 
 			if (p.toString().contains("#id")) {
-				OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(
-						notation, (IRI)s, ann.getValue());
+				OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(notation, (IRI)s, ann.getValue());
 				allAxioms.add(annAsse);
 				classesWithNotation.add(fact.getOWLClass((IRI)s));
-				
 			}
 		}
 
