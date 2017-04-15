@@ -407,7 +407,8 @@ public class OntologyParser {
 			OWLAnnotationSubject s = ann.getSubject();
 			OWLAnnotationProperty p = ann.getProperty();
 
-			if (p.toString().contains("#id")) {
+			String propString = p.toString();
+			if (propString.contains("#id") || propString.contains("#xref")) {
 				OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(notation, (IRI)s, ann.getValue());
 				allAxioms.add(annAsse);
 				classesWithNotation.add(fact.getOWLClass((IRI)s));
