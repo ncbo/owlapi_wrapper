@@ -412,7 +412,7 @@ public class OntologyParser {
 			String propertyString = ann.getProperty().toString();
 			boolean matchFound = propStrings.stream().anyMatch(propertyString::contains);
 			if (matchFound) {
-				OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(notation, (IRI)s, ann.getValue());
+				OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(notation, s, ann.getValue());
 				allAxioms.add(annAsse);
 				classesWithNotation.add(fact.getOWLClass((IRI)s));
 			}
