@@ -399,16 +399,19 @@ public class OntologyParser {
 
 	private Set<OWLClass> generateSKOSInObo(Set<OWLAxiom> allAxioms, OWLDataFactory fact, OWLOntology sourceOnt) {
 		Set<OWLClass> classesWithNotation = new HashSet<OWLClass>();
+
+		String[] propStringArray = new String[]{"#id", "#xref", "#hasRelatedSynonym", "http://purl.obolibrary.org/obo/def"};
+		List<String> propStrings = Arrays.asList(propStringArray);
+
 		IRI iri = IRI.create("http://www.w3.org/2004/02/skos/core#notation");
 		OWLAnnotationProperty notation = fact.getOWLAnnotationProperty(iri);
 
 		for (OWLAnnotationAssertionAxiom ann : sourceOnt.getAxioms(AxiomType.ANNOTATION_ASSERTION)) {
 			// Set with all and if not there delete
 			OWLAnnotationSubject s = ann.getSubject();
-			OWLAnnotationProperty p = ann.getProperty();
-
-			String propString = p.toString();
-			if (propString.contains("#id") || propString.contains("#xref")) {
+			String propertyString = ann.getProperty().toString();
+			boolean matchFound = propStrings.stream().anyMatch(propertyString::contains);
+			if (matchFound) {
 				OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(notation, (IRI)s, ann.getValue());
 				allAxioms.add(annAsse);
 				classesWithNotation.add(fact.getOWLClass((IRI)s));
