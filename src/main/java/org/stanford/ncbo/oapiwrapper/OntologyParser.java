@@ -143,6 +143,7 @@ public class OntologyParser {
 
 	private void addGroundMetadata(IRI documentIRI, OWLDataFactory fact, OWLOntology sourceOnt) {
 		OWLOntologyID ontologyID = sourceOnt.getOntologyID();
+		boolean isFile = documentIRI.toString().startsWith("file:/");
 
 		if (ontologyID.isAnonymous()) {
 			return;
@@ -152,7 +153,7 @@ public class OntologyParser {
 			IRI iriSub = ontologyID.getOntologyIRI().get();
 			OWLAnnotationAssertionAxiom groundAnnotation = fact.getOWLAnnotationAssertionAxiom(ann.getProperty(), iriSub, ann.getValue());
 			targetOwlManager.addAxiom(targetOwlOntology, groundAnnotation);
-			if (documentIRI.toString().startsWith("file:/")) {
+			if (isFile) {
 				if (ann.getProperty().toString().contains("versionInfo")) {
 					OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(OWLRDFVocabulary.OWL_VERSION_INFO.getIRI());
 					OWLAnnotationAssertionAxiom annVersion = fact.getOWLAnnotationAssertionAxiom(prop, IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject"), ann.getValue());
