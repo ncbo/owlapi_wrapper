@@ -141,32 +141,34 @@ public class OntologyParser {
 		return isOBO;
 	}
 
-	private void addGroundMetadata(IRI documentIRI, OWLDataFactory fact,
-			OWLOntology sourceOnt) {
-		if (!sourceOnt.getOntologyID().isAnonymous()) {
-			for (OWLAnnotation ann : sourceOnt.getAnnotations()) {
-				Optional<IRI> sub = sourceOnt.getOntologyID().getOntologyIRI();
-				IRI iriSub = sub.get();
-				OWLAnnotationAssertionAxiom groundAnnotation = fact
-						.getOWLAnnotationAssertionAxiom(ann.getProperty(),
-								iriSub,
-								ann.getValue());
-				this.targetOwlManager.addAxiom(targetOwlOntology,
-						groundAnnotation);
-				if (documentIRI.toString().startsWith("file:/")) {
-					if (ann.getProperty().toString().contains("versionInfo")) {
-						OWLAnnotationProperty prop = fact
-								.getOWLAnnotationProperty(IRI
-										.create(OWLRDFVocabulary.OWL_VERSION_INFO
-												.toString()));
-						OWLAnnotationAssertionAxiom annVersion = fact
-								.getOWLAnnotationAssertionAxiom(
-										prop,
-										IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject"),
-										ann.getValue());
-						this.targetOwlManager.addAxiom(targetOwlOntology,
-								annVersion);
-					}
+	private void addGroundMetadata(IRI documentIRI, OWLDataFactory fact, OWLOntology sourceOnt) {
+		OWLOntologyID ontologyID = sourceOnt.getOntologyID();
+
+		if (ontologyID.isAnonymous()) {
+			return;
+		}
+
+		for (OWLAnnotation ann : sourceOnt.getAnnotations()) {
+			IRI iriSub = ontologyID.getOntologyIRI().get();
+			OWLAnnotationAssertionAxiom groundAnnotation = fact
+					.getOWLAnnotationAssertionAxiom(ann.getProperty(),
+							iriSub,
+							ann.getValue());
+			this.targetOwlManager.addAxiom(targetOwlOntology,
+					groundAnnotation);
+			if (documentIRI.toString().startsWith("file:/")) {
+				if (ann.getProperty().toString().contains("versionInfo")) {
+					OWLAnnotationProperty prop = fact
+							.getOWLAnnotationProperty(IRI
+									.create(OWLRDFVocabulary.OWL_VERSION_INFO
+											.toString()));
+					OWLAnnotationAssertionAxiom annVersion = fact
+							.getOWLAnnotationAssertionAxiom(
+									prop,
+									IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject"),
+									ann.getValue());
+					this.targetOwlManager.addAxiom(targetOwlOntology,
+							annVersion);
 				}
 			}
 		}
