@@ -154,7 +154,7 @@ public class OntologyParser {
 			targetOwlManager.addAxiom(targetOwlOntology, groundAnnotation);
 			if (documentIRI.toString().startsWith("file:/")) {
 				if (ann.getProperty().toString().contains("versionInfo")) {
-					OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
+					OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(OWLRDFVocabulary.OWL_VERSION_INFO.getIRI());
 					OWLAnnotationAssertionAxiom annVersion = fact.getOWLAnnotationAssertionAxiom(prop, IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject"), ann.getValue());
 					targetOwlManager.addAxiom(targetOwlOntology, annVersion);
 				}
