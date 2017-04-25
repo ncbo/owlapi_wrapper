@@ -153,12 +153,10 @@ public class OntologyParser {
 			IRI iriSub = ontologyID.getOntologyIRI().get();
 			OWLAnnotationAssertionAxiom groundAnnotation = fact.getOWLAnnotationAssertionAxiom(ann.getProperty(), iriSub, ann.getValue());
 			targetOwlManager.addAxiom(targetOwlOntology, groundAnnotation);
-			if (isFile) {
-				if (ann.getProperty().toString().contains("versionInfo")) {
-					OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(OWLRDFVocabulary.OWL_VERSION_INFO.getIRI());
-					OWLAnnotationAssertionAxiom annVersion = fact.getOWLAnnotationAssertionAxiom(prop, IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject"), ann.getValue());
-					targetOwlManager.addAxiom(targetOwlOntology, annVersion);
-				}
+			if (isFile && (ann.getProperty().toString().contains("versionInfo"))) {
+				OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(OWLRDFVocabulary.OWL_VERSION_INFO.getIRI());
+				OWLAnnotationAssertionAxiom annVersion = fact.getOWLAnnotationAssertionAxiom(prop, IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject"), ann.getValue());
+				targetOwlManager.addAxiom(targetOwlOntology, annVersion);
 			}
 		}
 	}
