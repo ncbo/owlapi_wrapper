@@ -141,6 +141,16 @@ public class OntologyParser {
 		return isOBO;
 	}
 
+	/**
+	 * Copies ontology-level annotation axioms from the source ontology to the target ontology.
+	 * <p>
+	 * Checks for the owl#versionInfo property. If found, adds a BioPortal-specific "versionSubject"
+	 * annotation axiom to the target ontology.
+	 *
+	 * @param documentIRI		the document IRI of the source ontology
+	 * @param factory			the OWL data factory of the source ontology
+	 * @param sourceOntology	the source ontology
+	 */
 	private void addGroundMetadata(IRI documentIRI, OWLDataFactory factory, OWLOntology sourceOntology) {
 		OWLOntologyID ontologyID = sourceOntology.getOntologyID();
 		boolean isFile = documentIRI.toString().startsWith("file:/");
