@@ -141,22 +141,27 @@ public class OntologyParser {
 		return isOBO;
 	}
 
-	private void addGroundMetadata(IRI documentIRI, OWLDataFactory fact, OWLOntology sourceOnt) {
-		OWLOntologyID ontologyID = sourceOnt.getOntologyID();
+	private void addGroundMetadata(IRI documentIRI, OWLDataFactory factory, OWLOntology sourceOntology) {
+		OWLOntologyID ontologyID = sourceOntology.getOntologyID();
 		boolean isFile = documentIRI.toString().startsWith("file:/");
 
 		if (ontologyID.isAnonymous()) {
 			return;
 		}
 
-		for (OWLAnnotation ann : sourceOnt.getAnnotations()) {
-			IRI iriSub = ontologyID.getOntologyIRI().get();
-			OWLAnnotationAssertionAxiom groundAnnotation = fact.getOWLAnnotationAssertionAxiom(ann.getProperty(), iriSub, ann.getValue());
-			targetOwlManager.addAxiom(targetOwlOntology, groundAnnotation);
-			if (isFile && (ann.getProperty().toString().contains("versionInfo"))) {
-				OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(OWLRDFVocabulary.OWL_VERSION_INFO.getIRI());
-				OWLAnnotationAssertionAxiom annVersion = fact.getOWLAnnotationAssertionAxiom(prop, IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject"), ann.getValue());
-				targetOwlManager.addAxiom(targetOwlOntology, annVersion);
+		for (OWLAnnotation annotation : sourceOntology.getAnnotations()) {
+			IRI subjectIRI = ontologyID.getOntologyIRI().get();
+			OWLAnnotationProperty annotationProperty = annotation.getProperty();
+			OWLAnnotationValue annotationValue = annotation.getValue();
+
+			OWLAnnotationAssertionAxiom annotationAssertionAxiom = factory.getOWLAnnotationAssertionAxiom(annotationProperty, subjectIRI, annotationValue);
+			targetOwlManager.addAxiom(targetOwlOntology, annotationAssertionAxiom);
+
+			if (isFile && (annotationProperty.toString().contains("versionInfo"))) {
+				IRI versionSubjectIRI = IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject");
+				OWLAnnotationProperty versionAnnotationProperty = factory.getOWLAnnotationProperty(OWLRDFVocabulary.OWL_VERSION_INFO.getIRI());
+				OWLAnnotationAssertionAxiom versionAnnotationAssertionAxiom = factory.getOWLAnnotationAssertionAxiom(versionAnnotationProperty, versionSubjectIRI, annotationValue);
+				targetOwlManager.addAxiom(targetOwlOntology, versionAnnotationAssertionAxiom);
 			}
 		}
 	}
