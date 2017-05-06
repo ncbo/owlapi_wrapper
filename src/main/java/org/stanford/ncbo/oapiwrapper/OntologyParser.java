@@ -145,7 +145,7 @@ public class OntologyParser {
   /**
    * Not used anymore. Adds
    * <http://bioportal.bioontology.org/ontologies/versionSubject>
-   * owl:versionInfo "what was in versionInfo". And  Add ontology metadatas to
+   * owl:versionInfo "what was in versionInfo". And Add ontology metadatas to
    * <ONTOLOGY_URI> <metadata_property>
    * <metadata_value>. Used to retrieve them with Ruby (using the ontology URI
    * get using addOntologyIRI)
@@ -199,7 +199,7 @@ public class OntologyParser {
       // Get ontology URI
       Optional<IRI> sub = sourceOnt.getOntologyID().getOntologyIRI();
       IRI ontologyIRI = sub.get();
-      
+
       OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
       OWLAnnotationAssertionAxiom annOntoURI = fact.getOWLAnnotationAssertionAxiom(prop, IRI.create("http://bioportal.bioontology.org/ontologies/URI"), fact.getOWLLiteral(ontologyIRI.toString()));
       this.targetOwlManager.addAxiom(targetOwlOntology, annOntoURI);
@@ -281,16 +281,18 @@ public class OntologyParser {
       }
       this.targetOwlOntology.getOWLOntologyManager().applyChanges(rem.getChanges());
 
+      // Add version metadata for OBO ontologies: <Onto_URI> owl:versionInfo "version number" .
       if (parserInvocation.getOBOVersion() != null) {
         log.info("Adding version: {}", parserInvocation.getOBOVersion());
-        OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
-        OWLAnnotationAssertionAxiom annVersion = fact
-                .getOWLAnnotationAssertionAxiom(
-                        prop,
-                        IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject"),
-                        fact.getOWLLiteral(parserInvocation
-                                .getOBOVersion()));
-        targetOwlManager.addAxiom(targetOwlOntology, annVersion);
+        
+        if (!masterOntology.getOntologyID().isAnonymous()) {
+          // Get ontology URI
+          Optional<IRI> sub = masterOntology.getOntologyID().getOntologyIRI();
+          IRI ontologyIRI = sub.get();
+          OWLAnnotationProperty versionInfoProp = fact.getOWLAnnotationProperty(IRI.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
+          OWLAnnotationAssertionAxiom annOntoURI = fact.getOWLAnnotationAssertionAxiom(versionInfoProp, ontologyIRI, fact.getOWLLiteral(parserInvocation.getOBOVersion()));
+          this.targetOwlManager.addAxiom(targetOwlOntology, annOntoURI);
+        }
       }
     }
 
