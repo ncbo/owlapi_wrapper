@@ -337,64 +337,57 @@ public class OntologyParser {
 		}
 	}
 
-	private void generateSKOSInOwl(Set<OWLAxiom> allAxioms,
-			OWLDataFactory fact, OWLOntology sourceOnt) {
-		OWLDocumentFormat docFormat = this.sourceOwlManager
-				.getOntologyFormat(sourceOnt);
+	private void generateSKOSInOwl(Set<OWLAxiom> allAxioms, OWLDataFactory fact, OWLOntology sourceOnt) {
+		OWLDocumentFormat docFormat = this.sourceOwlManager.getOntologyFormat(sourceOnt);
 		PrefixDocumentFormat prefixFormat = docFormat.asPrefixOWLOntologyFormat();
+
 		Set<OWLClass> classes = sourceOnt.getClassesInSignature();
 		for (OWLClass cls : classes) {
 			if (!cls.isAnonymous()) {
 				boolean notationFound = false;
+
 				for (OWLAnnotation ann : EntitySearcher.getAnnotations(cls, targetOwlOntology)) {
-					if (ann.getProperty()
-							.toString()
-							.contains(
-									"http://www.w3.org/2004/02/skos/core#notation")) {
+					if (ann.getProperty().toString().contains("http://www.w3.org/2004/02/skos/core#notation")) {
 						notationFound = true;
 						break;
 					}
 				}
+
 				if (notationFound) {
 					continue;
 				}
+
 				for (OWLAnnotation ann : EntitySearcher.getAnnotations(cls, sourceOnt)) {
-					if (ann.getProperty()
-							.toString()
-							.contains(
-									"http://www.geneontology.org/formats/oboInOwl#id")) {
-						OWLAnnotationProperty prop = fact
-								.getOWLAnnotationProperty(IRI
-										.create("http://www.w3.org/2004/02/skos/core#notation"));
-						OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(
-								prop, cls.getIRI(), ann.getValue());
+					if (ann.getProperty().toString().contains("http://www.geneontology.org/formats/oboInOwl#id")) {
+						OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create("http://www.w3.org/2004/02/skos/core#notation"));
+						OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, cls.getIRI(), ann.getValue());
 						allAxioms.add(annAsse);
 						notationFound = true;
 						break;
 					}
 				}
+
 				if (notationFound) {
 					continue;
 				}
+
 				String prefixIRI = prefixFormat.getPrefixIRI(cls.getIRI());
 				if (prefixIRI != null) {
 					if (prefixIRI.startsWith(":")) {
 						prefixIRI = prefixIRI.substring(1);
 					}
+
 					if (prefixIRI.startsWith("obo:") && prefixIRI.contains("_")) {
-						// OBO ontologies transformed into OWL before submitting
-						// to BioPortal
+						// OBO ontologies transformed into OWL before submitting to BioPortal
 						prefixIRI = prefixIRI.substring(4);
 						StringBuilder b = new StringBuilder(prefixIRI);
 						int ind = prefixIRI.lastIndexOf("_");
 						b.replace(ind, ind + 1, ":");
 						prefixIRI = b.toString();
 					}
-					OWLAnnotationProperty prop = fact
-							.getOWLAnnotationProperty(IRI
-									.create("http://data.bioontology.org/metadata/prefixIRI"));
-					OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(
-							prop, cls.getIRI(), fact.getOWLLiteral(prefixIRI));
+
+					OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/prefixIRI"));
+					OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, cls.getIRI(), fact.getOWLLiteral(prefixIRI));
 					allAxioms.add(annAsse);
 				}
 			}
