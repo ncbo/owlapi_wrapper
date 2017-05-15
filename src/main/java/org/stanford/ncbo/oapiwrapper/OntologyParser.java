@@ -131,13 +131,13 @@ public class OntologyParser {
 		}
 	}
 
-	private boolean isOBO() {
+	private boolean isOBO(OWLOntology ontology) {
 		boolean isOBO = false;
-		for (OWLOntology sourceOnt : sourceOwlManager.getOntologies()) {
-			OWLDocumentFormat format = sourceOwlManager.getOntologyFormat(sourceOnt);
-			isOBO = (format instanceof OBODocumentFormat) || (format instanceof OBO12DocumentFormat);
-			log.info("Ontology document format: {}", format.getClass().getName());
+		OWLDocumentFormat format = sourceOwlManager.getOntologyFormat(ontology);
+		if ((format instanceof OBODocumentFormat) || (format instanceof OBO12DocumentFormat)) {
+			isOBO = true;
 		}
+		log.info("Ontology document format: {}", format.getClass().getName());
 		return isOBO;
 	}
 
@@ -176,10 +176,9 @@ public class OntologyParser {
 		}
 	}
 
-	private boolean buildOWLOntology() {
+	private boolean buildOWLOntology(boolean isOBO) {
 
 		Set<OWLAxiom> allAxioms = new HashSet<OWLAxiom>();
-		boolean isOBO = false;
 
 		OWLDataFactory fact = sourceOwlManager.getOWLDataFactory();
 		try {
@@ -189,8 +188,6 @@ public class OntologyParser {
 			parserLog.addError(ParserError.OWL_CREATE_ONTOLOGY_EXCEPTION, "Error buildOWLOntology" + e.getMessage());
 			return false;
 		}
-
-		isOBO = this.isOBO();
 
 		Set<OWLClass> toDelete = new HashSet<OWLClass>();
 		for (OWLOntology sourceOnt : sourceOwlManager.getOntologies()) {
@@ -589,6 +586,7 @@ public class OntologyParser {
 		findLocalOntologies();
 
 		OWLOntology ontology = findMasterFile();
+
 		if (ontology == null) {
 			String msg = String.format("Can't find %s in input folder!", parserInvocation.getMasterFileName());
 			parserLog.addError(ParserError.MASTER_FILE_MISSING, msg);
@@ -599,7 +597,9 @@ public class OntologyParser {
 		OntologyMetrics metrics = new OntologyMetrics(ontology, parserInvocation);
 		metrics.generate();
 
-		if (!buildOWLOntology()) return false;
+		boolean isOBO = isOBO(ontology);
+
+		if (!buildOWLOntology(isOBO)) return false;
 
 		if (!serializeOntology()) return false;
 
