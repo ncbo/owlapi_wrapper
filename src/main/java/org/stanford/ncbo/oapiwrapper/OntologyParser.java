@@ -21,6 +21,7 @@ import org.semanticweb.owlapi.util.SimpleIRIMapper;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import uk.ac.manchester.cs.owl.owlapi.OWLLiteralImplString;
 
 import java.io.*;
 import java.util.*;
@@ -189,7 +190,6 @@ public class OntologyParser {
 			return false;
 		}
 
-		Set<OWLClass> toDelete = new HashSet<OWLClass>();
 		for (OWLOntology sourceOnt : sourceOwlManager.getOntologies()) {
 			IRI documentIRI = sourceOwlManager.getOntologyDocumentIRI(sourceOnt);
 
@@ -197,8 +197,9 @@ public class OntologyParser {
 			generateGroundTriplesForAxioms(allAxioms, fact, sourceOnt);
 
 			if (isOBO) {
-				if (!documentIRI.toString().startsWith("owlapi:ontology"))
-					toDelete.addAll( generateSKOSInObo(allAxioms, fact, sourceOnt) );
+				if (!documentIRI.toString().startsWith("owlapi:ontology")) {
+					generateSKOSInObo(allAxioms, fact, sourceOnt);
+				}
 			}
 
 			boolean isPrefixedOWL = sourceOwlManager.getOntologyFormat(sourceOnt).isPrefixOWLOntologyFormat();
@@ -216,12 +217,6 @@ public class OntologyParser {
 		}
 
 		if (isOBO) {
-			OWLEntityRemover rem = new OWLEntityRemover(Collections.singleton(this.targetOwlOntology));
-			for (OWLClass cls : toDelete) {
-					cls.accept(rem);
-			}
-			this.targetOwlOntology.getOWLOntologyManager().applyChanges(rem.getChanges());
-
 			if (parserInvocation.getOBOVersion() != null) {
 				log.info("Adding version: {}", parserInvocation.getOBOVersion());
 				OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
@@ -391,37 +386,25 @@ public class OntologyParser {
 		}
 	}
 
-	private Set<OWLClass> generateSKOSInObo(Set<OWLAxiom> allAxioms, OWLDataFactory fact, OWLOntology sourceOnt) {
-		Set<OWLClass> classesWithNotation = new HashSet<OWLClass>();
+	private void generateSKOSInObo(Set<OWLAxiom> allAxioms, OWLDataFactory factory, OWLOntology sourceOntology) {
+		IRI notationPropertyIRI = IRI.create("http://www.w3.org/2004/02/skos/core#notation");
+		OWLAnnotationProperty property = factory.getOWLAnnotationProperty(notationPropertyIRI);
 
-		String[] propStringArray = new String[]{"#id", "#xref", "#hasRelatedSynonym", "http://purl.obolibrary.org/obo/def"};
-		List<String> propStrings = Arrays.asList(propStringArray);
+		Set<OWLClass> classes = sourceOntology.getClassesInSignature();
+		for (OWLClass c : classes) {
+			Optional<String> remainder = c.getIRI().getRemainder();
+			if (remainder.isPresent()) {
+				OWLAnnotationSubject subject = c.getIRI();
 
-		IRI iri = IRI.create("http://www.w3.org/2004/02/skos/core#notation");
-		OWLAnnotationProperty notation = fact.getOWLAnnotationProperty(iri);
+				String classID = remainder.get().replace("_", ":");
+				OWLLiteralImplString value = new OWLLiteralImplString(classID);
 
-		for (OWLAnnotationAssertionAxiom ann : sourceOnt.getAxioms(AxiomType.ANNOTATION_ASSERTION)) {
-			// Set with all and if not there delete
-			OWLAnnotationSubject s = ann.getSubject();
-			String propertyString = ann.getProperty().toString();
-			boolean matchFound = propStrings.stream().anyMatch(propertyString::contains);
-			if (matchFound) {
-				OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(notation, s, ann.getValue());
-				allAxioms.add(annAsse);
-				classesWithNotation.add(fact.getOWLClass((IRI)s));
+				OWLAnnotationAssertionAxiom annotationAssertionAxiom = factory.getOWLAnnotationAssertionAxiom(property, subject, value);
+				allAxioms.add(annotationAssertionAxiom);
 			}
 		}
-
-		Set<OWLClass> classesToDelete = new HashSet<OWLClass>();
-		Set<OWLClass> classes = sourceOnt.getClassesInSignature();
-		for (OWLClass cls : classes) {
-			if (!classesWithNotation.contains(cls)) {
-				classesToDelete.add(cls);
-			}
-		}
-		return classesToDelete;
 	}
-	
+
 	private void escapeXMLLiterals(OWLOntology target) {
 		OWLDataFactory td = targetOwlManager.getOWLDataFactory();
 		Set<OWLClass> classes = target.getClassesInSignature();
