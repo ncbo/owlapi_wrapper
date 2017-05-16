@@ -386,6 +386,17 @@ public class OntologyParser {
 		}
 	}
 
+	/**
+	 * Generates a set of annotation axioms for the target ontology.
+	 * <p>
+	 * The purpose of the axioms is to add a skos:notation annotation property to every class in the ontology,
+	 * where the value is set to the OBO term ID. The notation property is meant to act as a unique code for ontology
+	 * classes, which facilitates class ID lookups across various ontology formats in the BioPortal application.
+	 *
+	 * @param allAxioms			the set of axioms for the target ontology
+	 * @param factory			the OWL data factory of the source ontology
+	 * @param sourceOntology	the source ontology
+	 */
 	private void generateSKOSInObo(Set<OWLAxiom> allAxioms, OWLDataFactory factory, OWLOntology sourceOntology) {
 		IRI notationPropertyIRI = IRI.create("http://www.w3.org/2004/02/skos/core#notation");
 		OWLAnnotationProperty property = factory.getOWLAnnotationProperty(notationPropertyIRI);
