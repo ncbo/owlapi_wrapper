@@ -281,8 +281,7 @@ public class OntologyParser {
 	private void deprecateBranch() {
 		OWLClass thing = targetOwlManager.getOWLDataFactory().getOWLThing();
 
-		Set<OWLSubClassOfAxiom> rootsEdges = targetOwlOntology
-				.getSubClassAxiomsForSuperClass(thing);
+		Set<OWLSubClassOfAxiom> rootsEdges = targetOwlOntology.getSubClassAxiomsForSuperClass(thing);
 		for (OWLSubClassOfAxiom rootEdge : rootsEdges) {
 			if (!rootEdge.getSubClass().isAnonymous()) {
 				OWLClass subClass = (OWLClass) rootEdge.getSubClass();
@@ -290,34 +289,29 @@ public class OntologyParser {
 				if (rootID.toLowerCase().contains("obo")) {
 					Collection<OWLAnnotation> annotationsRoot = EntitySearcher.getAnnotations(subClass, targetOwlOntology);
 					boolean hasLabel = false;
+
 					for (OWLAnnotation annRoot : annotationsRoot) {
 						hasLabel = hasLabel
-								|| annRoot
-										.getProperty()
-										.toString()
-										.equals("http://www.w3.org/2000/01/rdf-schema#label")
-								|| annRoot.getProperty().toString()
-										.equals("rdfs:label");
+								|| annRoot.getProperty().toString().equals("http://www.w3.org/2000/01/rdf-schema#label")
+								|| annRoot.getProperty().toString().equals("rdfs:label");
 						if (annRoot.isDeprecatedIRIAnnotation()) {
 							if (annRoot.getValue().toString().contains("true")) {
-								RemoveAxiom remove = new RemoveAxiom(
-										targetOwlOntology, rootEdge);
+								RemoveAxiom remove = new RemoveAxiom(targetOwlOntology, rootEdge);
 								targetOwlManager.applyChange(remove);
 							}
 						}
 					}
-					Collection<OWLAnnotationAssertionAxiom> assRoot = EntitySearcher.getAnnotationAssertionAxioms(subClass,targetOwlOntology);
+
+					Collection<OWLAnnotationAssertionAxiom> assRoot = EntitySearcher.getAnnotationAssertionAxioms(subClass, targetOwlOntology);
 					for (OWLAnnotationAssertionAxiom annRoot : assRoot) {
-						if (annRoot.getProperty().toString()
-								.contains("treeView")) {
-							RemoveAxiom remove = new RemoveAxiom(
-									targetOwlOntology, rootEdge);
+						if (annRoot.getProperty().toString().contains("treeView")) {
+							RemoveAxiom remove = new RemoveAxiom(targetOwlOntology, rootEdge);
 							targetOwlManager.applyChange(remove);
 						}
 					}
+
 					if (!hasLabel) {
-						RemoveAxiom remove = new RemoveAxiom(targetOwlOntology,
-								rootEdge);
+						RemoveAxiom remove = new RemoveAxiom(targetOwlOntology, rootEdge);
 						targetOwlManager.applyChange(remove);
 					}
 				}
