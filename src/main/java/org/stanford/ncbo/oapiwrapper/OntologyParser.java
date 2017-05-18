@@ -279,12 +279,8 @@ public class OntologyParser {
 	}
 
 	private void deprecateBranch() {
-		Set<OWLEntity> things = targetOwlOntology.getEntitiesInSignature(IRI
-				.create("http://www.w3.org/2002/07/owl#Thing"));
-		OWLClass thing = null;
-		for (OWLEntity t : things) {
-			thing = (OWLClass) t;
-		}
+		OWLClass thing = targetOwlManager.getOWLDataFactory().getOWLThing();
+
 		Set<OWLSubClassOfAxiom> rootsEdges = targetOwlOntology
 				.getSubClassAxiomsForSuperClass(thing);
 		for (OWLSubClassOfAxiom rootEdge : rootsEdges) {
