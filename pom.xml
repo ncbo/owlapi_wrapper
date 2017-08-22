@@ -3,7 +3,7 @@
 
   <groupId>org.stanford.ncbo.oapiwrapper</groupId>
   <artifactId>owlapi-wrapper</artifactId>
-  <version>1.3.3-SNAPSHOT</version>
+  <version>1.3.3</version>
   <packaging>jar</packaging>
 
   <name>owlapi_wrapper</name>
@@ -56,7 +56,7 @@
     <connection>scm:git:git://github.com/ncbo/owlapi_wrapper.git</connection>
     <developerConnection>scm:git:git@github.com:ncbo/owlapi_wrapper.git</developerConnection>
     <url>https://github.com/ncbo/owlapi_wrapper</url>
-    <tag>HEAD</tag>
+    <tag>v1.3.3</tag>
   </scm>
   <issueManagement>
     <system>GitHub</system>
