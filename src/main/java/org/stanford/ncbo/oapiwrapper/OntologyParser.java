@@ -211,45 +211,36 @@ public class OntologyParser {
 
 		targetOwlManager.addAxioms(targetOwlOntology, allAxioms);
 		for (OWLAnnotation ann : targetOwlOntology.getAnnotations()) {
-			AddOntologyAnnotation addAnn = new AddOntologyAnnotation(
-					targetOwlOntology, ann);
+			AddOntologyAnnotation addAnn = new AddOntologyAnnotation(targetOwlOntology, ann);
 			targetOwlManager.applyChange(addAnn);
 		}
 
 		if (isOBO) {
-			if (parserInvocation.getOBOVersion() != null) {
-				log.info("Adding version: {}", parserInvocation.getOBOVersion());
+			String oboVersion = parserInvocation.getOBOVersion();
+			if (oboVersion != null) {
+				log.info("Adding version: {}", oboVersion);
 				OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
-				OWLAnnotationAssertionAxiom annVersion = fact
-						.getOWLAnnotationAssertionAxiom(
-								prop,
-								IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject"),
-								fact.getOWLLiteral(parserInvocation
-										.getOBOVersion()));
+				IRI versionSubjectIRI = IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject");
+				OWLAnnotationAssertionAxiom annVersion = fact.getOWLAnnotationAssertionAxiom(prop, versionSubjectIRI, fact.getOWLLiteral(oboVersion));
 				targetOwlManager.addAxiom(targetOwlOntology, annVersion);
 			}
 		}
 
 		for (OWLOntology sourceOnt : sourceOwlManager.getOntologies()) {
 			for (OWLAnnotation ann : sourceOnt.getAnnotations()) {
-				AddOntologyAnnotation addAnn = new AddOntologyAnnotation(
-						targetOwlOntology, ann);
+				AddOntologyAnnotation addAnn = new AddOntologyAnnotation(targetOwlOntology, ann);
 				targetOwlManager.applyChange(addAnn);
 			}
 		}
 
 		escapeXMLLiterals(targetOwlOntology);
 
-		OWLReasonerFactory reasonerFactory = null;
-		OWLReasoner reasoner = null;
-		reasonerFactory = new StructuralReasonerFactory();
-		reasoner = reasonerFactory.createReasoner(targetOwlOntology);
-		InferredSubClassAxiomGenerator isc = new InferredSubClassAxiomGenerator();
-		Set<OWLSubClassOfAxiom> subAxs = isc.createAxioms(
-				targetOwlOntology.getOWLOntologyManager().getOWLDataFactory(), reasoner);
+		OWLReasonerFactory reasonerFactory = new StructuralReasonerFactory();
+		OWLReasoner reasoner = reasonerFactory.createReasoner(targetOwlOntology);
+ 		InferredSubClassAxiomGenerator isc = new InferredSubClassAxiomGenerator();
+		Set<OWLSubClassOfAxiom> subAxs = isc.createAxioms(targetOwlOntology.getOWLOntologyManager().getOWLDataFactory(), reasoner);
 		targetOwlManager.addAxioms(targetOwlOntology, subAxs);
 		deprecateBranch();
-
 
 		log.info("isOBO: {}", isOBO);
 		if (isOBO) {
