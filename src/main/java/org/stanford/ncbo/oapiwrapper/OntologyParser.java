@@ -183,7 +183,7 @@ public class OntologyParser {
 
 		OWLDataFactory fact = sourceOwlManager.getOWLDataFactory();
 		try {
-			this.targetOwlOntology = targetOwlManager.createOntology();
+			targetOwlOntology = targetOwlManager.createOntology();
 		} catch (OWLOntologyCreationException e) {
 			log.error(e.getMessage());
 			parserLog.addError(ParserError.OWL_CREATE_ONTOLOGY_EXCEPTION, "Error buildOWLOntology" + e.getMessage());
@@ -209,10 +209,10 @@ public class OntologyParser {
 			}
 		}
 
-		targetOwlManager.addAxioms(this.targetOwlOntology, allAxioms);
-		for (OWLAnnotation ann : this.targetOwlOntology.getAnnotations()) {
+		targetOwlManager.addAxioms(targetOwlOntology, allAxioms);
+		for (OWLAnnotation ann : targetOwlOntology.getAnnotations()) {
 			AddOntologyAnnotation addAnn = new AddOntologyAnnotation(
-					this.targetOwlOntology, ann);
+					targetOwlOntology, ann);
 			targetOwlManager.applyChange(addAnn);
 		}
 
@@ -230,10 +230,10 @@ public class OntologyParser {
 			}
 		}
 
-		for (OWLOntology sourceOnt : this.sourceOwlManager.getOntologies()) {
+		for (OWLOntology sourceOnt : sourceOwlManager.getOntologies()) {
 			for (OWLAnnotation ann : sourceOnt.getAnnotations()) {
 				AddOntologyAnnotation addAnn = new AddOntologyAnnotation(
-						this.targetOwlOntology, ann);
+						targetOwlOntology, ann);
 				targetOwlManager.applyChange(addAnn);
 			}
 		}
@@ -243,11 +243,11 @@ public class OntologyParser {
 		OWLReasonerFactory reasonerFactory = null;
 		OWLReasoner reasoner = null;
 		reasonerFactory = new StructuralReasonerFactory();
-		reasoner = reasonerFactory.createReasoner(this.targetOwlOntology);
+		reasoner = reasonerFactory.createReasoner(targetOwlOntology);
 		InferredSubClassAxiomGenerator isc = new InferredSubClassAxiomGenerator();
 		Set<OWLSubClassOfAxiom> subAxs = isc.createAxioms(
-				this.targetOwlOntology.getOWLOntologyManager().getOWLDataFactory(), reasoner);
-		targetOwlManager.addAxioms(this.targetOwlOntology, subAxs);
+				targetOwlOntology.getOWLOntologyManager().getOWLDataFactory(), reasoner);
+		targetOwlManager.addAxioms(targetOwlOntology, subAxs);
 		deprecateBranch();
 
 
