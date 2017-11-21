@@ -269,6 +269,13 @@ public class OntologyParser {
 		targetOwlManager.addAxioms(targetOwlOntology, treeViewAxs);
 	}
 
+	/**
+	 * Checks all root-level ontology classes for deprecation markers. If such a marker is found,
+	 * i.e. owl:deprecated, the ontology class is removed from the list of roots.
+	 * <p>
+	 * Facilitates desired functionality in the <a href="http://bioportal.bioontology.org/">BioPortal</a>
+	 * application for the display of ontology class trees without deprecated branches.
+	 */
 	private void deprecateBranch() {
 		OWLClass thing = targetOwlManager.getOWLDataFactory().getOWLThing();
 
