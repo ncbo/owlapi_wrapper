@@ -559,16 +559,15 @@ public class OntologyParser {
 	}
 
 	private OWLOntology findMasterFile() {
-
 		OWLOntologyLoaderConfiguration conf = new OWLOntologyLoaderConfiguration();
 		conf = conf.setMissingImportHandlingStrategy(MissingImportHandlingStrategy.SILENT);
 		LogMissingImports missingHandler = new LogMissingImports(parserLog);
-		this.sourceOwlManager.addMissingImportListener(missingHandler);
+		sourceOwlManager.addMissingImportListener(missingHandler);
 
-		if (this.parserInvocation.getInputRepositoryFolder() == null) {
+		if (parserInvocation.getInputRepositoryFolder() == null) {
 			try {
-				return this.sourceOwlManager.loadOntologyFromOntologyDocument(
-						new FileDocumentSource(new File(this.parserInvocation
+				return sourceOwlManager.loadOntologyFromOntologyDocument(
+						new FileDocumentSource(new File(parserInvocation
 								.getMasterFileName())), conf);
 			} catch (OWLOntologyCreationException e) {
 				log.error(e.getMessage());
@@ -582,13 +581,13 @@ public class OntologyParser {
 		log.info("master.getAbsolutePath(): {}", master.getAbsolutePath());
 
 		OntologyBean selectedBean = null;
-		for (OntologyBean b : this.ontologies) {
+		for (OntologyBean b : ontologies) {
 			if (b.getFile().getAbsolutePath().equals(master.getAbsolutePath())) {
 				selectedBean = b;
 			}
 		}
 		if (selectedBean == null) {
-			for (OntologyBean b : this.ontologies) {
+			for (OntologyBean b : ontologies) {
 				if (b.getFile().getName().equals(parserInvocation.getMasterFileName())) {
 					selectedBean = b;
 				}
