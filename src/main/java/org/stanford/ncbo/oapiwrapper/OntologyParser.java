@@ -567,9 +567,10 @@ public class OntologyParser {
 
 		if (parserInvocation.getInputRepositoryFolder() == null) {
 			try {
-				return sourceOwlManager.loadOntologyFromOntologyDocument(
-						new FileDocumentSource(new File(parserInvocation
-								.getMasterFileName())), conf);
+				File file = new File(parserInvocation.getMasterFileName());
+				FileDocumentSource fileDocumentSource = new FileDocumentSource(file);
+				OWLOntology ontology = sourceOwlManager.loadOntologyFromOntologyDocument(fileDocumentSource, conf);
+				return ontology;
 			} catch (OWLOntologyCreationException e) {
 				log.error(e.getMessage());
 				parserLog.addError(ParserError.OWL_PARSE_EXCEPTION, e.getMessage());
