@@ -49,20 +49,12 @@ public class OntologyParser {
 
 		this.sourceOwlManager = OWLManager.createOWLOntologyManager();
 		setLocalFileRepositaryMapping(this.sourceOwlManager, this.parserInvocation.getInputRepositoryFolder());
-		addBFOLocationMapping(this.sourceOwlManager);
 
 		this.targetOwlManager = OWLManager.createOWLOntologyManager();
 	}
 
 	public List<OntologyBean> getLocalOntologies() {
 		return ontologies;
-	}
-
-	private void addBFOLocationMapping(OWLOntologyManager m) {
-		SimpleIRIMapper bfoCached = new SimpleIRIMapper(
-				IRI.create("http://www.ifomis.org/bfo/1.1"),
-				IRI.create("https://raw.githubusercontent.com/ncbo/bfo/master/bfo-1.1.owl"));
-		m.getIRIMappers().add(bfoCached);
 	}
 
 	private void setLocalFileRepositaryMapping(OWLOntologyManager m,
