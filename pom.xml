@@ -7,10 +7,10 @@
   <packaging>jar</packaging>
 
   <name>owlapi_wrapper</name>
-  <description>A command line utility that wraps the Java OWL API for parsing RDFS, OWL, and OBO ontologies.</description>
+  <description>A command line utility that wraps the OWL API for parsing OWL, OBO, and SKOS ontologies.</description>
   <url>https://github.com/ncbo/owlapi_wrapper</url>
   <organization>
-    <name>The National Center for Biomedical Ontology</name>
+    <name>BioPortal</name>
     <url>http://www.bioontology.org</url>
   </organization>
   <licenses>
