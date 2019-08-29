@@ -10,4 +10,7 @@ target/
 .project
 .settings/
 
+# jEnv
+.java-version
+
 src/test/resources/repo/output/
