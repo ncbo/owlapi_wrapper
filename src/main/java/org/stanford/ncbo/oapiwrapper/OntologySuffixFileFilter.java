@@ -10,6 +10,7 @@ public class OntologySuffixFileFilter extends AbstractFileFilter {
 	public boolean accept(File dir, String name) {
 		return name.toLowerCase().endsWith("owl") || 
 				name.toLowerCase().endsWith("obo") ||
+				name.toLowerCase().endsWith("ttl") ||
 				name.toLowerCase().endsWith("xml");
 	}
 }
