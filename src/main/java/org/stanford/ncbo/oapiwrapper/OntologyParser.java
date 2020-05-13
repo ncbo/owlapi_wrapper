@@ -251,10 +251,20 @@ public class OntologyParser {
 			String oboVersion = parserInvocation.getOBOVersion();
 			if (oboVersion != null) {
 				log.info("Adding version: {}", oboVersion);
-				OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
-				IRI versionSubjectIRI = IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject");
-				OWLAnnotationAssertionAxiom annVersion = fact.getOWLAnnotationAssertionAxiom(prop, versionSubjectIRI, fact.getOWLLiteral(oboVersion));
-				targetOwlManager.addAxiom(targetOwlOntology, annVersion);
+        /*
+        OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
+        IRI versionSubjectIRI = IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject");
+        OWLAnnotationAssertionAxiom annVersion = fact.getOWLAnnotationAssertionAxiom(prop, versionSubjectIRI, fact.getOWLLiteral(oboVersion));
+        targetOwlManager.addAxiom(targetOwlOntology, annVersion);
+        */
+        if (!masterOntology.getOntologyID().isAnonymous()) {
+          // Get ontology URI
+          Optional<IRI> sub = masterOntology.getOntologyID().getOntologyIRI();
+          IRI ontologyIRI = sub.get();
+          OWLAnnotationProperty versionInfoProp = fact.getOWLAnnotationProperty(IRI.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
+          OWLAnnotationAssertionAxiom annOntoURI = fact.getOWLAnnotationAssertionAxiom(versionInfoProp, ontologyIRI, fact.getOWLLiteral(parserInvocation.getOBOVersion()));
+          targetOwlManager.addAxiom(targetOwlOntology, annOntoURI);
+        }
 			}
 		}
 
