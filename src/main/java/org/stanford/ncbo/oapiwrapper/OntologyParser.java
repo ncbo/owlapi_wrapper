@@ -135,15 +135,15 @@ public class OntologyParser {
 	}
 
   /**
-   * Get ontology metadata. Add the ontology URI to the submission graph
+   * Get ontology URI and imports. Add the ontology URI to the submission graph
    * (<http://bioportal.bioontology.org/ontologies/URI> owl:versionInfo
-   * "ONTOLOGY_IRI"). And add all ontology metadata to <ONTOLOGY_URI>
-   * <metadata_property> <metadata_value>. Also retrieve imports
+   * "ONTOLOGY_IRI"). And add all ontology imports to <ONTOLOGY_URI>
+   * omv:useImports <import_URI>
    *
    * @param fact
    * @param sourceOnt
    */
-  private void addOntologyIRIAndMetadata(OWLDataFactory fact, OWLOntology sourceOnt) {
+  private void addOntologyIRIAndImports(OWLDataFactory fact, OWLOntology sourceOnt) {
     if (!sourceOnt.getOntologyID().isAnonymous()) {
 
       // Get ontology URI
@@ -164,11 +164,12 @@ public class OntologyParser {
         }
       }
 
-      //  Add ontology metadatas to <ONTOLOGY_URI> <metadata_property> <metadata_value>
+      /* Done in addGroundMetadata now (Add ontology metadatas to <ONTOLOGY_URI> <metadata_property> <metadata_value>)
       for (OWLAnnotation ann : sourceOnt.getAnnotations()) {
         OWLAnnotationAssertionAxiom groundAnnotation = fact.getOWLAnnotationAssertionAxiom(ann.getProperty(), ontologyIRI, ann.getValue());
         this.targetOwlManager.addAxiom(targetOwlOntology, groundAnnotation);
       }
+      */
     }
   }
 
@@ -215,7 +216,7 @@ public class OntologyParser {
 		try {
 			targetOwlOntology = targetOwlManager.createOntology();
       // Add ontology IRI and metadata from the main ontology (not taking from the imports)
-      addOntologyIRIAndMetadata(sourceOwlManager.getOWLDataFactory(), masterOntology);
+      addOntologyIRIAndImports(sourceOwlManager.getOWLDataFactory(), masterOntology);
 		} catch (OWLOntologyCreationException e) {
 			log.error(e.getMessage());
 			parserLog.addError(ParserError.OWL_CREATE_ONTOLOGY_EXCEPTION, "Error buildOWLOntology" + e.getMessage());
@@ -225,7 +226,7 @@ public class OntologyParser {
 		for (OWLOntology sourceOnt : sourceOwlManager.getOntologies()) {
 			IRI documentIRI = sourceOwlManager.getOntologyDocumentIRI(sourceOnt);
 
-			//addGroundMetadata(documentIRI, fact, sourceOnt);
+			addGroundMetadata(documentIRI, fact, sourceOnt);
 			generateGroundTriplesForAxioms(allAxioms, fact, sourceOnt);
 
 			if (isOBO) {
