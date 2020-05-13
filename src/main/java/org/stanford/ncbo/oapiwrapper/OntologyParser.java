@@ -134,6 +134,44 @@ public class OntologyParser {
 		return isOBO;
 	}
 
+  /**
+   * Get ontology metadata. Add the ontology URI to the submission graph
+   * (<http://bioportal.bioontology.org/ontologies/URI> owl:versionInfo
+   * "ONTOLOGY_IRI"). And add all ontology metadata to <ONTOLOGY_URI>
+   * <metadata_property> <metadata_value>. Also retrieve imports
+   *
+   * @param fact
+   * @param sourceOnt
+   */
+  private void addOntologyIRIAndMetadata(OWLDataFactory fact, OWLOntology sourceOnt) {
+    if (!sourceOnt.getOntologyID().isAnonymous()) {
+
+      // Get ontology URI
+      Optional<IRI> sub = sourceOnt.getOntologyID().getOntologyIRI();
+      IRI ontologyIRI = sub.get();
+
+      OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
+      OWLAnnotationAssertionAxiom annOntoURI = fact.getOWLAnnotationAssertionAxiom(prop, IRI.create("http://bioportal.bioontology.org/ontologies/URI"), fact.getOWLLiteral(ontologyIRI.toString()));
+      this.targetOwlManager.addAxiom(targetOwlOntology, annOntoURI);
+
+      // Get imports and add them as omv:useImports
+      OWLAnnotationProperty useImportProp = fact.getOWLAnnotationProperty(IRI.create("http://omv.ontoware.org/2005/05/ontology#useImports"));
+      for (OWLOntology imported : sourceOnt.getImports()) {
+        if (!imported.getOntologyID().isAnonymous()) {
+          log.info("useImports: " + imported.getOntologyID().getOntologyIRI().get().toString());
+          OWLAnnotationAssertionAxiom useImportAxiom = fact.getOWLAnnotationAssertionAxiom(useImportProp, ontologyIRI, imported.getOntologyID().getOntologyIRI().get());
+          this.targetOwlManager.addAxiom(targetOwlOntology, useImportAxiom);
+        }
+      }
+
+      //  Add ontology metadatas to <ONTOLOGY_URI> <metadata_property> <metadata_value>
+      for (OWLAnnotation ann : sourceOnt.getAnnotations()) {
+        OWLAnnotationAssertionAxiom groundAnnotation = fact.getOWLAnnotationAssertionAxiom(ann.getProperty(), ontologyIRI, ann.getValue());
+        this.targetOwlManager.addAxiom(targetOwlOntology, groundAnnotation);
+      }
+    }
+  }
+
 	/**
 	 * Copies ontology-level annotation axioms from the source ontology to the target ontology.
 	 * <p>
@@ -169,13 +207,15 @@ public class OntologyParser {
 		}
 	}
 
-	private boolean buildOWLOntology(boolean isOBO) {
+	private boolean buildOWLOntology(boolean isOBO, OWLOntology masterOntology) {
 
 		Set<OWLAxiom> allAxioms = new HashSet<OWLAxiom>();
 
 		OWLDataFactory fact = sourceOwlManager.getOWLDataFactory();
 		try {
 			targetOwlOntology = targetOwlManager.createOntology();
+      // Add ontology IRI and metadata from the main ontology (not taking from the imports)
+      addOntologyIRIAndMetadata(sourceOwlManager.getOWLDataFactory(), masterOntology);
 		} catch (OWLOntologyCreationException e) {
 			log.error(e.getMessage());
 			parserLog.addError(ParserError.OWL_CREATE_ONTOLOGY_EXCEPTION, "Error buildOWLOntology" + e.getMessage());
@@ -185,7 +225,7 @@ public class OntologyParser {
 		for (OWLOntology sourceOnt : sourceOwlManager.getOntologies()) {
 			IRI documentIRI = sourceOwlManager.getOntologyDocumentIRI(sourceOnt);
 
-			addGroundMetadata(documentIRI, fact, sourceOnt);
+			//addGroundMetadata(documentIRI, fact, sourceOnt);
 			generateGroundTriplesForAxioms(allAxioms, fact, sourceOnt);
 
 			if (isOBO) {
@@ -524,7 +564,7 @@ public class OntologyParser {
 
 		boolean isOBO = isOBO(ontology);
 
-		if (!buildOWLOntology(isOBO)) return false;
+		if (!buildOWLOntology(isOBO, ontology)) return false;
 
 		if (!serializeOntology()) return false;
 
