@@ -513,7 +513,7 @@ public class OntologyParser {
 		OWLOntology ontology = findMasterFile();
 
 		if (ontology == null) {
-			String msg = String.format("Can't find %s in input folder!", parserInvocation.getMasterFileName());
+			String msg = String.format("Can't process %s in input folder! Allowed file extensions are the following ones : %s.", parserInvocation.getMasterFileName(), Arrays.toString(OntologySuffixFileFilter.acceptedFileExtensions));
 			parserLog.addError(ParserError.MASTER_FILE_MISSING, msg);
 			log.info(msg);
 			return false;
@@ -587,9 +587,8 @@ public class OntologyParser {
 			}
 		}
 
-		log.info("Selected master file: {}", selectedBean.getFile().getAbsolutePath());
-
 		if (selectedBean != null) {
+			log.info("Selected master file: {}", selectedBean.getFile().getAbsolutePath());
 			try {
 				FileDocumentSource documentSource = new FileDocumentSource(selectedBean.getFile());
 				OWLOntology ontology = sourceOwlManager.loadOntologyFromOntologyDocument(documentSource, conf);
