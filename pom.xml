@@ -3,7 +3,7 @@
 
   <groupId>org.stanford.ncbo.oapiwrapper</groupId>
   <artifactId>owlapi-wrapper</artifactId>
-  <version>1.3.7-SNAPSHOT</version>
+  <version>1.3.6-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>owlapi_wrapper</name>
