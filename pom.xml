@@ -26,16 +26,25 @@
       <id>msalvadores</id>
       <name>Manuel Salvadores</name>
       <email>msalvadores@gmail.com</email>
-      <url>http://msalvadores.me/</url>
-      <organization>Lexigram</organization>
-      <organizationUrl>http://www.lexigram.io/</organizationUrl>
+      <url>https://msalvadores.github.io/</url>
+      <organization>Google</organization>
+      <organizationUrl>https://www.google.com/</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>America/Los_Angeles</timezone>
     </developer>
     <developer>
       <id>jvendetti</id>
       <name>Jennifer Vendetti</name>
       <email>vendetti@stanford.edu</email>
+      <url>https://github.com/jvendetti</url>
       <organization>Stanford Center for Biomedical Informatics Research</organization>
       <organizationUrl>http://bmir.stanford.edu/</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>America/Los_Angeles</timezone>
     </developer>
   </developers>
 
