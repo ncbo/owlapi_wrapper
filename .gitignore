@@ -1,3 +1,5 @@
+.DS_Store
+
 # Maven
 target/
 
@@ -9,5 +11,8 @@ target/
 .classpath
 .project
 .settings/
+
+# jEnv
+.java-version
 
 src/test/resources/repo/output/

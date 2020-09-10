@@ -1,0 +1,707 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:metadata="http://data.bioontology.org/metadata/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <Ontology>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Basic vertebrate anatomy.  The major gross pieces largely derived from FMA. 
+
+Imports summary - not full tree
+Top-Bio
+  advanced-relational-properties
+  refinining-entities-and-properties
+    Additiona-self-standing
+      self-standing
+        very-top</rdfs:comment>
+    </Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- prefixIRI -->
+
+    <AnnotationProperty rdf:about="http://data.bioontology.org/metadata/prefixIRI"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- defines -->
+
+    <ObjectProperty rdf:about="http://www.co-ode.org/ontologies/basic-bio/advanced-relational-properties.owl#defines"/>
+    
+
+
+    <!-- has_determinate_part -->
+
+    <ObjectProperty rdf:about="http://www.co-ode.org/ontologies/basic-bio/advanced-relational-properties.owl#has_determinate_part"/>
+    
+
+
+    <!-- is_determinate_part_of -->
+
+    <ObjectProperty rdf:about="http://www.co-ode.org/ontologies/basic-bio/advanced-relational-properties.owl#is_determinate_part_of"/>
+    
+
+
+    <!-- has_component -->
+
+    <ObjectProperty rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#has_component">
+        <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/advanced-relational-properties.owl#defines"/>
+        <inverseOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#is_component_of"/>
+    </ObjectProperty>
+    
+
+
+    <!-- has_component_directly -->
+
+    <ObjectProperty rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#has_component_directly">
+        <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#has_component"/>
+        <inverseOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#is_component_of_directly"/>
+    </ObjectProperty>
+    
+
+
+    <!-- has_laterality -->
+
+    <ObjectProperty rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#has_laterality">
+        <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/refining-entities-and-properties.owl#selector_property"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body_part"/>
+    </ObjectProperty>
+    
+
+
+    <!-- has_pairedness -->
+
+    <ObjectProperty rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#has_pairedness">
+        <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/refining-entities-and-properties.owl#selector_property"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body_part"/>
+    </ObjectProperty>
+    
+
+
+    <!-- has_subdivision -->
+
+    <ObjectProperty rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#has_subdivision">
+        <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/advanced-relational-properties.owl#has_determinate_part"/>
+        <inverseOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#is_subdivision_of"/>
+    </ObjectProperty>
+    
+
+
+    <!-- has_subdivision_directly -->
+
+    <ObjectProperty rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#has_subdivision_directly">
+        <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#has_subdivision"/>
+        <inverseOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#is_subdivision_of_directly"/>
+    </ObjectProperty>
+    
+
+
+    <!-- is_component_of -->
+
+    <ObjectProperty rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#is_component_of">
+        <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/advanced-relational-properties.owl#is_determinate_part_of"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- is_component_of_directly -->
+
+    <ObjectProperty rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#is_component_of_directly">
+        <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#is_component_of"/>
+    </ObjectProperty>
+    
+
+
+    <!-- is_subdivision_of -->
+
+    <ObjectProperty rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#is_subdivision_of">
+        <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/advanced-relational-properties.owl#is_determinate_part_of"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Subdivisions are things which are of essentially the same structure as the whole.  Examples, lobes and lungs, hand and extremity.
+
+The important inference is that the subdivision has the same layers and portions as the whole.  For example, the hand is a subdivision of the upper extremity.  Therefore the skin of the hand is a subdivision of the skin of the upper extremity.</rdfs:comment>
+    </ObjectProperty>
+    
+
+
+    <!-- is_subdivision_of_directly -->
+
+    <ObjectProperty rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#is_subdivision_of_directly">
+        <rdfs:subPropertyOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#is_subdivision_of"/>
+    </ObjectProperty>
+    
+
+
+    <!-- selector_property -->
+
+    <ObjectProperty rdf:about="http://www.co-ode.org/ontologies/basic-bio/refining-entities-and-properties.owl#selector_property"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- Aortic_valve -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Aortic_valve">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Cardiac_valve"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Mitral_valve"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Pulmonary_valve"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Tricuspid_valve"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Aortic_valve</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Blood -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Blood">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Amount_of_Biological_substance"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Blood</metadata:prefixIRI>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Blood -
+
+The &quot;Amount_of_&quot; prefix is is pedantic adherence to DOLCE conventions and technically clearly correct.  One cannot have an instance of &apos;Blood&apos; without some amount.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- Body_proper -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Body_proper">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body_part"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#is_subdivision_of_directly"/>
+                <someValuesFrom rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body_proper</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Brain -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Brain">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Heart"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Liver"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Lung"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Pericardium"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Stomach"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Brain</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Bronchus -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Bronchus">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ_component"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Caranium"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Cardiac_chamber"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Cardiac_valve"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Half_heart"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Trachea"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bronchus</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Caranium -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Caranium">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ_component"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Cardiac_chamber"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Cardiac_valve"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Half_heart"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Trachea"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Caranium</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Cardiac_atrium -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Cardiac_atrium">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Cardiac_chamber"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Cardiac_ventricle"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cardiac_atrium</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Cardiac_chamber -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Cardiac_chamber">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ_component"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Cardiac_valve"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Half_heart"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Trachea"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cardiac_chamber</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Cardiac_valve -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Cardiac_valve">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ_component"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Half_heart"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Trachea"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cardiac_valve</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Cardiac_ventricle -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Cardiac_ventricle">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Cardiac_chamber"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cardiac_ventricle</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Half_heart -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Half_heart">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ_component"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Trachea"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Half_heart</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Head -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Head">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body_part"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#is_subdivision_of_directly"/>
+                <someValuesFrom rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Limb"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Neck"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Trunk"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Head</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Heart -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Heart">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Liver"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Lung"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Pericardium"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Stomach"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Heart</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Laterality_selector_value -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Laterality_selector_value">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/refining-entities-and-properties.owl#Selector"/>
+        <rdfs:subClassOf>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Left_laterality_value"/>
+                    <rdf:Description rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Right_laterality_value"/>
+                </unionOf>
+            </Class>
+        </rdfs:subClassOf>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Laterality_selector_value</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Left_laterality_value -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Left_laterality_value">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Laterality_selector_value"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Right_laterality_value"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Left_laterality_value</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Limb -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Limb">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body_part"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#is_subdivision_of_directly"/>
+                <someValuesFrom rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Neck"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Trunk"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Limb</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Liver -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Liver">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Lung"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Pericardium"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Stomach"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Liver</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Lobe -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Lobe">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ_division"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lobe</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Lobe_of_lung -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Lobe_of_lung">
+        <equivalentClass>
+            <Class>
+                <intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Lobe"/>
+                    <Restriction>
+                        <onProperty rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#is_subdivision_of"/>
+                        <someValuesFrom rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Lung"/>
+                    </Restriction>
+                </intersectionOf>
+            </Class>
+        </equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Lobe"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lobe_of_lung</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Lower_limb -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Lower_limb">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Limb"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Upper_limb"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lower_limb</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Lung -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Lung">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Pericardium"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Stomach"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lung</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Mirror_imaged_value -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Mirror_imaged_value">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Paired_value"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mirror_imaged_value</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Mitral_valve -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Mitral_valve">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Cardiac_valve"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Pulmonary_valve"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Tricuspid_valve"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mitral_valve</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Neck -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Neck">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body_part"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#is_subdivision_of_directly"/>
+                <someValuesFrom rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Body_proper"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Trunk"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Neck</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Paired_or_unpaired -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Paired_or_unpaired">
+        <equivalentClass>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Paired_value"/>
+                    <rdf:Description rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Unpaired_value"/>
+                </unionOf>
+            </Class>
+        </equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/refining-entities-and-properties.owl#Intrinsic_characteristic"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paired_or_unpaired</metadata:prefixIRI>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Controls whether there are right and left variants.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- Paired_value -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Paired_value">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Paired_or_unpaired"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Unpaired_value"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paired_value</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Pericardium -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Pericardium">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Stomach"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pericardium</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Pulmonary_valve -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Pulmonary_valve">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Cardiac_valve"/>
+        <disjointWith rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Tricuspid_valve"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pulmonary_valve</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Right_laterality_value -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Right_laterality_value">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Laterality_selector_value"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Right_laterality_value</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Stomach -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Stomach">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stomach</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Trachea -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Trachea">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ_component"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Trachea</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Tricuspid_valve -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Tricuspid_valve">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Cardiac_valve"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tricuspid_valve</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Trunk -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Trunk">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body_part"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#is_subdivision_of_directly"/>
+                <someValuesFrom rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Body_proper"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Trunk</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Unpaired_value -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Unpaired_value">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Paired_or_unpaired"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Unpaired_value</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Upper_limb -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Upper_limb">
+        <rdfs:subClassOf rdf:resource="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl#Limb"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Upper_limb</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Intrinsic_characteristic -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/refining-entities-and-properties.owl#Intrinsic_characteristic">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rfp:Intrinsic_characteristic</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Selector -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/refining-entities-and-properties.owl#Selector">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rfp:Selector</metadata:prefixIRI>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Selectors are those things like right and left, first second, third etc. which imply existence of some several variants of some abstraction type.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- Amount_of_Biological_substance -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Amount_of_Biological_substance">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tbio:Amount_of_Biological_substance</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Body -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tbio:Body</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Body_part -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Body_part">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tbio:Body_part</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Organ -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tbio:Organ</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Organ_component -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ_component">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tbio:Organ_component</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- Organ_division -->
+
+    <Class rdf:about="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#Organ_division">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <metadata:prefixIRI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tbio:Organ_division</metadata:prefixIRI>
+    </Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://bioportal.bioontology.org/ontologies/URI">
+        <versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl</versionInfo>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.co-ode.org/ontologies/basic-bio/basic-vertebrate-gross-anatomy.owl">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Basic vertebrate anatomy.  The major gross pieces largely derived from FMA. 
+
+Imports summary - not full tree
+Top-Bio
+  advanced-relational-properties
+  refinining-entities-and-properties
+    Additiona-self-standing
+      self-standing
+        very-top</rdfs:comment>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.co-ode.org/ontologies/basic-bio/top-bio.owl#gross_anat_structure">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Slightly narrower than the FMA&apos;s in that it excludes cells and macromolecules.  Still aconvenient mechanism.  
+
+Useful as a domain for laterality, pairedness, etc.</rdfs:comment>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.1.0-SNAPSHOT) https://github.com/owlcs/owlapi -->
+
