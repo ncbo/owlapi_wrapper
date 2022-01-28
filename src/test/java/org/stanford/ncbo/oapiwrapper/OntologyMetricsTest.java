@@ -66,7 +66,7 @@ public class OntologyMetricsTest {
         CSVRecord record = parser.getRecords().get(1);
         int numClasses = Integer.parseInt(record.get(OntologyParserConstants.METRICS_CLASS_COUNT));
         int numIndividuals = Integer.parseInt(record.get(OntologyParserConstants.METRICS_INDIVIDUAL_COUNT));
-        int numProperties = Integer.parseInt(record.get(OntologyParserConstants.METRICS_PROPERY_COUNT));
+        int numProperties = Integer.parseInt(record.get(OntologyParserConstants.METRICS_PROPERTY_COUNT));
 
         int[] expected = { 100, 5, 8 };
         int[] actual = { numClasses, numIndividuals, numProperties };
@@ -84,7 +84,7 @@ public class OntologyMetricsTest {
         CSVRecord record = parser.getRecords().get(1);
         int numClasses = Integer.parseInt(record.get(OntologyParserConstants.METRICS_CLASS_COUNT));
         int numIndividuals = Integer.parseInt(record.get(OntologyParserConstants.METRICS_INDIVIDUAL_COUNT));
-        int numProperties = Integer.parseInt(record.get(OntologyParserConstants.METRICS_PROPERY_COUNT));
+        int numProperties = Integer.parseInt(record.get(OntologyParserConstants.METRICS_PROPERTY_COUNT));
 
         int[] expected = { 356, 35, 208 };
         int[] actual = { numClasses, numIndividuals, numProperties };
