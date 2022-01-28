@@ -48,7 +48,9 @@ public class OntologyMetricsTest {
     public void generate_MetricsForPizza_2RecordsCreated() throws Exception {
         String path = "./src/test/resources/repo/output/pizza" + File.separator + OntologyParserConstants.METRICS_FILE;
         String data = FileUtils.readFileToString(new File(path), Charset.defaultCharset());
-        CSVFormat format = CSVFormat.DEFAULT.withHeader(OntologyParserConstants.METRICS_FILE_HEADERS);
+        CSVFormat format = CSVFormat.Builder.create()
+                .setHeader(OntologyParserConstants.METRICS_FILE_HEADERS)
+                .build();
         CSVParser parser = CSVParser.parse(data, format);
 
         // One row for column headers, one row for counts
@@ -59,7 +61,9 @@ public class OntologyMetricsTest {
     public void generate_MetricsForOntologyWithoutImports_Calculated() throws Exception {
         String path = "./src/test/resources/repo/output/pizza" + File.separator + OntologyParserConstants.METRICS_FILE;
         String data = FileUtils.readFileToString(new File(path), Charset.defaultCharset());
-        CSVFormat format = CSVFormat.DEFAULT.withHeader(OntologyParserConstants.METRICS_FILE_HEADERS);
+        CSVFormat format = CSVFormat.Builder.create()
+                .setHeader(OntologyParserConstants.METRICS_FILE_HEADERS)
+                .build();
         CSVParser parser = CSVParser.parse(data, format);
 
         // Start at 1 to skip header row
@@ -77,7 +81,9 @@ public class OntologyMetricsTest {
     public void generate_MetricsForOntologyWithImports_Calculated() throws Exception {
         String path = "./src/test/resources/repo/output/hsdb" + File.separator + OntologyParserConstants.METRICS_FILE;
         String data = FileUtils.readFileToString(new File(path), Charset.defaultCharset());
-        CSVFormat format = CSVFormat.DEFAULT.withHeader(OntologyParserConstants.METRICS_FILE_HEADERS);
+        CSVFormat format = CSVFormat.Builder.create()
+                .setHeader(OntologyParserConstants.METRICS_FILE_HEADERS)
+                .build();
         CSVParser parser = CSVParser.parse(data, format);
 
         // Start at 1 to skip header row

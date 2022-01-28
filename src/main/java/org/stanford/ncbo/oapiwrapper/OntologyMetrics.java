@@ -69,8 +69,10 @@ public class OntologyMetrics {
 
         try {
             fileWriter = new FileWriter(new File(path));
-            CSVFormat csvFormat = CSVFormat.DEFAULT.withHeader(OntologyParserConstants.METRICS_FILE_HEADERS);
-            csvPrinter = new CSVPrinter(fileWriter, csvFormat);
+            CSVFormat format = CSVFormat.Builder.create()
+                    .setHeader(OntologyParserConstants.METRICS_FILE_HEADERS)
+                    .build();
+            csvPrinter = new CSVPrinter(fileWriter, format);
 
             List countRecord = Arrays.asList(total_classes, total_individuals, total_properties);
             csvPrinter.printRecord(countRecord);
