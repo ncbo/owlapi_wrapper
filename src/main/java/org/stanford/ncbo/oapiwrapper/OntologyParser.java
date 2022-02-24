@@ -551,8 +551,6 @@ public class OntologyParser {
 	}
 
 	private OWLOntology findMasterFile() {
-		OWLOntologyLoaderConfiguration conf = new OWLOntologyLoaderConfiguration();
-		conf = conf.setMissingImportHandlingStrategy(MissingImportHandlingStrategy.SILENT);
 		LogMissingImports missingHandler = new LogMissingImports(parserLog);
 		sourceOwlManager.addMissingImportListener(missingHandler);
 
@@ -560,7 +558,7 @@ public class OntologyParser {
 			try {
 				File file = new File(parserInvocation.getMasterFileName());
 				FileDocumentSource fileDocumentSource = new FileDocumentSource(file);
-				OWLOntology ontology = sourceOwlManager.loadOntologyFromOntologyDocument(fileDocumentSource, conf);
+				OWLOntology ontology = sourceOwlManager.loadOntologyFromOntologyDocument(fileDocumentSource);
 				return ontology;
 			} catch (OWLOntologyCreationException e) {
 				log.error(e.getMessage());
@@ -591,7 +589,7 @@ public class OntologyParser {
 			log.info("Selected master file: {}", selectedBean.getFile().getAbsolutePath());
 			try {
 				FileDocumentSource documentSource = new FileDocumentSource(selectedBean.getFile());
-				OWLOntology ontology = sourceOwlManager.loadOntologyFromOntologyDocument(documentSource, conf);
+				OWLOntology ontology = sourceOwlManager.loadOntologyFromOntologyDocument(documentSource);
 				return ontology;
 			} catch (OWLOntologyCreationException e) {
 				log.error(e.getMessage());
