@@ -10,8 +10,8 @@ public final class OntologyParserConstants {
 
     public static final String METRICS_INDIVIDUAL_COUNT = "Individual Count";
 
-    public static final String METRICS_PROPERY_COUNT = "Property Count";
+    public static final String METRICS_PROPERTY_COUNT = "Property Count";
 
-    public static final String [] METRICS_FILE_HEADERS = { METRICS_CLASS_COUNT, METRICS_INDIVIDUAL_COUNT, METRICS_PROPERY_COUNT };
+    public static final String [] METRICS_FILE_HEADERS = { METRICS_CLASS_COUNT, METRICS_INDIVIDUAL_COUNT, METRICS_PROPERTY_COUNT };
 
 }
