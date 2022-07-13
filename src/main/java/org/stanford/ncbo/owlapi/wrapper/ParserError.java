@@ -1,4 +1,4 @@
-package org.stanford.ncbo.oapiwrapper;
+package org.stanford.ncbo.owlapi.wrapper;
 
 public enum ParserError {
 	OUPUT_REPO_MISSING, INPUT_REPO_MISSING, OUPUT_REPO_NOT_A_FOLDER, 

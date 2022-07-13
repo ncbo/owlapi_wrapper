@@ -1,4 +1,4 @@
-package org.stanford.ncbo.oapiwrapper;
+package org.stanford.ncbo.owlapi.wrapper;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;

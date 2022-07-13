@@ -1,4 +1,4 @@
-package org.stanford.ncbo.oapiwrapper;
+package org.stanford.ncbo.owlapi.wrapper;
 
 import java.io.File;
 import java.util.Arrays;

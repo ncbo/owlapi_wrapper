@@ -1,4 +1,4 @@
-package org.stanford.ncbo.oapiwrapper;
+package org.stanford.ncbo.owlapi.wrapper;
 
 import com.google.common.base.Optional;
 import org.apache.commons.io.FileUtils;

@@ -1,12 +1,8 @@
-package org.stanford.ncbo.oapiwrapper;
+package org.stanford.ncbo.owlapi.wrapper;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
-import org.stanford.ncbo.oapiwrapper.OntologyParser;
-import org.stanford.ncbo.oapiwrapper.OntologyParserException;
-import org.stanford.ncbo.oapiwrapper.ParserError;
-import org.stanford.ncbo.oapiwrapper.ParserInvocation;
 
 import java.io.File;
 import java.io.IOException;
