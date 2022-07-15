@@ -1,4 +1,4 @@
-package org.stanford.ncbo.owlapi.wrapper;
+package org.stanford.ncbo.owlapi.wrapper.metrics;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -8,6 +8,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.stanford.ncbo.owlapi.wrapper.OntologyParser;
+import org.stanford.ncbo.owlapi.wrapper.OntologyParserConstants;
+import org.stanford.ncbo.owlapi.wrapper.ParserInvocation;
 
 import java.io.File;
 import java.nio.charset.Charset;

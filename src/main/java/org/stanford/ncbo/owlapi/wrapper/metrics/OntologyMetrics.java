@@ -1,4 +1,4 @@
-package org.stanford.ncbo.owlapi.wrapper;
+package org.stanford.ncbo.owlapi.wrapper.metrics;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -9,6 +9,9 @@ import org.semanticweb.owlapi.metrics.ReferencedObjectPropertyCount;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.stanford.ncbo.owlapi.wrapper.OntologyParserConstants;
+import org.stanford.ncbo.owlapi.wrapper.ParserInvocation;
+import org.stanford.ncbo.owlapi.wrapper.util.OntologyBasedGraph;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -29,6 +32,8 @@ public class OntologyMetrics {
     private int total_individuals;
 
     private int total_properties;
+
+    private int max_depth;
 
 
     public OntologyMetrics(OWLOntology ontology, ParserInvocation parserInvocation) {
@@ -56,6 +61,9 @@ public class OntologyMetrics {
         referencedObjectPropertyCount.setImportsClosureUsed(true);
         total_properties = referencedDataPropertyCount.getValue() + referencedObjectPropertyCount.getValue();
 
+        OntologyBasedGraph graph = OntologyBasedGraph.getGraph(ontology);
+        max_depth = graph.maxDepth();
+
         long estimatedTime = (System.nanoTime() - startTime) / 1000000;
         logger.info(String.format("Finished metrics calculation for %s in %d milliseconds", ontologyFileName, estimatedTime));
 
@@ -74,7 +82,7 @@ public class OntologyMetrics {
                     .build();
             csvPrinter = new CSVPrinter(fileWriter, format);
 
-            List countRecord = Arrays.asList(total_classes, total_individuals, total_properties);
+            List countRecord = Arrays.asList(total_classes, total_individuals, total_properties, max_depth);
             csvPrinter.printRecord(countRecord);
             logger.info(String.format("Generated metrics CSV file for %s", parserInvocation.getMasterFileName()));
         } catch (IOException e) {
