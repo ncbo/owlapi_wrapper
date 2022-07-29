@@ -29,6 +29,7 @@ import java.util.*;
 
 public class OntologyParser {
 	private final static Logger log = LoggerFactory.getLogger(OntologyParser.class.getName());
+	public static final String VERSION_SUBJECT = "http://bioportal.bioontology.org/ontologies/versionSubject";
 
 	protected ParserInvocation parserInvocation = null;
 	private ParserLog parserLog = null;
@@ -162,7 +163,7 @@ public class OntologyParser {
 			targetOwlManager.addAxiom(targetOwlOntology, annotationAssertionAxiom);
 
 			if (isFile && (annotationProperty.toString().contains("versionInfo"))) {
-				IRI versionSubjectIRI = IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject");
+				IRI versionSubjectIRI = IRI.create(VERSION_SUBJECT);
 				OWLAnnotationProperty versionAnnotationProperty = factory.getOWLAnnotationProperty(OWLRDFVocabulary.OWL_VERSION_INFO.getIRI());
 				OWLAnnotationAssertionAxiom versionAnnotationAssertionAxiom = factory.getOWLAnnotationAssertionAxiom(versionAnnotationProperty, versionSubjectIRI, annotationValue);
 				targetOwlManager.addAxiom(targetOwlOntology, versionAnnotationAssertionAxiom);
@@ -213,7 +214,7 @@ public class OntologyParser {
 			if (oboVersion != null) {
 				log.info("Adding version: {}", oboVersion);
 				OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
-				IRI versionSubjectIRI = IRI.create("http://bioportal.bioontology.org/ontologies/versionSubject");
+				IRI versionSubjectIRI = IRI.create(VERSION_SUBJECT);
 				OWLAnnotationAssertionAxiom annVersion = fact.getOWLAnnotationAssertionAxiom(prop, versionSubjectIRI, fact.getOWLLiteral(oboVersion));
 				targetOwlManager.addAxiom(targetOwlOntology, annVersion);
 			}
