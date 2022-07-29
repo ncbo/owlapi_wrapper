@@ -54,6 +54,12 @@ public class OntologyParser {
 		this.targetOwlManager = OWLManager.createOWLOntologyManager();
 	}
 
+
+	public OWLOntology getTargetOwlOntology() {
+		return targetOwlOntology;
+	}
+
+
 	public List<OntologyBean> getLocalOntologies() {
 		return ontologies;
 	}
