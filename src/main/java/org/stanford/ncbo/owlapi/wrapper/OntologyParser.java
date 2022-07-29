@@ -143,6 +143,21 @@ public class OntologyParser {
 	}
 
 	/**
+	 * Get the source ontology IRI and add it to the target ontology
+	 *
+	 * @param sourceOnt
+	 */
+	private void addOntologyIRI(OWLOntology sourceOnt) {
+		Optional<IRI> ontologyIRI = sourceOnt.getOntologyID().getOntologyIRI();
+		Optional<IRI> versionIRI =  sourceOnt.getOntologyID().getVersionIRI();
+		if (ontologyIRI.isPresent()) {
+			OWLOntologyID newOntologyID = new OWLOntologyID(ontologyIRI, versionIRI);
+			SetOntologyID setOntologyID = new SetOntologyID(targetOwlOntology, newOntologyID);
+			this.targetOwlManager.applyChange(setOntologyID);
+		}
+	}
+
+	/**
 	 * Copies ontology-level annotation axioms from the source ontology to the target ontology.
 	 * <p>
 	 * Checks for the owl#versionInfo property. If found, adds a BioPortal-specific "versionSubject"
@@ -177,13 +192,14 @@ public class OntologyParser {
 		}
 	}
 
-	private boolean buildOWLOntology(boolean isOBO) {
+	private boolean buildOWLOntology(OWLOntology masterOntology, boolean isOBO) {
 
 		Set<OWLAxiom> allAxioms = new HashSet<OWLAxiom>();
 
 		OWLDataFactory fact = sourceOwlManager.getOWLDataFactory();
 		try {
 			targetOwlOntology = targetOwlManager.createOntology();
+			addOntologyIRI(masterOntology);
 		} catch (OWLOntologyCreationException e) {
 			log.error(e.getMessage());
 			parserLog.addError(ParserError.OWL_CREATE_ONTOLOGY_EXCEPTION, "Error buildOWLOntology" + e.getMessage());
@@ -532,7 +548,7 @@ public class OntologyParser {
 
 		boolean isOBO = isOBO(ontology);
 
-		if (!buildOWLOntology(isOBO)) return false;
+		if (!buildOWLOntology(ontology, isOBO)) return false;
 
 		if (!serializeOntology()) return false;
 
