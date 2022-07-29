@@ -1,12 +1,10 @@
-package org.stanford.ncbo.oapiwrapper;
+package org.stanford.ncbo.owlapi.wrapper;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.semanticweb.owlapi.model.IRI;
 
 public class ParserLog {
 	public class Error {

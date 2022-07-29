@@ -1,4 +1,4 @@
-package org.stanford.ncbo.oapiwrapper;
+package org.stanford.ncbo.owlapi.wrapper;
 
 import com.google.common.base.Optional;
 import org.apache.commons.io.FileUtils;
@@ -19,6 +19,7 @@ import org.semanticweb.owlapi.util.InferredSubClassAxiomGenerator;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.stanford.ncbo.owlapi.wrapper.metrics.OntologyMetrics;
 import uk.ac.manchester.cs.owl.owlapi.OWLLiteralImplString;
 
 import java.io.BufferedReader;
