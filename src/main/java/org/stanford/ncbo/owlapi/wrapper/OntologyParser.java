@@ -29,6 +29,7 @@ import java.util.*;
 
 public class OntologyParser {
 	private final static Logger log = LoggerFactory.getLogger(OntologyParser.class.getName());
+	public static final String USE_IMPORTS_IRI = "http://omv.ontoware.org/2005/05/ontology#useImports";
 	public static final String VERSION_SUBJECT = "http://bioportal.bioontology.org/ontologies/versionSubject";
 
 	protected ParserInvocation parserInvocation = null;
@@ -197,6 +198,27 @@ public class OntologyParser {
 	}
 
 	/**
+	 * Get ontology imports and them to <ONTOLOGY_URI>
+	 * omv:useImports <import_URI>
+	 *
+	 * @param fact
+	 * @param sourceOnt
+	 */
+	private void addOntologyImports(OWLDataFactory fact, OWLOntology sourceOnt){
+		Optional<IRI> sub = sourceOnt.getOntologyID().getOntologyIRI();
+		IRI ontologyIRI = sub.get();
+		// Get imports and add them as omv:useImports
+		OWLAnnotationProperty useImportProp = fact.getOWLAnnotationProperty(IRI.create(USE_IMPORTS_IRI));
+		for (OWLOntology imported : sourceOnt.getImports()) {
+			if (!imported.getOntologyID().isAnonymous()) {
+				log.info("useImports: " + imported.getOntologyID().getOntologyIRI().get());
+				OWLAnnotationAssertionAxiom useImportAxiom = fact.getOWLAnnotationAssertionAxiom(useImportProp, ontologyIRI, imported.getOntologyID().getOntologyIRI().get());
+				this.targetOwlManager.addAxiom(targetOwlOntology, useImportAxiom);
+			}
+		}
+	}
+
+	/**
 	 * Copies ontology-level annotation axioms from the source ontology to the target ontology.
 	 * <p>
 	 * Checks for the owl#versionInfo property. If found, adds a BioPortal-specific "versionSubject"
@@ -215,6 +237,7 @@ public class OntologyParser {
 		}
 
 		for (OWLAnnotation annotation : sourceOntology.getAnnotations()) {
+
 			IRI subjectIRI = ontologyID.getOntologyIRI().get();
 			OWLAnnotationProperty annotationProperty = annotation.getProperty();
 			OWLAnnotationValue annotationValue = annotation.getValue();
@@ -239,6 +262,7 @@ public class OntologyParser {
 		try {
 			targetOwlOntology = targetOwlManager.createOntology();
 			addOntologyIRI(masterOntology);
+			addOntologyImports(fact, masterOntology);
 		} catch (OWLOntologyCreationException e) {
 			log.error(e.getMessage());
 			parserLog.addError(ParserError.OWL_CREATE_ONTOLOGY_EXCEPTION, "Error buildOWLOntology" + e.getMessage());
