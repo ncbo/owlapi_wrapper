@@ -40,7 +40,19 @@
       <email>vendetti@stanford.edu</email>
       <url>https://github.com/jvendetti</url>
       <organization>Stanford Center for Biomedical Informatics Research</organization>
-      <organizationUrl>http://bmir.stanford.edu/</organizationUrl>
+      <organizationUrl>https://bmir.stanford.edu/</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>America/Los_Angeles</timezone>
+    </developer>
+    <developer>
+      <id>stdotjohn</id>
+      <name>Timothy Redmond</name>
+      <email>tredmond@stanford.edu</email>
+      <url>https://github.com/stdotjohn</url>
+      <organization>Stanford Center for Biomedical Informatics Research</organization>
+      <organizationUrl>https://bmir.stanford.edu/</organizationUrl>
       <roles>
         <role>developer</role>
       </roles>
