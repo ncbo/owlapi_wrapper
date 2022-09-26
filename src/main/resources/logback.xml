@@ -10,6 +10,10 @@
     <appender-ref ref="STDOUT" />
   </logger>
 
+  <logger name="org.stanford.ncbo.owlapi.wrapper.metrics" level="INFO" additivity="false">
+    <appender-ref ref="STDOUT" />
+  </logger>
+
   <!-- OWL API libraries -->
 
   <logger name="org.obolibrary" level="ERROR" additivity="false">
@@ -31,7 +35,6 @@
   <logger name="uk.ac.manchester" level="ERROR" additivity="false">
     <appender-ref ref="STDOUT" />
   </logger>
-
 
   <!-- Root logger -->
 
