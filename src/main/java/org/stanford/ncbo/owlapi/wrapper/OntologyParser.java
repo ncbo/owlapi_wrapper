@@ -206,65 +206,62 @@ public class OntologyParser {
 			return false;
 		}
 
-		for (OWLOntology sourceOnt : sourceOwlManager.getOntologies()) {
-			IRI documentIRI = sourceOwlManager.getOntologyDocumentIRI(sourceOnt);
+        IRI documentIRI = sourceOwlManager.getOntologyDocumentIRI(masterOntology);
 
-			addGroundMetadata(documentIRI, fact, sourceOnt);
-			generateGroundTriplesForAxioms(allAxioms, fact, sourceOnt);
+        addGroundMetadata(documentIRI, fact, masterOntology);
+        generateGroundTriplesForAxioms(allAxioms, fact, masterOntology);
 
-			if (isOBO) {
-				if (!documentIRI.toString().startsWith("owlapi:ontology")) {
-					generateSKOSInObo(allAxioms, fact, sourceOnt);
-				}
-			}
+        if (isOBO && !documentIRI.toString().startsWith("owlapi:ontology")) {
+            generateSKOSInObo(allAxioms, fact, masterOntology);
+        }
 
-			boolean isPrefixedOWL = sourceOwlManager.getOntologyFormat(sourceOnt).isPrefixOWLOntologyFormat();
-			log.info("isPrefixOWLOntologyFormat: {}", isPrefixedOWL);
-			if (isPrefixedOWL == true && !isOBO) {
-				generateSKOSInOwl(allAxioms, fact, sourceOnt);
-			}
-		}
+        boolean isPrefixedOWL = sourceOwlManager.getOntologyFormat(masterOntology).isPrefixOWLOntologyFormat();
+        log.info("isPrefixOWLOntologyFormat: {}", isPrefixedOWL);
+        if (isPrefixedOWL && !isOBO) {
+            generateSKOSInOwl(allAxioms, fact, masterOntology);
+        }
 
-		targetOwlManager.addAxioms(targetOwlOntology, allAxioms);
-		for (OWLAnnotation ann : targetOwlOntology.getAnnotations()) {
+
+        targetOwlManager.addAxioms(targetOwlOntology, allAxioms);
+        for (OWLAnnotation ann : targetOwlOntology.getAnnotations()) {
+            AddOntologyAnnotation addAnn = new AddOntologyAnnotation(targetOwlOntology, ann);
+            targetOwlManager.applyChange(addAnn);
+        }
+
+        if (isOBO) {
+            String oboVersion = parserInvocation.getOBOVersion();
+            if (oboVersion != null) {
+                log.info("Adding version: {}", oboVersion);
+                OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
+                IRI versionSubjectIRI = IRI.create(VERSION_SUBJECT);
+                OWLAnnotationAssertionAxiom annVersion = fact.getOWLAnnotationAssertionAxiom(prop, versionSubjectIRI, fact.getOWLLiteral(oboVersion));
+                targetOwlManager.addAxiom(targetOwlOntology, annVersion);
+            }
+        }
+
+		addOntologyAnnotations(masterOntology);
+        escapeXMLLiterals(targetOwlOntology);
+
+        OWLReasonerFactory reasonerFactory = new StructuralReasonerFactory();
+        OWLReasoner reasoner = reasonerFactory.createReasoner(targetOwlOntology);
+        InferredSubClassAxiomGenerator isc = new InferredSubClassAxiomGenerator();
+        Set<OWLSubClassOfAxiom> subAxs = isc.createAxioms(targetOwlOntology.getOWLOntologyManager().getOWLDataFactory(), reasoner);
+        targetOwlManager.addAxioms(targetOwlOntology, subAxs);
+        deprecateBranch();
+
+        log.info("isOBO: {}", isOBO);
+        if (isOBO) {
+            replicateHierarchyAsTreeview(fact);
+        }
+        return true;
+    }
+
+	private void addOntologyAnnotations(OWLOntology masterOntology){
+		for (OWLAnnotation ann : masterOntology.getAnnotations()) {
 			AddOntologyAnnotation addAnn = new AddOntologyAnnotation(targetOwlOntology, ann);
 			targetOwlManager.applyChange(addAnn);
 		}
-
-		if (isOBO) {
-			String oboVersion = parserInvocation.getOBOVersion();
-			if (oboVersion != null) {
-				log.info("Adding version: {}", oboVersion);
-				OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
-				IRI versionSubjectIRI = IRI.create(VERSION_SUBJECT);
-				OWLAnnotationAssertionAxiom annVersion = fact.getOWLAnnotationAssertionAxiom(prop, versionSubjectIRI, fact.getOWLLiteral(oboVersion));
-				targetOwlManager.addAxiom(targetOwlOntology, annVersion);
-			}
-		}
-
-		for (OWLOntology sourceOnt : sourceOwlManager.getOntologies()) {
-			for (OWLAnnotation ann : sourceOnt.getAnnotations()) {
-				AddOntologyAnnotation addAnn = new AddOntologyAnnotation(targetOwlOntology, ann);
-				targetOwlManager.applyChange(addAnn);
-			}
-		}
-
-		escapeXMLLiterals(targetOwlOntology);
-
-		OWLReasonerFactory reasonerFactory = new StructuralReasonerFactory();
-		OWLReasoner reasoner = reasonerFactory.createReasoner(targetOwlOntology);
- 		InferredSubClassAxiomGenerator isc = new InferredSubClassAxiomGenerator();
-		Set<OWLSubClassOfAxiom> subAxs = isc.createAxioms(targetOwlOntology.getOWLOntologyManager().getOWLDataFactory(), reasoner);
-		targetOwlManager.addAxioms(targetOwlOntology, subAxs);
-		deprecateBranch();
-
-		log.info("isOBO: {}", isOBO);
-		if (isOBO) {
-			replicateHierarchyAsTreeview(fact);
-		}
-		return true;
 	}
-
 	private void replicateHierarchyAsTreeview(OWLDataFactory fact) {
 		Set<OWLAxiom> treeViewAxs = new HashSet<OWLAxiom>();
 		for (OWLAxiom axiom : targetOwlOntology.getAxioms()) {
