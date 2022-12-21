@@ -1,4 +1,4 @@
-package org.stanford.ncbo.oapiwrapper;
+package org.stanford.ncbo.owlapi.wrapper;
 
 import org.semanticweb.owlapi.model.MissingImportEvent;
 import org.semanticweb.owlapi.model.MissingImportListener;

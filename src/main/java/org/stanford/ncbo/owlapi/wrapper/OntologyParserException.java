@@ -1,4 +1,4 @@
-package org.stanford.ncbo.oapiwrapper;
+package org.stanford.ncbo.owlapi.wrapper;
 
 public class OntologyParserException extends Exception {
 	private static final long serialVersionUID = 1L;

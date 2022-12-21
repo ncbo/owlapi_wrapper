@@ -1,18 +1,11 @@
-package org.stanford.ncbo.oapiwrapper;
+package org.stanford.ncbo.owlapi.wrapper;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import junit.framework.TestCase;
 
-import org.apache.commons.io.FileUtils;
 import org.junit.Test;
-import org.stanford.ncbo.oapiwrapper.OntologyParser;
-import org.stanford.ncbo.oapiwrapper.OntologyParserException;
-import org.stanford.ncbo.oapiwrapper.ParserError;
-import org.stanford.ncbo.oapiwrapper.ParserInvocation;
 
 public class TestSimpleWithInputRepoEmptyOWL extends TestCase {
 	private static final String inputRepositoryFolder = null;
