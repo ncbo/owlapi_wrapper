@@ -269,21 +269,23 @@ public class OntologyParser {
 			return false;
 		}
 
-        IRI documentIRI = sourceOwlManager.getOntologyDocumentIRI(masterOntology);
+
+		for (OWLOntology sourceOnt : sourceOwlManager.getOntologies()) {
+			IRI documentIRI = sourceOwlManager.getOntologyDocumentIRI(sourceOnt);
 
         addGroundMetadata(documentIRI, fact, masterOntology);
         generateGroundTriplesForAxioms(allAxioms, fact, masterOntology);
 
-        if (isOBO && !documentIRI.toString().startsWith("owlapi:ontology")) {
-            generateSKOSInObo(allAxioms, fact, masterOntology);
-        }
+			if (isOBO && !documentIRI.toString().startsWith("owlapi:ontology")) {
+				generateSKOSInObo(allAxioms, fact, sourceOnt);
+			}
 
-        boolean isPrefixedOWL = sourceOwlManager.getOntologyFormat(masterOntology).isPrefixOWLOntologyFormat();
-        log.info("isPrefixOWLOntologyFormat: {}", isPrefixedOWL);
-        if (isPrefixedOWL && !isOBO) {
-            generateSKOSInOwl(allAxioms, fact, masterOntology);
-        }
-
+			boolean isPrefixedOWL = sourceOwlManager.getOntologyFormat(sourceOnt).isPrefixOWLOntologyFormat();
+			log.info("isPrefixOWLOntologyFormat: {}", isPrefixedOWL);
+			if (isPrefixedOWL && !isOBO) {
+				generateSKOSInOwl(allAxioms, fact, sourceOnt);
+			}
+		}
 
         targetOwlManager.addAxioms(targetOwlOntology, allAxioms);
         for (OWLAnnotation ann : targetOwlOntology.getAnnotations()) {
