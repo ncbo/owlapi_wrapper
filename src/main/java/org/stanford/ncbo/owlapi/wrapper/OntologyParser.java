@@ -207,6 +207,9 @@ public class OntologyParser {
 	private void addOntologyImports(OWLDataFactory fact, OWLOntology sourceOnt){
 		Optional<IRI> sub = sourceOnt.getOntologyID().getOntologyIRI();
 		IRI ontologyIRI = sub.get();
+		if(!sub.isPresent()){
+            return;
+        }
 		// Get imports and add them as omv:useImports
 		OWLAnnotationProperty useImportProp = fact.getOWLAnnotationProperty(IRI.create(USE_IMPORTS_IRI));
 		for (OWLOntology imported : sourceOnt.getImports()) {
@@ -499,7 +502,7 @@ public class OntologyParser {
 							targetOwlManager.addAxiom(target, annAsse);
 							Set<OWLAnnotationAssertionAxiom> del = new HashSet<OWLAnnotationAssertionAxiom>();
 							del.add(ann);
-							targetOwlManager.removeAxioms(target,del); 
+							targetOwlManager.removeAxioms(target,del);
 						}
 					}
 				}
