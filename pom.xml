@@ -64,10 +64,7 @@
       <subscribe>https://mailman.stanford.edu/mailman/listinfo/bioontology-support</subscribe>
       <unsubscribe>https://mailman.stanford.edu/mailman/listinfo/bioontology-support</unsubscribe>
       <post>bioontology-support@lists.stanford.edu</post>
-      <archive>http://ncbo-support.2288202.n4.nabble.com</archive>
-      <otherArchives>
-        <otherArchive>https://mailman.stanford.edu/pipermail/bioontology-support/</otherArchive>
-      </otherArchives>
+      <archive>https://mailman.stanford.edu/pipermail/bioontology-support/</archive>
     </mailingList>
   </mailingLists>
 
