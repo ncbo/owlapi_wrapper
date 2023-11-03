@@ -23,18 +23,6 @@
 
   <developers>
     <developer>
-      <id>msalvadores</id>
-      <name>Manuel Salvadores</name>
-      <email>msalvadores@gmail.com</email>
-      <url>https://msalvadores.github.io/</url>
-      <organization>Datadog</organization>
-      <organizationUrl>https://www.datadoghq.com/</organizationUrl>
-      <roles>
-        <role>developer</role>
-      </roles>
-      <timezone>America/Los_Angeles</timezone>
-    </developer>
-    <developer>
       <id>jvendetti</id>
       <name>Jennifer Vendetti</name>
       <email>vendetti@stanford.edu</email>
@@ -46,17 +34,48 @@
       </roles>
       <timezone>America/Los_Angeles</timezone>
     </developer>
-    <developer>
-      <id>stdotjohn</id>
+  </developers>
+
+  <contributors>
+    <contributor>
+      <name>Alex Skrenchuck</name>
+      <url>https://github.com/alexskr</url>
+      <organization>Stanford Center for Biomedical Informatics Research</organization>
+      <organizationUrl>https://bmir.stanford.edu/</organizationUrl>
+      <roles>
+        <role>system administrator</role>
+      </roles>
+      <timezone>America/Los_Angeles</timezone>
+    </contributor>
+    <contributor>
+      <name>Manuel Salvadores</name>
+      <url>https://github.com/msalvadores</url>
+      <organization>Datadog</organization>
+      <organizationUrl>https://www.datadoghq.com/</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>Europe/Madrid</timezone>
+    </contributor>
+    <contributor>
+      <name>Syphax Bouazzouni</name>
+      <url>https://github.com/syphax-bouazzouni</url>
+      <organization>LIRMM</organization>
+      <organizationUrl>https://www.lirmm.fr/</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>Europe/Paris</timezone>
+    </contributor>
+    <contributor>
       <name>Timothy Redmond</name>
-      <email>tredmond@stanford.edu</email>
       <url>https://github.com/stdotjohn</url>
       <roles>
         <role>developer</role>
       </roles>
       <timezone>America/Los_Angeles</timezone>
-    </developer>
-  </developers>
+    </contributor>
+  </contributors>
 
   <mailingLists>
     <mailingList>
