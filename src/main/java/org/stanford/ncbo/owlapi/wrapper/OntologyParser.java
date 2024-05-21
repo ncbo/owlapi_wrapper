@@ -16,6 +16,7 @@ import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 import org.semanticweb.owlapi.search.EntitySearcher;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 import org.semanticweb.owlapi.util.InferredSubClassAxiomGenerator;
+import org.semanticweb.owlapi.util.SimpleIRIMapper;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +26,7 @@ import uk.ac.manchester.cs.owl.owlapi.OWLLiteralImplString;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.net.URL;
 import java.util.*;
 
 public class OntologyParser {
@@ -53,6 +55,16 @@ public class OntologyParser {
 		setLocalFileRepositaryMapping(this.sourceOwlManager, this.parserInvocation.getInputRepositoryFolder());
 
 		this.targetOwlManager = OWLManager.createOWLOntologyManager();
+
+		// Maintain a local copy of the SKOS Core Vocabulary to work around W3C rate limiting
+		IRI skosCoreIRI = IRI.create("http://www.w3.org/2004/02/skos/core");
+		ClassLoader classLoader = OntologyParser.class.getClassLoader();
+		URL url = classLoader.getResource("skos.rdf");
+		log.info("Loaded SKOS Core Vocabulary from: {}", url.getPath());
+		IRI skosCoreDocumentIRI = IRI.create(url);
+		SimpleIRIMapper mapper = new SimpleIRIMapper(skosCoreIRI, skosCoreDocumentIRI);
+		this.sourceOwlManager.getIRIMappers().add(mapper);
+		this.targetOwlManager.getIRIMappers().add(mapper);
 	}
 
 
