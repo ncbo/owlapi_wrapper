@@ -16,6 +16,7 @@ import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 import org.semanticweb.owlapi.search.EntitySearcher;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 import org.semanticweb.owlapi.util.InferredSubClassAxiomGenerator;
+import org.semanticweb.owlapi.util.SimpleIRIMapper;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +26,7 @@ import uk.ac.manchester.cs.owl.owlapi.OWLLiteralImplString;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.net.URL;
 import java.util.*;
 
 public class OntologyParser {
@@ -53,6 +55,16 @@ public class OntologyParser {
 		setLocalFileRepositaryMapping(this.sourceOwlManager, this.parserInvocation.getInputRepositoryFolder());
 
 		this.targetOwlManager = OWLManager.createOWLOntologyManager();
+
+		// Maintain a local copy of the SKOS Core Vocabulary to work around W3C rate limiting
+		IRI skosCoreIRI = IRI.create("http://www.w3.org/2004/02/skos/core");
+		ClassLoader classLoader = OntologyParser.class.getClassLoader();
+		URL url = classLoader.getResource("skos.rdf");
+		log.info("Loaded SKOS Core Vocabulary from: {}", url.getPath());
+		IRI skosCoreDocumentIRI = IRI.create(url);
+		SimpleIRIMapper mapper = new SimpleIRIMapper(skosCoreIRI, skosCoreDocumentIRI);
+		this.sourceOwlManager.getIRIMappers().add(mapper);
+		this.targetOwlManager.getIRIMappers().add(mapper);
 	}
 
 
@@ -143,45 +155,6 @@ public class OntologyParser {
 		return isOBO;
 	}
 
-  /**
-   * Get ontology URI and imports. Add the ontology URI to the submission graph
-   * (<http://bioportal.bioontology.org/ontologies/URI> owl:versionInfo
-   * "ONTOLOGY_IRI"). And add all ontology imports to <ONTOLOGY_URI>
-   * omv:useImports <import_URI>
-   *
-   * @param fact
-   * @param sourceOnt
-   */
-  private void addOntologyIRIAndImports(OWLDataFactory fact, OWLOntology sourceOnt) {
-    if (!sourceOnt.getOntologyID().isAnonymous()) {
-
-      // Get ontology URI
-      Optional<IRI> sub = sourceOnt.getOntologyID().getOntologyIRI();
-      IRI ontologyIRI = sub.get();
-
-      OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
-      OWLAnnotationAssertionAxiom annOntoURI = fact.getOWLAnnotationAssertionAxiom(prop, IRI.create("http://bioportal.bioontology.org/ontologies/URI"), fact.getOWLLiteral(ontologyIRI.toString()));
-      this.targetOwlManager.addAxiom(targetOwlOntology, annOntoURI);
-
-      // Get imports and add them as omv:useImports
-      OWLAnnotationProperty useImportProp = fact.getOWLAnnotationProperty(IRI.create("http://omv.ontoware.org/2005/05/ontology#useImports"));
-      for (OWLOntology imported : sourceOnt.getImports()) {
-        if (!imported.getOntologyID().isAnonymous()) {
-          log.info("useImports: " + imported.getOntologyID().getOntologyIRI().get().toString());
-          OWLAnnotationAssertionAxiom useImportAxiom = fact.getOWLAnnotationAssertionAxiom(useImportProp, ontologyIRI, imported.getOntologyID().getOntologyIRI().get());
-          this.targetOwlManager.addAxiom(targetOwlOntology, useImportAxiom);
-        }
-      }
-
-      /* Done in addGroundMetadata now (Add ontology metadatas to <ONTOLOGY_URI> <metadata_property> <metadata_value>)
-      for (OWLAnnotation ann : sourceOnt.getAnnotations()) {
-        OWLAnnotationAssertionAxiom groundAnnotation = fact.getOWLAnnotationAssertionAxiom(ann.getProperty(), ontologyIRI, ann.getValue());
-        this.targetOwlManager.addAxiom(targetOwlOntology, groundAnnotation);
-      }
-      */
-    }
-  }
-
 	/**
 	 * Get the source ontology IRI and add it to the target ontology
 	 *
@@ -206,10 +179,13 @@ public class OntologyParser {
 	 */
 	private void addOntologyImports(OWLDataFactory fact, OWLOntology sourceOnt){
 		Optional<IRI> sub = sourceOnt.getOntologyID().getOntologyIRI();
-		IRI ontologyIRI = sub.get();
+
 		if(!sub.isPresent()){
             return;
         }
+
+		IRI ontologyIRI = sub.get();
+
 		// Get imports and add them as omv:useImports
 		OWLAnnotationProperty useImportProp = fact.getOWLAnnotationProperty(IRI.create(USE_IMPORTS_IRI));
 		for (OWLOntology imported : sourceOnt.getImports()) {
@@ -272,23 +248,21 @@ public class OntologyParser {
 			return false;
 		}
 
+        IRI documentIRI = sourceOwlManager.getOntologyDocumentIRI(masterOntology);
 
-		for (OWLOntology sourceOnt : sourceOwlManager.getOntologies()) {
-			IRI documentIRI = sourceOwlManager.getOntologyDocumentIRI(sourceOnt);
+        	addGroundMetadata(documentIRI, fact, masterOntology);
+        	generateGroundTriplesForAxioms(allAxioms, fact, masterOntology);
 
-        addGroundMetadata(documentIRI, fact, masterOntology);
-        generateGroundTriplesForAxioms(allAxioms, fact, masterOntology);
+        if (isOBO && !documentIRI.toString().startsWith("owlapi:ontology")) {
+            generateSKOSInObo(allAxioms, fact, masterOntology);
+        }
 
-			if (isOBO && !documentIRI.toString().startsWith("owlapi:ontology")) {
-				generateSKOSInObo(allAxioms, fact, sourceOnt);
-			}
+        boolean isPrefixedOWL = sourceOwlManager.getOntologyFormat(masterOntology).isPrefixOWLOntologyFormat();
+        log.info("isPrefixOWLOntologyFormat: {}", isPrefixedOWL);
+        if (isPrefixedOWL && !isOBO) {
+            generateSKOSInOwl(allAxioms, fact, masterOntology);
+        }
 
-			boolean isPrefixedOWL = sourceOwlManager.getOntologyFormat(sourceOnt).isPrefixOWLOntologyFormat();
-			log.info("isPrefixOWLOntologyFormat: {}", isPrefixedOWL);
-			if (isPrefixedOWL && !isOBO) {
-				generateSKOSInOwl(allAxioms, fact, sourceOnt);
-			}
-		}
 
         targetOwlManager.addAxioms(targetOwlOntology, allAxioms);
         for (OWLAnnotation ann : targetOwlOntology.getAnnotations()) {

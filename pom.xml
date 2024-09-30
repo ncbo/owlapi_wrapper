@@ -3,7 +3,7 @@
 
   <groupId>org.stanford.ncbo.oapiwrapper</groupId>
   <artifactId>owlapi-wrapper</artifactId>
-  <version>1.4.2-SNAPSHOT</version>
+  <version>1.4.3-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>owlapi_wrapper</name>
@@ -11,7 +11,7 @@
   <url>https://github.com/ncbo/owlapi_wrapper</url>
   <organization>
     <name>BioPortal</name>
-    <url>http://www.bioontology.org</url>
+    <url>https://www.bioontology.org</url>
   </organization>
   <licenses>
     <license>
@@ -22,18 +22,6 @@
   </licenses>
 
   <developers>
-    <developer>
-      <id>msalvadores</id>
-      <name>Manuel Salvadores</name>
-      <email>msalvadores@gmail.com</email>
-      <url>https://msalvadores.github.io/</url>
-      <organization>Google</organization>
-      <organizationUrl>https://www.google.com/</organizationUrl>
-      <roles>
-        <role>developer</role>
-      </roles>
-      <timezone>America/Los_Angeles</timezone>
-    </developer>
     <developer>
       <id>jvendetti</id>
       <name>Jennifer Vendetti</name>
@@ -46,19 +34,48 @@
       </roles>
       <timezone>America/Los_Angeles</timezone>
     </developer>
-    <developer>
-      <id>stdotjohn</id>
-      <name>Timothy Redmond</name>
-      <email>tredmond@stanford.edu</email>
-      <url>https://github.com/stdotjohn</url>
+  </developers>
+
+  <contributors>
+    <contributor>
+      <name>Alex Skrenchuck</name>
+      <url>https://github.com/alexskr</url>
       <organization>Stanford Center for Biomedical Informatics Research</organization>
       <organizationUrl>https://bmir.stanford.edu/</organizationUrl>
+      <roles>
+        <role>system administrator</role>
+      </roles>
+      <timezone>America/Los_Angeles</timezone>
+    </contributor>
+    <contributor>
+      <name>Manuel Salvadores</name>
+      <url>https://github.com/msalvadores</url>
+      <organization>Datadog</organization>
+      <organizationUrl>https://www.datadoghq.com/</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>Europe/Madrid</timezone>
+    </contributor>
+    <contributor>
+      <name>Syphax Bouazzouni</name>
+      <url>https://github.com/syphax-bouazzouni</url>
+      <organization>LIRMM</organization>
+      <organizationUrl>https://www.lirmm.fr/</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>Europe/Paris</timezone>
+    </contributor>
+    <contributor>
+      <name>Timothy Redmond</name>
+      <url>https://github.com/stdotjohn</url>
       <roles>
         <role>developer</role>
       </roles>
       <timezone>America/Los_Angeles</timezone>
-    </developer>
-  </developers>
+    </contributor>
+  </contributors>
 
   <mailingLists>
     <mailingList>
@@ -66,10 +83,7 @@
       <subscribe>https://mailman.stanford.edu/mailman/listinfo/bioontology-support</subscribe>
       <unsubscribe>https://mailman.stanford.edu/mailman/listinfo/bioontology-support</unsubscribe>
       <post>bioontology-support@lists.stanford.edu</post>
-      <archive>http://ncbo-support.2288202.n4.nabble.com</archive>
-      <otherArchives>
-        <otherArchive>https://mailman.stanford.edu/pipermail/bioontology-support/</otherArchive>
-      </otherArchives>
+      <archive>https://mailman.stanford.edu/pipermail/bioontology-support/</archive>
     </mailingList>
   </mailingLists>
 
@@ -116,15 +130,27 @@
     </dependency>
 
     <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>2.0.9</version>
+    </dependency>
+
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-core</artifactId>
+      <version>1.4.11</version>
+    </dependency>
+
+    <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-      <version>1.2.11</version>
+      <version>1.4.11</version>
     </dependency>
 
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-csv</artifactId>
-      <version>1.9.0</version>
+      <version>1.10.0</version>
     </dependency>
 
     <dependency>
