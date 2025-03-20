@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLOntology;
 
 import java.io.File;
@@ -15,6 +17,19 @@ public class OntologyParserTest {
     @Before
     public void setUp() throws Exception {
 
+    }
+    
+    // Run this test: mvn -Dtest=OntologyParserTest#sifrTestParse test
+    // parse_OntologyENVO_ReturnsTrue fonctionne pour comparer
+    @Test
+    public void sifrTestParse() throws Exception {
+        ParserInvocation pi = new ParserInvocation("./src/test/resources/repo/input/sifr",
+                "./src/test/resources/repo/output/sifr", "foodon.owl", true);
+        // SKOS: anaee-france-thesaurus.rdf
+        // OWL: AnimalDiseasesOntology.owl.xml
+        OntologyParser parser = new OntologyParser(pi);
+        parser.parse();
+        //assertFalse(parser.parse());
     }
 
     @Test
@@ -143,7 +158,25 @@ public class OntologyParserTest {
         IRI sourceIRI = parser.getParsedOntologies().stream().findFirst().get().getOntologyID().getOntologyIRI().orNull();
         assertNotNull(targetIRI);
         assertEquals(sourceIRI, targetIRI);
+    }
 
+    @Test
+    public void parse_ImportSKOSCoreVocab_ShouldLoad() throws Exception {
+        ParserInvocation pi = new ParserInvocation(
+            "./src/test/resources/repo/input/skos_core",
+            "./src/test/resources/repo/output/skos_core",
+            "testSKOSCoreVocabImport.owl",
+            true);
+        OntologyParser parser = new OntologyParser(pi);
+        parser.parse();
+
+        OWLOntology ontology = parser.getTargetOwlOntology();
+        assertNotNull(ontology);
+
+        IRI skosConceptIRI = IRI.create("http://www.w3.org/2004/02/skos/core#Concept");
+        OWLDataFactory factory = ontology.getOWLOntologyManager().getOWLDataFactory();
+        OWLClass skosConceptClass = factory.getOWLClass(skosConceptIRI);
+        assertNotNull(skosConceptClass);
     }
     @Test
     public void parse_OntologyAnnotationCount_ReturnsTrue() throws Exception {
