@@ -18,6 +18,19 @@ public class OntologyParserTest {
     public void setUp() throws Exception {
 
     }
+    
+    // Run this test: mvn -Dtest=OntologyParserTest#sifrTestParse test
+    // parse_OntologyENVO_ReturnsTrue fonctionne pour comparer
+    @Test
+    public void sifrTestParse() throws Exception {
+        ParserInvocation pi = new ParserInvocation("./src/test/resources/repo/input/sifr",
+                "./src/test/resources/repo/output/sifr", "foodon.owl", true);
+        // SKOS: anaee-france-thesaurus.rdf
+        // OWL: AnimalDiseasesOntology.owl.xml
+        OntologyParser parser = new OntologyParser(pi);
+        parser.parse();
+        //assertFalse(parser.parse());
+    }
 
     @Test
     public void getLocalOntologies_MultipleOntologies_Found() throws Exception {
@@ -165,6 +178,25 @@ public class OntologyParserTest {
         OWLClass skosConceptClass = factory.getOWLClass(skosConceptIRI);
         assertNotNull(skosConceptClass);
     }
+    @Test
+    public void parse_OntologyAnnotationCount_ReturnsTrue() throws Exception {
+        String outputRepositoryFolder = "./src/test/resources/repo/output/cno";
+        ParserInvocation pi = new ParserInvocation("./src/test/resources/repo/input/cno",
+                outputRepositoryFolder, "cnov0_5.owl", true);
+        assertTrue(pi.valid());
+
+        OntologyParser parser = new OntologyParser(pi);
+        assertTrue(parser.parse());
+        assertEquals(1, parser.getLocalOntologies().size());
+
+        OWLOntology targetOwlOntology = parser.getTargetOwlOntology();
+        OWLOntology sourceOntology = parser.getParsedOntologies().stream().findFirst().orElse(null);
+
+        assertNotNull(sourceOntology);
+        assertEquals(sourceOntology.getAnnotations().size(), targetOwlOntology.getAnnotations().size());
+
+    }
+
 
     @After
     public void tearDown() throws Exception {
