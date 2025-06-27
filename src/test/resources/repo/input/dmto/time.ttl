@@ -1,0 +1,1766 @@
+@prefix : <http://www.w3.org/2006/time#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tzont: <http://www.w3.org/2006/timezone#> .
+@base <http://www.w3.org/2006/time> .
+
+<http://www.w3.org/2006/time> rdf:type owl:Ontology ;
+                              
+                              rdfs:label "OWL-Time"@en ;
+                              
+                              dct:created "2006-09-27"^^xsd:date ;
+                              
+                              dct:modified "2016-07-12"^^xsd:date ;
+                              
+                              rdfs:comment "An OWL Ontology of Time (OWL-Time)."@en ;
+                              
+                              dct:rights "Copyright © 2006-2016 W3C All Rights Reserved. W3C liability, trademark and document use rules apply."@en ;
+                              
+                              rdfs:comment "Update of OWL-Time ontology, extended to support general temporal reference systems"@en ;
+                              
+                              rdfs:seeAlso <http://dx.doi.org/10.3233/SW-150187> ,
+                                           <http://www.isi.edu/~pan/OWL-Time.html> ,
+                                           <http://www.isi.edu/~pan/time/pub/hobbs-pan-TALIP04.pdf> ,
+                                           <http://www.semantic-web-journal.net/content/time-ontology-extended-non-gregorian-calendar-applications> ;
+                              
+                              owl:priorVersion <http://www.w3.org/2006/time#2006> ;
+                              
+                              owl:versionIRI <http://www.w3.org/2006/time#2016> ;
+                              
+                              rdfs:seeAlso <http://www.w3.org/TR/owl-time> ;
+                              
+                              dct:isVersionOf <http://www.w3.org/TR/owl-time> ;
+                              
+                              dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+                              
+                              dct:creator [ ] ;
+
+dct:contributor [ ] ;
+
+dct:creator [ ] .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://purl.org/dc/terms/description
+
+dct:description rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/terms/hasVersion
+
+dct:hasVersion rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/terms/identifier
+
+dct:identifier rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/terms/issued
+
+dct:issued rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/terms/modified
+
+dct:modified rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/terms/publisher
+
+dct:publisher rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/terms/title
+
+dct:title rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/2004/02/skos/core#changeNote
+
+skos:changeNote rdf:type owl:AnnotationProperty .
+
+
+
+###  http://www.w3.org/2004/02/skos/core#note
+
+skos:note rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xmlns.com/foaf/0.1/isPrimaryTopicOf
+
+foaf:isPrimaryTopicOf rdf:type owl:AnnotationProperty .
+
+
+
+###  http://xmlns.com/foaf/0.1/mbox
+
+foaf:mbox rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+###  http://www.w3.org/2001/XMLSchema#date
+
+xsd:date rdf:type rdfs:Datatype .
+
+
+
+###  http://www.w3.org/2001/XMLSchema#gDay
+
+xsd:gDay rdf:type rdfs:Datatype .
+
+
+
+###  http://www.w3.org/2001/XMLSchema#gMonth
+
+xsd:gMonth rdf:type rdfs:Datatype .
+
+
+
+###  http://www.w3.org/2001/XMLSchema#gYear
+
+xsd:gYear rdf:type rdfs:Datatype .
+
+
+
+###  http://www.w3.org/2006/time#Number
+
+:Number rdf:type rdfs:Datatype ;
+        
+        rdfs:label "Number"@en ;
+        
+        owl:equivalentClass [ rdf:type rdfs:Datatype ;
+                              owl:unionOf ( xsd:decimal
+                                            xsd:double
+                                            xsd:float
+                                          )
+                            ] ;
+        
+        rdfs:comment "Generalized number"@en ,
+                     "Note: integer is a specialization of decimal"@en .
+
+
+
+###  http://www.w3.org/2006/time#generalDay
+
+:generalDay rdf:type rdfs:Datatype ;
+            
+            rdfs:label "Generalized day"@en ;
+            
+            rdfs:comment "Day of month - generalization of xsd:gDay, formulated as a text string with a pattern constraint to reproduce the same lexical form as gDay, except that values up to 99 are permitted, in order to support calendars with more than 31 days in a month. Note that the value-space is not defined, so a generic OWL2 processor cannot compute ordering relationships of values of this type. "@en .
+
+
+
+###  http://www.w3.org/2006/time#generalMonth
+
+:generalMonth rdf:type rdfs:Datatype ;
+              
+              rdfs:label "Generalized month"@en ;
+              
+              rdfs:comment "Month of year - generalization of xsd:gMonth, formulated as a text string with a pattern constraint to reproduce the same lexical form as gMonth, except that values up to 20 are permitted, in order to support calendars with more than 12 months in the year. Note that the value-space is not defined, so a generic OWL2 processor cannot compute ordering relationships of values of this type."@en .
+
+
+
+###  http://www.w3.org/2006/time#generalYear
+
+:generalYear rdf:type rdfs:Datatype .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://www.w3.org/2006/time#TIME:0000022
+
+<http://www.w3.org/2006/time#TIME:0000022> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "after"@en ;
+                                           
+                                           rdfs:comment "Gives directionality to time. If a temporal entity T1 is after another temporal entity T2, then the beginning of T1 is after the end of T2."@en ;
+                                           
+                                           owl:inverseOf <http://www.w3.org/2006/time#TIME:0000023> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000023
+
+<http://www.w3.org/2006/time#TIME:0000023> rdf:type owl:ObjectProperty ,
+                                                    owl:TransitiveProperty ;
+                                           
+                                           rdfs:label "before"@en ;
+                                           
+                                           rdfs:comment "Gives directionality to time. If a temporal entity T1 is before another temporal entity T2, then the end of T1 is before the beginning of T2. Thus, before can be considered to be basic to instants and derived for intervals."@en ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000012> ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000012> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000024
+
+<http://www.w3.org/2006/time#TIME:0000024> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "interval before"@en ;
+                                           
+                                           rdfs:comment "If a proper interval T1 is intervalBefore another proper interval T2, then the end of T1 is before the beginning of T2."@en ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000015> ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000015> ;
+                                           
+                                           rdfs:subPropertyOf <http://www.w3.org/2006/time#TIME:0000023> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000025
+
+<http://www.w3.org/2006/time#TIME:0000025> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "day of week"@en ;
+                                           
+                                           rdfs:comment "The day of week, whose value is a member of the class time:DayOfWeek"@en ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000003> ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000004> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000026
+
+<http://www.w3.org/2006/time#TIME:0000026> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "has beginning"@en ;
+                                           
+                                           rdfs:comment "Beginning of a temporal entity."@en ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000012> ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000013> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000027
+
+<http://www.w3.org/2006/time#TIME:0000027> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "has Date-Time description"@en ;
+                                           
+                                           rdfs:comment "Value of DateTimeInterval expressed as a structured value."@en ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000004> ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000016> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000028
+
+<http://www.w3.org/2006/time#TIME:0000028> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "has duration"@en ;
+                                           
+                                           rdfs:comment "Duration of a temporal entity, expressed as a scaled value or nominal value"@en ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000011> ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000012> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000029
+
+<http://www.w3.org/2006/time#TIME:0000029> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "has duration description"@en ;
+                                           
+                                           rdfs:comment "Duration of a temporal entity, expressed using a structured description"@en ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000006> ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000012> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000030
+
+<http://www.w3.org/2006/time#TIME:0000030> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "has end"@en ;
+                                           
+                                           rdfs:comment "End of a temporal entity."@en ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000012> ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000013> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000031
+
+<http://www.w3.org/2006/time#TIME:0000031> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "has instant inside"@en ;
+                                           
+                                           rdfs:comment "An instant that falls inside the interval. It is not intended to include beginnings and ends of intervals."@en ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000013> ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000014> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000032
+
+<http://www.w3.org/2006/time#TIME:0000032> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "in Date-Time description"@en ;
+                                           
+                                           rdfs:comment "Position of an instant, expressed using a structured description"@en ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000004> ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000013> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000033
+
+<http://www.w3.org/2006/time#TIME:0000033> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "in time zone"@en ;
+                                           
+                                           rdfs:comment "The time zone for clock elements in the temporal position"@en ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000004> ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/timezone#TIME:0000021> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000034
+
+<http://www.w3.org/2006/time#TIME:0000034> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "interval during"@en ;
+                                           
+                                           rdfs:comment "If a proper interval T1 is intervalDuring another proper interval T2, then the beginning of T1 is after the beginning of T2, and the end of T1 is before the end of T2."@en ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000015> ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000015> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000035
+
+<http://www.w3.org/2006/time#TIME:0000035> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "interval equals"@en ;
+                                           
+                                           rdfs:comment "If a proper interval T1 is intervalEquals another proper interval T2, then the beginning of T1 is the beginning of T2, and the end of T1 is the end of T2."@en ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000015> ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000015> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000036
+
+<http://www.w3.org/2006/time#TIME:0000036> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "interval finishes"@en ;
+                                           
+                                           rdfs:comment "If a proper interval T1 is intervalFinishes another proper interval T2, then the beginning of T1 is after the beginning of T2, and the end of T1 is the end of T2."@en ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000015> ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000015> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000037
+
+<http://www.w3.org/2006/time#TIME:0000037> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "interval finished by"@en ;
+                                           
+                                           rdfs:comment "If a proper interval T1 is intervalFinishedBy another proper interval T2, then the beginning of T1 is before the beginning of T2, and the end of T1 is the end of T2."@en ;
+                                           
+                                           owl:inverseOf <http://www.w3.org/2006/time#TIME:0000036> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000038
+
+<http://www.w3.org/2006/time#TIME:0000038> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "interval meets"@en ;
+                                           
+                                           rdfs:comment "If a proper interval T1 is intervalMeets another proper interval T2, then the end of T1 is the beginning of T2."@en ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000015> ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000015> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000039
+
+<http://www.w3.org/2006/time#TIME:0000039> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "interval met by"@en ;
+                                           
+                                           rdfs:comment "If a proper interval T1 is intervalMetBy another proper interval T2, then the beginning of T1 is the end of T2."@en ;
+                                           
+                                           owl:inverseOf <http://www.w3.org/2006/time#TIME:0000038> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000040
+
+<http://www.w3.org/2006/time#TIME:0000040> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "interval overlaps"@en ;
+                                           
+                                           rdfs:comment "If a proper interval T1 is intervalOverlaps another proper interval T2, then the beginning of T1 is before the beginning of T2, the end of T1 is after the beginning of T2, and the end of T1 is before the end of T2."@en ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000015> ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000015> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000041
+
+<http://www.w3.org/2006/time#TIME:0000041> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "interval overlapped by"@en ;
+                                           
+                                           rdfs:comment "If a proper interval T1 is intervalOverlappedBy another proper interval T2, then the beginning of T1 is after the beginning of T2, the beginning of T1 is before the end of T2, and the end of T1 is after the end of T2."@en ;
+                                           
+                                           owl:inverseOf <http://www.w3.org/2006/time#TIME:0000040> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000042
+
+<http://www.w3.org/2006/time#TIME:0000042> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "interval starts"@en ;
+                                           
+                                           rdfs:comment "If a proper interval T1 is intervalStarts another proper interval T2, then the beginning of T1 is the beginning of T2, and the end of T1 is before the end of T2."@en ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000015> ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000015> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000043
+
+<http://www.w3.org/2006/time#TIME:0000043> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "member entity"@en ;
+                                           
+                                           rdfs:comment "Supports the inclusion of temporal entities in other resources, such as temporal reference systems."@en ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000012> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000044
+
+<http://www.w3.org/2006/time#TIME:0000044> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "interval started by"@en ;
+                                           
+                                           rdfs:comment "If a proper interval T1 is intervalStarted another proper interval T2, then the beginning of T1 is the beginning of T2, and the end of T1 is after the end of T2."@en ;
+                                           
+                                           owl:inverseOf <http://www.w3.org/2006/time#TIME:0000042> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000045
+
+<http://www.w3.org/2006/time#TIME:0000045> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "Temporal position"@en ;
+                                           
+                                           rdfs:comment "Position of a time instant expressed as a TimePosition"@en ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000013> ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000017> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000046
+
+<http://www.w3.org/2006/time#TIME:0000046> rdf:type owl:FunctionalProperty ,
+                                                    owl:ObjectProperty ;
+                                           
+                                           rdfs:label "Temporal reference system used"@en ;
+                                           
+                                           rdfs:comment "The temporal reference system used by a temporal position or extent description. "@en ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000018> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000047
+
+<http://www.w3.org/2006/time#TIME:0000047> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:label "temporal unit type"@en ;
+                                           
+                                           rdfs:comment "The temporal unit which provides the precision of a date-time value or scale of a temporal extent"@en ;
+                                           
+                                           rdfs:range <http://www.w3.org/2006/time#TIME:0000019> ;
+                                           
+                                           rdfs:domain [ rdf:type owl:Class ;
+                                                         owl:unionOf ( <http://www.w3.org/2006/time#TIME:0000004>
+                                                                       <http://www.w3.org/2006/time#TIME:0000011>
+                                                                     )
+                                                       ] .
+
+
+
+###  http://www.w3.org/2006/time#intervalAfter
+
+:intervalAfter rdf:type owl:ObjectProperty ;
+               
+               rdfs:label "interval after"@en ;
+               
+               rdfs:comment "If a proper interval T1 is intervalAfter another proper interval T2, then the beginning of T1 is after the end of T2."@en ;
+               
+               owl:inverseOf <http://www.w3.org/2006/time#TIME:0000024> .
+
+
+
+###  http://www.w3.org/2006/time#intervalContains
+
+:intervalContains rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "interval contains"@en ;
+                  
+                  rdfs:comment "If a proper interval T1 is intervalContains another proper interval T2, then the beginning of T1 is before the beginning of T2, and the end of T1 is after the end of T2."@en ;
+                  
+                  owl:inverseOf <http://www.w3.org/2006/time#TIME:0000034> .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://www.w3.org/2006/time#TIME:0000051
+
+<http://www.w3.org/2006/time#TIME:0000051> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "day"@en ;
+                                           
+                                           rdfs:comment """Day position in a calendar-clock system.
+
+The range of this property is not specified, so can be replaced by any specific representation of a calendar day from any calendar. """@en ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000004> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000052
+
+<http://www.w3.org/2006/time#TIME:0000052> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "day of year"@en ;
+                                           
+                                           rdfs:comment "The number of the day within the year"@en ;
+                                           
+                                           rdfs:range xsd:nonNegativeInteger ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000004> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000053
+
+<http://www.w3.org/2006/time#TIME:0000053> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "days"@en ;
+                                           
+                                           rdfs:comment "length of a temporal extent expressed in days"@en ;
+                                           
+                                           rdfs:range :Number ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000006> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000054
+
+<http://www.w3.org/2006/time#TIME:0000054> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "has XSD Date-Time"@en ;
+                                           
+                                           rdfs:comment "Value of DateTimeInterval expressed as a compact value."@en ;
+                                           
+                                           rdfs:range xsd:dateTime ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000016> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000055
+
+<http://www.w3.org/2006/time#TIME:0000055> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "hour"@en ;
+                                           
+                                           rdfs:comment "Hour position in a calendar-clock system."@en ;
+                                           
+                                           rdfs:range xsd:nonNegativeInteger ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000004> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000056
+
+<http://www.w3.org/2006/time#TIME:0000056> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "hours"@en ;
+                                           
+                                           rdfs:comment "length of a temporal extent expressed in hours"@en ;
+                                           
+                                           rdfs:range :Number ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000006> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000058
+
+<http://www.w3.org/2006/time#TIME:0000058> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "in XSD Date-Time"@en ;
+                                           
+                                           rdfs:comment "Position of an instant, expressed using xsd:DateTime"@en ;
+                                           
+                                           rdfs:range xsd:dateTime ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000013> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000059
+
+<http://www.w3.org/2006/time#TIME:0000059> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "minute"@en ;
+                                           
+                                           rdfs:comment "Minute position in a calendar-clock system."@en ;
+                                           
+                                           rdfs:range xsd:nonNegativeInteger ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000004> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000060
+
+<http://www.w3.org/2006/time#TIME:0000060> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "minutes"@en ;
+                                           
+                                           rdfs:comment "length of a temporal extent expressed in minutes"@en ;
+                                           
+                                           rdfs:range :Number ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000006> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000061
+
+<http://www.w3.org/2006/time#TIME:0000061> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "month"@en ;
+                                           
+                                           rdfs:comment """Month position in a calendar-clock system.
+
+The range of this property is not specified, so can be replaced by any specific representation of a calendar month from any calendar. """@en ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000004> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000062
+
+<http://www.w3.org/2006/time#TIME:0000062> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "months"@en ;
+                                           
+                                           rdfs:comment "length of a temporal extent expressed in months"@en ;
+                                           
+                                           rdfs:range :Number ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000006> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000063
+
+<http://www.w3.org/2006/time#TIME:0000063> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "Name of temporal position"@en ;
+                                           
+                                           rdfs:comment "The (nominal) value indicating temporal position in an ordinal reference system "@en ;
+                                           
+                                           rdfs:range xsd:string ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000017> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000064
+
+<http://www.w3.org/2006/time#TIME:0000064> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "Numeric value of temporal duration"@en ;
+                                           
+                                           rdfs:comment "Value of a temporal extent expressed as a number scaled by a temporal unit"@en ;
+                                           
+                                           rdfs:range :Number ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000011> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000065
+
+<http://www.w3.org/2006/time#TIME:0000065> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "Numeric value of temporal position"@en ;
+                                           
+                                           rdfs:comment "The (numeric) value indicating position within a temporal coordinate system "@en ;
+                                           
+                                           rdfs:range :Number ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000017> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000066
+
+<http://www.w3.org/2006/time#TIME:0000066> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "second"@en ;
+                                           
+                                           rdfs:comment "Second position in a calendar-clock system."@en ;
+                                           
+                                           rdfs:range xsd:decimal ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000004> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000067
+
+<http://www.w3.org/2006/time#TIME:0000067> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "seconds"@en ;
+                                           
+                                           rdfs:comment "length of a temporal extent expressed in seconds"@en ;
+                                           
+                                           rdfs:seeAlso <http://www.bipm.org/en/publications/si-brochure/second.html> ;
+                                           
+                                           rdfs:range :Number ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000006> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000068
+
+<http://www.w3.org/2006/time#TIME:0000068> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "week"@en ;
+                                           
+                                           rdfs:comment "The number of the week within the year"@en ;
+                                           
+                                           rdfs:range xsd:nonNegativeInteger ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000004> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000069
+
+<http://www.w3.org/2006/time#TIME:0000069> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "weeks"@en ;
+                                           
+                                           rdfs:comment "length of a temporal extent expressed in weeks"@en ;
+                                           
+                                           rdfs:range :Number ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000006> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000070
+
+<http://www.w3.org/2006/time#TIME:0000070> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "year"@en ;
+                                           
+                                           rdfs:comment """Year position in a calendar-clock system.
+
+The range of this property is not specified, so can be replaced by any specific representation of a calendar year from any calendar. """@en ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000004> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000071
+
+<http://www.w3.org/2006/time#TIME:0000071> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:label "years"@en ;
+                                           
+                                           rdfs:comment "length of a temporal extent expressed in years"@en ;
+                                           
+                                           rdfs:range :Number ;
+                                           
+                                           rdfs:domain <http://www.w3.org/2006/time#TIME:0000006> .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://www.w3.org/2000/01/rdf-schema#TIME:0000008
+
+<http://www.w3.org/2000/01/rdf-schema#TIME:0000008> rdf:type owl:Class ;
+                                                    
+                                                    rdfs:label "Resource" ;
+                                                    
+                                                    rdfs:subClassOf <http://www.w3.org/2006/time#TIME:0000002> .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000002
+
+<http://www.w3.org/2006/time#TIME:0000002> rdf:type owl:Class ;
+                                           
+                                           rdfs:label "temporal thing"@en .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000003
+
+<http://www.w3.org/2006/time#TIME:0000003> rdf:type owl:Class ;
+                                           
+                                           rdfs:label "Day of week"@en ;
+                                           
+                                           rdfs:subClassOf <http://www.w3.org/2006/time#TIME:0000002> ;
+                                           
+                                           skos:changeNote """Remove enumeration from definition, in order to allow other days to be used when required in other calendars. 
+NOTE: existing days are still present as members of the class, but the class membership is now open. 
+
+In the original OWL-Time the following constraint appeared: 
+  owl:oneOf (
+      time:Monday
+      time:Tuesday
+      time:Wednesday
+      time:Thursday
+      time:Friday
+      time:Saturday
+      time:Sunday
+    ) ;"""@en ;
+                                           
+                                           rdfs:comment "The day of week"@en .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000004
+
+<http://www.w3.org/2006/time#TIME:0000004> rdf:type owl:Class ;
+                                           
+                                           rdfs:label "Generalized Date Time Description"@en ;
+                                           
+                                           rdfs:subClassOf <http://www.w3.org/2006/time#TIME:0000002> ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000055> ;
+                                                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000033> ;
+                                                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000059> ;
+                                                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000046> ;
+                                                             owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000066> ;
+                                                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000070> ;
+                                                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000025> ;
+                                                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000068> ;
+                                                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000051> ;
+                                                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000061> ;
+                                                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000052> ;
+                                                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000047> ;
+                                                             owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ;
+                                           
+                                           rdfs:comment "Description of date and time structured with separate values for the various elements of a calendar-clock system"@en .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000005
+
+<http://www.w3.org/2006/time#TIME:0000005> rdf:type owl:Class ;
+                                           
+                                           rdfs:label "Date-Time description"@en ;
+                                           
+                                           rdfs:subClassOf <http://www.w3.org/2006/time#TIME:0000004> ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000061> ;
+                                                             owl:allValuesFrom xsd:gMonth
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000046> ;
+                                                             owl:hasValue <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000051> ;
+                                                             owl:allValuesFrom xsd:gDay
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000070> ;
+                                                             owl:allValuesFrom xsd:gYear
+                                                           ] ;
+                                           
+                                           rdfs:comment "Description of date and time structured with separate values for the various elements of a calendar-clock system. The temporal reference system is fixed to Gregorian Calendar, and the range of year, month, day properties restricted to corresponding XML Schema types xsd:gYear, xsd:gMonth and xsd:gDay, respectively."@en .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000006
+
+<http://www.w3.org/2006/time#TIME:0000006> rdf:type owl:Class ;
+                                           
+                                           rdfs:label "Generalized duration description"@en ;
+                                           
+                                           rdfs:subClassOf <http://www.w3.org/2006/time#TIME:0000002> ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000060> ;
+                                                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000053> ;
+                                                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000067> ;
+                                                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000071> ;
+                                                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000056> ;
+                                                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000062> ;
+                                                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000046> ;
+                                                             owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000069> ;
+                                                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ;
+                                           
+                                           rdfs:comment "Description of temporal extent structured with separate values for the various elements of a calendar-clock system."@en .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000007
+
+<http://www.w3.org/2006/time#TIME:0000007> rdf:type owl:Class ;
+                                           
+                                           rdfs:label "Duration description"@en ;
+                                           
+                                           rdfs:subClassOf <http://www.w3.org/2006/time#TIME:0000006> ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000071> ;
+                                                             owl:allValuesFrom xsd:decimal
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000053> ;
+                                                             owl:allValuesFrom xsd:decimal
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000060> ;
+                                                             owl:allValuesFrom xsd:decimal
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000067> ;
+                                                             owl:allValuesFrom xsd:decimal
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000069> ;
+                                                             owl:allValuesFrom xsd:decimal
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000046> ;
+                                                             owl:hasValue <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000056> ;
+                                                             owl:allValuesFrom xsd:decimal
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000062> ;
+                                                             owl:allValuesFrom xsd:decimal
+                                                           ] ;
+                                           
+                                           rdfs:comment "Description of temporal extent structured with separate values for the various elements of a calendar-clock system. The temporal reference system is fixed to Gregorian Calendar, and the range of each of the numeric properties is restricted to xsd:decimal"@en .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000010
+
+<http://www.w3.org/2006/time#TIME:0000010> rdf:type owl:Class ;
+                                           
+                                           rdfs:label "Generalized year"@en ;
+                                           
+                                           rdfs:subClassOf <http://www.w3.org/2000/01/rdf-schema#TIME:0000008> ;
+                                           
+                                           rdfs:comment "Year number - generalization of xsd:gYear, formulated as a text string with a pattern constraint to reproduce the same lexical form as gYear. Note that the value-space is not defined, so a generic OWL2 processor cannot compute ordering relationships of values of this type."@en .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000011
+
+<http://www.w3.org/2006/time#TIME:0000011> rdf:type owl:Class ;
+                                           
+                                           rdfs:label "Temporal duration"@en ;
+                                           
+                                           rdfs:subClassOf <http://www.w3.org/2006/time#TIME:0000002> ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000047> ;
+                                                             owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000064> ;
+                                                             owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ;
+                                           
+                                           rdfs:comment "Alternative to time:DurationDescription to support description of a temporal duration other than using a calendar/clock system."@en ,
+                                                        "Duration of a temporal extent expressed as a number scaled by a temporal unit"@en .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000012
+
+<http://www.w3.org/2006/time#TIME:0000012> rdf:type owl:Class ;
+                                           
+                                           rdfs:label "Temporal entity"@en ;
+                                           
+                                           owl:equivalentClass [ rdf:type owl:Class ;
+                                                                 owl:unionOf ( <http://www.w3.org/2006/time#TIME:0000013>
+                                                                               <http://www.w3.org/2006/time#TIME:0000014>
+                                                                             )
+                                                               ] ;
+                                           
+                                           rdfs:subClassOf <http://www.w3.org/2006/time#TIME:0000002> ;
+                                           
+                                           rdfs:comment "A temporal interval or instant."@en .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000013
+
+<http://www.w3.org/2006/time#TIME:0000013> rdf:type owl:Class ;
+                                           
+                                           rdfs:label "Time instant"@en ;
+                                           
+                                           rdfs:subClassOf <http://www.w3.org/2006/time#TIME:0000012> ;
+                                           
+                                           owl:disjointWith <http://www.w3.org/2006/time#TIME:0000015> ;
+                                           
+                                           rdfs:comment "A temporal entity with zero extent or duration"@en .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000014
+
+<http://www.w3.org/2006/time#TIME:0000014> rdf:type owl:Class ;
+                                           
+                                           rdfs:label "Time interval"@en ;
+                                           
+                                           rdfs:subClassOf <http://www.w3.org/2006/time#TIME:0000012> ;
+                                           
+                                           rdfs:comment "A temporal entity with an extent or duration"@en .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000015
+
+<http://www.w3.org/2006/time#TIME:0000015> rdf:type owl:Class ;
+                                           
+                                           rdfs:label "Proper interval"@en ;
+                                           
+                                           rdfs:subClassOf <http://www.w3.org/2006/time#TIME:0000014> ;
+                                           
+                                           rdfs:comment "A temporal entity with non-zero extent or duration, i.e. for which the value of the beginning and end are different"@en .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000016
+
+<http://www.w3.org/2006/time#TIME:0000016> rdf:type owl:Class ;
+                                           
+                                           rdfs:label "Date-Time interval"@en ;
+                                           
+                                           rdfs:subClassOf <http://www.w3.org/2006/time#TIME:0000015> ;
+                                           
+                                           rdfs:comment "DateTimeInterval is a subclass of ProperInterval, defined using the multi-element DateTimeDescription."@en .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000017
+
+<http://www.w3.org/2006/time#TIME:0000017> rdf:type owl:Class ;
+                                           
+                                           rdfs:label "Temporal position"@en ;
+                                           
+                                           rdfs:subClassOf <http://www.w3.org/2006/time#TIME:0000002> ,
+                                                           [ rdf:type owl:Class ;
+                                                             owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000063> ;
+                                                                             owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000065> ;
+                                                                             owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                                           ]
+                                                                         )
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty <http://www.w3.org/2006/time#TIME:0000046> ;
+                                                             owl:cardinality "1"^^xsd:nonNegativeInteger
+                                                           ] ;
+                                           
+                                           rdfs:comment "A temporal position described using either a (nominal) value from an ordinal reference system, or a (numeric) value in a temporal coordinate system. "@en .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000018
+
+<http://www.w3.org/2006/time#TIME:0000018> rdf:type owl:Class ;
+                                           
+                                           rdfs:label "Temporal Reference System"@en ;
+                                           
+                                           rdfs:subClassOf <http://www.w3.org/2006/time#TIME:0000002> ;
+                                           
+                                           rdfs:comment """A temporal reference system, such as a temporal coordinate system (with an origin, direction, and scale), a calendar-clock combination, or a (possibly hierarchical) ordinal system. 
+
+This is a stub class, representing the set of all temporal reference systems."""@en .
+
+
+
+###  http://www.w3.org/2006/time#TIME:0000019
+
+<http://www.w3.org/2006/time#TIME:0000019> rdf:type owl:Class ;
+                                           
+                                           rdfs:label "Temporal unit"@en ;
+                                           
+                                           rdfs:subClassOf <http://www.w3.org/2006/time#TIME:0000002> ;
+                                           
+                                           rdfs:comment "A temporal unit of measure, which provides a scale factor for a time quantity."@en ;
+                                           
+                                           skos:changeNote """Remove enumeration from definition, in order to allow other units to be used when required in other coordinate systems. 
+NOTE: existing units are still present as members of the class, but the class membership is now open. 
+
+In the original OWL-Time the following constraint appeared: 
+  owl:oneOf (
+      time:unitSecond
+      time:unitMinute
+      time:unitHour
+      time:unitDay
+      time:unitWeek
+      time:unitMonth
+      time:unitYear
+    ) ;"""@en .
+
+
+
+###  http://www.w3.org/2006/time#Year
+
+:Year rdf:type owl:Class ;
+      
+      rdfs:subClassOf <http://www.w3.org/2006/time#TIME:0000007> ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty <http://www.w3.org/2006/time#TIME:0000069> ;
+                        owl:cardinality "0"^^xsd:nonNegativeInteger
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty <http://www.w3.org/2006/time#TIME:0000067> ;
+                        owl:cardinality "0"^^xsd:nonNegativeInteger
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty <http://www.w3.org/2006/time#TIME:0000071> ;
+                        owl:cardinality "1"^^xsd:nonNegativeInteger
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty <http://www.w3.org/2006/time#TIME:0000060> ;
+                        owl:cardinality "0"^^xsd:nonNegativeInteger
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty <http://www.w3.org/2006/time#TIME:0000062> ;
+                        owl:cardinality "0"^^xsd:nonNegativeInteger
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty <http://www.w3.org/2006/time#TIME:0000056> ;
+                        owl:cardinality "0"^^xsd:nonNegativeInteger
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty <http://www.w3.org/2006/time#TIME:0000053> ;
+                        owl:cardinality "0"^^xsd:nonNegativeInteger
+                      ] ;
+      
+      rdfs:comment "Deprecated because it is only an orphaned example from the 2006 draft"^^xsd:string ,
+                   "Duration year, not a calendar year!"^^xsd:string ;
+      
+      owl:deprecated "true"^^xsd:boolean .
+
+
+
+###  http://www.w3.org/2006/timezone#TIME:0000021
+
+<http://www.w3.org/2006/timezone#TIME:0000021> rdf:type owl:Class ;
+                                               
+                                               rdfs:label "TimeZone" ;
+                                               
+                                               rdfs:subClassOf <http://www.w3.org/2006/time#TIME:0000002> .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://www.opengis.net/def/uom/ISO-8601/0/Gregorian
+
+<http://www.opengis.net/def/uom/ISO-8601/0/Gregorian> rdf:type owl:NamedIndividual .
+
+
+
+###  http://www.w3.org/2006/time#Friday
+
+:Friday rdf:type owl:NamedIndividual ,
+                 <http://www.w3.org/2006/time#TIME:0000003> ;
+        
+        rdfs:label "Friday"@en .
+
+
+
+###  http://www.w3.org/2006/time#Monday
+
+:Monday rdf:type owl:NamedIndividual ,
+                 <http://www.w3.org/2006/time#TIME:0000003> ;
+        
+        rdfs:label "Monday"@en .
+
+
+
+###  http://www.w3.org/2006/time#Saturday
+
+:Saturday rdf:type owl:NamedIndividual ,
+                   <http://www.w3.org/2006/time#TIME:0000003> ;
+          
+          rdfs:label "Saturday"@en .
+
+
+
+###  http://www.w3.org/2006/time#Sunday
+
+:Sunday rdf:type owl:NamedIndividual ,
+                 <http://www.w3.org/2006/time#TIME:0000003> ;
+        
+        rdfs:label "Sunday"@en .
+
+
+
+###  http://www.w3.org/2006/time#Thursday
+
+:Thursday rdf:type owl:NamedIndividual ,
+                   <http://www.w3.org/2006/time#TIME:0000003> ;
+          
+          rdfs:label "Thursday"@en .
+
+
+
+###  http://www.w3.org/2006/time#Tuesday
+
+:Tuesday rdf:type owl:NamedIndividual ,
+                  <http://www.w3.org/2006/time#TIME:0000003> ;
+         
+         rdfs:label "Tuesday"@en .
+
+
+
+###  http://www.w3.org/2006/time#Wednesday
+
+:Wednesday rdf:type owl:NamedIndividual ,
+                    <http://www.w3.org/2006/time#TIME:0000003> ;
+           
+           rdfs:label "Wednesday"@en .
+
+
+
+###  http://www.w3.org/2006/time#unitDay
+
+:unitDay rdf:type owl:NamedIndividual ,
+                  <http://www.w3.org/2006/time#TIME:0000019> ;
+         
+         rdfs:label "Day (unit of temporal duration)"@en .
+
+
+
+###  http://www.w3.org/2006/time#unitHour
+
+:unitHour rdf:type owl:NamedIndividual ,
+                   <http://www.w3.org/2006/time#TIME:0000019> ;
+          
+          rdfs:label "Hour (unit of temporal duration)"@en .
+
+
+
+###  http://www.w3.org/2006/time#unitMinute
+
+:unitMinute rdf:type owl:NamedIndividual ,
+                     <http://www.w3.org/2006/time#TIME:0000019> ;
+            
+            rdfs:label "Minute (unit of temporal duration)"@en .
+
+
+
+###  http://www.w3.org/2006/time#unitMonth
+
+:unitMonth rdf:type owl:NamedIndividual ,
+                    <http://www.w3.org/2006/time#TIME:0000019> ;
+           
+           rdfs:label "Month (unit of temporal duration)"@en .
+
+
+
+###  http://www.w3.org/2006/time#unitSecond
+
+:unitSecond rdf:type owl:NamedIndividual ,
+                     <http://www.w3.org/2006/time#TIME:0000019> ;
+            
+            rdfs:label "Second (unit of temporal duration)"@en .
+
+
+
+###  http://www.w3.org/2006/time#unitWeek
+
+:unitWeek rdf:type owl:NamedIndividual ,
+                   <http://www.w3.org/2006/time#TIME:0000019> ;
+          
+          rdfs:label "Week (unit of temporal duration)"@en .
+
+
+
+###  http://www.w3.org/2006/time#unitYear
+
+:unitYear rdf:type owl:NamedIndividual ,
+                   <http://www.w3.org/2006/time#TIME:0000019> ;
+          
+          rdfs:label "Year (unit of temporal duration)"@en .
+
+
+
+[ dct:identifier <http://orcid.org/0000-0002-3884-3420> ;
+  foaf:mbox <mailto:simon.cox@csiro.au>
+] .
+[ foaf:mbox <mailto:panfeng66@gmail.com>
+] .
+[ foaf:isPrimaryTopicOf <https://en.wikipedia.org/wiki/Jerry_Hobbs>
+] .
+
+
+#################################################################
+#
+#    Annotations
+#
+#################################################################
+
+
+<http://purl.org/dc/elements/1.1/format> rdfs:label "Format"@en ;
+                                         
+                                         dct:issued "1999-07-02"^^xsd:date ;
+                                         
+                                         dct:modified "2008-01-14"^^xsd:date ;
+                                         
+                                         skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en ;
+                                         
+                                         dct:description "Examples of dimensions include size and duration. Recommended best practice is to use a controlled vocabulary such as the list of Internet Media Types [MIME]."@en ;
+                                         
+                                         rdfs:comment "The file format, physical medium, or dimensions of the resource."@en ;
+                                         
+                                         dct:hasVersion <http://dublincore.org/usage/terms/history/#format-007> ;
+                                         
+                                         rdfs:isDefinedBy <http://purl.org/dc/elements/1.1/> .
+
+
+
+<http://purl.org/dc/elements/1.1/creator> rdfs:label "Creator"@en ;
+                                          
+                                          dct:issued "1999-07-02"^^xsd:date ;
+                                          
+                                          dct:modified "2008-01-14"^^xsd:date ;
+                                          
+                                          skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en ;
+                                          
+                                          rdfs:comment "An entity primarily responsible for making the resource."@en ;
+                                          
+                                          dct:description "Examples of a Creator include a person, an organization, or a service. Typically, the name of a Creator should be used to indicate the entity."@en ;
+                                          
+                                          dct:hasVersion <http://dublincore.org/usage/terms/history/#creator-006> ;
+                                          
+                                          rdfs:isDefinedBy <http://purl.org/dc/elements/1.1/> .
+
+
+
+<http://purl.org/dc/elements/1.1/description> rdfs:label "Description"@en ;
+                                              
+                                              dct:issued "1999-07-02"^^xsd:date ;
+                                              
+                                              dct:modified "2008-01-14"^^xsd:date ;
+                                              
+                                              skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en ;
+                                              
+                                              rdfs:comment "An account of the resource."@en ;
+                                              
+                                              dct:description "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."@en ;
+                                              
+                                              dct:hasVersion <http://dublincore.org/usage/terms/history/#description-006> ;
+                                              
+                                              rdfs:isDefinedBy <http://purl.org/dc/elements/1.1/> .
+
+
+
+<http://purl.org/dc/elements/1.1/contributor> rdfs:label "Contributor"@en ;
+                                              
+                                              dct:issued "1999-07-02"^^xsd:date ;
+                                              
+                                              dct:modified "2008-01-14"^^xsd:date ;
+                                              
+                                              skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en ;
+                                              
+                                              rdfs:comment "An entity responsible for making contributions to the resource."@en ;
+                                              
+                                              dct:description "Examples of a Contributor include a person, an organization, or a service. Typically, the name of a Contributor should be used to indicate the entity."@en ;
+                                              
+                                              dct:hasVersion <http://dublincore.org/usage/terms/history/#contributor-006> ;
+                                              
+                                              rdfs:isDefinedBy <http://purl.org/dc/elements/1.1/> .
+
+
+
+<http://purl.org/dc/elements/1.1/language> rdfs:label "Language"@en ;
+                                           
+                                           dct:issued "1999-07-02"^^xsd:date ;
+                                           
+                                           dct:modified "2008-01-14"^^xsd:date ;
+                                           
+                                           rdfs:comment "A language of the resource."@en ;
+                                           
+                                           skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en ;
+                                           
+                                           dct:description "Recommended best practice is to use a controlled vocabulary such as RFC 4646 [RFC4646]."@en ;
+                                           
+                                           dct:hasVersion <http://dublincore.org/usage/terms/history/#language-007> ;
+                                           
+                                           rdfs:isDefinedBy <http://purl.org/dc/elements/1.1/> ;
+                                           
+                                           rdfs:seeAlso <http://www.ietf.org/rfc/rfc4646.txt> .
+
+
+
+<http://purl.org/dc/elements/1.1/identifier> rdfs:label "Identifier"@en ;
+                                             
+                                             dct:issued "1999-07-02"^^xsd:date ;
+                                             
+                                             dct:modified "2008-01-14"^^xsd:date ;
+                                             
+                                             skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en ;
+                                             
+                                             rdfs:comment "An unambiguous reference to the resource within a given context."@en ;
+                                             
+                                             dct:description "Recommended best practice is to identify the resource by means of a string conforming to a formal identification system. "@en ;
+                                             
+                                             dct:hasVersion <http://dublincore.org/usage/terms/history/#identifier-006> ;
+                                             
+                                             rdfs:isDefinedBy <http://purl.org/dc/elements/1.1/> .
+
+
+
+<http://purl.org/dc/elements/1.1/> dct:modified "2012-06-14"^^xsd:date ;
+                                   
+                                   dct:title "Dublin Core Metadata Element Set, Version 1.1"@en ;
+                                   
+                                   dct:publisher <http://purl.org/dc/aboutdcmi#DCMI> .
+
+
+
+<http://purl.org/dc/elements/1.1/publisher> rdfs:label "Publisher"@en ;
+                                            
+                                            dct:issued "1999-07-02"^^xsd:date ;
+                                            
+                                            dct:modified "2008-01-14"^^xsd:date ;
+                                            
+                                            skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en ;
+                                            
+                                            rdfs:comment "An entity responsible for making the resource available."@en ;
+                                            
+                                            dct:description "Examples of a Publisher include a person, an organization, or a service. Typically, the name of a Publisher should be used to indicate the entity."@en ;
+                                            
+                                            dct:hasVersion <http://dublincore.org/usage/terms/history/#publisher-006> ;
+                                            
+                                            rdfs:isDefinedBy <http://purl.org/dc/elements/1.1/> .
+
+
+
+<http://purl.org/dc/elements/1.1/source> rdfs:label "Source"@en ;
+                                         
+                                         dct:issued "1999-07-02"^^xsd:date ;
+                                         
+                                         dct:modified "2008-01-14"^^xsd:date ;
+                                         
+                                         rdfs:comment "A related resource from which the described resource is derived."@en ;
+                                         
+                                         skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en ;
+                                         
+                                         dct:description "The described resource may be derived from the related resource in whole or in part. Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system."@en ;
+                                         
+                                         dct:hasVersion <http://dublincore.org/usage/terms/history/#source-006> ;
+                                         
+                                         rdfs:isDefinedBy <http://purl.org/dc/elements/1.1/> .
+
+
+
+<http://purl.org/dc/elements/1.1/rights> rdfs:label "Rights"@en ;
+                                         
+                                         dct:issued "1999-07-02"^^xsd:date ;
+                                         
+                                         dct:modified "2008-01-14"^^xsd:date ;
+                                         
+                                         skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en ;
+                                         
+                                         rdfs:comment "Information about rights held in and over the resource."@en ;
+                                         
+                                         dct:description "Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights."@en ;
+                                         
+                                         dct:hasVersion <http://dublincore.org/usage/terms/history/#rights-006> ;
+                                         
+                                         rdfs:isDefinedBy <http://purl.org/dc/elements/1.1/> .
+
+
+
+<http://purl.org/dc/elements/1.1/coverage> rdfs:label "Coverage"@en ;
+                                           
+                                           dct:issued "1999-07-02"^^xsd:date ;
+                                           
+                                           dct:modified "2008-01-14"^^xsd:date ;
+                                           
+                                           skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en ;
+                                           
+                                           dct:description "Spatial topic and spatial applicability may be a named place or a location specified by its geographic coordinates. Temporal topic may be a named period, date, or date range. A jurisdiction may be a named administrative entity or a geographic place to which the resource applies. Recommended best practice is to use a controlled vocabulary such as the Thesaurus of Geographic Names [TGN]. Where appropriate, named places or time periods can be used in preference to numeric identifiers such as sets of coordinates or date ranges."@en ;
+                                           
+                                           rdfs:comment "The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant."@en ;
+                                           
+                                           dct:hasVersion <http://dublincore.org/usage/terms/history/#coverage-006> ;
+                                           
+                                           rdfs:isDefinedBy <http://purl.org/dc/elements/1.1/> .
+
+
+
+<http://purl.org/dc/elements/1.1/subject> rdfs:label "Subject"@en ;
+                                          
+                                          dct:issued "1999-07-02"^^xsd:date ;
+                                          
+                                          dct:modified "2012-06-14"^^xsd:date ;
+                                          
+                                          skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en ;
+                                          
+                                          rdfs:comment "The topic of the resource."@en ;
+                                          
+                                          dct:description "Typically, the subject will be represented using keywords, key phrases, or classification codes. Recommended best practice is to use a controlled vocabulary."@en ;
+                                          
+                                          dct:hasVersion <http://dublincore.org/usage/terms/history/#subject-007> ;
+                                          
+                                          rdfs:isDefinedBy <http://purl.org/dc/elements/1.1/> .
+
+
+
+<http://purl.org/dc/elements/1.1/type> rdfs:label "Type"@en ;
+                                       
+                                       dct:issued "1999-07-02"^^xsd:date ;
+                                       
+                                       dct:modified "2008-01-14"^^xsd:date ;
+                                       
+                                       skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en ;
+                                       
+                                       dct:description "Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element."@en ;
+                                       
+                                       rdfs:comment "The nature or genre of the resource."@en ;
+                                       
+                                       dct:hasVersion <http://dublincore.org/usage/terms/history/#type-006> ;
+                                       
+                                       rdfs:isDefinedBy <http://purl.org/dc/elements/1.1/> .
+
+
+
+<http://purl.org/dc/elements/1.1/date> rdfs:label "Date"@en ;
+                                       
+                                       dct:issued "1999-07-02"^^xsd:date ;
+                                       
+                                       dct:modified "2008-01-14"^^xsd:date ;
+                                       
+                                       rdfs:comment "A point or period of time associated with an event in the lifecycle of the resource."@en ;
+                                       
+                                       skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en ;
+                                       
+                                       dct:description "Date may be used to express temporal information at any level of granularity.  Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF]."@en ;
+                                       
+                                       dct:hasVersion <http://dublincore.org/usage/terms/history/#date-006> ;
+                                       
+                                       rdfs:isDefinedBy <http://purl.org/dc/elements/1.1/> .
+
+
+
+<http://purl.org/dc/elements/1.1/relation> rdfs:label "Relation"@en ;
+                                           
+                                           dct:issued "1999-07-02"^^xsd:date ;
+                                           
+                                           dct:modified "2008-01-14"^^xsd:date ;
+                                           
+                                           rdfs:comment "A related resource."@en ;
+                                           
+                                           skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en ;
+                                           
+                                           dct:description "Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system. "@en ;
+                                           
+                                           dct:hasVersion <http://dublincore.org/usage/terms/history/#relation-006> ;
+                                           
+                                           rdfs:isDefinedBy <http://purl.org/dc/elements/1.1/> .
+
+
+
+<http://purl.org/dc/elements/1.1/title> rdfs:label "Title"@en ;
+                                        
+                                        dct:issued "1999-07-02"^^xsd:date ;
+                                        
+                                        dct:modified "2008-01-14"^^xsd:date ;
+                                        
+                                        rdfs:comment "A name given to the resource."@en ;
+                                        
+                                        skos:note "A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."@en ;
+                                        
+                                        dct:hasVersion <http://dublincore.org/usage/terms/history/#title-006> ;
+                                        
+                                        rdfs:isDefinedBy <http://purl.org/dc/elements/1.1/> .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

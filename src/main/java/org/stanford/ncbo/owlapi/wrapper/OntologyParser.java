@@ -31,6 +31,7 @@ import java.util.*;
 
 public class OntologyParser {
 	private final static Logger log = LoggerFactory.getLogger(OntologyParser.class.getName());
+	public static final String USE_IMPORTS_IRI = "http://omv.ontoware.org/2005/05/ontology#useImports";
 	public static final String VERSION_SUBJECT = "http://bioportal.bioontology.org/ontologies/versionSubject";
 
 	protected ParserInvocation parserInvocation = null;
@@ -170,6 +171,33 @@ public class OntologyParser {
 	}
 
 	/**
+	 * Get ontology imports and them to <ONTOLOGY_URI>
+	 * omv:useImports <import_URI>
+	 *
+	 * @param fact
+	 * @param sourceOnt
+	 */
+	private void addOntologyImports(OWLDataFactory fact, OWLOntology sourceOnt){
+		Optional<IRI> sub = sourceOnt.getOntologyID().getOntologyIRI();
+
+		if(!sub.isPresent()){
+            return;
+        }
+
+		IRI ontologyIRI = sub.get();
+
+		// Get imports and add them as omv:useImports
+		OWLAnnotationProperty useImportProp = fact.getOWLAnnotationProperty(IRI.create(USE_IMPORTS_IRI));
+		for (OWLOntology imported : sourceOnt.getImports()) {
+			if (!imported.getOntologyID().isAnonymous()) {
+				log.info("useImports: " + imported.getOntologyID().getOntologyIRI().get());
+				OWLAnnotationAssertionAxiom useImportAxiom = fact.getOWLAnnotationAssertionAxiom(useImportProp, ontologyIRI, imported.getOntologyID().getOntologyIRI().get());
+				this.targetOwlManager.addAxiom(targetOwlOntology, useImportAxiom);
+			}
+		}
+	}
+
+	/**
 	 * Copies ontology-level annotation axioms from the source ontology to the target ontology.
 	 * <p>
 	 * Checks for the owl#versionInfo property. If found, adds a BioPortal-specific "versionSubject"
@@ -188,6 +216,7 @@ public class OntologyParser {
 		}
 
 		for (OWLAnnotation annotation : sourceOntology.getAnnotations()) {
+
 			IRI subjectIRI = ontologyID.getOntologyIRI().get();
 			OWLAnnotationProperty annotationProperty = annotation.getProperty();
 			OWLAnnotationValue annotationValue = annotation.getValue();
@@ -212,6 +241,7 @@ public class OntologyParser {
 		try {
 			targetOwlOntology = targetOwlManager.createOntology();
 			addOntologyIRI(masterOntology);
+			addOntologyImports(fact, masterOntology);
 		} catch (OWLOntologyCreationException e) {
 			log.error(e.getMessage());
 			parserLog.addError(ParserError.OWL_CREATE_ONTOLOGY_EXCEPTION, "Error buildOWLOntology" + e.getMessage());
@@ -232,51 +262,52 @@ public class OntologyParser {
 
 			boolean isPrefixedOWL = sourceOwlManager.getOntologyFormat(sourceOnt).isPrefixOWLOntologyFormat();
 			log.info("isPrefixOWLOntologyFormat: {}", isPrefixedOWL);
-			if (isPrefixedOWL == true && !isOBO) {
+			if (isPrefixedOWL && !isOBO) {
 				generateSKOSInOwl(allAxioms, fact, sourceOnt);
 			}
 		}
 
-		targetOwlManager.addAxioms(targetOwlOntology, allAxioms);
-		for (OWLAnnotation ann : targetOwlOntology.getAnnotations()) {
+
+        targetOwlManager.addAxioms(targetOwlOntology, allAxioms);
+        for (OWLAnnotation ann : targetOwlOntology.getAnnotations()) {
+            AddOntologyAnnotation addAnn = new AddOntologyAnnotation(targetOwlOntology, ann);
+            targetOwlManager.applyChange(addAnn);
+        }
+
+        if (isOBO) {
+            String oboVersion = parserInvocation.getOBOVersion();
+            if (oboVersion != null) {
+                log.info("Adding version: {}", oboVersion);
+                OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
+                IRI versionSubjectIRI = IRI.create(VERSION_SUBJECT);
+                OWLAnnotationAssertionAxiom annVersion = fact.getOWLAnnotationAssertionAxiom(prop, versionSubjectIRI, fact.getOWLLiteral(oboVersion));
+                targetOwlManager.addAxiom(targetOwlOntology, annVersion);
+            }
+        }
+
+		addOntologyAnnotations(masterOntology);
+        escapeXMLLiterals(targetOwlOntology);
+
+        OWLReasonerFactory reasonerFactory = new StructuralReasonerFactory();
+        OWLReasoner reasoner = reasonerFactory.createReasoner(targetOwlOntology);
+        InferredSubClassAxiomGenerator isc = new InferredSubClassAxiomGenerator();
+        Set<OWLSubClassOfAxiom> subAxs = isc.createAxioms(targetOwlOntology.getOWLOntologyManager().getOWLDataFactory(), reasoner);
+        targetOwlManager.addAxioms(targetOwlOntology, subAxs);
+        deprecateBranch();
+
+        log.info("isOBO: {}", isOBO);
+        if (isOBO) {
+            replicateHierarchyAsTreeview(fact);
+        }
+        return true;
+    }
+
+	private void addOntologyAnnotations(OWLOntology masterOntology){
+		for (OWLAnnotation ann : masterOntology.getAnnotations()) {
 			AddOntologyAnnotation addAnn = new AddOntologyAnnotation(targetOwlOntology, ann);
 			targetOwlManager.applyChange(addAnn);
 		}
-
-		if (isOBO) {
-			String oboVersion = parserInvocation.getOBOVersion();
-			if (oboVersion != null) {
-				log.info("Adding version: {}", oboVersion);
-				OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create(OWLRDFVocabulary.OWL_VERSION_INFO.toString()));
-				IRI versionSubjectIRI = IRI.create(VERSION_SUBJECT);
-				OWLAnnotationAssertionAxiom annVersion = fact.getOWLAnnotationAssertionAxiom(prop, versionSubjectIRI, fact.getOWLLiteral(oboVersion));
-				targetOwlManager.addAxiom(targetOwlOntology, annVersion);
-			}
-		}
-
-		for (OWLOntology sourceOnt : sourceOwlManager.getOntologies()) {
-			for (OWLAnnotation ann : sourceOnt.getAnnotations()) {
-				AddOntologyAnnotation addAnn = new AddOntologyAnnotation(targetOwlOntology, ann);
-				targetOwlManager.applyChange(addAnn);
-			}
-		}
-
-		escapeXMLLiterals(targetOwlOntology);
-
-		OWLReasonerFactory reasonerFactory = new StructuralReasonerFactory();
-		OWLReasoner reasoner = reasonerFactory.createReasoner(targetOwlOntology);
- 		InferredSubClassAxiomGenerator isc = new InferredSubClassAxiomGenerator();
-		Set<OWLSubClassOfAxiom> subAxs = isc.createAxioms(targetOwlOntology.getOWLOntologyManager().getOWLDataFactory(), reasoner);
-		targetOwlManager.addAxioms(targetOwlOntology, subAxs);
-		deprecateBranch();
-
-		log.info("isOBO: {}", isOBO);
-		if (isOBO) {
-			replicateHierarchyAsTreeview(fact);
-		}
-		return true;
 	}
-
 	private void replicateHierarchyAsTreeview(OWLDataFactory fact) {
 		Set<OWLAxiom> treeViewAxs = new HashSet<OWLAxiom>();
 		for (OWLAxiom axiom : targetOwlOntology.getAxioms()) {
@@ -449,7 +480,7 @@ public class OntologyParser {
 							targetOwlManager.addAxiom(target, annAsse);
 							Set<OWLAnnotationAssertionAxiom> del = new HashSet<OWLAnnotationAssertionAxiom>();
 							del.add(ann);
-							targetOwlManager.removeAxioms(target,del); 
+							targetOwlManager.removeAxioms(target,del);
 						}
 					}
 				}

@@ -1,0 +1,1825 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
+    <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
+    <!ENTITY swrla "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#" >
+    <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.owl-ontologies.com/Ontology1435740495.owl#"
+     xml:base="http://www.owl-ontologies.com/Ontology1435740495.owl"
+     xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+    <owl:Ontology rdf:about="http://www.owl-ontologies.com/OntoFood.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="&swrla;isRuleEnabled"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Alcoholic_beverage -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Alcoholic_beverage">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_group"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Ananas -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Ananas">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fruits"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Anchovies -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Anchovies">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fishery_products"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Animal_source -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Animal_source">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Protein"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Appetizer -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Appetizer">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Alcoholic_beverage"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Apple -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Apple">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fruits"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Apricots -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Apricots">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fruits"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Artichokes -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Artichokes">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Asparagus -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Asparagus">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Babà -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Babà">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Desserts"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Bacon -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Bacon">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meat_processed"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Baked_Food_item -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Baked_Food_item">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_item"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Banana -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Banana">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fruits"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Basil -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Basil">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Beans -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Beans">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Legumes"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Beer -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Beer">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Alcoholic_beverage"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Big_burger -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Big_burger">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fast_food_meat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Biotin -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Biotin">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Water_soluble"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Biscuits -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Biscuits">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Cereals_and_derivatives"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Boiled -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Boiled">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Rice"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Borlotti -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Borlotti">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Beans"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Brain -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Brain">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Offal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Brandy -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Brandy">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Alcoholic_beverage"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Bread -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Bread">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Cereals_and_derivatives"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Breakfast -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Breakfast">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Bresaola -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Bresaola">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meat_processed"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Brie -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Brie">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Cheeses"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Broccoli -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Broccoli">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Bufala_mozzarella -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Bufala_mozzarella">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Cheeses"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Butter -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Butter">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Oils"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Calcium -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Calcium">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Mineral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Cannellini -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Cannellini">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Beans"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Cannoli -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Cannoli">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Desserts"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Carbohydrates -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Carbohydrates">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Macronutrient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Carrots -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Carrots">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Cellulose -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Cellulose">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#NotHydrosoluble"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Cereals_and_derivatives -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Cereals_and_derivatives">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_group"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Cheddar -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Cheddar">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Cheeses"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Cheese_burger -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Cheese_burger">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fast_food_meat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Cheeses -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Cheeses">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_group"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Cherries -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Cherries">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fruits"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Chestnuts -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Chestnuts">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fruits"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Chicken -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Chicken">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meat_fresh"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Chickpeas -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Chickpeas">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Legumes"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Chicory -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Chicory">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Chloride -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Chloride">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Mineral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Chocolate -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Chocolate">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Desserts"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Clam -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Clam">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fishery_products"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Complex -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Complex">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Carbohydrates"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Copper -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Copper">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Mineral_oligo"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Croissant -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Croissant">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Cereals_and_derivatives"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Cucumber -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Cucumber">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Desserts -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Desserts">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_group"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Dinner -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Dinner">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Disaccharides -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Disaccharides">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Simple"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Duck_Eggs -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Duck_Eggs">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Eggs"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Egg_pasta -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Egg_pasta">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Pasta"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Eggplant -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Eggplant">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Eggs -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Eggs">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_group"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Emmenthal -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Emmenthal">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Cheeses"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Fast_food_meat -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Fast_food_meat">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_group"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Fat -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Fat">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Macronutrient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Fat_soluble -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Fat_soluble">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Vitamin"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Fennel -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Fennel">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Feta -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Feta">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Cheeses"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Fiber -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Fiber">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Polysaccharides"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Figs -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Figs">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fruits"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Fishery_products -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Fishery_products">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_group"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Folate -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Folate">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Water_soluble"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Food -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Food"/>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Food_group -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Food_group">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Food_item -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Food_item">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Fructose -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Fructose">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Monosaccharides"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Fruits -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Fruits">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_group"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Galactose -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Galactose">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Monosaccharides"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Garlic -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Garlic">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Glucose -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Glucose">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Monosaccharides"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Golden -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Golden">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Apple"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Granny_smith -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Granny_smith">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Apple"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Green_chicory -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Green_chicory">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Chicory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_group"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Grilled_Food_item -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Grilled_Food_item">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_item"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Guinea_fowl -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Guinea_fowl">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meat_fresh"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Hake -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Hake">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fishery_products"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Ham_steak -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Ham_steak">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meat_processed"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Hamburger -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Hamburger">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fast_food_meat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Hazelnuts_cream -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Hazelnuts_cream">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Desserts"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Hearth -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Hearth">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Offal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Heavy -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Heavy">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Pork"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Hen -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Hen">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meat_fresh"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Hen_Eggs -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Hen_Eggs">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Eggs"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#HydroSoluble -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#HydroSoluble">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fiber"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#In_the_pan_Food_item -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#In_the_pan_Food_item">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_item"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Integral -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Integral">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Rice"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Integral_pasta -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Integral_pasta">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Pasta"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Invidia -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Invidia">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Iodine -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Iodine">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Mineral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Iron -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Iron">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Mineral_oligo"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Kidney -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Kidney">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Offal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Lactose -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Lactose">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Disaccharides"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Lamb -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Lamb">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meat_fresh"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Lard -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Lard">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Oils"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Lattuga -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Lattuga">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Legumes -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Legumes">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_group"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Lentils -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Lentils">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Legumes"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Light -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Light">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Pork"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Liver -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Liver">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Offal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Lunch -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Lunch">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Macronutrient -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Macronutrient">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Material_nutrient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Magnesium -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Magnesium">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Mineral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Maltose -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Maltose">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Disaccharides"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Manganese -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Manganese">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Mineral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Material_nutrient -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Material_nutrient"/>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Meal -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Meal"/>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Meat_fresh -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Meat_fresh">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_group"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Meat_processed -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Meat_processed">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_group"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Micronutrient -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Micronutrient">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Material_nutrient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Milk -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Milk">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Milk_and_yogurt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Milk_and_yogurt -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Milk_and_yogurt">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_group"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Mineral -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Mineral">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Macronutrient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Mineral_oligo -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Mineral_oligo">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Micronutrient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Mixed_frozen_vegetables -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Mixed_frozen_vegetables">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Mono -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Mono">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Unsaturated"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Monosaccharides -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Monosaccharides">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Simple"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Mortadella -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Mortadella">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meat_processed"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Mushrooms -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Mushrooms">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#NotHydrosoluble -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#NotHydrosoluble">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fiber"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Offal -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Offal">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_group"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Oils -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Oils">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_group"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Onion -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Onion">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Orange -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Orange">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fruits"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Pantothenic_acid -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Pantothenic_acid">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Water_soluble"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Parboiled -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Parboiled">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Rice"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Parmigiano -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Parmigiano">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Cheeses"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Partially_skimmed -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Partially_skimmed">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Milk"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Pasta -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Pasta">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Cereals_and_derivatives"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Peach -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Peach">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fruits"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Peas -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Peas">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Legumes"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Pecorino -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Pecorino">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Cheeses"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Pepperoni -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Pepperoni">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Phosphorus -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Phosphorus">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Mineral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Pizza -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Pizza">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Cereals_and_derivatives"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Poly -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Poly">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Unsaturated"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Polysaccharides -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Polysaccharides">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Complex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Pork -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Pork">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meat_fresh"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Potassium -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Potassium">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Mineral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Potatoes -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Potatoes">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Prawn -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Prawn">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fishery_products"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Protein -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Protein">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Macronutrient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Puffed -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Puffed">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Rice"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Rabbit -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Rabbit">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meat_fresh"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Raw_Food_item -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Raw_Food_item">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_item"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Raw_ham -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Raw_ham">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meat_processed"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Red_chicory -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Red_chicory">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Chicory"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Red_wine -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Red_wine">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Wine"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Renette -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Renette">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Apple"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Rice -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Rice">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Cereals_and_derivatives"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Ricotta -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Ricotta">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Cheeses"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Rocket_salad -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Rocket_salad">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Salami -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Salami">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meat_processed"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Salmon -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Salmon">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fishery_products"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Saturated -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Saturated">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Sausage -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Sausage">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meat_processed"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Scamorza -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Scamorza">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Cheeses"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Sea_bass -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Sea_bass">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fishery_products"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Sea_bream -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Sea_bream">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fishery_products"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Selenium -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Selenium">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Mineral_oligo"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Semolinat_pasta -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Semolinat_pasta">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Pasta"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Simil_bounty -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Simil_bounty">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Desserts"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Simple -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Simple">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Carbohydrates"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Skimmed -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Skimmed">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Milk"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Snack -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Snack">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Sodium -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Sodium">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Mineral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Sole -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Sole">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fishery_products"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Speak -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Speak">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meat_processed"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Spinach -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Spinach">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Squid -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Squid">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fishery_products"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Starches -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Starches">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Polysaccharides"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Steamed_Food_item -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Steamed_Food_item">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Food_item"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Stracchino -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Stracchino">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Cheeses"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Strawberry -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Strawberry">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fruits"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Sucrose -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Sucrose">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Disaccharides"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Tart -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Tart">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Desserts"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Tomatoes -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Tomatoes">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Truffle -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Truffle">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Tuna -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Tuna">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fishery_products"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Turkey -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Turkey">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meat_fresh"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#UHT -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#UHT">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Milk"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Unsaturated -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Unsaturated">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Veal -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Veal">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meat_fresh"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Vegetal_oils -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Vegetal_oils">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Oils"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Vegetal_source -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Vegetal_source">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Protein"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Vitamin -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Vitamin">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Micronutrient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Vitamin_A -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Vitamin_A">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fat_soluble"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Vitamin_B -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Vitamin_B">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Water_soluble"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Vitamin_B1 -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Vitamin_B1">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Vitamin_B"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Vitamin_B12 -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Vitamin_B12">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Vitamin_B"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Vitamin_B2 -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Vitamin_B2">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Vitamin_B"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Vitamin_B6 -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Vitamin_B6">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Vitamin_B"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Vitamin_C -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Vitamin_C">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Water_soluble"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Vitamin_D -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Vitamin_D">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fat_soluble"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Vitamin_E -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Vitamin_E">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fat_soluble"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Vitamin_K -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Vitamin_K">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fat_soluble"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Vitamin_PP -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Vitamin_PP">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Water_soluble"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Water -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Water">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Material_nutrient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Water_soluble -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Water_soluble">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Vitamin"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Watermelon -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Watermelon">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Fruits"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Whisky -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Whisky">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Alcoholic_beverage"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#White -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#White">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Beans"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#White_wine -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#White_wine">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Wine"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Whole -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Whole">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Milk"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Wine -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Wine">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Alcoholic_beverage"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Wurstel -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Wurstel">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Meat_processed"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Yogurt -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Yogurt">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Milk_and_yogurt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Zinc -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Zinc">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Mineral_oligo"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#Zucchini -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#Zucchini">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Greens_and_Vegetables"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#from_milk_whole -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#from_milk_whole">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Yogurt"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/OntoFood.owl#from_milk_with_fruits -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/OntoFood.owl#from_milk_with_fruits">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntoFood.owl#Yogurt"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.owl-ontologies.com/GI_Very_Low">
+        <swrla:isRuleEnabled rdf:datatype="&xsd;boolean">true</swrla:isRuleEnabled>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.owl-ontologies.com/GI_Medium">
+        <swrla:isRuleEnabled rdf:datatype="&xsd;boolean">true</swrla:isRuleEnabled>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.owl-ontologies.com/GI_Low">
+        <swrla:isRuleEnabled rdf:datatype="&xsd;boolean">true</swrla:isRuleEnabled>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.owl-ontologies.com/GI_High">
+        <swrla:isRuleEnabled rdf:datatype="&xsd;boolean">true</swrla:isRuleEnabled>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
