@@ -376,6 +376,18 @@ public class OntologyParser {
 		}
 	}
 
+	/**
+	 * Generates identifier annotations for named classes in OWL ontologies.
+	 * <p>
+	 * Existing {@code skos:notation} annotations are preserved. If absent, {@code oboInOwl:id}
+	 * is copied into {@code skos:notation}. Otherwise, BioPortal {@code prefixIRI} metadata is
+	 * generated from the class IRI, using a prefixed form when available and the IRI short form
+	 * as a fallback.
+	 *
+	 * @param allAxioms the set of axioms being accumulated for the target ontology
+	 * @param fact the OWL data factory used to create annotation axioms
+	 * @param sourceOnt the source ontology whose class identifiers are being processed
+	 */
 	private void generateSKOSInOwl(Set<OWLAxiom> allAxioms, OWLDataFactory fact, OWLOntology sourceOnt) {
 		OWLDocumentFormat docFormat = this.sourceOwlManager.getOntologyFormat(sourceOnt);
 		PrefixDocumentFormat prefixFormat = docFormat.asPrefixOWLOntologyFormat();
