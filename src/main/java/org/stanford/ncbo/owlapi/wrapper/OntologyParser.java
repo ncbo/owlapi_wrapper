@@ -424,11 +424,12 @@ public class OntologyParser {
 						b.replace(ind, ind + 1, ":");
 						prefixIRI = b.toString();
 					}
-
-					OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/prefixIRI"));
-					OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, cls.getIRI(), fact.getOWLLiteral(prefixIRI));
-					allAxioms.add(annAsse);
+				} else {
+					prefixIRI = cls.getIRI().getShortForm();
 				}
+				OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(IRI.create("http://data.bioontology.org/metadata/prefixIRI"));
+				OWLAxiom annAsse = fact.getOWLAnnotationAssertionAxiom(prop, cls.getIRI(), fact.getOWLLiteral(prefixIRI));
+				allAxioms.add(annAsse);
 			}
 		}
 	}
