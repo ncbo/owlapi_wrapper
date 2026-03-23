@@ -15,7 +15,7 @@
   </organization>
   <licenses>
     <license>
-      <name>BSD 2-clause</name>
+      <name>BSD-2-Clause</name>
       <url>https://opensource.org/licenses/BSD-2-Clause</url>
       <distribution>manual</distribution>
     </license>
@@ -99,7 +99,7 @@
   </issueManagement>
 
   <properties>
-    <revision>1.4.3-SNAPSHOT</revision>
+    <revision>1.5.1-SNAPSHOT</revision>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -139,25 +139,19 @@
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-core</artifactId>
-      <version>1.4.14</version>
+      <version>1.5.32</version>
     </dependency>
 
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-      <version>1.4.14</version>
+      <version>1.5.32</version>
     </dependency>
 
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-csv</artifactId>
       <version>1.10.0</version>
-    </dependency>
-
-    <dependency>
-        <groupId>javax.xml.bind</groupId>
-        <artifactId>jaxb-api</artifactId>
-        <version>2.3.0</version>
     </dependency>
 
   </dependencies>
