@@ -1,0 +1,79 @@
+@prefix : <http://example.org/relations#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/relations> a owl:Ontology .
+
+# Non-OBO object properties (would be dropped by the old contains("obo") guard)
+:hasPart      a owl:ObjectProperty .
+:connectedTo  a owl:ObjectProperty .
+:hasColour    a owl:ObjectProperty .
+:adjacentTo   a owl:ObjectProperty .
+
+# Named classes
+:A a owl:Class .
+:B a owl:Class .
+:C1 a owl:Class .
+:C2 a owl:Class .
+:D a owl:Class .
+:E a owl:Class .
+:F a owl:Class .
+
+# Named individual (filler for hasValue)
+:red a owl:NamedIndividual .
+
+# 1) Bare someValuesFrom under SubClassOf  ->  A hasPart some B
+:A rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasPart ; owl:someValuesFrom :B ] .
+
+# 2) someValuesFrom NESTED in an intersection under SubClassOf
+#    A subClassOf ( C1 and (connectedTo some D) and C2 )
+:A rdfs:subClassOf [
+    a owl:Class ;
+    owl:intersectionOf ( :C1
+                         [ a owl:Restriction ; owl:onProperty :connectedTo ; owl:someValuesFrom :D ]
+                         :C2 )
+] .
+
+# 3) EquivalentClasses with intersection + someValuesFrom  ->  E connectedTo some F
+:E owl:equivalentClass [
+    a owl:Class ;
+    owl:intersectionOf ( :C1
+                         [ a owl:Restriction ; owl:onProperty :connectedTo ; owl:someValuesFrom :F ] )
+] .
+
+# 4) hasValue to an individual  ->  A hasColour red
+:A rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasColour ; owl:hasValue :red ] .
+
+# 5) min-cardinality (n>=1) with a named filler  ->  A adjacentTo some D
+:A rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :adjacentTo ; owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass :D ] .
+
+# 6) allValuesFrom  ->  MUST NOT be extracted (constraint, not existential)
+:A rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasPart ; owl:allValuesFrom :E ] .
+
+# 7) union  ->  MUST NOT be descended into
+:A rdfs:subClassOf [
+    a owl:Class ;
+    owl:unionOf ( [ a owl:Restriction ; owl:onProperty :hasPart ; owl:someValuesFrom :C1 ]
+                  [ a owl:Restriction ; owl:onProperty :hasPart ; owl:someValuesFrom :C2 ] )
+] .
+
+# 8) someValuesFrom whose filler is an INTERSECTION containing named classes
+#    G subClassOf hasPart some (B and C1)   ->  G hasPart B, G hasPart C1
+:G a owl:Class .
+:G rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasPart ;
+                     owl:someValuesFrom [ a owl:Class ; owl:intersectionOf ( :B :C1 ) ] ] .
+
+# 9) NESTED intersection filler
+#    H subClassOf hasPart some (B and (C1 and C2))  ->  H hasPart B, C1, C2
+:H a owl:Class .
+:H rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasPart ;
+                     owl:someValuesFrom [ a owl:Class ; owl:intersectionOf
+                        ( :B [ a owl:Class ; owl:intersectionOf ( :C1 :C2 ) ] ) ] ] .
+
+# 10) UNION filler -> MUST NOT extract
+#     I subClassOf hasPart some (B or C1)  ->  nothing
+:I a owl:Class .
+:I rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :hasPart ;
+                     owl:someValuesFrom [ a owl:Class ; owl:unionOf ( :B :C1 ) ] ] .
