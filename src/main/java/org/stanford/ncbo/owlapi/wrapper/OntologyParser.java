@@ -16,6 +16,7 @@ import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 import org.semanticweb.owlapi.search.EntitySearcher;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 import org.semanticweb.owlapi.util.InferredSubClassAxiomGenerator;
+import org.semanticweb.owlapi.util.OWLClassExpressionVisitorAdapter;
 import org.semanticweb.owlapi.util.SimpleIRIMapper;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 import org.slf4j.Logger;
@@ -253,6 +254,7 @@ public class OntologyParser {
 
 			addGroundMetadata(documentIRI, fact, sourceOnt);
 			generateGroundTriplesForAxioms(allAxioms, fact, sourceOnt);
+			generateRelationshipTriples(allAxioms, fact, sourceOnt);
 
 			if (isOBO) {
 				if (!documentIRI.toString().startsWith("owlapi:ontology")) {
@@ -564,6 +566,132 @@ public class OntologyParser {
 					}
 				}
 			}
+		}
+	}
+
+	/*
+	 * Emits a metadata triple for every class-to-class (or class-to-individual)
+	 * relationship a named class participates in, for ANY object property, derived
+	 * from SubClassOf and EquivalentClasses axioms.
+	 *
+	 * Unlike generateGroundTriplesForAxioms (which only recognises the flat shape
+	 * SubClassOf(A, someValuesFrom(p, B)) for a hard-coded set of OBO properties),
+	 * the right-hand side of each axiom is visited (see RelationshipVisitor) so that
+	 * relationships nested inside intersections, and those stated via equivalences,
+	 * are also extracted. Each relationship A --p--> filler is emitted under the
+	 * property's own IRI.
+	 */
+	private void generateRelationshipTriples(Set<OWLAxiom> allAxioms, OWLDataFactory fact, OWLOntology sourceOnt) {
+		for (OWLSubClassOfAxiom sc : sourceOnt.getAxioms(AxiomType.SUBCLASS_OF)) {
+			if (!sc.getSubClass().isAnonymous()) {
+				sc.getSuperClass().accept(new RelationshipVisitor(sc.getSubClass().asOWLClass(), allAxioms, fact));
+			}
+		}
+
+		for (OWLEquivalentClassesAxiom eq : sourceOnt.getAxioms(AxiomType.EQUIVALENT_CLASSES)) {
+			for (OWLClassExpression named : eq.getClassExpressions()) {
+				if (!named.isAnonymous()) {
+					RelationshipVisitor visitor = new RelationshipVisitor(named.asOWLClass(), allAxioms, fact);
+					for (OWLClassExpression other : eq.getClassExpressions()) {
+						if (!other.equals(named)) {
+							other.accept(visitor);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/*
+	 * Collects the relationships a fixed subject class participates in, by visiting
+	 * the class expression on the right-hand side of a SubClassOf/EquivalentClasses
+	 * axiom. Only intersections are traversed further; the existential shapes
+	 * (someValuesFrom, hasValue, min/exact cardinality >= 1) emit a relationship. The
+	 * filler of those shapes is expanded the same way -- a named filler, or the named
+	 * classes of an intersection filler (see emitRelationshipToClass). Every other
+	 * class-expression type is a no-op (inherited from the adapter), so unions,
+	 * complements and allValuesFrom are, by design, neither traversed nor emitted.
+	 */
+	private class RelationshipVisitor extends OWLClassExpressionVisitorAdapter {
+		private final OWLClass subject;
+		private final Set<OWLAxiom> allAxioms;
+		private final OWLDataFactory fact;
+
+		RelationshipVisitor(OWLClass subject, Set<OWLAxiom> allAxioms, OWLDataFactory fact) {
+			this.subject = subject;
+			this.allAxioms = allAxioms;
+			this.fact = fact;
+		}
+
+		@Override
+		public void visit(OWLObjectIntersectionOf intersection) {
+			for (OWLClassExpression operand : intersection.getOperands()) {
+				operand.accept(this);
+			}
+		}
+
+		@Override
+		public void visit(OWLObjectSomeValuesFrom some) {
+			emitRelationshipToClass(some.getProperty(), some.getFiller());
+		}
+
+		@Override
+		public void visit(OWLObjectHasValue hasValue) {
+			emitRelationshipToIndividual(hasValue.getProperty(), hasValue.getFiller());
+		}
+
+		@Override
+		public void visit(OWLObjectMinCardinality card) {
+			if (card.getCardinality() >= 1) {
+				emitRelationshipToClass(card.getProperty(), card.getFiller());
+			}
+		}
+
+		@Override
+		public void visit(OWLObjectExactCardinality card) {
+			if (card.getCardinality() >= 1) {
+				emitRelationshipToClass(card.getProperty(), card.getFiller());
+			}
+		}
+
+		/*
+		 * Emits subject --p--> C for every named class C in the filler. A named
+		 * filler contributes itself; an intersection filler contributes the named
+		 * classes of its operands (recursively), since `p some (B and C1 ... Cn)`
+		 * entails a relationship to each of B, C1, ... Cn. Anonymous fillers with no
+		 * named class (e.g. a union, or a nested restriction) contribute nothing.
+		 */
+		private void emitRelationshipToClass(OWLObjectPropertyExpression property, OWLClassExpression filler) {
+			if (property.isAnonymous()) {
+				return;
+			}
+			OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(property.asOWLObjectProperty().getIRI());
+			for (OWLClass namedFiller : namedClasses(filler)) {
+				allAxioms.add(fact.getOWLAnnotationAssertionAxiom(prop, subject.getIRI(), namedFiller.getIRI()));
+			}
+		}
+
+		// The named classes reachable through a (possibly nested) intersection.
+		private Set<OWLClass> namedClasses(OWLClassExpression filler) {
+			if (!filler.isAnonymous()) {
+				return Collections.singleton(filler.asOWLClass());
+			}
+			if (filler instanceof OWLObjectIntersectionOf) {
+				Set<OWLClass> result = new HashSet<>();
+				for (OWLClassExpression operand : ((OWLObjectIntersectionOf) filler).getOperands()) {
+					result.addAll(namedClasses(operand));
+				}
+				return result;
+			}
+			return Collections.emptySet();
+		}
+
+		private void emitRelationshipToIndividual(OWLObjectPropertyExpression property, OWLIndividual filler) {
+			if (property.isAnonymous() || filler.isAnonymous()) {
+				return;
+			}
+			OWLAnnotationProperty prop = fact.getOWLAnnotationProperty(property.asOWLObjectProperty().getIRI());
+			allAxioms.add(fact.getOWLAnnotationAssertionAxiom(prop, subject.getIRI(), filler.asOWLNamedIndividual().getIRI()));
 		}
 	}
 
