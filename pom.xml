@@ -27,8 +27,8 @@
       <name>Jennifer Vendetti</name>
       <email>vendetti@stanford.edu</email>
       <url>https://github.com/jvendetti</url>
-      <organization>Stanford Center for Biomedical Informatics Research</organization>
-      <organizationUrl>https://bmir.stanford.edu/</organizationUrl>
+      <organization>Stanford Division of Computational Medicine</organization>
+      <organizationUrl>https://computationalmedicine.stanford.edu//</organizationUrl>
       <roles>
         <role>developer</role>
       </roles>
@@ -40,8 +40,8 @@
     <contributor>
       <name>Alex Skrenchuck</name>
       <url>https://github.com/alexskr</url>
-      <organization>Stanford Center for Biomedical Informatics Research</organization>
-      <organizationUrl>https://bmir.stanford.edu/</organizationUrl>
+      <organization>Stanford Division of Computational Medicine</organization>
+      <organizationUrl>https://computationalmedicine.stanford.edu//</organizationUrl>
       <roles>
         <role>system administrator</role>
       </roles>
@@ -60,16 +60,34 @@
     <contributor>
       <name>Syphax Bouazzouni</name>
       <url>https://github.com/syphax-bouazzouni</url>
-      <organization>LIRMM</organization>
-      <organizationUrl>https://www.lirmm.fr/</organizationUrl>
       <roles>
         <role>developer</role>
       </roles>
-      <timezone>Europe/Paris</timezone>
+      <timezone>Europe/Berlin</timezone>
     </contributor>
     <contributor>
       <name>Timothy Redmond</name>
       <url>https://github.com/stdotjohn</url>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>America/Los_Angeles</timezone>
+    </contributor>
+    <contributor>
+      <name>Matthew Horridge</name>
+      <url>https://github.com/matthewhorridge</url>
+      <organization>Stanford Division of Computational Medicine</organization>
+      <organizationUrl>https://computationalmedicine.stanford.edu//</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>America/Los_Angeles</timezone>
+    </contributor>
+    <contributor>
+      <name>Michael Dorf</name>
+      <url>https://github.com/mdorf</url>
+      <organization>Stanford Division of Computational Medicine</organization>
+      <organizationUrl>https://computationalmedicine.stanford.edu//</organizationUrl>
       <roles>
         <role>developer</role>
       </roles>
